@@ -230,7 +230,7 @@
 <!-- <script src="plugins/daterangepicker/moment.min.js"></script> -->
 <script src="/admin/plugins/select2/select2.full.min.js"></script>
 <script src="/admin/plugins/iCheck/icheck.min.js"></script>
-<script src="/admin/plugins/juqery-confirm/jquery-confirm.min.js"></script>
+<script src="../admin/plugins/jquery-confirm/jquery-confirm.min.js"></script>
 <script src="validator.js"></script>
 <script>
   $('.select2').select2();

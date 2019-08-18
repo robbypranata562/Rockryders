@@ -23,6 +23,7 @@
               <option value="1">Lunas</option>
           </select>
         </div>
+        <button class="btn btn-warning" name="btnTest" id="btnTest">CLA</button>
          <table id="tDeliveryorder" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -37,7 +38,8 @@
                     <th>Description</th>
                     <th>Status</th>
                     <th>Print</th>
-                    <th>Action</th>
+                    <th>Delete</th>
+                    <th>Confirm</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,8 +59,8 @@
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
             var ButtonDetails         =   '<a class="btn btn-warning"   href="DeliveryOrderDetailList.php?Id='+aData[0]+'">Detail</a>'
             var ButtonPrint           =   '<a class="btn btn-info"      href="DeliveryOrderPrintNew.php?Id='+aData[0]+'">Print</a>'
-            var ButtonActionsConfirm  =   '<a class="btn btn-success"   href="ReceivingDetailList.php?Id='+aData[0]+'">Confirm</a>'
-            var ButtonActionsDelete   =   '<a class="btn btn-danger"    href="ReceivingDetailList.php?Id='+aData[0]+'">Delete</a>'
+            var ButtonActionsConfirm  =   '<input type="button" class="btn btn-success" value="Confirm"/>'
+            var ButtonActionsDelete   =   '<input type="button" class="btn btn-danger" value="Delete"/>'
             
             var Status = "";
             if (aData[9] == "0"){
@@ -67,11 +69,14 @@
             else{
               Status = "<span class='badge badge-primary'>Lunas</span>"
             }
-            
+            $(nRow).attr("data-attr-id",aData[0]);
             $('td:eq(0)',   nRow).html(ButtonDetails);
             $('td:eq(9)',   nRow).html(Status);
             $('td:eq(10)',  nRow).html(ButtonPrint);
-            $('td:eq(11)',  nRow).html(ButtonActionsConfirm +  ButtonActionsDelete);
+            $('td:eq(11)',  nRow).html(ButtonActionsDelete);
+            $('td:eq(12)',  nRow).html(ButtonActionsConfirm);
+            BindClickDelete(nRow);
+            BindClickConfirm(nRow);
             return nRow;
         },
         "ajax": {
@@ -90,5 +95,65 @@
       $("#Status").on("change",function(e){
         $('#tDeliveryorder').DataTable().draw();
       })
-    });
+
+      function BindClickDelete(nRow){
+        $('td:eq(11) input[type="button"]', nRow).unbind('click');
+        $('td:eq(11) input[type="button"]', nRow).bind('click',function(e){
+          let _transactionId = $(nRow).attr('data-attr-id')
+          $.confirm({
+            title: 'Hapus Transaksi!',
+            content: 'Apakah Anda Yakin Akan Menghapus Transaksi Ini ? !',
+            buttons: {
+                confirm: function () {
+                        $.ajax({
+                          url     : 'ActDeleteTransaction.php',
+                          type    : 'POST',
+                          dataType: "json",
+                          data    :
+                          {
+                            Id   : _transactionId,
+                          }
+                          }).success(function(data){
+                            console.log(data);
+                          })
+                },
+                cancel: function () {
+                    $.alert('Canceled!');
+                }
+            }
+          })
+        });
+        
+      }
+
+      function BindClickConfirm(nRow){
+        $('td:eq(12) input[type="button"]', nRow).unbind('click');
+        $('td:eq(12) input[type="button"]', nRow).bind('click',function(e){
+          let _transactionId = $(nRow).attr('data-attr-id')
+          $.confirm({
+            title: 'Konfirmasi Transaksi!',
+            content: 'Apakah Anda Yakin Akan Mengkonfirmasi Transaksi Ini ? !',
+            buttons: {
+                confirm: function () {
+                        $.ajax({
+                          url     : 'ActConfirmTransaction.php',
+                          type    : 'POST',
+                          dataType: "json",
+                          data    :
+                          {
+                            Id   : _transactionId,
+                          }
+                          }).success(function(data){
+                            console.log(data);
+                          })
+                },
+                cancel: function () {
+                    //$.alert('Canceled!');
+                }
+            }
+          })
+        });
+        
+      }
+  });
 </script>

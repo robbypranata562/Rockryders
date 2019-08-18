@@ -78,6 +78,7 @@ if(mysqli_num_rows($k) > 0 )
                 $row['Status'],
                 $row['Id'],
                 $row['Id'],
+                $row['Id']
             );
             $output['aaData'][] = $data;
     }
