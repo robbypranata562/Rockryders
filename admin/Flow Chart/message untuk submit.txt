@@ -1,0 +1,15 @@
+    [Date] => 19-08-20
+    [Customer] => Robby
+    [Phone] => 08112271271
+    [Address] => Jalan Desa
+    [Weight] => 5000
+    [Province] => 
+    [City] =>
+    [District] =>
+    [SubDistrict] =>
+    [Courier] =>
+    [TypeService] =>
+    [Description] => FSFAFJ
+    [TotalPrice] => 1530000
+    [AdditionalPrice] => 50000
+    [arrayItem] => [["MRH","M","60","27500","1530000","2000"]]
