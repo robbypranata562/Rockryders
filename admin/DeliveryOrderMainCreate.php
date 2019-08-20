@@ -150,7 +150,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="form-group">
+                            <div class="form-group mt-25">
                                 <button type="button" class="btn btn-primary" id="btnCheckStock" name="btnCheckStock">Check Stok</button>
                             </div>
                         </div>

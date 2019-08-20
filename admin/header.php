@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/admin/plugins/jQueryUI/jquery-ui.css">
   <link rel="stylesheet" href="/admin/plugins/jQueryUI/jquery-ui.css">
   <link rel="stylesheet" href="../admin/plugins/jquery-confirm/jquery-confirm.min.css">
-  <link rel="stylesheet" href="/admin/plugins/custom.css">
+  <link rel="stylesheet" href="../admin/plugins/custom.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
