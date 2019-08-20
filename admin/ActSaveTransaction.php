@@ -1,4 +1,8 @@
 <?php
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+    die();
     include "header.php";
     include "koneksi.php";
     $number = NULL;
@@ -76,6 +80,8 @@
     $AdditionalPrice        = $_POST['AdditionalPrice'];
     $Session                = $_SESSION['id_admin'];
     $Items                  = json_decode($_POST['arrayItem']);
+
+    
     //start insert to database
     $SQLInsertReceivingMain = "insert into Transaction
     (

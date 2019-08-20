@@ -15,21 +15,23 @@ where
 
     if($koneksi->query($SQLConfirmTransaction) === FALSE)
     {
-        echo json_encode(
+        //echo 
+        die(json_encode(
             array
                 (
                     "result"    => "Error",
                     "query"     => $SQLConfirmTransaction
                 )
-            );
+            ));
     }
     else{
-        echo json_encode(
+        echo 
+        die(json_encode(
             array
                 (
                     "result" => "Success"
                 )
-            );
+            ));
     }
 
 ?>
