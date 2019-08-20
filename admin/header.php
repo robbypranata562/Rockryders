@@ -13,16 +13,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title class="no-print">Rockryders</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/admin/plugins/fontawesome/css/fontawesome.min.css">
-  <link rel="stylesheet" href="/admin/plugins/select2/select2.min.css">
-  <link rel="stylesheet" href="/admin/plugins/datatables/dataTables.bootstrap.css">
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
-  <link rel="stylesheet" href="/admin/plugins/jQueryUI/jquery-ui.css">
-  <link rel="stylesheet" href="/admin/plugins/jQueryUI/jquery-ui.css">
+  <link rel="stylesheet" href="../admin/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../admin/plugins/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="../admin/plugins/select2/select2.min.css">
+  <link rel="stylesheet" href="../admin/plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="../admin/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../admin/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../admin/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="../admin/plugins/datepicker/datepicker3.css">
+  <link rel="stylesheet" href="../admin/plugins/jQueryUI/jquery-ui.css">
+  <link rel="stylesheet" href="../admin/plugins/jQueryUI/jquery-ui.css">
   <link rel="stylesheet" href="../admin/plugins/jquery-confirm/jquery-confirm.min.css">
   <link rel="stylesheet" href="../admin/plugins/custom.css">
 </head>
