@@ -29,8 +29,6 @@ if(isset($_POST['login'])){
     $user=$_POST['username'];
     $pass=md5($_POST['password']);
     $res="select * from admin, karyawan where admin.id_karyawan=karyawan.id and uname='$user' and pass='$pass'";
-    print_r($_res);
-    
     $exe=mysqli_query($koneksi,$res);
     $data=mysqli_fetch_array($exe);
     $id_admin=$data['id_karyawan'];
@@ -120,8 +118,8 @@ if(isset($_POST['login'])){
     </form>
   </div>
 </div>
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="plugins/iCheck/icheck.min.js"></script>
+<script src="../admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../admin/bootstrap/js/bootstrap.min.js"></script>
+<script src="../admin/plugins/iCheck/icheck.min.js"></script>
 </body>
 </html>

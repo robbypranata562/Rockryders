@@ -156,7 +156,7 @@
                         ".$LargeQty.",
                         ".$MediumQty.",
                         ".$key[2].",
-                        23000,
+                        25000,
                         25500,
                         27500,
                         1,
@@ -198,6 +198,7 @@
                             "Insert Into StockCard
                             (
                                 Date,
+                                TransactionCode,
                                 ItemId,
                                 InitialValue,
                                 `IN`,
@@ -208,6 +209,7 @@
                             Values 
                             (
                                 '".$Date."',
+                                '".$Code."',
                                 ".$ItemId.",
                                 0,
                                 ".$key[2].",
@@ -271,6 +273,7 @@
                             "Insert Into StockCard
                             (
                                 Date,
+                                TransactionCode,
                                 ItemId,
                                 InitialValue,
                                 `IN`,
@@ -281,6 +284,7 @@
                             Values 
                             (
                                 '".$Date."',
+                                '".$Code."',
                                 ".$isExists.",
                                 0,
                                 ".$key[2].",
@@ -331,6 +335,7 @@
                             "Insert Into StockCard
                             (
                                 Date,
+                                TransactionCode,
                                 ItemId,
                                 InitialValue,
                                 `IN`,
@@ -341,6 +346,7 @@
                             Values 
                             (
                                 '".$Date."',
+                                '".$Code."',
                                 ".$isExists.",
                                 ".$LastStock.",
                                 ".$key[2].",

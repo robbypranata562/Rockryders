@@ -329,8 +329,8 @@
                 } else if (this.value <= 1919) {
                     $("#UnitPrice").val("25500");
                 }
-                else if (this.value > 1200) {
-                    $("#UnitPrice").val("24000");
+                else {
+                    $("#UnitPrice").val("25000");
                 }
             })
 

@@ -1,5 +1,5 @@
 <?php
-				include"koneksi.php";
+				include "koneksi.php";
 				session_start();
 				if(!isset($_SESSION['uname'])){
 					echo"<script>window.location.assign('index.php')</script>";
@@ -133,6 +133,21 @@
             <li><a href="DeliveryOrderMainCreate.php"><i class="fa fa-circle-o"></i>Tambah Penjualan Barang</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Kasir 2</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">3</span>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="DeliveryOrderMainList2.php"><i class="fa fa-circle-o"></i>Daftar Penjualan Barang</a></li>
+            <li><a href="DeliveryOrderMainCreate2.php"><i class="fa fa-circle-o"></i>Tambah Penjualan Barang</a></li>
+          </ul>
+        </li>
+
 		<?php } ?>
 
     <?php $jabatan=$_SESSION['level']?>
