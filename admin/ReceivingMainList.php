@@ -41,7 +41,6 @@
         "serverSide": true,
         "scrollX": true,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-          console.log(aData[0])
             var ButtonDetail = '<a class="btn btn-success" href="ReceivingDetailList.php?Id='+aData[0]+'">Detail</a>'
             $('td:eq(0)', nRow).html(ButtonDetail);
             return nRow;

@@ -60,19 +60,19 @@
                     <div class="form-group">
                         <label class = "form-label"> Pelanggan </label>
                         <div class>
-                            <input type="text" class="form-control" name="Customer" id="Customer"/>
+                            <input type="text" class="form-control" name="Customer" id="Customer" required/>
                         </div>
                     </div>
                     <div class="form-group">
                     <label class = "form-label"> No Handphone </label>
                         <div class>
-                            <input type="text" class="form-control" name="Phone" id="Phone"/>
+                            <input type="text" class="form-control" name="Phone" id="Phone" required/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class = "form-label"> Alamat </label>
                         <div class>
-                            <input type="textarea" class="form-control" name="Address" id="Address"/>
+                            <input type="textarea" class="form-control" name="Address" id="Address" required/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -112,19 +112,6 @@
                 </div>
                 <div class="box-body">
                     <input type="hidden" value="" name="arrayItem" id="arrayItem"/>
-                    <!-- <div class="ui-widget form-group">
-                        <label>Cari Barang</label>
-                        <div class="input-group input-group-sm">
-                            <input type= "text" id="nama_barang" class="form-control" placeholder="Masukkan Nama Barang"  >
-                            <input  type="hidden" name="id_barang" id="id_barang" value="" />
-                            <input  type="hidden" name="LargeConversion"    id="LargeConversion" value="" />
-                            <input  type="hidden" name="MediumConversion"   id="MediumConversion" value="" />
-                            <input  type="hidden" name="SmallConversion"    id="SmallConversion" value="" />
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-info btn-flat" name="btnCheckStock" id="btnCheckStock">Tambah</button>
-                            </span>
-                        </div>
-                    </div> -->
                     <div class="row">
                         <div class="col-md-5">
                             <div class="form-group">
@@ -172,35 +159,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Satuan Besar</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="LargeQty" name="LargeQty" readonly>
-                                    <span class="input-group-addon" id="LargeUOM" name="LargeUOM"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Satuan Sedang</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="MediumQty" name="MediumQty" readonly>
-                                    <span class="input-group-addon" id="MediumUOM" name="MediumUOM"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Satuan Kecil</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="SmallQty" name="SmallQty" readonly>
-                                    <span class="input-group-addon" id="SmallUOM" name="SmallUOM"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="form-group">
                         <label for="exampleInputEmail1">Stok</label>
                         <div class="input-group">
@@ -208,26 +166,6 @@
                             <span class="input-group-addon">Pcs</span>
                         </div>
                     </div>
-                    <!-- <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Harga Jual (Partai)</label>
-                                <input type="text" name="LargePrice" id="LargePrice" class="form-control"  readonly>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Harga Jual (Lusin)</label>
-                                <input type="text" name="MediumPrice" id="MediumPrice" class="form-control"  readonly>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Harga Jual (Pcs)</label>
-                                <input type="text" name="SmallPrice" id="SmallPrice" class="form-control" readonly>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="form-group">
                         <label class="form-label">Jumlah Pemesanan</label>
                         <div class="">
@@ -347,8 +285,6 @@
                 showButtonPanel: true,
                 todayBtn: "linked",
             });
-
-
             $.ajax
             ({
                     url: 'GetProvince.php',
@@ -365,7 +301,6 @@
                 }).error(function(data){
                     alert("Error API");
             });
-
             $("#Province").on("change",function(){
                 $.ajax({
                     url: 'GetCity.php',
@@ -389,10 +324,7 @@
                         alert("Error API");
                 });
             });
-
-
             $("#Courier").on("change",function(){
-
                 if ($("#City").val() == "" || $("#Weight").val() == "" || this.value == ""){
                     alert("Kota Tujuan , Berat , Dan Kurir Tidak Boleh Kosong");
                 }
@@ -423,7 +355,6 @@
                     });
                 }
             });
-
             var t = 
             $('#TableDeliveryDetail').DataTable({
                 "paging": false,

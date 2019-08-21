@@ -9,286 +9,157 @@
       </h1>
     </section>
     <section class="content">
-        <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title">Retur Penjualan</h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                    <i class="fa fa-minus"></i></button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fa fa-times"></i></button>
+        <form name="formSalesReturn" id="formSalesReturn" class="form-body" data-toggle="validator" action="ActSaveSalesReturn.php" method="post" enctype="multipart/form-data">
+            <!-- start box -->
+            <div class="box">
+                <!-- start box header -->
+                <div class="box-header with-border">
+                    <h3 class="box-title">Retur Penjualan</h3>
+                    <div class="box-tools pull-right"></div>
                 </div>
-            </div>
-            <div class="box-body">
-            <?php
-                if (isset($_POST['simpanmain']))
-                {
-                    //set Code Transaction
-                    $number = NULL;
-                    $select_code_for_po = "Select
-                    Increment + 1 as Increment
-                    From
-                    CodeTransaction
-                    where
-                    1=1
-                    And Prefix = 'SR'
-                    And Year  = ".date('y')."
-                    And Month = ".date('m')."
-                    ";
-                    //die($select_code_for_po);
-                    $exe=mysqli_query($koneksi,$select_code_for_po);
-                    if(mysqli_num_rows($exe) > 0 )
-                    {
-                        while($data=mysqli_fetch_array($exe))
-                        {
-                            $number = $data['Increment'];
-                        }
-
-                        $sql_update_incerement = "
-                        Update CodeTransaction
-                        Set
-                            Increment = ".$number."
-                        Where
-                            1=1
-                            And Prefix = 'SR'
-                            And Year  = ".date('y')."
-                            And Month = ".date('m')."
-                        ";
-                        if ($koneksi->query($sql_update_incerement) === TRUE)
-                        {
-                        }
-                    }
-
-                    if(is_null($number))
-                    {
-                        $insert_code_for_po = "Insert Into CodeTransaction
-                        (
-                            Prefix,
-                            Year,
-                            Month,
-                            Increment
-                        )
-                        Values
-                        (
-                            'SR',
-                            ".date('y').",
-                            ".date('m').",
-                            '1'
-                            )";
-                        if($koneksi->query($insert_code_for_po) === TRUE)
-                        {
-                            $number = "1";
-                        }
-                    }
-
-                    $lengthCode = strlen($number);
-                    $lengthCode = 4 - $lengthCode;
-                    $code = "";
-                    for ($i = 1 ; $i <= $lengthCode ; $i++)
-                    {
-                        $code = (string)$code  . "0";
-                    }
-
-                    $code = "SR" . (string)date('y') . (string)date('m') . (string)$code . $number;
-                    //end select code transaction
-                    $tanggal=$_POST['tanggal'];
-                    $suplier=$_POST['pelanggan_name'];
-                    $Items = json_decode($_POST['arrayItem']);
-                    $Session = $_SESSION['nama'];
-                    //insert purchase order main dulu
-                    $sql_purchase_order_main="insert into SalesReturn
-                    (
-                        Code ,
-                        Date ,
-                        Customer ,
-                        Pembuat ,
-                        Dibuat
-                    )
-                    values
-                    (
-                        '".$code."',
-                        '".$tanggal."',
-                        '".$suplier."',
-                        '".$Session."',
-                        NOW()
-                    )";
-                    print_r($sql_purchase_order_main);
-                    //$exe_purchase_order_main = mysqli_query($koneksi,$sql_purchase_order_main);
-                    if($koneksi->query($sql_purchase_order_main) === TRUE)
-                    {
-                        //jika sukses ambil id terus insert purchase order detail
-                        $last_id = $koneksi->insert_id;
-                        $TotalSR = 0;
-                        foreach ($Items as $key)
-                        {
-                            $sql_purchase_order_detail = "";
-                            $sql_purchase_order_detail="insert into SalesReturnDetail
-                            (SalesReturnId , ItemId , Satuan , UnitPrice , Qty , TotalPrice , Pembuat , Dibuat)
-                            values('".$last_id."','".$key[0]."','".$key[2]."','".$key[5]."' , '".$key[4]."' , '".$key[6]."' , '".$Session."' , NOW())";
-                            //$exe_purchase_order_detail = mysqli_query($koneksi,$sql_purchase_order_detail);
-                            if ($koneksi->query($sql_purchase_order_detail) === TRUE)
-                            {
-                                $TotalSR = $TotalSR + $key[6];
-                            }
-                            else
-                            {
-                                echo    "<div class='alert alert-danger'>
-                                            <a class='close' data-dismiss='alert' href='#'>&times;</a>
-                                            <strong>Success!</strong> Data Purchase Return Detail Gagal Disimpan
-                                        </div>";
-                            }
-                        }
-
-                        $sql_update_po = "Update SalesReturn Set Total = '".$TotalSR."' where id = '".$last_id."'";
-                        if ($koneksi->query($sql_update_po) === TRUE)
-                        {
-                            //jika true kurangin piutang ke customer tersebut
-                                // $insert_ar_payment = "Insert Into APPayment
-                                // (
-                                //     customer_id,
-                                //     delivery_id,
-                                //     date,
-                                //     total,
-                                //     pembuat,
-                                //     dibuat
-                                // )
-                                // values
-                                // (
-                                //     '".$suplier."',
-                                //     '".$last_id."',
-                                //     '".$tanggal."',
-                                //     '".$TotalSR."',
-                                //     '".$Session."',
-                                //     NOW()
-                                // )";
-                                $sql_update_saldo_customer = "Update Pelanggan Set Saldo = Saldo + ".$TotalSR." where id_pelanggan = '".$suplier."'";
-                                if ($koneksi->query($sql_update_saldo_customer) === TRUE)
-                                {
-                                    echo ("<script>location.href='SalesReturnMainList.php';</script>");
-                                }
-                                //print_r($insert_ar_payment);
-                                // if ($koneksi->query($insert_ar_payment) === TRUE)
-                                // {
-
-                                // }
-                        }
-                    }
-                    else
-                    {
-                        echo    "<div class='alert alert-danger'>
-                        <a class='close' data-dismiss='alert' href='#'>&times;</a>
-                        <strong>Error!</strong> Data Purchase Return Gagal Disimpan
-                        </div>";
-                    }
-            }
-            ?>
-            <form class="form-body" ata-toggle="validator" action="" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="exampleInputDate">Tangal</label>
-                    <div class="input-group date">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                    <input type="text" autocomplete="off" class="form-control pull-right" id="tanggal" name="tanggal" data-error="Tanggal Tidak Boleh Kosong" required><div class="help-block with-errors"></div>
+                <!-- end box header -->
+                <!-- start box body -->
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="exampleInputDate">Tangal</label>
+                        <div class="input-group date">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" autocomplete="off" class="form-control pull-right" id="Date" name="Date" data-error="Tanggal Tidak Boleh Kosong" required><div class="help-block with-errors"></div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class = "form-label"> Pelanggan </label>
-                    <div class>
-                    <select class="form-control" style="width: 100%;" name="pelanggan_name" id="pelanggan_name">
-                            <?php
-                                $sql="SELECT id_pelanggan , nama_pelanggan FROM pelanggan";
-                                $exe=mysqli_query($koneksi,$sql);
-                                while($data=mysqli_fetch_array($exe))
-                                {
-                                ?>
-                                    <option value=<?php echo $data['id_pelanggan'];?>><?php echo $data['nama_pelanggan'];?></option>
-                                <?php
-                                }
-                                ?>
-                    </select>
-                    </div>
-                </div>
-                <div class="col">
-                    <hr style="border-top: 25px solid black;" />
-                </div>
-                <div class>
-                    <div class="ui-widget form-group">
-                        <label>Cari Barang</label>
-                        <div class="input-group input-group-sm">
-                            <input type= "text" id="nama_barang" class="form-control" placeholder="Masukkan Nama Barang"  >
-                            <input  type="hidden" name="id_barang" id="id_barang" value="" />
-                            <input  type="hidden" name="modal" id="modal" value="" />
-                            <input  type="hidden" name="konversi" id="konversi" value="" />
-                            <input  type="hidden" name="satuanbesar" id="satuanbesar" value="" />
-                            <input  type="hidden" name="satuankecil" id="satuankecil" value="" />
-                            <span class="input-group-btn">
-                            <button type="submit" class="btn btn-info btn-flat" name="tambah">Tambah</button>
-                            </span>
+                    <div class="form-group">
+                        <label for="exampleInputDate">Pelanggan</label>
+                        <div>
+                            <input type="text" class="form-control" name="Customer" id="Customer" required/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">Satuan Barang</label>
-                        <div class>
-                            <select class="form-control select2"   style="width: 100%;" name="satuan_barang" id="satuan_barang">
-
-                            </select>
+                        <label for="exampleInputDate">No Handphone</label>
+                        <div>
+                            <input type="text" class="form-control" name="Phone" id="Phone" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputDate">Alamat</label>
+                        <div>
+                            <input type="textarea" class="form-control" name="Address" id="Address"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputDate">Deskripsi</label>
+                        <div>
+                            <input type="textarea" class="form-control" name="Description" id="Description" required/>
+                        </div>
+                    </div>
+                </div>
+                <!-- box body -->
+            </div>
+            <!-- end box -->
+            <!-- start box -->
+            <div class="box">
+                <!-- start box header -->
+                <div class="box-header with-border">
+                    <h3 class="box-title">Barang</h3>
+                    <div class="box-tools pull-right"></div>
+                </div>
+                <!-- end box header -->
+                <!-- start box body -->
+                <div class="box-body">
+                    <input type="hidden" value="" name="arrayItem" id="arrayItem"/>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Warna</label>
+                                <div class>
+                                    <select class="form-control" style="width: 100%;" name="Color" id="Color">
+                                        <option value="">Pilih Warna :</option>
+                                        <?php
+                                            $sql="SELECT Code , Name FROM Color";
+                                            $exe=mysqli_query($koneksi,$sql);
+                                            while($data=mysqli_fetch_array($exe))
+                                            {
+                                            ?>
+                                                <option value=<?php echo $data['Code'];?>><?php echo $data['Name'];?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Ukuran</label>
+                                <div class>
+                                    <select class="form-control" style="width: 100%;" name="Size" id="Size">
+                                        <option value="">Pilih Ukuran :</option>
+                                        <?php
+                                            $sql="SELECT Code , Name FROM Size";
+                                            $exe=mysqli_query($koneksi,$sql);
+                                            while($data=mysqli_fetch_array($exe))
+                                            {
+                                            ?>
+                                                <option value=<?php echo $data['Code'];?>><?php echo $data['Name'];?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Jumlah Retur</label>
                         <div class="">
-                            <input type="number" class="form-control" name="qty" id="qty"/>
+                            <input type="number" class="form-control" name="Qty" id="Qty" min="1"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Unit Price</label>
-                        <div class="">
-                            <input type="text" class="form-control" name="unit_price" id="unit_price"/>
-                        </div>
+                        <button type="button" class="btn btn-primary" id="btnTambahBarang" name="btnTambahBarang"> Tambah Barang </button>
                     </div>
+                </div>
+                <!-- end box body -->                                
+            </div>
+            <!-- end box-->
+            <!-- start box -->
+            <div class="box">
+                <!-- start box-header -->
+                <div class="box-header with-border">
+                    <h3 class="box-title">List Barang</h3>
+                    <div class="box-tools pull-right"></div>
+                </div>
+                <!-- end box header -->
+                <!-- start box-body -->
+                <div class="box-body">
                     <div class="form-group">
-                        <label class="form-label">Total Price</label>
-                        <div class="">
-                            <input type="text" class="form-control" name="total_price" id="total_price"/>
-                        </div>
+                        <table id="TableSalesReturnDetail" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th> Nama Barang </th>
+                                    <th> Warna </th>
+                                    <th> Ukuran </th>
+                                    <th> Qty </th>
+                                    <th> Delete </th>
+                                </tr>
+                            </thead>
+                        </table>         
+                    </div>
+                    <div class="box-footer">
+                        <input type="button" class="btn btn-primary" name="btnSimpan" value="Simpan" id="btnSimpan">
                     </div>
                 </div>
-                <div class="form-group">
-                    <button type="button" class="btn btn-primary" id="btnTambahBarang" name="btnTambahBarang"> Tambah Barang </button>
-                </div>
-                <input type="textarea" value="" name="arrayItem" id="arrayItem"/>
-                <div class="col">
-                    <hr style="border-top: 25px solid black;" />
-                </div>
-                <table id="TableSalesReturnDetail" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID Barang</th>
-                            <th>Nama Barang</th>
-                            <th>Satuan Retur</th>
-                            <th>Nilai Konversi</th>
-                            <th>Qty</th>
-                            <th>Harga</th>
-                            <th>Sub Harga</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <div class="box-footer">
-                    <input type="submit" name="simpanmain" class="btn btn-primary" value="Simpan">
-				</div>
-            </form>
-        </div>
-        </div>
+                <!-- end box-body -->
+            </div>
+            <!-- end box -->                   
+        </form>
     </section>
 </div>
 <?php include "footer.php";?>
 <script type="text/javascript">
 		$( document ).ready(function() {
             var DataItem = [];
-            $('#tanggal').datepicker({
+            $('#Date').datepicker({
                 autoclose: true
             });
             var table =  $('#TableSalesReturnDetail').DataTable({
@@ -300,88 +171,39 @@
                         "autoWidth": true
                     });
             $("#btnTambahBarang").click(function(e){
-                // <th>ID Barang</th>
-                // <th>Nama Barang</th>
-                // <th>Satuan Retur</th>
-                // <th>Nilai Konversi</th>
-                // <th>Qty</th>
-                // <th>Harga</th>
-                // <th>Sub Harga</th>
-                var UnitPrice = "";
-                var satuan      = $("#satuan_barang").val();
-                var unitprice   = $("#unit_price").val();
-                var satuanbesar = $("#satuanbesar").val();
-                var satuankecil = $("#satuankecil").val();
-                var konversi    = $("#konversi").val();
-                var qty         = $("#qty").val();
+                var _Color      =   $("#Color").val();
+                var _Size       =   $("#Size").val();
+                var _Qty        =   $("#Qty").val();
                 table.row.add
                 ([
-                    $("#id_barang").val(),
-                    $("#nama_barang").val(),
-                    satuan,
-                    konversi,
-                    qty,
-                    unitprice,
-                    $("#total_price").val()
+                    "Kaos Polos",
+                    _Color,
+                    _Size,
+                    _Qty,
+                    "<input type='button' class='btn btn-danger' value='Delete'/>"
                 ]).draw( false );
-                DataItem.push
-                ([
-                    $("#id_barang").val(),
-                    $("#nama_barang").val(),
-                    satuan,
-                    konversi,
-                    qty,
-                    unitprice,
-                    $("#total_price").val()
-                ]);
+                $("#Color").val("");
+                $("#Size").val("");
+                $("#Qty").val("");
+            });
+
+            $("#btnSimpan").click(function(e){
+                var DataItem = [];
+                var info = table.page.info();
+                var length = info.recordsTotal - 1;
+                var counterNeedApproval = 0;
+                for(var i = 0 ; i <= length ; i++)
+                {
+                    var row = $("#TableSalesReturnDetail tbody tr:eq("+i+")");
+                    DataItem.push
+                    ([
+                        $("td:eq(1)",row).html(),
+                        $("td:eq(2)",row).html(),
+                        $("td:eq(3)",row).html()
+                    ]);
+                }
                 $("#arrayItem").val(JSON.stringify(DataItem))
-            });
-
-            $( "#nama_barang" ).autocomplete({
-                source: function(request, response) {
-                $.getJSON("search_item_by_customer.php", { term : $("#nama_barang").val() , pelanggan: $( "#pelanggan_name option:selected" ).val() },
-                response)},
-                select: function(event, ui)
-                {
-                    $('#satuan_barang').empty()
-                    var e = ui.item;
-                    $("#id_barang").val(e.id);
-                    $("#nama_barang").val(e.NamaBarang);
-                    $("#satuan_barang").append(new Option(e.satuanbesar, e.satuanbesar));
-                    $("#satuan_barang").append(new Option(e.satuankecil, e.satuankecil));
-                    $("#satuanbesar").val(e.satuanbesar);
-                    $("#satuankecil").val(e.satuankecil);
-                    $("#unit_price").val(e.unitprice);
-                    $("#konversi").val(e.konversi)
-                }
-            });
-
-            $("#qty").on('keyup change click', function () {
-                calculate_total_price();
-            });
-
-            $("#unit_price").on('keyup change click', function () {
-                calculate_total_price();
-            });
-
-            function calculate_total_price(){
-                var satuan      = $("#satuan_barang").val() == "" ? "0" : $("#satuan_barang").val();
-                var unitprice   = $("#unit_price").val() == "" ? "0" : $("#unit_price").val();
-                var satuanbesar = $("#satuanbesar").val();
-                var satuankecil = $("#satuankecil").val();
-                var konversi    = $("#konversi").val();
-                var qty         = $("#qty").val() == "" ? "1" : $("#qty").val()
-                if (satuan == satuanbesar)
-                {
-                    var TotalPrice = parseInt( unitprice ) * ( parseInt(qty) * parseInt(konversi) )
-                    $("#total_price").val(TotalPrice);
-                }
-                else
-                {
-                    var TotalPrice = qty * parseInt(unitprice);
-                    $("#total_price").val(TotalPrice);
-                }
-            }
-
+                $("#formSalesReturn").submit();
+            })
 		})
 </script>
