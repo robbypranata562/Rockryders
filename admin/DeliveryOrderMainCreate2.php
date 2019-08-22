@@ -381,14 +381,14 @@
 
             $("#Qty").on('keyup change click', function () {
                 $("#UnitPrice").val("27000");
-                // if (this.value <= 11) {
-                //     $("#UnitPrice").val("27000");
-                // } else if (this.value <= 1919) {
-                //     $("#UnitPrice").val("25500");
-                // }
-                // else {
-                //     $("#UnitPrice").val("25000");
-                // }
+                if (this.value <= 11) {
+                    $("#UnitPrice").val("27000");
+                } else if (this.value <= 1199) {
+                    $("#UnitPrice").val("25500");
+                }
+                else {
+                    $("#UnitPrice").val("25000");
+                }
             })
 
             $("#btnTambahBarang").click(function(e){

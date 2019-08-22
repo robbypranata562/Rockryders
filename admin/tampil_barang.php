@@ -5,49 +5,7 @@
         SELAMAT DATANG
         <small><?php echo $_SESSION['uname'] ?></small>
       </h1>
-	  <?php
-
-	  $sql_notif="SELECT * FROM notif where id='1'";
-	  $exe_notif=mysqli_query($koneksi,$sql_notif);
-		while($data_notif=mysqli_fetch_array($exe_notif)){
-		$nilai=$data_notif['jum_minimal'];
-		}
-    $cek=
-        "
-        SELECT
-            item.NamaBarang,
-            item.JenisBarang,
-            item.SupplierBarang,
-            item.Modal,
-            item.HargaAtas,
-            item.HargaBawah,
-            item.SatuanKonversi,
-            item.Stok,
-            item.MinStock,
-            item.UmurBarangMaksimal,
-            item.UmurBarangNormal,
-            item.TanggalMasuk,
-            item.id
-          FROM
-            item
-        ";
-		$exe_cek=mysqli_query($koneksi,$cek);
-		// while ($data_exe=mysqli_fetch_array($exe_cek)){
-		// if($data_exe['jumlah']<=$nilai)	{
-		// 	$(document).ready(function(){
-		// 		$('#pesan_sedia').css("color","red");
-		// 		$('#pesan_sedia').append("<span class='glyphicon glyphicon-asterisk'></span>");
-		// 	});
-
-		// echo "<div style='padding:5px' class='alert alert-warning'><span class='glyphicon glyphicon-info-sign'></span> Stok  <a style='color:red'>". $data_exe['nama']."</a> yang tersisa sudah kurang dari $nilai . silahkan pesan lagi !!</div>";
-		// 	}
-		// }
-
-		?>
-
     </section>
-
-    <!-- Main content -->
 <?php $jabatan=$_SESSION['level']?>
 <section class="content">
   <div class="box">
@@ -61,15 +19,8 @@
         } 
         ?>
         <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fa fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fa fa-times"></i>
-          </button>
         </div>
     </div>
-
     <div class="box-body">
       <table id="titem" class="table table-bordered table-striped">
         <thead>
@@ -101,7 +52,9 @@
       "serverSide": true,
       "scrollX": true,
       "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-          var ButtonEdit = "<a class='btn btn-warning' href='edit_barang.php?Id='"+aData[9]+"'>Edit</a> <a class='btn btn-danger' href='hapus_barang.php?Id='"+aData[9]+"'>Delete</a>"
+          var ButtonStockCard = '<a class="btn btn-success" href="StockCardItem.php?id='+aData[0]+'">Stock Card</a>'
+          var ButtonEdit = "<a class='btn btn-warning' href='edit_barang.php?id='"+aData[9]+"'>Edit</a> <a class='btn btn-danger' href='hapus_barang.php?id='"+aData[9]+"'>Delete</a>"
+          $('td:eq(0)', nRow).html(ButtonStockCard);
           $('td:eq(9)', nRow).html(ButtonEdit);
           return nRow;
       },
