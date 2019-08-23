@@ -17,7 +17,7 @@
         }
         else
         {
-            $result = "Maaf Anda Tidak Berhak Untuk Merubah Harga Jual \n Silahkan Hubungi Super Admin Atau Kepala Toko";
+            $result = "Maaf Anda Tidak Berhak Untuk Merubah Harga Jual Silahkan Hubungi Super Admin Atau Kepala Toko";
         }
     }
     else

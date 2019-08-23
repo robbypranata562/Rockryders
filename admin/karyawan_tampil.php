@@ -38,44 +38,25 @@
                   <th>Nama</th>
                   <th>Jekel</th>
                   <th>jabatan</th>
-                  <th>Tanggal Gaji</th>
-                  <th>Gaji</th>
                   <th>Alamat</th>
-				  <th>Foto</th>
-				  <th>Foto KTP</th>
-				<th>No HP</th>
-				<th>Hutang</th>
-				  <th>Action</th>
+                  <th>No HP</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
 				<?php
 					$sql="SELECT * FROM karyawan";
 					$exe=mysqli_query($koneksi,$sql);
-					while($data=mysqli_fetch_array($exe)){
-						$hutang ="Rp. ".number_format($data['hutang'],'0',',','.')."-";
+					while($data=mysqli_fetch_array($exe)){					
 				?>
                 <tr>
                   <td><?php echo $data['nama'];?></td>
-                  <td><?php echo $data['jekel'];?>
-                  </td>
-                  
+                  <td><?php echo $data['jekel'];?></td>
                   <td><?php echo $data['jabatan'];?></td>
-                  <td><?php echo $data['tgl_gaji'];?></td>
-                  <td><?php echo $data['jum_gaji'];?></td>
-                  
-				  <td><?php echo $data['alamat'];?></td>
-				   <td><a href="foto/<?php echo $data['foto'];?>" class="fancybox" rel="group"><img src="foto/<?php echo $data['foto'];?>" width="100" height="100"></a></td>
-				   
-				   <td><a href="foto/ktp/<?php echo $data['ktp'];?>" class="fancybox" rel="group"><img src="foto/ktp/<?php echo $data['ktp'];?>" width="100" height="100"></a></td>
-				   <td><?php echo $data['nohp'];?></td>
-				   <td><?php echo $hutang;?></td>
-				  <td>
-				 <a class="btn btn-warning" href="karyawan_edit.php?id_karyawan=<?php echo $data['id'];?>"> <span class="glyphicon glyphicon-pencil">Edit</span></a>&nbsp;&nbsp;&nbsp;
-				 
-				 <a class="btn btn-danger" onclick="if (confirm('Apakah anda yakin ingin menghapus data ini ?')){ location.href='karyawan_hapus.php?id_karyawan=<?php echo $data['id']; ?>' }"  class="glyphicon glyphicon-trash">Hapus</a>
-				  
-				  </td>
+				          <td><?php echo $data['alamat'];?></td>
+                  <td><?php echo $data['nohp'];?></td>
+                  <td><a class="btn btn-warning" href="karyawan_edit.php?id_karyawan=<?php echo $data['id'];?>"> <span class="glyphicon glyphicon-pencil">Edit</span></a>
+				          <a class="btn btn-danger" onclick="if (confirm('Apakah anda yakin ingin menghapus data ini ?')){ location.href='karyawan_hapus.php?id_karyawan=<?php echo $data['id']; ?>' }"  class="glyphicon glyphicon-trash">Hapus</a></td>
                 </tr>
 					<?php } ?>
                 
@@ -85,22 +66,11 @@
 		
         <!-- /.box-body -->
         <div class="box-footer">
-          Footer
         </div>
-        <!-- /.box-footer-->
       </div>
-      <!-- /.box -->
-
     </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-  
 <?php include "footer.php";?>
- 
-  
-
-<!-- Add fancyBox -->
 <link rel="stylesheet" href="source/jquery.fancybox.css" type="text/css" media="screen" />
 <script type="text/javascript" src="source/jquery.fancybox.pack.js"></script>
 

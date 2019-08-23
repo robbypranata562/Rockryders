@@ -133,7 +133,6 @@
             <li><a href="DeliveryOrderMainCreate.php"><i class="fa fa-circle-o"></i>Tambah Penjualan Barang</a></li>
           </ul>
         </li>
-
         <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
@@ -179,19 +178,10 @@
           <ul class="treeview-menu">
             <li><a href="tampil_barang.php"><i class="fa fa-circle-o"></i> Stok Barang</a></li>
             <li><a href="tbh_barang.php"><i class="fa fa-circle-o"></i> Tambah Barang</a></li>
-            <li><a href="ListItemMostPopular.php"><i class="fa fa-circle-o"></i> Barang Laku</a></li>
-            <li><a href="ListItemAging.php"><i class="fa fa-circle-o"></i> Umur Barang</a></li>
-		<?php } ?>
-			<?php $jabatan=$_SESSION['level']?>
-			<?php if ($jabatan=='Super Administrator') { ?>
-			  <li class="treeview">
-          <a href="notif.php">
-            <i class="fa fa-circle-o"></i> Atur Notif
-          </a>
-        </li>
-      <?php } ?>
+            <li><a href="AdjustmentItem.php"><i class="fa fa-circle-o"></i>Adjustment</a></li>
           </ul>
         </li>
+    <?php } ?>
 		 <?php $jabatan=$_SESSION['level']?>
       <?php 
       if ($jabatan=='Super Administrator' or $jabatan=='Stok Admin') 

@@ -95,7 +95,7 @@
                     <div class="form-group">
                         <label class = "form-label"> Deskripsi </label>
                         <div class>
-                            <input type="textarea" class="form-control" name="Description" id="Description"/>
+                            <textarea class="form-control" rows="3" name="Description" id="Description"></textarea>
                         </div>
                     </div>
                 </div>

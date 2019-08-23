@@ -36,17 +36,6 @@
       </h1>
     </section>
     <section class="content">
-        <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title">Adjustment</h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                    <i class="fa fa-minus"></i></button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fa fa-times"></i></button>
-                </div>
-            </div>
-            <div class="box-body">
             <?php
                 if (isset($_POST['simpanmain']))
                 {
@@ -138,54 +127,94 @@
             }
             ?>
             <form id="formAdjustment" name="formAdjustment" class="form-body" data-toggle="validator" action="" method="post" enctype="multipart/form-data">
-                <div class>
-                    <div class="ui-widget form-group">
-                        <label>Cari Barang</label>
-                        <div class="input-group input-group-sm">
-                            <input type= "text" id="nama_barang" class="form-control" placeholder="Masukkan Nama Barang"  >
-                            <input  type="hidden" name="id_barang" id="id_barang" value="" />
-                            <input  type="hidden" name="jumlahsatuankecil" id="jumlahsatuankecil" value="" />
-                            <input  type="hidden" name="konversi" id="konversi" value="" />
-                            <span class="input-group-btn">
-                            <button type="submit" class="btn btn-info btn-flat" name="tambah">Tambah</button>
-                            </span>
-                        </div>
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Adjustment</h3>
+                    <div class="box-tools pull-right">
                     </div>
                 </div>
-                <div class="form-group">
-                    <button type="button" class="btn btn-primary" id="btnTambahBarang" name="btnTambahBarang"> Tambah Barang </button>
-                </div>
+                <div class="box-body">
+                <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Warna</label>
+                                <div class>
+                                    <select class="form-control" style="width: 100%;" name="Color" id="Color">
+                                        <option value="">Pilih Warna :</option>
+                                        <?php
+                                            $sql="SELECT Code , Name FROM Color";
+                                            $exe=mysqli_query($koneksi,$sql);
+                                            while($data=mysqli_fetch_array($exe))
+                                            {
+                                            ?>
+                                                <option value=<?php echo $data['Code'];?>><?php echo $data['Name'];?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Ukuran</label>
+                                <div class>
+                                    <select class="form-control" style="width: 100%;" name="Size" id="Size">
+                                        <option value="">Pilih Ukuran :</option>
+                                        <?php
+                                            $sql="SELECT Code , Name FROM Size";
+                                            $exe=mysqli_query($koneksi,$sql);
+                                            while($data=mysqli_fetch_array($exe))
+                                            {
+                                            ?>
+                                                <option value=<?php echo $data['Code'];?>><?php echo $data['Name'];?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" id="btnTambahBarang" name="btnTambahBarang"> Tambah Barang </button>
+                    </div>
                 <input type="hidden" value="" name="arrayItem" id="arrayItem"/>
-                <input type="hidden" value="1" name="simpanmain" id="simpanmain"/>
-                <div class="col">
-                    <hr style="border-top: 25px solid black;" />
                 </div>
+            </div>
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Adjustment</h3>
+                    <div class="box-tools pull-right">
+                    </div>
+                </div>
+                <div class="box-body">
                 <table id="TableAdjustment" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>ID Barang</th>
-                            <th>Nama Barang</th>
-                            <th>Konversi</th>
-                            <th>Last Value</th>
-                            <th>New Value</th>
+                        <th> Nama Barang </th>
+                        <th> Warna </th>
+                        <th> Ukuran </th>
+                        <th> Stok Di Sistem </th>
+                        <th> Stok Asli  </th>
+                        <th> Delete </th>
                         </tr>
                     </thead>
                     <tbody>
                     </tbody>
                 </table>
                 <div class="box-footer">
-                    <input type="button" class="btn btn-primary" name="btnTest" value="simpanmain" id="btnTest">
-				</div>
-            </form>
-        </div>
-        </div>
+                    <input type="button" class="btn btn-primary" name="btnTest" value="Simpan" id="btnTest">
+                </div>
+            </div>
+        </form>
     </section>
 </div>
 <?php include "footer.php";?>
 <script type="text/javascript">
 		$( document ).ready(function() {
             var table =     
-            $('#TableAdjustment').dataTable
+            $('#TableAdjustment').DataTable
             (
                 {
                     "paging": false,
@@ -193,43 +222,68 @@
                     "searching": false,
                     "ordering": false,
                     "info": false,
-                    "autoWidth": true
+                    "autoWidth": true,
+                    "createdRow": function ( nRow, data, index ) {
+                        BindClickDelete(nRow)
+                    },
                 }
             );
             $("#btnTambahBarang").click(function(e){
-                table.api().row.add
-                ([
-                    $("#id_barang").val(),
-                    $("#nama_barang").val(),
-                    $("#konversi").val(),
-                    $("#jumlahsatuankecil").val(),
-                    "<input type='number' class='form-control' value='" + $("#jumlahsatuankecil").val() + "'/>"  
-                ]).draw( false );
+                let _Color = $("#Color").val();
+                let _Size = $("#Size").val();
+
+                if (_Color == "" || _Size == ""){
+                    alert("Warna Dan Atau Ukuran Tidak Boleh Kosong")
+                }
+                else{
+                    CheckStock( _Color , _Size);
+                }
+
+                
             });
 
-            $( "#nama_barang" ).autocomplete({
-                source: function(request, response) {
-                $.getJSON("search_barang.php", { term : $("#nama_barang").val() },
-                response)},
-                select: function(event, ui)
-                {
-                    var e = ui.item;
-                    $("#id_barang").val(e.id);
-                    $("#nama_barang").val(e.NamaBarang);
-                    $("#konversi").val(e.satuankonversi);
-                    $("#jumlahsatuankecil").val(e.jumlahsatuankecil);
-                }
-            });
+            function CheckStock(Color , Size){
+                $.ajax({
+                    url: 'ActCheckStokByColorAndSize.php',
+                    type: 'POST',
+                    dataType: "json",
+                    data:
+                    {
+                        Color   : Color,
+                        Size    : Size
+                    }
+                }).success(function(data){
+                    table.row.add
+                    ([
+                        'Kaos Polos',
+                        $("#Color").val(),
+                        $("#Size").val(),
+                        data[0]['Stock'],
+                        "<input type='number' class='form-control' value='" + $("#NewValue").val() + "'/>"  ,
+                        "<input type='button' class='btn btn-danger' value='Delete'/>"
+                    ]).draw( false );
+                }).error(function(data){
+                    alert("Item Tidak Terdaftar")
+                });
+            }
+
+            function BindClickDelete(nRow){
+                $('td:eq(5) input[type="button"]', nRow).unbind('click');
+                $('td:eq(5) input[type="button"]', nRow).bind('click', function (e) {
+                    table.row($(this).parents('tr')).remove().draw( false );
+                })
+            }
+
+      
 
             $("#btnTest").click(function(e){
                 var DataItem = [];
-                var info = table.api().page.info();
+                var info = table.page.info();
                 var length = info.recordsTotal - 1;
                 for(var i = 0 ; i <= length ; i++)
                 {
                     var row = $("#TableAdjustment tbody tr:eq("+i+")");
                     DataItem.push([
-                        $("td:eq(0)",row).html(),
                         $("td:eq(1)",row).html(),
                         $("td:eq(2)",row).html(),
                         $("td:eq(3)",row).html(),

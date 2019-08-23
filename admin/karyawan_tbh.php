@@ -38,30 +38,7 @@ $jekel=$_POST['jekel'];
 $jabatan=$_POST['jabatan'];
 $alamat=$_POST['alamat'];
 $nohp=$_POST['nohp'];
-$htg=$_POST['hutang'];
-$gaji=$_POST['gaji'];
-$tgl=$_POST['tempo'];
-$tahun = substr($tgl,6,4);
-$tglnya = substr($tgl,3,2);
-$bulan= substr($tgl,0,2);
-
-$tglTempo  = $tahun."-".$bulan."-".$tglnya;
-$gambar=$_FILES['gambar']['name'];
-if(strlen($gambar)>0){
-	if(is_uploaded_file($_FILES['gambar']['tmp_name'])){
-	move_uploaded_file($_FILES['gambar']
-	['tmp_name'],"foto/".$gambar);
-	} }
-	
-	$ktp=$_FILES['ktp']['name'];
-if(strlen($ktp)>0){
-	if(is_uploaded_file($_FILES['ktp']['tmp_name'])){
-	move_uploaded_file($_FILES['ktp']
-	['tmp_name'],"foto/ktp/".$ktp);
-	} }
-
-
-$sql="insert into karyawan values(NULL,'$nama','$jekel','$jabatan','$alamat','$gambar','$ktp','$nohp','$htg','$tglTempo','$gaji')";
+$sql="insert into karyawan (nama,jekel,jabatan,alamat,nohp) values('$nama','$jekel','$jabatan','$alamat','$nohp')";
 $exe=mysqli_query($koneksi,$sql);
 if($exe){
 							echo "<div class='alert alert-success'>
@@ -103,15 +80,10 @@ if($exe){
     
                 <label>Jabatan</label>
                 <select class="form-control select2"   style="width: 100%;" name="jabatan">
-        <option value="">Pilih Jabatan:</option>
-                  
-          
-    ?>
-                  <option name="jabatan" value="Manager"   >Manager</option>
-         
-          <option name="jabatan" value="Karyawan"   >Karyawan</option>
-          <option name="jabatan" value="Kasir"   >Kasir</option>
-                 
+                  <option value="">Pilih Jabatan:</option>
+                  <option name="jabatan" value="Kepala Toko">Kepala Toko</option>
+                  <option name="jabatan" value="Admin">Admin</option>
+                  <option name="jabatan" value="Gudang">Gudang</option>
                 </select>
               </div>
 				<div class="form-group">
@@ -120,44 +92,12 @@ if($exe){
 				  <div class="help-block with-errors"></div>
                 </div>
 				
-				<div class="form-group">
-                  <label for="exampleInputFile">Foto</label>
-                  <input type="file" id="exampleInputFile" name="gambar"data-error="Foto Tidak Boleh Kosong" required>
-					<div class="help-block with-errors"></div>
-                  
-                </div>
-				<div class="form-group">
-                  <label for="exampleInputFile">Foto KTP</label>
-                  <input type="file" id="exampleInputFile" name="ktp"data-error="Foto Tidak Boleh Kosong" required>
-					<div class="help-block with-errors"></div>
 
-                  
-                </div>
 				<div class="form-group">
                   <label>No HP</label>
                   <input type="text" name="nohp" class="form-control" id="exampleInputEmail1"  placeholder="No HP"data-error="No HP Tidak Boleh Kosong" required>
 					<div class="help-block with-errors"></div>
                 </div>
-				<div class="form-group">
-                  <label>Hutang</label>
-                  <input type="text" name="hutang" class="form-control" id="exampleInputEmail1"  placeholder="Hutang" value="0">
-                </div>
-                <div class="form-group">
-        <label for="exampleInputDate">Jadwal Gajian</label>
-                   <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="datepicker" name="tempo"data-error="Tanggal Tidak Boleh Kosong" required>
-				  <div class="help-block with-errors"></div>
-                </div>
-                </div>
-                <div class="form-group">
-                  <label>Jumlah Gaji</label>
-                  <input type="text" name="gaji" class="form-control" id="exampleInputEmail1"  placeholder="Gaji" data-error="Gaji Tidak Boleh Kosong" required>
-					<div class="help-block with-errors"></div>
-                </div>
-				
 				<div class="box-footer">
                 <input type="submit" name="simpan" class="btn btn-primary" value="Simpan">
               </div>
