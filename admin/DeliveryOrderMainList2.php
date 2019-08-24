@@ -23,7 +23,6 @@
               <option value="1">Lunas</option>
           </select>
         </div>
-        <button class="btn btn-warning" name="btnTest" id="btnTest">CLA</button>
          <table id="tDeliveryorder" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -142,7 +141,7 @@
             buttons: {
                 confirm: function () {
                         $.ajax({
-                          url     : 'ActConfirmTransaction.php',
+                          url     : 'ActConfirmTransaction2.php',
                           type    : 'POST',
                           dataType: "json",
                           data    :

@@ -76,8 +76,13 @@
     $AdditionalPrice        = $_POST['AdditionalPrice'];
     $Session                = $_SESSION['id_admin'];
     $Items                  = json_decode($_POST['arrayItem']);
-
-    
+    $Province               = $_POST['Province'];
+    $City                   = $_POST['City'];
+    $District               = $_POST['District'];
+    $SubDistrict            = $_POST['SubDistrict'];
+    $Courier                = $_POST['Courier'];
+    $Service                = $_POST['Service'];
+    $Weight                 = $_POST['Weight'];
     //start insert to database
     $SQLInsertReceivingMain = "insert into Transaction
     (
@@ -91,7 +96,14 @@
         AdditionalPrice,
         IsConfirm,
         CreatedBy,
-        CreatedDate
+        CreatedDate,
+        Province,
+        City,
+        District,
+        SubDistrict,
+        Courier,
+        Service,
+        Weight
     )
     values
     (
@@ -105,7 +117,14 @@
         '".$AdditionalPrice."',
         0,
         ".$Session." ,
-        NOW()
+        NOW(),
+        '".$Province."',
+        '".$City."',
+        '".$District."',
+        '".$SubDistrict."',
+        '".$Courier."',
+        '".$Service."',
+        '".$Weight."'
     )";
     if($koneksi->query($SQLInsertReceivingMain) === TRUE)
     {
@@ -289,7 +308,7 @@
                 }
             }
         }
-        echo ("<script>location.href='DeliveryOrderMainList.php';</script>");
+        echo ("<script>location.href='DeliveryOrderMainList2.php';</script>");
     }
     //
 ?>

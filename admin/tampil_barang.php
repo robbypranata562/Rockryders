@@ -29,8 +29,6 @@
             <th>Nama</th>
             <th>Modal</th>
             <th>Harga Jual</th>
-            <th>Satuan</th>
-            <th>Konversi</th>
             <th>Qty</th>
             <th>Min Stok</th>
             <th>Umur Barang Maksimal</th>
@@ -53,9 +51,12 @@
       "scrollX": true,
       "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
           var ButtonStockCard = '<a class="btn btn-success" href="StockCardItem.php?id='+aData[0]+'">Stock Card</a>'
-          var ButtonEdit = "<a class='btn btn-warning' href='edit_barang.php?id='"+aData[9]+"'>Edit</a> <a class='btn btn-danger' href='hapus_barang.php?id='"+aData[9]+"'>Delete</a>"
+          var ButtonEdit      = '<a class="btn btn-warning" href="edit_barang.php?id='+aData[0]+'">Edit</a>'
+          if (aData[4] <= aData[5]){
+            $(nRow).addClass('red-row-class');
+          }
           $('td:eq(0)', nRow).html(ButtonStockCard);
-          $('td:eq(9)', nRow).html(ButtonEdit);
+          $('td:eq(7)', nRow).html(ButtonEdit);
           return nRow;
       },
       "ajax": {

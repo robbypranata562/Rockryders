@@ -1,7 +1,6 @@
 <?php
 session_start();
 include "koneksi.php";
-
 $TransactionId  = $_POST['Id'];
 $TransactionCode  = $_POST['Code'];
 $Date           = date("y-m-d");

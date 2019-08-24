@@ -14,7 +14,9 @@ include "koneksi.php";
         a.Address,
         format(a.TotalPrice,2) as TotalPrice,
         format(a.AdditionalPrice,2) as AdditionalPrice,
-        format((a.TotalPrice + a.AdditionalPrice),2) as Total
+        format((a.TotalPrice + a.AdditionalPrice),2) as Total,
+        a.Province,
+        a.City
     FROM
      `Transaction` AS a
     WHERE
@@ -30,6 +32,8 @@ include "koneksi.php";
         $TotalPrice             = $data['TotalPrice'];
         $AdditionalPrice        = $data['AdditionalPrice'];
         $Total                  = $data['Total'];
+        $Province               = $data['Province'];
+        $City                   = $data['City'];
     }
 ?>
 <div class="content-wrapper" id="printableArea">
@@ -59,14 +63,14 @@ include "koneksi.php";
 </style>
   <section class="invoice">
     <div class="row invoice-info">
-        <div class="col-sm-6 invoice-col">
+        <div class="col-sm-4 invoice-col">
             <img src="dist/img/TeguhJaya.png" class="img-circle" alt="User Image" width="100" height="100"><br>
             <address>
                 Jln. Guntur no. 209 Garut<br>
                 Tlp: (0262) 234395<br>
             </address>
         </div>
-        <div class="col-sm-6 invoice-col">
+        <div class="col-sm-4 invoice-col">
         <address>
                 No Faktur   : <?php echo $Code ?> <br>
                 No Hp       : <?php echo $Phone ?><br>
@@ -75,6 +79,13 @@ include "koneksi.php";
                 Alamat      : <?php echo $Address ?><br>
             </address>
         </div>
+        <!-- <div class="col-sm-4 invoice-col">
+        <address>
+                Provinsi    : <?php echo $Province ?> <br>
+                City        : <?php echo $City ?><br>
+
+            </address>
+        </div> -->
     </div>
     <div class="row">
         <div class="col-xs-12 table-responsive">

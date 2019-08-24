@@ -263,7 +263,7 @@
                     <div class="form-group">
                         <label class="form-label">Biaya Tambahan</label>
                         <div class="">
-                            <input type="text" class="form-control" name="AdditionalPrice" id="AdditionalPrice"/>
+                            <input type="text" class="form-control" name="AdditionalPrice" id="AdditionalPrice" readonly/>
                         </div>
                     </div>
                     <div class="box-footer">
@@ -355,6 +355,9 @@
                     });
                 }
             });
+            $('#Service').on("change",function(){
+                $("#AdditionalPrice").val($('option:selected', this).attr('data_attr_cost'));
+            });
             var t = 
             $('#TableDeliveryDetail').DataTable({
                 "paging": false,
@@ -392,6 +395,7 @@
             })
 
             $("#btnTambahBarang").click(function(e){
+
                 var _Date       =   $("#Date").val()
                 var _Color      =   $("#Color").val();
                 var _Size       =   $("#Size").val();
@@ -399,6 +403,12 @@
                 var _Stock      =   $("#Stock").val();
                 var _UnitPrice  =   $("#UnitPrice").val(); 
                 var _SubPrice   =   _Qty * _UnitPrice; 
+
+                if (_Size == "" || _Color == "" || _Qty == "") {
+                    alert("Warna Dan Atau Ukuran Tidak Boleh Kosong")
+                    return;
+                }
+
                 $.ajax({
                     url: 'ActCheckStokByColorAndSize.php',
                     type: 'POST',

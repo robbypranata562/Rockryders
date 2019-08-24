@@ -28,7 +28,7 @@
             <div class="small-box bg-aqua">
               <div class="inner">
                 <?php
-                  $sql_select="SELECT COUNT(*) FROM transaction";
+                  $sql_select="SELECT COUNT(*) FROM transaction where DeletedDate is null and DeletedBy is null";
                   $exe_select=mysqli_query($koneksi,$sql_select);
                   $row=mysqli_fetch_row($exe_select);
                 ?>
@@ -42,29 +42,7 @@
             </div>
           </div> 
 		<?php } ?>
-		<div class="col-lg-3 col-xs-6">
-      <div class="small-box bg-yellow">
-        <div class="inner">
-          <?php
-            $jum_notif="SELECT jum_minimal from notif where id = 1";
-            $exe_jum=mysqli_query($koneksi,$jum_notif);
-            while($b=mysqli_fetch_assoc($exe_jum))
-            {
-              $ab=$b['jum_minimal'];
-            }
-            $sql_selectbrg="SELECT COUNT(SmallQty) FROM item where MinStock <= '$ab'";
-            $exe_brg=mysqli_query($koneksi,$sql_selectbrg);
-            $row1=mysqli_fetch_row($exe_brg);
-          ?>
-          <h3><?php echo $row1[0];?></h3>
-          <p>Periksa Stok Barang</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-stats-bars"></i>
-        </div>
-        <a href="tampil_barang.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
+
 		<div class="col-lg-3 col-xs-6">
       <div class="small-box bg-yellow">
         <div class="inner">
