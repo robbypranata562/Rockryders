@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <label class = "form-label"> Alamat </label>
                         <div class>
-                            <input type="textarea" class="form-control" name="Address" id="Address" required/>
+                        <textarea class="form-control" rows="3" name="Address" id="Address" required></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -91,7 +91,6 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class = "form-label"> Deskripsi </label>
                         <div class>
@@ -172,16 +171,16 @@
                             <input type="number" class="form-control" name="Qty" id="Qty" min="1"/>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="form-label">Harga</label>
                         <div class="input-group">
                         <input type="text" id="UnitPrice" name="UnitPrice" class="form-control" readonly>
                             <span class="input-group-btn">
                                 <button class="btn btn-primary" type="button" id="btnChangePrice"><span class="glyphicon glyphicon-refresh" aria-hidden="true">
-                            </span> Ubah Harga </button>
-                        </span>
+                                </span> Ubah Harga </button>
+                            </span>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- <div class="form-group">
                         <label for="">Satuan Barang</label>
                         <div class>
@@ -225,13 +224,23 @@
                     <div class="form-group">
                         <label class="form-label">Total Belanja</label>
                         <div class="">
-                            <input type="text" class="form-control" name="TotalPrice" id="TotalPrice"/>
+                            <input type="text" class="form-control" name="TotalPrice" id="TotalPrice" readonly/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Discount</label>
+                        <div class="input-group">
+                        <input type="text" id="Discount" name="Discount" class="form-control" value="0" readonly>
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" id="btnChangePrice"><span class="glyphicon glyphicon-refresh" aria-hidden="true">
+                                </span> Tambah Discount </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Grand Total</label>
                         <div class="">
-                            <input type="text" class="form-control" name="Discount" id="Discount"/>
+                            <input type="text" class="form-control" name="GrandTotal" id="GrandTotal" reaonly/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -278,7 +287,9 @@
 <script type="text/javascript">
     $( document ).ready(function() {
             var DataItem = [];
+            var TotalQty = 0;
             var currDate = new Date();
+            $("#Discount").ForceNumericOnly();
             $('#Date').datepicker({
                 autoclose: true,
                 startDate: currDate,
@@ -328,31 +339,43 @@
                 if ($("#City").val() == "" || $("#Weight").val() == "" || this.value == ""){
                     alert("Kota Tujuan , Berat , Dan Kurir Tidak Boleh Kosong");
                 }
-                else{
-                    $.ajax({
-                    url: 'CheckOngkir.php',
-                    dataType : 'json',
-                    data : 
+                else
+                {
+                    if (this.value != "custom")
                     {
-                        Destination : $("#City").val(),
-                        Weight      : parseInt($("#Weight").val()) * 1000,
-                        Courier     : this.value
-                    },
-                    type: 'POST'
-                    }).success(function(dataService){
-                    var services = dataService.rajaongkir.results[0].costs
-                    $('#Service').empty()
-                    .append("<option selected='selected' value=''>Pilih Service</option>");
-                        $.each(services, function (i, item) {
-                            $('#Service').append($("<option>", { 
-                                value: services[i]['service'],
-                                data_attr_cost : services[i]['cost'][0].value,
-                                text : services[i]['description'] + " (" + services[i]['cost'][0].value + ") " + services[i]['cost'][0].etd + "Hari"
-                            }));
+                        $.ajax({
+                        url: 'CheckOngkir.php',
+                        dataType : 'json',
+                        data : 
+                        {
+                            Destination : $("#City").val(),
+                            Weight      : parseInt($("#Weight").val()) * 1000,
+                            Courier     : this.value
+                        },
+                        type: 'POST'
+                        }).success(function(dataService){
+                        var services = dataService.rajaongkir.results[0].costs
+                        $('#Service').empty()
+                        .append("<option selected='selected' value=''>Pilih Service</option>");
+                            $.each(services, function (i, item) {
+                                $('#Service').append($("<option>", { 
+                                    value: services[i]['service'],
+                                    data_attr_cost : services[i]['cost'][0].value,
+                                    text : services[i]['description'] + " (" + services[i]['cost'][0].value + ") " + services[i]['cost'][0].etd + "Hari"
+                                }));
+                            });
+                        }).error(function(data){
+                            alert("Error API");
                         });
-                    }).error(function(data){
-                        alert("Error API");
-                    });
+                    }
+                    else 
+                    {
+                        $('#Service').append($("<option>", { 
+                                    value: "custom",
+                                    text : "custom"
+                        }));
+                        $("#AdditionalPrice").removeAttr("readonly")
+                    }
                 }
             });
             $('#Service').on("change",function(){
@@ -382,16 +405,9 @@
                 )
             });
 
-            $("#Qty").on('keyup change click', function () {
-                $("#UnitPrice").val("27000");
-                if (this.value <= 11) {
-                    $("#UnitPrice").val("27000");
-                } else if (this.value <= 1199) {
-                    $("#UnitPrice").val("25500");
-                }
-                else {
-                    $("#UnitPrice").val("25000");
-                }
+            $("#Discount").on('keyup', function () {
+                let _SubTotal = parseInt($("#TotalPrice").val());
+                $("#GrandTotal").val( parseInt(_SubTotal) - this.value );
             })
 
             $("#btnTambahBarang").click(function(e){
@@ -401,8 +417,8 @@
                 var _Size       =   $("#Size").val();
                 var _Qty        =   $("#Qty").val();
                 var _Stock      =   $("#Stock").val();
-                var _UnitPrice  =   $("#UnitPrice").val(); 
-                var _SubPrice   =   _Qty * _UnitPrice; 
+                // var _UnitPrice  =   $("#UnitPrice").val(); 
+                var _SubPrice   =   _Qty * 27000
 
                 if (_Size == "" || _Color == "" || _Qty == "") {
                     alert("Warna Dan Atau Ukuran Tidak Boleh Kosong")
@@ -434,30 +450,35 @@
                             _Color,
                             _Size,
                             _Qty,
-                            _UnitPrice,
+                            27000,
                             _SubPrice,
                             "<input type='button' class='btn btn-danger' value='Delete'/>"
                         ]).draw( false );
                         var info = t.page.info();
                         var length = info.recordsTotal - 1;
                         var counterNeedApproval = 0;
-                        let _totalQty = 0;
+                        TotalQty = parseInt(TotalQty) + parseInt(_Qty);
+                        var _NewUnitPrice = 0
+                        var _TotalPrice = 0;
+                        if (TotalQty <= 11)
+                        {
+                            _NewUnitPrice = 27000;
+                        }
+                        else if (TotalQty <= 1199) {
+                            _NewUnitPrice = 25500;
+                        }
+                        else{
+                            _NewUnitPrice = 25000;
+                        }
+
                         for(var i = 0 ; i <= length ; i++)
                         {
                             var row = $("#TableDeliveryDetail tbody tr:eq("+i+")");
-                            _totalQty = _totalQty + parseInt($("td:eq(3)",row).html())
+                            $("td:eq(4)",row).html(_NewUnitPrice);
+                            $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
+                            _TotalPrice = parseInt(_TotalPrice) + parseInt($("td:eq(5)",row).html())
                         }
-                        if (_totalQty <= 11)
-                        {
-                            $("#TableDeliveryDetail td:eq(4)").html("27000")
-                        }
-                        else if (_totalQty <= 1919) {
-                            $("#TableDeliveryDetail td:eq(4)").html("25500")
-                        }
-                        else{
-                            $("#TableDeliveryDetail td:eq(4)").html("25000")
-                        }
-                        let _weight = Math.ceil(_totalQty / 6);
+                        let _weight = Math.ceil(TotalQty / 6);
 
 
                         $("#Color").val("");
@@ -466,8 +487,8 @@
                         $("#Stock").val("");
                         $("#UnitPrice").val("");
                         $("#UnitPrice").attr("readonly","readonly");
-                        var LastTotalPrice = $("#TotalPrice").val() == "" ? "0" : $("#TotalPrice").val();
-                        $("#TotalPrice").val( parseInt (LastTotalPrice) + parseInt (_SubPrice) );
+                        //var LastTotalPrice = $("#TotalPrice").val() == "" ? "0" : $("#TotalPrice").val();
+                        $("#TotalPrice").val( _TotalPrice );
                         $("#Weight").val(_weight)
                     }
                     
@@ -494,7 +515,7 @@
                         if (data == "OK")
                         {
                             $("#myModal").modal('hide')
-                            $("#UnitPrice").removeAttr("readonly");
+                            $("#Discount").removeAttr("readonly");
                         }
                         else{
                             alert(data)
@@ -533,9 +554,28 @@
                     let _Qty        = $('td:eq(3)', nRow).html()
                     let _SubTotal   = $('td:eq(5)', nRow).html()
                     let _Date       = $("#Date").val()
-                    var LastTotalPrice = $("#TotalPrice").val() == "" ? "0" : $("#TotalPrice").val();
-                    $("#TotalPrice").val( parseInt (LastTotalPrice) - parseInt (_SubTotal) );
+                    TotalQty = parseInt(TotalQty) - parseInt(_Qty);
                     t.row($(this).parents('tr')).remove().draw( false );
+                    var _TotalPrice = 0;
+                    if (TotalQty <= 11)
+                    {
+                        _NewUnitPrice = 27000;
+                    }
+                    else if (TotalQty <= 1199) {
+                        _NewUnitPrice = 25500;
+                    }
+                    else{
+                        _NewUnitPrice = 25000;
+                    }
+                    for(var i = 0 ; i <= length ; i++)
+                    {
+                        var row = $("#TableDeliveryDetail tbody tr:eq("+i+")");
+                        $("td:eq(4)",row).html(_NewUnitPrice);
+                        $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
+                        _TotalPrice = parseInt(_TotalPrice) + parseInt($("td:eq(5)",row).html())
+                    }
+                    $("#TotalPrice").val( _TotalPrice );
+
                 })
             }
 
@@ -554,23 +594,6 @@
                 }).error(function(data){
                     alert("Item Tidak Terdaftar")
                 });
-            }
-            
-            $("#btnCalculateTotal").click(function(e){
-                CalculateTotalAmount();
-            });
-
-            function CalculateTotalAmount(){
-                var info = t.page.info();
-                var length = info.recordsTotal - 1;
-                var TotalPrice = 0;
-                for(var i = 0 ; i <= length ; i++)
-                {
-                    var row = $("#TableDeliveryDetail tbody tr:eq("+i+")");
-                    console.log(row);
-                    TotalPrice = parseInt(TotalPrice) + parseInt($("td:eq(6)",row).html())
-                }
-                $("#TotalPrice").val(TotalPrice);
             }
 		})
         jQuery.fn.ForceNumericOnly =

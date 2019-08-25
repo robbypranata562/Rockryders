@@ -66,8 +66,9 @@ include "koneksi.php";
         <div class="col-sm-4 invoice-col">
             <img src="dist/img/TeguhJaya.png" class="img-circle" alt="User Image" width="100" height="100"><br>
             <address>
-                Jln. Guntur no. 209 Garut<br>
-                Tlp: (0262) 234395<br>
+                Komplek Permata <br>
+                Jl. Zamrud Blok A5 No. 38<br>
+                Tlp: 0895348853979<br>
             </address>
         </div>
         <div class="col-sm-4 invoice-col">

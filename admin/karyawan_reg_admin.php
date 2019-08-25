@@ -37,70 +37,47 @@
 		
 //include 'koneksi.php';
 if(isset($_POST['simpan'])){
-	
-$id=$_POST['users'];	
+  $id=$_POST['users'];	
+  $uname=$_POST['user'];
+  $password=md5($_POST['password']);
+  $lev=$_POST['level'];
+  $sql="insert into admin VALUES(NULL,'$id','$uname','$password','$lev')";
+  $exe=mysqli_query($koneksi,$sql);
 
-$uname=$_POST['user'];
-//$nama=$_POST['nama'];
-$password=md5($_POST['password']);
-$lev=$_POST['level'];
-//$foto=$_POST['foto'];
-
-
-
-
-
-	
-$sql="insert into admin VALUES(NULL,'$id','$uname','$password','$lev')";
-$exe=mysqli_query($koneksi,$sql);
-
-if($exe){
-	
- 
- 
-							echo "<div class='alert alert-success'>
-                                        <a class='close' data-dismiss='alert' href='#'>&times;</a>
-                                        <strong>Success!</strong> Data Admin berhasil disimpan
-										
-                                    </div>";
-							
-						}else{
-							echo"<div class='alert alert-danger'>
-                                        <a class='close' data-dismiss='alert' href='#'>&times;</a>
-                                         Data Barang Toko gagal disimpan
-                                    </div>";
-							
-						}
-
-
-
+  if($exe){
+  echo "<div class='alert alert-success'>
+        <a class='close' data-dismiss='alert' href='#'>&times;</a>
+        <strong>Success!</strong> Data Admin berhasil disimpan
+    </div>";
+	}else{
+      echo"<div class='alert alert-danger'>
+            <a class='close' data-dismiss='alert' href='#'>&times;</a>
+              Data Barang Admin gagal disimpan
+          </div>";
+  }
 //header("location:tbh_barang.php");
 }
  ?>
  
          <form role="form" action="" method="post" enctype="multipart/form-data">
-              <div class="box-body">
-               <div class="form-group">
-		
-                <label>Nama Karyawan</label>
-                <select class="form-control select2"  onchange="showUser(this.value)" style="width: 100%;" name="users">
-				<option value="">Pilih Karyawan :</option>
+          <div class="box-body">
+            <div class="form-group">
+              <label>Nama Karyawan</label>
+              <select class="form-control select2"  onchange="showUser(this.value)" style="width: 100%;" name="users">
+				        <option value="">Pilih Karyawan :</option>
                   <?php
-					$sql="SELECT * FROM karyawan";
-					$exe=mysqli_query($koneksi,$sql);
-          //$nomor =1;
-					while($data=mysqli_fetch_array($exe)){
-           // $nomor++;
-				  ?>
-
-                  <option name="suplier" value=<?php echo $data['id'];?>   ><?php echo $data['nama'];?></option>
-                 <?php } ?>
-                </select>
-              </div>
-				
-                
-                <br>
-<div id="txtHint"><b>...</b></div>
+                    $sql="SELECT * FROM karyawan";
+                    $exe=mysqli_query($koneksi,$sql);
+                    while($data=mysqli_fetch_array($exe)){
+                  ?>
+                    <option name="suplier" value=<?php echo $data['id'];?>>
+                      <?php echo $data['nama'];?>
+                    </option>
+                    <?php } ?>
+              </select>
+            </div>
+            <br>
+            <div id="txtHint"><b>...</b></div>
         </div>
                
               </div>

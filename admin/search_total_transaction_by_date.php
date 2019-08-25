@@ -17,6 +17,8 @@ AND a.DeletedBy IS NULL
 AND a.DeletedDate IS null
 AND Date(a.Date) BETWEEN date('".$startDate."') AND date('".$endDate."')
 And a.IsConfirm = 1
+group by a.Id
+
 ";
 $k=mysqli_query($koneksi,$cek_count);
 if(mysqli_num_rows($k) > 0 )
@@ -55,6 +57,7 @@ AND a.DeletedBy IS NULL
 AND a.DeletedDate IS null
 AND Date(a.Date) BETWEEN date('".$startDate."') AND date('".$endDate."')
 And a.IsConfirm = 1
+group by a.Id
 ";
 $k=mysqli_query($koneksi,$cek);
 if(mysqli_num_rows($k) > 0 )

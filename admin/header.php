@@ -91,17 +91,23 @@
   <aside class="main-sidebar">
     <section class="sidebar">
       <div class="user-panel">
-        <div class="pull-left image">
-          <img src="foto/<?php echo $_SESSION['foto'];?>" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p><?php echo $_SESSION['nama'];?></p>
-          <a href="#"><i class="fa fa-circle text-success"></i> <?php echo $_SESSION['level'];?></a>
+
+        <div class="pull-left">
+          <?php echo $_SESSION['nama'];?>
         </div>
       </div>
       <ul class="sidebar-menu">
+      <?php $jabatan=$_SESSION['level']?>
+		  <?php if ($jabatan=='Super Administrator') { ?>
       <li class="header">MENU UTAMA</li>
-		  <li class="treeview"><a href="home.php"><i class="fa fa-home"></i> <span>Home</span><span class="pull-right-container"></span></a></li>
+		  <li class="treeview">
+        <a href="home.php">
+          <i class="fa fa-home"></i> 
+          <span>Home</span>
+          <span class="pull-right-container"></span>
+        </a>
+      </li>
+      <?php } ?>
     <?php $jabatan=$_SESSION['level']?>
 		<?php if ($jabatan=='Super Administrator' or $jabatan=='Stok Admin') { ?>
         <li class="treeview">
@@ -119,7 +125,7 @@
         </li>
 		<?php } ?>
     <?php $jabatan=$_SESSION['level']?>
-		<?php if ($jabatan=='Super Administrator' or $jabatan=='Stok Admin') { ?>
+		<?php if ($jabatan == 'Super Administrator' or $jabatan == 'Stok Admin' or $jabatan == 'Admin') { ?>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
@@ -129,26 +135,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="DeliveryOrderMainList.php"><i class="fa fa-circle-o"></i>Daftar Penjualan Barang</a></li>
-            <li><a href="DeliveryOrderMainCreate.php"><i class="fa fa-circle-o"></i>Tambah Penjualan Barang</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Kasir 2</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">3</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
             <li><a href="DeliveryOrderMainList2.php"><i class="fa fa-circle-o"></i>Daftar Penjualan Barang</a></li>
             <li><a href="DeliveryOrderMainCreate2.php"><i class="fa fa-circle-o"></i>Tambah Penjualan Barang</a></li>
           </ul>
         </li>
-
 		<?php } ?>
-
     <?php $jabatan=$_SESSION['level']?>
 		<?php if ($jabatan=='Super Administrator' or $jabatan=='Stok Admin') { ?>
         <li class="treeview">
@@ -201,22 +192,8 @@
 			    <li><a href="notif_toko.php"><i class="fa fa-circle-o"></i> Atur Notif</a></li>
     </ul>
 	</li>
-	<li class="treeview">
-    <a href="#">
-      <i class="fa fa-files-o"></i>
-      <span>Data Pelanggan</span>
-      <span class="pull-right-container">
-        <span class="label label-primary pull-right">2</span>
-      </span>
-    </a>
-    <ul class="treeview-menu">
-      <li><a href="pelanggan_tampil.php"><i class="fa fa-circle-o"></i> Daftar pelanggan</a></li>
-      <li><a href="pelanggan_tbh.php"><i class="fa fa-circle-o"></i>Tambah pelanggan</a></li>
-	<?php } ?>
-
-    </ul>
-	</li>
-		<?php if ($jabatan=='Super Administrator'){
+  <?php } ?>
+		<?php if ($jabatan=='Super Administrator') {
 		?>
 		  <li class="treeview">
         <a href="#">
