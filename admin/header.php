@@ -113,14 +113,22 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
-            <span>Penerimaan Barang</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">3</span>
-            </span>
+            <span>Penerimaan Barang Toko</span>
           </a>
           <ul class="treeview-menu">
             <li><a href="receivingmainlist.php"><i class="fa fa-circle-o"></i>Daftar Penerimaan Barang</a></li>
             <li><a href="receivingmaincreate.php"><i class="fa fa-circle-o"></i>Tambah Penerimaan Barang</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Penerimaan Barang Gudang</span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="receivingmainlistGudang.php"><i class="fa fa-circle-o"></i>Daftar Penerimaan Barang Gudang</a></li>
+            <li><a href="receivingmaincreateGudang.php"><i class="fa fa-circle-o"></i>Tambah Penerimaan Barang Gudang</a></li>
           </ul>
         </li>
 		<?php } ?>
@@ -130,9 +138,6 @@
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Kasir</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">3</span>
-            </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="DeliveryOrderMainList2.php"><i class="fa fa-circle-o"></i>Daftar Penjualan Barang</a></li>
@@ -146,9 +151,6 @@
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Retur</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">3</span>
-            </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="SalesReturnMainList.php"><i class="fa fa-circle-o"></i>Daftar Retur Barang</a></li>
@@ -161,15 +163,23 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
-            <span>Data Barang Gudang</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">3</span>
-            </span>
+            <span>Data Barang Toko</span>
           </a>
           <ul class="treeview-menu">
             <li><a href="tampil_barang.php"><i class="fa fa-circle-o"></i> Stok Barang</a></li>
             <li><a href="tbh_barang.php"><i class="fa fa-circle-o"></i> Tambah Barang</a></li>
             <li><a href="AdjustmentItem.php"><i class="fa fa-circle-o"></i>Adjustment</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Data Barang Gudang</span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="tampil_barang_gudang.php"><i class="fa fa-circle-o"></i> Stok Barang Gudang</a></li>
+            <li><a href="tbh_barang_gudang.php"><i class="fa fa-circle-o"></i> Tambah Barang Gudang</a></li>
+            <li><a href="AdjustmentItemGudang.php"><i class="fa fa-circle-o"></i>Adjustment Gudang</a></li>
           </ul>
         </li>
     <?php } ?>
@@ -199,9 +209,6 @@
         <a href="#">
           <i class="fa fa-users"></i>
           <span>Data Karyawan</span>
-          <span class="pull-right-container">
-            <span class="label label-primary pull-right">4</span>
-          </span>
         </a>
         <ul class="treeview-menu">
           <li><a href="karyawan_tampil.php"><i class="fa fa-circle-o"></i>karyawan</a></li>
