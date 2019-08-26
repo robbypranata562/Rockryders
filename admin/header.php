@@ -144,6 +144,16 @@
             <li><a href="DeliveryOrderMainCreate2.php"><i class="fa fa-circle-o"></i>Tambah Penjualan Barang</a></li>
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Kasir Gudang</span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="DeliveryOrderMainListGudang.php"><i class="fa fa-circle-o"></i>Daftar Penjualan Barang Gudang</a></li>
+            <li><a href="DeliveryOrderMainCreateGudang.php"><i class="fa fa-circle-o"></i>Tambah Penjualan Barang Gudang</a></li>
+          </ul>
+        </li>
 		<?php } ?>
     <?php $jabatan=$_SESSION['level']?>
 		<?php if ($jabatan=='Super Administrator' or $jabatan=='Stok Admin') { ?>
