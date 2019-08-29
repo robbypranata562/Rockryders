@@ -256,7 +256,26 @@
                                 <option value="">Pilih Kurir :</option>
                                 <option value="jne">JNE</option>
                                 <option value="pos">POS</option>
-                                <option value="tiki">Tiki</option>
+                                <option value="rpx">RPX Holding</option>
+                                <option value="esl">Eka Sari Lorena</option>
+                                <option value="pcp">Priority Cargo and Package</option>
+                                <option value="pandu">Pandu Logistics</option>
+                                <option value="wahana">Wahana Prestasi Logistik</option>
+                                <option value="sicepat">SiCepat Express</option>
+                                <option value="jnt">J&T Express</option>
+                                <option value="pahala">Pahala Kencana Express</option>
+                                <option value="cahaya">Tiki</option>
+                                <option value="sap">SAP Express</option>
+                                <option value="jet">JET Express</option>
+                                <option value="dse">21 Express</option>
+                                <option value="slis">Solusi Ekspres</option>
+                                <option value="first">First Logistics</option>
+                                <option value="ncs">Nusantara Card Semesta</option>
+                                <option value="star">Star Cargo</option>
+                                <option value="ninja">Ninja Xpress</option>
+                                <option value="lion">Lion Parcel</option>
+                                <option value="idl">IDL Cargo</option>
+                                <option value="rex">Royal Express Indonesia</option>
                                 <option value="custom">Custom</option>
                             </select>
                         </div>
