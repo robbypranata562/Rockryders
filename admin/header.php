@@ -231,7 +231,14 @@
        <li class="treeview">
           <a href="history_penjualan.php">
             <i class="fa fa-book"></i> 
-              <span>Histori Penjualan</span>
+              <span>Histori Penjualan Toko</span>
+              <span class="pull-right-container"></span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="history_penjualan_gudang.php">
+            <i class="fa fa-book"></i> 
+              <span>Histori Penjualan Gudang</span>
               <span class="pull-right-container"></span>
           </a>
         </li>
