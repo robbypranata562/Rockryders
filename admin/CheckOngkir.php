@@ -5,17 +5,17 @@ $Courier      = $_POST["Courier"];
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
+  CURLOPT_URL => "https://pro.rajaongkir.com/api/cost",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "origin=24&destination=".$Destination."&weight=".$Weight."&courier=".$Courier."",
+  CURLOPT_POSTFIELDS => "origin=24&originType=city&destinationType=city&destination=".$Destination."&weight=".$Weight."&courier=".$Courier."",
   CURLOPT_HTTPHEADER => array(
     "content-type: application/x-www-form-urlencoded",
-    "key: f3c689a83a52885d8a5783e5ea32a504"
+    "key: 4b72de44a8c93e6f2b9ab71ea4d800f2"
   ),
 ));
 
