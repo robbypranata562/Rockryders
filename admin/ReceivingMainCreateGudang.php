@@ -184,6 +184,9 @@
                     Qty,
                     "<input type='button' class='btn btn-danger' value='Delete'/>"
                 ]).draw( false );
+                $("#Color").val("");
+                $("#Size").val("");
+                $("#ReceivingQty").val("0");
             })
 
             function BindClickDelete(nRow){
