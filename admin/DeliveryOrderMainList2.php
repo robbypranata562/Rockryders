@@ -98,8 +98,8 @@
       function BindClickDelete(nRow){
         $('td:eq(11) input[type="button"]', nRow).unbind('click');
         $('td:eq(11) input[type="button"]', nRow).bind('click',function(e){
-          let _transactionId = $(nRow).attr('data-attr-id');
-          let _transactionCode = $("td:eq(1)",nRow).html()
+          var _transactionId    = $(nRow).attr('data-attr-id');
+          var _transactionCode  = $("td:eq(1)",nRow).html()
           $.confirm({
             title: 'Hapus Transaksi!',
             content: 'Apakah Anda Yakin Akan Menghapus Transaksi Ini ? !',
@@ -115,7 +115,7 @@
                             Code : _transactionCode
                           }
                           }).success(function(data){
-                            let response = data.result;
+                            var response = data.result;
                             if (response == "Success"){
                               $('#tDeliveryorder').DataTable().draw();
                             }
