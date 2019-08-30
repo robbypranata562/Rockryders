@@ -401,13 +401,18 @@
                 let Size                = $("#Size").val();
                 let Qty                 = $("#ReceivingQty").val();
                 let Convertion          = 0;
-                table.row.add
-                ([
-                    Color,
-                    Size,
-                    Qty,
-                    "<input type='button' class='btn btn-danger' value='Delete'/>"
-                ]).draw( false );
+                if (Qty == 0 || Qty == ""){
+                    alert("Qty Tidak Boleh 0 Atau Kosong");
+                }
+                else{
+                    table.row.add
+                    ([
+                        Color,
+                        Size,
+                        Qty,
+                        "<input type='button' class='btn btn-danger' value='Delete'/>"
+                    ]).draw( false );
+                }
             })
 
             function BindClickDelete(nRow){
