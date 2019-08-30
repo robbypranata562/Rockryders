@@ -270,7 +270,7 @@
                         <div class="form-group">
                             <label for="exampleInputDate">Deskripsi</label>
                             <div class>
-                                <input type="textarea" class="form-control" name="Description" id="Description"/>
+                            <textarea class="form-control" rows="3" name="Description" id="Description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -291,7 +291,7 @@
                                 <div class="form-group">
                                 <label>Warna</label>
                                     <div class>
-                                        <select class="form-control" style="width: 100%;" name="Color" id="Color" required>
+                                        <select class="form-control" style="width: 100%;" name="Color" id="Color">
                                             <option value="">Pilih Warna :</option>
                                             <?php
                                                 $sql="SELECT Code , Name FROM Color";
@@ -311,7 +311,7 @@
                                 <div class="form-group">
                                     <label>Ukuran</label>
                                     <div class>
-                                        <select class="form-control" style="width: 100%;" name="Size" id="Size" required>
+                                        <select class="form-control" style="width: 100%;" name="Size" id="Size">
                                             <option value="">Pilih Ukuran :</option>
                                             <?php
                                                 $sql="SELECT Code , Name FROM Size";
