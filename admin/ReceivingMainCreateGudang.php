@@ -156,6 +156,7 @@
             });
             var table = $('#TableReceivingDetail').DataTable
             ({
+                "paging":   false,
                 "createdRow": function ( nRow, data, index ) {
                     BindClickDelete(nRow)
                 }

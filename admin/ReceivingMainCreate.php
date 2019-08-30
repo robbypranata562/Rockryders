@@ -270,7 +270,7 @@
                         <div class="form-group">
                             <label for="exampleInputDate">Deskripsi</label>
                             <div class>
-                            <textarea class="form-control" rows="3" name="Description" id="Description"></textarea>
+                                <textarea class="form-control" rows="3" name="Description" id="Description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -392,6 +392,7 @@
             });
             var table = $('#TableReceivingDetail').DataTable
             ({
+                "paging":   false,
                 "createdRow": function ( nRow, data, index ) {
                     BindClickDelete(nRow)
                 }
