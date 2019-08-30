@@ -78,8 +78,8 @@
     $Items                  = json_decode($_POST['arrayItem']);
     $Province               = $_POST['Province'];
     $City                   = $_POST['City'];
-    $District               = $_POST['District'];
-    $SubDistrict            = $_POST['SubDistrict'];
+    // $District               = $_POST['District'];
+    // $SubDistrict            = $_POST['SubDistrict'];
     $Courier                = $_POST['Courier'];
     $Service                = $_POST['Service'];
     $Weight                 = $_POST['Weight'];
@@ -99,8 +99,6 @@
         CreatedDate,
         Province,
         City,
-        District,
-        SubDistrict,
         Courier,
         Service,
         Weight
@@ -120,8 +118,6 @@
         NOW(),
         '".$Province."',
         '".$City."',
-        '".$District."',
-        '".$SubDistrict."',
         '".$Courier."',
         '".$Service."',
         '".$Weight."'

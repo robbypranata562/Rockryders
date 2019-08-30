@@ -240,7 +240,7 @@
                     <div class="form-group">
                         <label class="form-label">Grand Total</label>
                         <div class="">
-                            <input type="text" class="form-control" name="GrandTotal" id="GrandTotal" reaonly/>
+                            <input type="text" class="form-control" name="GrandTotal" id="GrandTotal" readonly/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -508,6 +508,8 @@
                         $("#UnitPrice").attr("readonly","readonly");
                         //var LastTotalPrice = $("#TotalPrice").val() == "" ? "0" : $("#TotalPrice").val();
                         $("#TotalPrice").val( _TotalPrice );
+                        $("#GrandTotal").val( _TotalPrice );
+                        
                         $("#Weight").val(_weight)
                     }
                     
