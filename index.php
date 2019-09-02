@@ -423,7 +423,7 @@
 								</table>
 								<div class="uk-alert-danger" uk-alert>
 									<a class="uk-alert-close"></a>
-									<p>Maaf, stok kaos warna merah hanya tersisa 5. Mohon untuk mengubah jumlah pesanan Anda.</p>
+									<p>Maaf, stok kaos warna merah hanya tersisa 5. Mohon untuk mengubah jumlah pesanan Anda...</p>
 								</div>
 							</div>
 						</div>
