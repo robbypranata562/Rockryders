@@ -6,7 +6,7 @@
     Select
         a.SmallQty
     From
-        ItemGudang a
+        itemgudang a
     Where
         1=1
         and a.Color = '".$Color."'
