@@ -247,7 +247,7 @@
 			</form>
 		</div>
 	</section>
-<script type="text/javascript" src="assets/frontend/js/jQuery/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="assets/frontend/js/jquery/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="assets/frontend/js/uikit/uikit.min.js"></script>
 <script type="text/javascript" src="assets/frontend/js/uikit/uikit-icons.min.js"></script>
 <script type="text/javascript" src="assets/frontend/js/datatable/jquery.dataTables.min.js"></script>
