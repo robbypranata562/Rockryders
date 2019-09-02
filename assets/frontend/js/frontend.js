@@ -7,8 +7,8 @@ $('.img-slider').slick({
   autoplay: false
 });
 $('.img-slider-nav').slick({
-  rows: 3,
-  slidesPerRow: 11,
+  rows: 6,
+  slidesPerRow: 6,
   arrows: false
 });
 var $parent = $(".slick-slider.img-slider");

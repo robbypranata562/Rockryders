@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Rockryders</title>
+  <title>Rockryders T-Shirt</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -18,8 +18,10 @@
   <link rel="stylesheet" href="assets/frontend/css/style.css">
 </head>
 <body>
-	<section class="uk-section">
+	<section class="uk-section uk-padding-remove-bottom">
 		<div class="uk-container">
+			<h1>Kaos Polos - Rp. 27.500,-</h1>
+			<h4 class="uk-margin-remove-top">Bahan 100% Combed 30s</h4>
 			<div class="uk-width-1-1" uk-grid>
 				<div class="uk-width-1-2@m">
 					<div class="img-slider">
@@ -59,53 +61,226 @@
 					</div>
 				</div>
 				<div class="uk-width-expand">
-					<div class="uk-width-1-1@s">
-						<h1>Kaos Polos</h1>
+					<div class="uk-width-1-1@s uk-margin-remove-top">
+						<h4>Varian Warna</h4>
 						<div class="img-slider-nav">
-							<div class="img-slider-nav-item" data-thumb="1">1</div>
-							<div class="img-slider-nav-item" data-thumb="2">2</div>
-							<div class="img-slider-nav-item" data-thumb="3">3</div>
-							<div class="img-slider-nav-item" data-thumb="4">4</div>
-							<div class="img-slider-nav-item" data-thumb="5">5</div>
-							<div class="img-slider-nav-item" data-thumb="6">6</div>
-							<div class="img-slider-nav-item" data-thumb="7">7</div>
-							<div class="img-slider-nav-item" data-thumb="8">8</div>
-							<div class="img-slider-nav-item" data-thumb="9">9</div>
-							<div class="img-slider-nav-item" data-thumb="10">10</div>
-							<div class="img-slider-nav-item" data-thumb="11">11</div>
-							<div class="img-slider-nav-item" data-thumb="12">12</div>
-							<div class="img-slider-nav-item" data-thumb="13">13</div>
-							<div class="img-slider-nav-item" data-thumb="14">14</div>
-							<div class="img-slider-nav-item" data-thumb="15">15</div>
-							<div class="img-slider-nav-item" data-thumb="16">16</div>
-							<div class="img-slider-nav-item" data-thumb="17">17</div>
-							<div class="img-slider-nav-item" data-thumb="18">18</div>
-							<div class="img-slider-nav-item" data-thumb="19">19</div>
-							<div class="img-slider-nav-item" data-thumb="20">20</div>
-							<div class="img-slider-nav-item" data-thumb="21">21</div>
-							<div class="img-slider-nav-item" data-thumb="22">22</div>
-							<div class="img-slider-nav-item" data-thumb="23">23</div>
-							<div class="img-slider-nav-item" data-thumb="24">24</div>
-							<div class="img-slider-nav-item" data-thumb="25">25</div>
-							<div class="img-slider-nav-item" data-thumb="26">26</div>
-							<div class="img-slider-nav-item" data-thumb="27">27</div>
-							<div class="img-slider-nav-item" data-thumb="28">28</div>
-							<div class="img-slider-nav-item" data-thumb="29">29</div>
-							<div class="img-slider-nav-item" data-thumb="30">30</div>
-							<div class="img-slider-nav-item" data-thumb="31">31</div>
-							<div class="img-slider-nav-item" data-thumb="32">32</div>
-							<div class="img-slider-nav-item" data-thumb="33">33</div>
+							<div class="img-slider-nav-item" data-thumb="1">
+								<div class="uk-card uk-card-small uk-card-body uk-padding-small">
+									<p class="uk-text-center warna-1">1</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="2">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-2">2</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="3">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-3">3</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="4">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-4">4</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="5">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-5">5</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="6">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-6">6</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="7">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-7">7</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="8">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-8">8</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="9">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-9">9</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="10">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-10">10</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="11">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-11">11</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="12">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-12">12</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="13">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-13">13</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="14">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-14">14</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="15">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-15">15</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="16">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-16">16</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="17">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-17">17</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="18">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-18">18</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="19">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-19">19</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="20">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-20">20</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="21">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-21">21</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="22">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-22">22</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="23">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-23">23</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="24">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-24">24</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="25">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-25">25</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="26">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-26">26</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="27">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-27">27</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="28">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-28">28</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="29">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-29">29</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="30">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-30">30</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="31">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-31">31</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="32">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-32">32</p>
+								</div>
+							</div>
+							<div class="img-slider-nav-item" data-thumb="33">
+								<div class="uk-card uk-card-small uk-card-body">
+									<p class="uk-text-center warna-33">33</p>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="uk-width-1-1@s">
-						product details
+						<p>Available size:
+						</p>
+						<table class="uk-table uk-table-small uk-table-divider">
+							<thead>
+								<tr>
+									<th>Size</th>
+									<th>Panjang (cm)</th>
+									<th>Lebar (cm)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>S</td>
+									<td>64</td>
+									<td>49</td>
+								</tr>
+								<tr>
+									<td>M</td>
+									<td>69</td>
+									<td>51</td>
+								</tr>
+								<tr>
+									<td>L</td>
+									<td>73</td>
+									<td>52</td>
+								</tr>
+								<tr>
+									<td>XL</td>
+									<td>74,5</td>
+									<td>53,5</td>
+								</tr>
+								<tr>
+									<td>XXL</td>
+									<td>78</td>
+									<td>57</td>
+								</tr>
+								<tr>
+									<td>XXXL</td>
+									<td>80</td>
+									<td>60.2</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	</section class="content">
-	<section class="uk-section">
+	<section class="uk-section uk-padding-remove-top">
 		<div class="uk-container">
 			<form>
 				<div class="uk-width-1-1@s">
@@ -207,6 +382,12 @@
 									</thead>
 									<tfoot>
 										<tr>
+											<th></th>
+											<th></th>
+											<th> Diskon </th>
+											<th> 20000 </th>
+										</tr>
+										<tr>
 											<th>
 												<div class="uk-width-1-1@s">
 													<div class="form-group">
@@ -240,6 +421,10 @@
 										</tr>
 									</tfoot>
 								</table>
+								<div class="uk-alert-danger" uk-alert>
+									<a class="uk-alert-close"></a>
+									<p>Maaf, stok kaos warna merah hanya tersisa 5. Mohon untuk mengubah jumlah pesanan Anda.</p>
+								</div>
 							</div>
 						</div>
 					</div>
