@@ -31,7 +31,7 @@
                   $sql_select="SELECT 
                     COUNT(*) 
                   FROM 
-                    transactionGudang 
+                    transactiongudang 
                   where 
                     DeletedDate is null 
                     and DeletedBy is null
@@ -82,7 +82,7 @@
                   {
                     $ab=$b['jum_minimal'];
                   }
-                  $sql_selectbrg="SELECT COUNT(SmallQty) FROM itemGudang where MinStock <= '$ab'";
+                  $sql_selectbrg="SELECT COUNT(SmallQty) FROM itemgudang where MinStock <= '$ab'";
                   $exe_brg=mysqli_query($koneksi,$sql_selectbrg);
                   $row1=mysqli_fetch_row($exe_brg);
                 ?>
@@ -125,7 +125,7 @@
                   $sql_selectbrg="SELECT
                   IFNULL(sum(b.Qty), 0) AS Total
                 FROM
-                  `transactionGudang` AS a
+                  `transactiongudang` AS a
                 LEFT JOIN transactiondetailgudang AS b ON a.Id = b.TransactionId
                 WHERE
                   a.DeletedBy IS NULL
