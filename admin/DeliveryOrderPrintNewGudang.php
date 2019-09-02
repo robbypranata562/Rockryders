@@ -64,7 +64,7 @@ include "koneksi.php";
   <section class="invoice">
     <div class="row invoice-info">
         <div class="col-sm-4 invoice-col">
-            <img src="dist/img/TeguhJaya.png" class="img-circle" alt="User Image" width="100" height="100"><br>
+            <img src="dist/img/logo-kaos-polos-nissajpeg.jpeg" class="img-circle" alt="User Image" width="100" height="100"><br>
             <address>
                 Komplek Permata <br>
                 Jl. Zamrud Blok A5 No. 38<br>
