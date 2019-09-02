@@ -116,8 +116,8 @@
             <span>Penerimaan Barang Toko</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="receivingmainlist.php"><i class="fa fa-circle-o"></i>Daftar Penerimaan Barang</a></li>
-            <li><a href="receivingmaincreate.php"><i class="fa fa-circle-o"></i>Tambah Penerimaan Barang</a></li>
+            <li><a href="ReceivingMainList.php"><i class="fa fa-circle-o"></i>Daftar Penerimaan Barang</a></li>
+            <li><a href="ReceivingMainCreate.php"><i class="fa fa-circle-o"></i>Tambah Penerimaan Barang</a></li>
           </ul>
         </li>
 
@@ -127,8 +127,8 @@
             <span>Penerimaan Barang Gudang</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="receivingmainlistGudang.php"><i class="fa fa-circle-o"></i>Daftar Penerimaan Barang Gudang</a></li>
-            <li><a href="receivingmaincreateGudang.php"><i class="fa fa-circle-o"></i>Tambah Penerimaan Barang Gudang</a></li>
+            <li><a href="ReceivingMainListGudang.php"><i class="fa fa-circle-o"></i>Daftar Penerimaan Barang Gudang</a></li>
+            <li><a href="ReceivingMainCreateGudang.php"><i class="fa fa-circle-o"></i>Tambah Penerimaan Barang Gudang</a></li>
           </ul>
         </li>
 		<?php } ?>
