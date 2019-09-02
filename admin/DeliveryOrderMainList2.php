@@ -149,7 +149,10 @@
                             Id   : _transactionId,
                           }
                           }).success(function(data){
-                            console.log(data);
+                            var response = data.result;
+                            if (response == "Success"){
+                              $('#tDeliveryorder').DataTable().draw();
+                            }
                           })
                 },
                 cancel: function () {

@@ -18,7 +18,7 @@ include "koneksi.php";
         a.Province,
         a.City
     FROM
-     `Transaction` AS a
+     `transaction` AS a
     WHERE
         a.id = ".$id."";
      $exe_trans=mysqli_query($koneksi,$sql_trans);
@@ -111,7 +111,7 @@ include "koneksi.php";
                                 format(a.UnitPrice, 2) AS UnitPrice,
                                 format(a.TotalPrice, 2) AS TotalPrice
                             FROM
-                                TransactionDetail AS a
+                                transactionDetail AS a
                                 LEFT JOIN item AS b ON a.ItemId = b.id
                                 LEFT JOIN color as c on b.Color = c.`Code`
                                 LEFT JOIN size as d on b.Size = d.`Code`

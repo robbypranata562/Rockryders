@@ -21,7 +21,7 @@
 		<?php 
 //include 'koneksi.php';
 if (isset($_POST['ubah'])){
-$sql="update Item 
+$sql="update item 
 set 
   Name                  ='".$_POST['Name']."',
   BasePrice             ='".$_POST['BasePrice']."',

@@ -151,7 +151,7 @@
                           }).success(function(data){
                             var response = data.result;
                             if (response == "Success"){
-                              $('#tDeliveryorder').DataTable().draw();
+                              $('#tDeliveryorderGudang').DataTable().draw();
                             }
                           })
                 },
