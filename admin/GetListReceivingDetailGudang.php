@@ -11,7 +11,7 @@ $iTotal = 0;
 $cek_count="SELECT
 COUNT(*) as Count
 FROM
-ReceivingDetailGudang AS a
+receivingdetailgudang AS a
 where 
 1=1
 and a.ReceivingId = ".$ReceivingId."
@@ -41,8 +41,8 @@ SELECT
 	d.`Name` AS Ukuran,
 	a.ReceivingQty AS Qty
 FROM
-    ReceivingDetailGudang AS a
-    LEFT JOIN itemGudang AS b ON a.ItemId = b.Id
+    receivingdetailgudang AS a
+    LEFT JOIN itemgudang AS b ON a.ItemId = b.Id
     LEFT JOIN color AS c ON b.Color = c.`Code`
     LEFT JOIN size AS d ON b.Size = d.`Code`
 where 

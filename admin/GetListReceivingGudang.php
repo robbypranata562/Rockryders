@@ -11,7 +11,7 @@ $iTotal = 0;
 $cek_count="SELECT
 COUNT(*) as Count
 FROM
-ReceivingGudang AS a
+receivinggudang AS a
 where 
 1=1
 and a.DeletedDate is null
@@ -40,7 +40,7 @@ SELECT
     Date(a.Date) as `Date`,   
     a.Description
 FROM
-    ReceivingGudang AS a
+    receivinggudang AS a
 WHERE   
     1=1
     and a.DeletedBy is NULL

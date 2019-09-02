@@ -11,7 +11,7 @@ $iTotal = 0;
 $cek_count="SELECT
 COUNT(*) as Count
 FROM
-`Transaction` AS a
+`transaction` AS a
 where 
 1=1
 and a.DeletedDate is null
@@ -47,7 +47,7 @@ SELECT
     a.Description,
     a.isConfirm as Status
 FROM
-    `Transaction` AS a
+    `transaction` AS a
 WHERE   
     1=1
     and a.DeletedBy is NULL

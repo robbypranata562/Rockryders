@@ -39,7 +39,7 @@ SELECT
 	d.`Name` AS Ukuran,
 	a.Qty AS Qty
 FROM
-	ReturnDetail AS a
+	returndetail AS a
 LEFT JOIN item AS b ON a.ItemId = b.Id
 LEFT JOIN color AS c ON b.Color = c.`Code`
 LEFT JOIN size AS d ON b.Size = d.`Code`

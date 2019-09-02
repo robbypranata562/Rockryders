@@ -6,7 +6,7 @@
     $select_code_for_po = "Select
     Increment + 1 as Increment
     From
-    CodeTransaction
+    codetransaction
     where
     1=1
     And Prefix = 'GR'
@@ -23,7 +23,7 @@
         }
 
         $sql_update_incerement = "
-        Update CodeTransaction
+        Update codetransaction
         Set
             Increment = ".$number."
         Where
@@ -39,7 +39,7 @@
 
     if(is_null($number))
     {
-        $insert_code_for_po = "Insert Into CodeTransaction
+        $insert_code_for_po = "Insert Into codetransaction
         (
             Prefix,
             Year,
@@ -73,7 +73,7 @@
     $Description = $_POST['Description'];
     $Session = $_SESSION['id_admin'];
     $Items = json_decode($_POST['arrayItem']);
-    $SQLInsertReceivingMain="insert into Receiving
+    $SQLInsertReceivingMain="insert into receiving
                     (
                         Code ,
                         Date ,
@@ -99,7 +99,7 @@
                 Select 
                     Id as `Exists`
                 From 
-                    Item 
+                    item 
                 Where 
                     1=1    
                     and Color   =   '".$key[0]."'
@@ -113,12 +113,12 @@
                 {
                     //case item belum ada di database
                     //belum pernah masuk stock opname
-                    //insert ke Item
+                    //insert ke item
                     //insert ke Stock Card
                     $LargeQty = round($key[2] / 1200, 0);
                     $MediumQty = round($key[2] / 12, 0);
                     $InsertToTableItem = 
-                    "Insert Into Item
+                    "Insert Into item
                     (
                         Name,
                         Color,
@@ -169,7 +169,7 @@
                     {
                         $ItemId = $koneksi->insert_id;
                         $SQLInsertReceivingDetail = 
-                        "Insert Into ReceivingDetail
+                        "Insert Into receivingdetail
                         (
                             ReceivingId,
                             ItemId,
@@ -195,7 +195,7 @@
                             //jika sudah di terima sebagai penerimaan
                             //lakukan insert ke Stock Card
                             $SQLInsertStockCard = 
-                            "Insert Into StockCard
+                            "Insert Into stockcard
                             (
                                 Date,
                                 TransactionCode,
@@ -225,10 +225,10 @@
                         }
                     }
                 } else { 
-                    //jika Item Sudah Terdaftar
-                    //Langsung Insert Ke Table Receiving Detail
+                    //jika item Sudah Terdaftar
+                    //Langsung Insert Ke Table receiving Detail
                     $SQLInsertReceivingDetail = 
-                        "Insert Into ReceivingDetail
+                        "Insert Into receivingdetail
                         (
                             ReceivingId,
                             ItemId,
@@ -250,12 +250,12 @@
                         )";
                     if($koneksi->query($SQLInsertReceivingDetail) === TRUE)
                     {
-                        //cek apakah sudah ada pencatatan Stock Awal Untuk Item
+                        //cek apakah sudah ada pencatatan Stock Awal Untuk item
                         $SQLCheckStockAwalExists = "
                         Select 
                             Id as `Exists`
                         From 
-                            StockCard 
+                            stockcard 
                         Where 
                             1=1    
                             and Description = '#Stock Awal Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
@@ -270,7 +270,7 @@
                         {
                             //jika belum ada stock awal di stock card
                             $SQLInsertStockCard = 
-                            "Insert Into StockCard
+                            "Insert Into stockcard
                             (
                                 Date,
                                 TransactionCode,
@@ -298,12 +298,12 @@
                             }
                         }
 
-                        //Jika Sudah Masuk Table Receiving Detail
+                        //Jika Sudah Masuk Table receiving Detail
                         //Lanjut Dengan Update Stock Barang
                         $LargeQty = round($key[2] / 1200, 0);
                         $MediumQty = round($key[2] / 12, 0);
                         $SQLUpdateStockItem = "Update 
-                        Item Set
+                        item Set
                             LargeQty    = LargeQty  +  ".$LargeQty.",
                             MediumQty   = MediumQty +  ".$MediumQty.",
                             SmallQty    = SmallQty  +  ".$key[2]."
@@ -318,7 +318,7 @@
                             Select 
                                 SmallQty
                             From 
-                                Item 
+                                item 
                             Where 
                                 1=1    
                                 and Color    = '".$key[0]."'
@@ -332,7 +332,7 @@
 
                             $NewStock = $LastStock + $key[2];
                             $SQLInsertStockCardReceiving = 
-                            "Insert Into StockCard
+                            "Insert Into stockcard
                             (
                                 Date,
                                 TransactionCode,

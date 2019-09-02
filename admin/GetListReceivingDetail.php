@@ -11,7 +11,7 @@ $iTotal = 0;
 $cek_count="SELECT
 COUNT(*) as Count
 FROM
-ReceivingDetail AS a
+receivingdetail AS a
 where 
 1=1
 and a.ReceivingId = ".$ReceivingId."

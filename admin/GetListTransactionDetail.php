@@ -11,7 +11,7 @@ $iTotal = 0;
 $cek_count="SELECT
 COUNT(*) as Count
 FROM
-`TransactionDetail` AS a
+`transactionDetail` AS a
 where 
 TransactionId = ".$Id."
 and a.DeletedDate is null
@@ -40,7 +40,7 @@ SELECT
     format(a.UnitPrice, 2) AS UnitPrice,
     format(a.TotalPrice, 2) AS TotalPrice
 FROM
-    TransactionDetail AS a
+    transactionDetail AS a
     LEFT JOIN item AS b ON a.ItemId = b.id
     LEFT JOIN color as c on b.Color = c.`Code`
     LEFT JOIN size as d on b.Size = d.`Code`
