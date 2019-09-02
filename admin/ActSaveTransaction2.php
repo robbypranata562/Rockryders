@@ -5,7 +5,7 @@
     $select_code_for_po = "Select
     Increment + 1 as Increment
     From
-    CodeTransaction
+    codetransaction
     where
     1=1
     And Prefix = 'DO'
@@ -22,7 +22,7 @@
         }
 
         $sql_update_incerement = "
-        Update CodeTransaction
+        Update codetransaction
         Set
             Increment = ".$number."
         Where
@@ -38,7 +38,7 @@
 
     if(is_null($number))
     {
-        $insert_code_for_po = "Insert Into CodeTransaction
+        $insert_code_for_po = "Insert Into codetransaction
         (
             Prefix,
             Year,
@@ -84,7 +84,7 @@
     $Service                = $_POST['Service'];
     $Weight                 = $_POST['Weight'];
     //start insert to database
-    $SQLInsertReceivingMain = "insert into Transaction
+    $SQLInsertReceivingMain = "insert into transaction
     (
         Code ,
         Date ,
@@ -124,7 +124,7 @@
     )";
     if($koneksi->query($SQLInsertReceivingMain) === TRUE)
     {
-        $TransactionId = $koneksi->insert_id;
+        $transactionId = $koneksi->insert_id;
         foreach ($Items as $key)
         {
             $SQLSelectItemExists = "
@@ -132,7 +132,7 @@
                 Id as `Exists`,
                 SmallQty
             From 
-                Item 
+                item 
             Where 
                 1=1    
                 and Color   =   '".$key[0]."'
@@ -146,11 +146,11 @@
             }
 
             if (!is_null($isExists)){
-                $SQLInsertTransactionDetail = "Insert 
+                $SQLInserttransactionDetail = "Insert 
                 Into 
-                    TransactionDetail
+                    transactionDetail
                 (
-                    TransactionId,
+                    transactionId,
                     ItemId,
                     Qty,
                     UOM,
@@ -164,7 +164,7 @@
                 )
                 Values
                 (
-                    ".$TransactionId.",
+                    ".$transactionId.",
                     ".$isExists.",
                     ".$key[2].",
                     'Pcs',
@@ -176,10 +176,10 @@
                     ".$Session.",
                     NOW()
                 )";
-                if($koneksi->query($SQLInsertTransactionDetail) === TRUE)
+                if($koneksi->query($SQLInserttransactionDetail) === TRUE)
                 {
                     //kurangin stock
-                    $SQLUpdateQtyItem = "Update Item 
+                    $SQLUpdateQtyItem = "Update item 
                     Set
                         SmallQty = SmallQty - ".$key[2]."
                     where
@@ -191,7 +191,7 @@
                         Select 
                             Id as `Exists`
                         From 
-                            StockCard 
+                            stockcard 
                         Where 
                             1=1    
                             and Description = '#Stock Awal Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
@@ -203,10 +203,10 @@
                         }
                         if ($isStockCardExists === NULL) {
                             $SQLInsertStockCard = 
-                            "Insert Into StockCard
+                            "Insert Into stockcard
                             (
                                 Date,
-                                TransactionCode,
+                                transactionCode,
                                 ItemId,
                                 InitialValue,
                                 `IN`,
@@ -228,11 +228,11 @@
                             if($koneksi->query($SQLInsertStockCard) === TRUE)
                             {
                                 $NewStock = $LastStock - $key[2];
-                                $SQLInsertStockCardTransaction = 
-                                "Insert Into StockCard
+                                $SQLInsertStockCardtransaction = 
+                                "Insert Into stockcard
                                 (
                                     Date,
-                                    TransactionCode,
+                                    transactionCode,
                                     ItemId,
                                     InitialValue,
                                     `IN`,
@@ -251,7 +251,7 @@
                                     ".$NewStock.",
                                     'Penjualan Barang Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
                                 )";
-                                if($koneksi->query($SQLInsertStockCardTransaction) === TRUE)
+                                if($koneksi->query($SQLInsertStockCardtransaction) === TRUE)
                                 {
                                   
                                 }
@@ -264,11 +264,11 @@
                             }
                         } else {
                             $NewStock = $LastStock - $key[2];
-                            $SQLInsertStockCardTransaction = 
-                            "Insert Into StockCard
+                            $SQLInsertStockCardtransaction = 
+                            "Insert Into stockcard
                             (
                                 Date,
-                                TransactionCode,
+                                transactionCode,
                                 ItemId,
                                 InitialValue,
                                 `IN`,
@@ -287,7 +287,7 @@
                                 ".$NewStock.",
                                 'Penjualan Barang Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
                             )";
-                            if($koneksi->query($SQLInsertStockCardTransaction) === TRUE)
+                            if($koneksi->query($SQLInsertStockCardtransaction) === TRUE)
                             {
                               
                             }
