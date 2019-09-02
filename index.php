@@ -425,6 +425,23 @@
 									<a class="uk-alert-close"></a>
 									<p>Maaf, stok kaos warna merah hanya tersisa 5. Mohon untuk mengubah jumlah pesanan Anda...</p>
 								</div>
+								<div class="uk-width-1-2@m">
+									<p>JNE - YES</p>
+									<p>Hendra Rusmaya</p>
+									<p>0824000000</p>
+									<p>hendra.rusmaya@mail.com</p>
+									<p>Jalan Rangkas Bitung No. 4</p>
+									<p>Kelurahan Mekarjaya</p>
+									<p>Kelurahan Mekarjaya</p>
+									<p>Kecamatan Rancasari</p>
+									<p>Kota Bandung</p>
+									<p>Provinsi Jawa Barat</p>
+								</div>
+								<div class="uk-width-expand">
+									<div class="form-group">
+										<button id="submit-order-review-button" class="uk-button uk-button-primary" type="button">Submit Order</button>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
