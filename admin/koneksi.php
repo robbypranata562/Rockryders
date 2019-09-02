@@ -1,6 +1,6 @@
 <?php
 $db_host = "localhost:3306";
-$db_user = "root";
+$db_user = "dbrock";
 $db_pass = "cLr58@y1";
 $db_name = "rockrydersDB";
 
