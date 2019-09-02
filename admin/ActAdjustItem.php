@@ -11,7 +11,7 @@
             Id as `Exists`,
             SmallQty
         From 
-            Item 
+            item 
         Where 
             1=1    
             and Color   =   '".$key[0]."'
@@ -31,7 +31,7 @@
         Select 
             Id as `Exists`
         From 
-            StockCard 
+            stockcard 
         Where 
             1=1    
             and Description = '#Stock Awal Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
@@ -46,7 +46,7 @@
         {
             //jika belum ada stock awal di stock card
             $SQLInsertStockCardAwal = 
-            "Insert Into StockCard
+            "Insert Into stockcard
             (
                 Date,
                 ItemId,
@@ -75,7 +75,7 @@
                 echo "Error Insert Stock Card Awal";
             }
         }
-        $UpdateQty = "Update Item
+        $UpdateQty = "Update item
         Set
             SmallQty = ".$key[4]."
         Where
@@ -86,7 +86,7 @@
             //insert into Stock Card
                 if ( (int)$key[3] > (int) $key[4] ){
                     $SQLInsertStockCard = 
-                    "Insert Into StockCard
+                    "Insert Into stockcard
                     (
                         Date,
                         ItemId,
@@ -109,7 +109,7 @@
                 }
                 else {
                     $SQLInsertStockCard = 
-                    "Insert Into StockCard
+                    "Insert Into stockcard
                     (
                         Date,
                         ItemId,

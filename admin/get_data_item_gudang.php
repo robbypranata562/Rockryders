@@ -4,7 +4,7 @@ $iTotal = 0;
 $cek_count="SELECT
 COUNT(*) as Count
 FROM
-itemGudang AS a
+itemgudang AS a
 where 
 1=1
 and a.DeletedDate is null
@@ -65,7 +65,7 @@ SELECT
 	a.MinStock,
 	a.Aging AS UmurBarangMaksimal
 FROM
-	itemGudang AS a
+	itemgudang AS a
     LEFT JOIN size AS b ON a.Size = b.`Code`
     LEFT JOIN color AS c ON a.Color = c.`Code`
 where 
