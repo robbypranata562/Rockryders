@@ -1,7 +1,7 @@
 <?php
 include "admin/koneksi.php";
   
- $sql = "SELECT Code , Name FROM Color";
+ $sql = "SELECT Code , Name FROM color";
  $result = $koneksi->query($sql);
  
  if ($result->num_rows > 0) {

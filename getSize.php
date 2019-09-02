@@ -1,7 +1,7 @@
 <?php
 include "admin/koneksi.php";
   
- $sql = "SELECT Code , Name FROM Size";
+ $sql = "SELECT Code , Name FROM size";
  $result = $koneksi->query($sql);
  
  if ($result->num_rows > 0) {
