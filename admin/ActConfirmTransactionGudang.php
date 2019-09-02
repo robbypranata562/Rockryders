@@ -5,7 +5,7 @@ $TransactionId  = $_POST['Id'];
 $Session        = $_SESSION['id_admin'];
 
 $SQLConfirmTransaction = "Update 
-TransactionGudang
+transactionGudang
 Set 
     IsConfirm = 1,
     ConfirmBy = ".$Session.",

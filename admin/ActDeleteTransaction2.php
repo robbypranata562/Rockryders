@@ -20,8 +20,8 @@ Select
     b.Size,
     a.Id
 From 
-    TransactionDetail a
-    left join Item b on a.ItemId = b.id
+    transactionDetail a
+    left join item b on a.ItemId = b.id
 Where
     1=1    
     and a.TransactionId   =   ".$TransactionId."
@@ -35,7 +35,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
     Select 
         Id as `Exists`
     From 
-        StockCard 
+        stockcard 
     Where 
         1=1    
         and Description = '#Stock Awal Kaos Polos ".$row['Color']." ".$row['Size']." Tanggal ".$Date."'
@@ -47,7 +47,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
 
     if ($isStockCardExists === NULL) {
         $SQLInsertStockCard = 
-        "Insert Into StockCard
+        "Insert Into stockcard
         (
             Date,
             TransactionCode,
@@ -76,7 +76,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
     }
     $NewValue = $row['LastValue'] + $row['Qty'];
     $SQLInsertStockCardTransaction = 
-    "Insert Into StockCard
+    "Insert Into stockcard
     (
         Date,
         TransactionCode,
@@ -103,7 +103,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
     }
     else {
         //delete Item Dari Transaction Detail
-            $SQLUpdateTransactionDetail = "Update TransactionDetail set 
+            $SQLUpdateTransactionDetail = "Update transactiondetail set 
             DeletedDate = now(),
             DeletedBy = ".$Session."
             Where
@@ -112,7 +112,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
                 echo json_encode("Error Delete Transaction Detail Untuk Item ".$row['ItemId']."");
             }
             else{
-                $SQLUpdateStockItem = "Update Item Set
+                $SQLUpdateStockItem = "Update item Set
                 SmallQty = ".$NewValue."
                 Where
                 Id = ".$row['ItemId']."";
@@ -124,7 +124,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
         //
     }
 };
-$SQLUpdateTransactionDetail = "Update Transaction set 
+$SQLUpdateTransactionDetail = "Update transaction set 
 DeletedDate = now(),
 DeletedBy = ".$Session."
 Where

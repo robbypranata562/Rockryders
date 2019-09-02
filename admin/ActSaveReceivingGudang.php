@@ -6,7 +6,7 @@
     $select_code_for_po = "Select
     Increment + 1 as Increment
     From
-    CodeTransactionGudang
+    codetransactiongudang
     where
     1=1
     And Prefix = 'GR'
@@ -23,7 +23,7 @@
         }
 
         $sql_update_incerement = "
-        Update CodeTransactionGudang
+        Update codetransactiongudang
         Set
             Increment = ".$number."
         Where
@@ -39,7 +39,7 @@
 
     if(is_null($number))
     {
-        $insert_code_for_po = "Insert Into CodeTransactionGudang
+        $insert_code_for_po = "Insert Into codetransactiongudang
         (
             Prefix,
             Year,
@@ -73,7 +73,7 @@
     $Description = $_POST['Description'];
     $Session = $_SESSION['id_admin'];
     $Items = json_decode($_POST['arrayItem']);
-    $SQLInsertReceivingMain="insert into ReceivingGudang
+    $SQLInsertReceivingMain="insert into receivinggudang
                     (
                         Code ,
                         Date ,
@@ -99,7 +99,7 @@
                 Select 
                     Id as `Exists`
                 From 
-                    ItemGudang
+                    itemgudang
                 Where 
                     1=1    
                     and Color   =   '".$key[0]."'
@@ -118,7 +118,7 @@
                     $LargeQty = round($key[2] / 1200, 0);
                     $MediumQty = round($key[2] / 12, 0);
                     $InsertToTableItem = 
-                    "Insert Into ItemGudang
+                    "Insert Into itemgudang
                     (
                         Name,
                         Color,
@@ -169,7 +169,7 @@
                     {
                         $ItemId = $koneksi->insert_id;
                         $SQLInsertReceivingDetail = 
-                        "Insert Into ReceivingDetailGudang
+                        "Insert Into receivingdetailgudang
                         (
                             ReceivingId,
                             ItemId,
@@ -195,7 +195,7 @@
                             //jika sudah di terima sebagai penerimaan
                             //lakukan insert ke Stock Card
                             $SQLInsertStockCard = 
-                            "Insert Into StockCardGudang
+                            "Insert Into stockcardgudang
                             (
                                 Date,
                                 TransactionCode,
@@ -228,7 +228,7 @@
                     //jika Item Sudah Terdaftar
                     //Langsung Insert Ke Table Receiving Detail
                     $SQLInsertReceivingDetail = 
-                        "Insert Into ReceivingDetailGudang
+                        "Insert Into receivingdetailgudang
                         (
                             ReceivingId,
                             ItemId,
@@ -255,7 +255,7 @@
                         Select 
                             Id as `Exists`
                         From 
-                            StockCardGudang
+                            stockcardgudang
                         Where 
                             1=1    
                             and Description = '#Stock Awal Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
@@ -270,7 +270,7 @@
                         {
                             //jika belum ada stock awal di stock card
                             $SQLInsertStockCard = 
-                            "Insert Into StockCardGudang
+                            "Insert Into stockcardgudang
                             (
                                 Date,
                                 TransactionCode,
@@ -303,7 +303,7 @@
                         $LargeQty = round($key[2] / 1200, 0);
                         $MediumQty = round($key[2] / 12, 0);
                         $SQLUpdateStockItem = "Update 
-                        ItemGudang Set
+                        itemgudang Set
                             LargeQty    = LargeQty  +  ".$LargeQty.",
                             MediumQty   = MediumQty +  ".$MediumQty.",
                             SmallQty    = SmallQty  +  ".$key[2]."
@@ -318,7 +318,7 @@
                             Select 
                                 SmallQty
                             From 
-                                ItemGudang
+                                itemgudang
                             Where 
                                 1=1    
                                 and Color    = '".$key[0]."'
@@ -332,7 +332,7 @@
 
                             $NewStock = $LastStock + $key[2];
                             $SQLInsertStockCardReceiving = 
-                            "Insert Into StockCardGudang
+                            "Insert Into stockcardgudang
                             (
                                 Date,
                                 TransactionCode,

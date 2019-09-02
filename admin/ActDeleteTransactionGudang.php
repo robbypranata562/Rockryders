@@ -20,8 +20,8 @@ Select
     b.Size,
     a.Id
 From 
-    TransactionDetailGudang a
-    left join ItemGudang b on a.ItemId = b.id
+    transactiondetailgudang a
+    left join itemgudang b on a.ItemId = b.id
 Where
     1=1    
     and a.TransactionId   =   ".$TransactionId."
@@ -35,7 +35,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
     Select 
         Id as `Exists`
     From 
-        StockCardGudang
+        stockcardgudang
     Where 
         1=1    
         and Description = '#Stock Awal Kaos Polos ".$row['Color']." ".$row['Size']." Tanggal ".$Date."'
@@ -47,7 +47,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
 
     if ($isStockCardExists === NULL) {
         $SQLInsertStockCard = 
-        "Insert Into StockCardGudang
+        "Insert Into stockcardgudang
         (
             Date,
             TransactionCode,
@@ -76,7 +76,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
     }
     $NewValue = $row['LastValue'] + $row['Qty'];
     $SQLInsertStockCardTransaction = 
-    "Insert Into StockCardGudang
+    "Insert Into stockcardgudang
     (
         Date,
         TransactionCode,
@@ -103,7 +103,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
     }
     else {
         //delete Item Dari Transaction Detail
-            $SQLUpdateTransactionDetail = "Update TransactionDetailGudang set 
+            $SQLUpdateTransactionDetail = "Update transactiondetailgudang set 
             DeletedDate = now(),
             DeletedBy = ".$Session."
             Where
@@ -112,7 +112,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
                 echo json_encode("Error Delete Transaction Detail Untuk Item ".$row['ItemId']."");
             }
             else{
-                $SQLUpdateStockItem = "Update ItemGudang Set
+                $SQLUpdateStockItem = "Update itemgudang Set
                 SmallQty = ".$NewValue."
                 Where
                 Id = ".$row['ItemId']."";
@@ -123,7 +123,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
             }
         }
     };
-$SQLUpdateTransactionDetail = "Update TransactionGudang set 
+$SQLUpdateTransactionDetail = "Update transactiongudang set 
 DeletedDate = now(),
 DeletedBy = ".$Session."
 Where

@@ -610,7 +610,11 @@
                         Size    : Size
                     }
                 }).success(function(data){
-                    $("#Stock").val(data[0]['Stock'])
+                    if (data != null){
+                        $("#Stock").val(data[0]['Stock'])
+                    } else {
+                        alert("Item Tidak Terdaftar")
+                    }
                 }).error(function(data){
                     alert("Item Tidak Terdaftar")
                 });
