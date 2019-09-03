@@ -172,8 +172,58 @@ $(document).ready(function() {
 			  };
 		  });
 		t.clear().draw( false );
-		t.rows.add
-		(arr).draw( false );
+		t.rows.add(arr).draw( false );
 		console.log(arr);
 	});
+	$("#submit-order-review-button").click(function(e){
+			var DataItem = [];
+			var info = t.page.info();
+			var length = info.recordsTotal - 1;
+			var counterNeedApproval = 0;
+			for(var i = 0 ; i <= length ; i++)
+			{
+				var row = $("#TableDeliveryDetail tbody tr:eq("+i+")");
+				DataItem.push
+				([
+					$("td:eq(0)",row).html(),
+					$("td:eq(1)",row).html(),
+					$("td:eq(2)",row).html()
+				]);
+			}
+			$.ajax({
+				type: "POST",
+				dataType: "html",
+				data : 
+				{
+					arrayItem : JSON.stringify(DataItem)
+				},
+				url: "admin/ActBatchCheckStockByColorAndSize.php",
+				success: function(data){
+					var res =  JSON.parse(data);
+					console.log(res.message.length);
+					if (res.data == false)
+					{
+						$(".uk-alert-danger").empty();
+						for (i = 0 ; i < res.message.length ; i++){
+							var message = '<p>'+res.message[i]+'</p>';
+							$(".uk-alert-danger").append(message);
+						}
+					}
+					else {
+						$.ajax({
+							type: "POST",
+							dataType: "html",
+							data : 
+							  {
+								  province_id : this.value
+							  },
+							url: "GetCity.php",
+							success: function(msgct){
+							$("#City").html(msgct);                                                     
+							}
+						  });
+					}                           
+				}
+			});
+	})
 });

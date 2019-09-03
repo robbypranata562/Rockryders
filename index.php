@@ -325,11 +325,6 @@
 							<input type="text" class="uk-input" name="Phone" id="Phone" value="" placeholder="No. HP (WhatsApp)">
 						</div>
 					</div>
-					<div class="uk-width-1-2@m">
-						<div class="form-group">
-							<input type="text" class="uk-input" id="email" name="email[]" value="" placeholder="Email">
-						</div>
-					</div>
 					<div class="uk-width-1-1@s">
 						<div class="form-group">
 							<input type="text" class="uk-input" name="Address" id="Address" value="" placeholder="Alamat">
@@ -349,14 +344,22 @@
                             </select>
 						</div>
 					</div>
-					<div class="uk-width-1-2@m">
+					<div class="uk-width-1-1@s">
 						<div class="form-group">
-							<input type="text" class="uk-input" name="District" id="District" value="" placeholder="Kecamatan">
+							<select class="select2-courier" name="Courier" id="Courier">
+								<option value="">Pilih Kurir...</option>
+								<option value="jne">JNE</option>
+								<option value="pos">POS</option>
+								<option value="tiki">Tiki</option>
+								<option value="custom">Custom</option>
+							</select>
 						</div>
 					</div>
-					<div class="uk-width-1-2@m">
+					<div class="uk-width-1-1@s">
 						<div class="form-group">
-							<input type="text" class="uk-input" name="SubDistrict" id="SubDistrict" value="" placeholder="Kelurahan">
+							<select class="select2-service" name="Service" id="Service">
+								<option value="">Pilih Servis Pengiriman...</option>
+							</select>
 						</div>
 					</div>
 					<div class="uk-width-1-1@s">
@@ -371,6 +374,12 @@
 
 							<button class="uk-offcanvas-close" type="button" uk-close></button>
 							<div class="uk-width-1-1@s">
+								<div class="alert-message">
+									<div class="uk-alert-danger" uk-alert>
+										<a class="uk-alert-close"></a>
+										<p>Maaf, stok kaos warna merah hanya tersisa 5. Mohon untuk mengubah jumlah pesanan Anda...</p>
+									</div>
+								</div>
 								<table id="TableDeliveryDetail" class="uk-table uk-table-striped uk-table-responsive">
 									<thead>
 										<tr>
@@ -380,7 +389,7 @@
 											<th> SubTotal </th>
 										</tr>
 									</thead>
-									<tfoot>
+									<!-- <tfoot>
 										<tr>
 											<th></th>
 											<th></th>
@@ -389,26 +398,10 @@
 										</tr>
 										<tr>
 											<th>
-												<div class="uk-width-1-1@s">
-													<div class="form-group">
-														<select class="select2-courier" name="Courier" id="Courier">
-															<option value="">Pilih Kurir...</option>
-															<option value="jne">JNE</option>
-															<option value="pos">POS</option>
-															<option value="tiki">Tiki</option>
-															<option value="custom">Custom</option>
-														</select>
-													</div>
-												</div>
+
 											</th>
 											<th>
-												<div class="uk-width-1-1@s">
-													<div class="form-group">
-														<select class="select2-service" name="Service" id="Service">
-															<option value="">Pilih Servis Pengiriman...</option>
-														</select>
-													</div>
-												</div>
+
 											</th>
 											<th> Ongkir </th>
 											<th> 250000 </th>
@@ -419,23 +412,19 @@
 											<th> Total </th>
 											<th> 500000 </th>
 										</tr>
-									</tfoot>
+									</tfoot> -->
 								</table>
-								<div class="uk-alert-danger" uk-alert>
-									<a class="uk-alert-close"></a>
-									<p>Maaf, stok kaos warna merah hanya tersisa 5. Mohon untuk mengubah jumlah pesanan Anda...</p>
-								</div>
+								<p class="data-courier">50000</p>
+
 								<div class="uk-width-1-2@m">
-									<p>JNE - YES</p>
-									<p>Hendra Rusmaya</p>
-									<p>0824000000</p>
-									<p>hendra.rusmaya@mail.com</p>
-									<p>Jalan Rangkas Bitung No. 4</p>
-									<p>Kelurahan Mekarjaya</p>
-									<p>Kelurahan Mekarjaya</p>
-									<p>Kecamatan Rancasari</p>
-									<p>Kota Bandung</p>
-									<p>Provinsi Jawa Barat</p>
+									<p class="data-courier">JNE</p>
+									<p class="data-service">YES</p>
+									<p class="data-name">Hendra Rusmaya</p>
+									<p class="data-phone-number">0824000000</p>
+									<p class="data-email">hendra.rusmaya@mail.com</p>
+									<p class="data-address">Jalan Rangkas Bitung No. 4</p>
+									<p class="data-city">Kota Bandung</p>
+									<p class="data-provinve">Provinsi Jawa Barat</p>
 								</div>
 								<div class="uk-width-expand">
 									<div class="form-group">
