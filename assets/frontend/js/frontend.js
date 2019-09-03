@@ -158,22 +158,43 @@ $(document).ready(function() {
 				{ data: 'color' },
 				{ data: 'size' },
 				{ data: 'qty' },
+				{ data: 'unitprice' },
 				{ data: 'sub' }
 			  ]
 		});
 	$("#order-review-button").click(function(){
 		var _Date       =   $("#Date").val();
+		var _TotalQty	= 0;
+		var _NewUnitPrice = 0
+		$( "input[name='Qty']" ).each(function( index ) {
+			_TotalQty += parseInt($(this).val());
+		});
+
+		if (_TotalQty <= 11)
+		{
+			_NewUnitPrice = 27000;
+		}
+		else if (_TotalQty <= 1199) {
+			_NewUnitPrice = 25500;
+		}
+		else{
+			_NewUnitPrice = 25000;
+		}
+
+
 		var arr = $(".order-form-item").map(function() {
 			  return {
-				color: $(this).find("select[name='Color']").val(),
-				size: $(this).find("select[name='Size']").val(),
-				qty: $(this).find("input[name='Qty']").val(),
-				sub: $(this).find("input[name='Qty']").val()*27500
+				color		: 	$(this).find("select[name='Color']").val(),
+				size		: 	$(this).find("select[name='Size']").val(),
+				qty			: 	$(this).find("input[name='Qty']").val(),
+				unitprice	: 	_NewUnitPrice,
+				sub			: 	$(this).find("input[name='Qty']").val() * _NewUnitPrice
 			  };
 		  });
 		t.clear().draw( false );
 		t.rows.add(arr).draw( false );
-		console.log(arr);
+		console.log(_TotalQty);
+		$(".data-weight").html(Math.ceil(_TotalQty / 6));
 	});
 	$("#submit-order-review-button").click(function(e){
 			var DataItem = [];

@@ -386,6 +386,7 @@
 											<th> Warna </th>
 											<th> Ukuran </th>
 											<th> Qty </th>
+											<th> Unit Price </th>
 											<th> SubTotal </th>
 										</tr>
 									</thead>
@@ -414,9 +415,8 @@
 										</tr>
 									</tfoot> -->
 								</table>
-								<p class="data-courier">50000</p>
-
 								<div class="uk-width-1-2@m">
+									<p class="data-weight">0</p>
 									<p class="data-courier">JNE</p>
 									<p class="data-service">YES</p>
 									<p class="data-name">Hendra Rusmaya</p>
