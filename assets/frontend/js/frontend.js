@@ -236,11 +236,22 @@ $(document).ready(function() {
 							dataType: "html",
 							data : 
 							  {
-								  province_id : this.value
+								  Customer 			: $(".data-customer").html(),
+								  Phone 			: $(".data-phone-number").html(),
+								  Address 			: $(".data-address").html(),
+								  Description 		: $(".data-description").html(),
+								  TotalPrice 		: $(".data-total-price").html(),
+								  AdditionalPrice 	: $(".data-additional-price").html(),
+								  Province 			: $(".data-province").html(),
+								  City 				: $(".data-city").html(),
+								  Courier 			: $(".data-courier").html(),
+								  Service 			: $(".data-service").html(),
+								  Weight 			: $(".data-weight").html(),
+								  arrayItem 		: JSON.stringify(DataItem)
 							  },
-							url: "GetCity.php",
+							url: "admin/ActSaveTransactionFrontEnd.php",
 							success: function(msgct){
-							$("#City").html(msgct);                                                     
+							                                                
 							}
 						  });
 					}                           

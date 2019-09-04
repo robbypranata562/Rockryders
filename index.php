@@ -291,8 +291,8 @@
 						<div class="uk-width-3-4@m">
 							<div class="form-group order-form-item">
 								<select class="select2-color" name="Color" id="Color">
-                                        <option value="">Pilih Warna..</option>
-                                </select>
+                  <option value="">Pilih Warna..</option>
+                </select>
 								<select class="select2-size" name="Size" id="Size">
 									<option value="">Pilih Ukuran...</option>
 								</select>
@@ -320,7 +320,7 @@
 							<input type="text" class="uk-input" name="Customer" id="Customer" value="" placeholder="Nama lengkap">
 						</div>
 					</div>
-					<div class="uk-width-1-2@m">
+					<div class="uk-width-1-1@s">
 						<div class="form-group">
 							<input type="text" class="uk-input" name="Phone" id="Phone" value="" placeholder="No. HP (WhatsApp)">
 						</div>
@@ -330,38 +330,11 @@
 							<input type="text" class="uk-input" name="Address" id="Address" value="" placeholder="Alamat">
 						</div>
 					</div>
-					<div class="uk-width-1-2@m">
-						<div class="form-group">
-							<select class="select2-province" name="Province" id="Province">
-                                <option value=""></option>
-                            </select>
-						</div>
-					</div>
-					<div class="uk-width-1-2@m">
-						<div class="form-group">
-							<select class="select2-city" name="City" id="City">
-                                <option value="">Pilih Kota...</option>
-                            </select>
-						</div>
-					</div>
-					<div class="uk-width-1-1@s">
-						<div class="form-group">
-							<select class="select2-courier" name="Courier" id="Courier">
-								<option value="">Pilih Kurir...</option>
-								<option value="jne">JNE</option>
-								<option value="pos">POS</option>
-								<option value="tiki">Tiki</option>
-								<option value="custom">Custom</option>
-							</select>
-						</div>
-					</div>
-					<div class="uk-width-1-1@s">
-						<div class="form-group">
-							<select class="select2-service" name="Service" id="Service">
-								<option value="">Pilih Servis Pengiriman...</option>
-							</select>
-						</div>
-					</div>
+          <div class="uk-width-1-1@s">
+            <div class="form-group">
+              <input type="text" class="uk-input" name="Description" id="Description" value="" placeholder="Deskripsi">
+            </div>
+          </div>
 					<div class="uk-width-1-1@s">
 						<div class="form-group">
 							<div class="form-group">
@@ -371,7 +344,6 @@
 					</div>
 					<div id="order-review" uk-offcanvas="overlay: true; flip: true">
 						<div class="uk-offcanvas-bar">
-
 							<button class="uk-offcanvas-close" type="button" uk-close></button>
 							<div class="uk-width-1-1@s">
 								<div class="alert-message">
@@ -415,16 +387,70 @@
 										</tr>
 									</tfoot> -->
 								</table>
+                <div class="uk-width-1-2@m">
+                  <div class="form-group">
+                    <select class="select2-province" name="Province" id="Province">
+                      <option value=""></option>
+                    </select>
+                  </div>
+                </div>
+                <div class="uk-width-1-2@m">
+                  <div class="form-group">
+                    <select class="select2-city" name="City" id="City">
+                      <option value="">Pilih Kota...</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="uk-width-1-1@s">
+                  <div class="form-group">
+                    <select class="select2-courier" name="Courier" id="Courier">
+                      <option value="">Pilih Kurir...</option>
+                      <option value="">Pilih Kurir :</option>
+                      <option value="jne">JNE</option>
+                      <option value="pos">POS</option>
+                      <option value="rpx">RPX Holding</option>
+                      <option value="esl">Eka Sari Lorena</option>
+                      <option value="pcp">Priority Cargo and Package</option>
+                      <option value="pandu">Pandu Logistics</option>
+                      <option value="wahana">Wahana Prestasi Logistik</option>
+                      <option value="sicepat">SiCepat Express</option>
+                      <option value="jnt">J&T Express</option>
+                      <option value="pahala">Pahala Kencana Express</option>
+                      <option value="cahaya">Tiki</option>
+                      <option value="sap">SAP Express</option>
+                      <option value="jet">JET Express</option>
+                      <option value="dse">21 Express</option>
+                      <option value="slis">Solusi Ekspres</option>
+                      <option value="first">First Logistics</option>
+                      <option value="ncs">Nusantara Card Semesta</option>
+                      <option value="star">Star Cargo</option>
+                      <option value="ninja">Ninja Xpress</option>
+                      <option value="lion">Lion Parcel</option>
+                      <option value="idl">IDL Cargo</option>
+                      <option value="rex">Royal Express Indonesia</option>
+                      <option value="custom">Custom</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="uk-width-1-1@s">
+                  <div class="form-group">
+                    <select class="select2-service" name="Service" id="Service">
+                      <option value="">Pilih Servis Pengiriman...</option>
+                    </select>
+                  </div>
+                </div>
 								<div class="uk-width-1-2@m">
-									<p class="data-weight">0</p>
+									<p class="data-customer">Hendra Rusmaya</p>
+									<p class="data-phone-number">0824000000</p>
+									<p class="data-address">Jalan Rangkas Bitung No. 4</p>
+									<p class="data-description">Description</p>
+									<p class="data-total-price">500000</p>
+									<p class="data-additional-price">100000</p>
+									<p class="data-provinve">Provinsi Jawa Barat</p>
+									<p class="data-city">Kota Bandung</p>
 									<p class="data-courier">JNE</p>
 									<p class="data-service">YES</p>
-									<p class="data-name">Hendra Rusmaya</p>
-									<p class="data-phone-number">0824000000</p>
-									<p class="data-email">hendra.rusmaya@mail.com</p>
-									<p class="data-address">Jalan Rangkas Bitung No. 4</p>
-									<p class="data-city">Kota Bandung</p>
-									<p class="data-provinve">Provinsi Jawa Barat</p>
+									<p class="data-weight">3</p>
 								</div>
 								<div class="uk-width-expand">
 									<div class="form-group">
