@@ -71,28 +71,78 @@ $( document ).ready(function() {
       dataType: "html",
       url: "GetProvince.php",
       success: function(msg){
-      $("#Province").html(msg);                                                     
+      $("#Province").html(msg);
       }
    });
 	$("#Province").on("change",function(){
 		$.ajax({
 		  type: "POST",
 		  dataType: "html",
-		  data : 
+		  data :
 			{
 				province_id : this.value
 			},
 		  url: "GetCity.php",
 		  success: function(msgct){
-		  $("#City").html(msgct);                                                     
+		  $("#City").html(msgct);
 		  }
 		});
 	});
+
+  // event change courier
+  $("#Courier").on("change",function(){
+      if ($("#City").val() == "" || $("#Weight").val() == "" || this.value == ""){
+          alert("Kota Tujuan , Berat , Dan Kurir Tidak Boleh Kosong");
+      }
+      else
+      {
+          if (this.value != "custom")
+          {
+              $.ajax({
+                        url: 'admin/CheckOngkir.php',
+                        dataType : 'json',
+                        data :
+                        {
+                            Destination : $("#City").val(),
+                            Weight      : parseInt($(".data-weight").html()) * 1000,
+                            Courier     : this.value
+                        },
+                        type: 'POST',
+                        success : function(dataService){
+                        var services = dataService.rajaongkir.results[0].costs
+                        $('#Service').empty()
+                        .append("<option selected='selected' value=''>Pilih Service</option>");
+                            $.each(services, function (i, item) {
+                                $('#Service').append($("<option>", {
+                                    value: services[i]['service'],
+                                    data_attr_cost : services[i]['cost'][0].value,
+                                    text : services[i]['description'] + " (" + services[i]['cost'][0].value + ") " + services[i]['cost'][0].etd + "Hari"
+                                }));
+                            });
+                        }
+              })
+          }
+          else
+          {
+              $('#Service').append($("<option>", {
+                          value: "custom",
+                          text : "custom"
+              }));
+              $("#AdditionalPrice").removeAttr("readonly")
+          }
+      }
+  });
+  //
+
+  $('#Service').on("change",function(){
+      $( ".data-additional-price" ).html( $('option:selected', this).attr('data_attr_cost') );
+  });
+
 });
 $('.select2-province, .select2-city, .select2-courier, .select2-service').select2({
 	width: '100%'
 });
-	
+
 $(document).ready(function() {
 // add-remove order form
 	var newField = '<div uk-grid class="order-form-row"><div class="uk-width-3-4@m"><div class="form-group order-form-item"> <select class="select2-color" name="Color" id="Color"><option value="">Pilih Warna..</option> </select> <select class="select2-size" name="Size" id="Size"><option value="">Pilih Ukuran...</option> </select> <input type="text" class="uk-input" id="Qty" name="Qty" value="" placeholder="Quantity"></div></div><div class="uk-width-expand"><div class="form-group"> <button class="uk-button uk-button-danger remove" type="button"><span uk-icon="close"></span> Remove</button></div></div></div>';
@@ -141,9 +191,9 @@ $(document).ready(function() {
         e.preventDefault();
         $(this).parent().parent().parent('div').remove();
     });
-	
+
 	//OrderReviewAction
-	var t = 
+	var t =
 		$('#TableDeliveryDetail').DataTable({
 			"paging": false,
 			"lengthChange": false,
@@ -163,9 +213,16 @@ $(document).ready(function() {
 			  ]
 		});
 	$("#order-review-button").click(function(){
-		var _Date       =   $("#Date").val();
+    //populate date Shipping
+      $( ".data-customer" ).html( $("#Customer").val() )
+      $( ".data-phone-number" ).html( $("#Phone").val() )
+      $( ".data-address" ).html( $("#Address").val() )
+      $( ".data-description" ).html( $("#Description").val() )
+    //
+
+
 		var _TotalQty	= 0;
-		var _NewUnitPrice = 0
+		var _NewUnitPrice = 0;
 		$( "input[name='Qty']" ).each(function( index ) {
 			_TotalQty += parseInt($(this).val());
 		});
@@ -193,7 +250,6 @@ $(document).ready(function() {
 		  });
 		t.clear().draw( false );
 		t.rows.add(arr).draw( false );
-		console.log(_TotalQty);
 		$(".data-weight").html(Math.ceil(_TotalQty / 6));
 	});
 	$("#submit-order-review-button").click(function(e){
@@ -214,7 +270,7 @@ $(document).ready(function() {
 			$.ajax({
 				type: "POST",
 				dataType: "html",
-				data : 
+				data :
 				{
 					arrayItem : JSON.stringify(DataItem)
 				},
@@ -234,7 +290,7 @@ $(document).ready(function() {
 						$.ajax({
 							type: "POST",
 							dataType: "html",
-							data : 
+							data :
 							  {
 								  Customer 			: $(".data-customer").html(),
 								  Phone 			: $(".data-phone-number").html(),
@@ -251,10 +307,10 @@ $(document).ready(function() {
 							  },
 							url: "admin/ActSaveTransactionFrontEnd.php",
 							success: function(msgct){
-							                                                
+
 							}
 						  });
-					}                           
+					}
 				}
 			});
 	})
