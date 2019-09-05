@@ -4,7 +4,7 @@
 .select2-container--default .select2-selection--single .select2-selection__rendered {
 	line-height: 40px;
 }
-.select2-container--default .select2-selection--single .select2-selection__rendered, .uk-offcanvas-bar .uk-close, .uk-offcanvas-bar .uk-table th {
+.select2-container--default .select2-selection--single .select2-selection__rendered, .uk-offcanvas-bar .uk-close, .uk-offcanvas-bar .uk-table th, .uk-offcanvas-bar h2 {
 	color: #666;
 }
 .select2-container--default .select2-selection--single {
@@ -14,6 +14,23 @@
 }
 .uk-width-1-1\@s {
 	margin-top: 40px;
+}
+
+.uk-table th {
+	font-weight: 700;
+}
+
+select[disabled]~.uk-input {
+	vertical-align: top;
+}
+
+.table-size th, .table-size td {
+    text-align: center;
+}
+
+
+#TableDeliveryDetail_wrapper {
+	width: 100%;
 }
 
 select.select2-color, select.select2-size {
@@ -33,6 +50,19 @@ select.select2-color, select.select2-size {
 @media screen and (min-width: 769px) {
 	select.select2-color, select.select2-size, select.select2-color~.select2-container, select.select2-size~.select2-container, input[name="Qty"] {
 		width: 30%!important;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.order-form-item select:not(:first-child), .order-form-item select~.uk-input, .order-form-item .select2-container:nth-child(4) {
+		margin-top: 10px;
+	}
+	#TableDeliveryDetail .select2-container {
+		max-width: 225px!important;
+	}
+	#TableDeliveryDetail {
+		display: flex;
+		flex-direction: column-reverse;
 	}
 }
 

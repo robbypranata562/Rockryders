@@ -234,7 +234,7 @@
 					<div class="uk-width-1-1@s">
 						<p>Available size:
 						</p>
-						<table class="uk-table uk-table-small uk-table-divider">
+						<table class="uk-table uk-table-small uk-table-divider table-size">
 							<thead>
 								<tr>
 									<th>Size</th>
@@ -287,7 +287,7 @@
 					<h2>Order Form</h2>
 				</div>
 				<div class="order-form">
-					<div uk-grid class="order-form-row">
+					<div class="order-form-row uk-grid">
 						<div class="uk-width-3-4@m">
 							<div class="form-group order-form-item">
 								<select class="select2-color" name="Color" id="Color">
@@ -299,7 +299,7 @@
 								<input type="text" class="uk-input" id="Qty" name="Qty" value="" placeholder="Quantity">
 							</div>
 						</div>
-						<div class="uk-width-expand">
+						<div class="uk-width-expand uk-grid-margin uk-first-column">
 							<div class="form-group">
 								<button class="uk-button uk-button-danger remove" type="button"><span uk-icon="close"></span> Remove</button>
 							</div>
@@ -327,14 +327,28 @@
 					</div>
 					<div class="uk-width-1-1@s">
 						<div class="form-group">
-							<input type="text" class="uk-input" name="Address" id="Address" value="" placeholder="Alamat">
+							<textarea type="text" class="uk-textarea" name="Address" id="Address" value="" placeholder="Alamat"></textarea>
 						</div>
 					</div>
-          <div class="uk-width-1-1@s">
-            <div class="form-group">
-              <input type="text" class="uk-input" name="Description" id="Description" value="" placeholder="Deskripsi">
-            </div>
-          </div>
+					<div class="uk-width-1-2@m">
+					  <div class="form-group">
+						<select class="select2-province" name="Province" id="Province">
+						  <option value=""></option>
+						</select>
+					  </div>
+					</div>
+					<div class="uk-width-1-2@m">
+					  <div class="form-group">
+						<select class="select2-city" name="City" id="City">
+						  <option value="">Pilih Kota...</option>
+						</select>
+					  </div>
+					</div>
+					<div class="uk-width-1-1@s">
+						<div class="form-group">
+						  <input type="text" class="uk-input" name="Description" id="Description" value="" placeholder="Deskripsi">
+						</div>
+					</div>
 					<div class="uk-width-1-1@s">
 						<div class="form-group">
 							<div class="form-group">
@@ -345,9 +359,10 @@
 					<div id="order-review" uk-offcanvas="overlay: true; flip: true">
 						<div class="uk-offcanvas-bar">
 							<button class="uk-offcanvas-close" type="button" uk-close></button>
-							<div class="uk-width-1-1@s">
-								<div class="alert-message">
-									<div class="uk-alert-danger" uk-alert>
+							<div class="uk-width-1-1@s uk-grid">
+								<h2>Order Review</h2>
+								<div class="alert-message uk-width-1-1@s">
+									<div class="uk-alert-danger uk-hidden" uk-alert>
 										<a class="uk-alert-close"></a>
 										<p>Maaf, stok kaos warna merah hanya tersisa 5. Mohon untuk mengubah jumlah pesanan Anda...</p>
 									</div>
@@ -362,97 +377,74 @@
 											<th> SubTotal </th>
 										</tr>
 									</thead>
-									<!-- <tfoot>
-										<tr>
-											<th></th>
-											<th></th>
-											<th> Diskon </th>
-											<th> 20000 </th>
-										</tr>
+									<tfoot>
 										<tr>
 											<th>
-
+												<div class="uk-width-1-1@s">
+												  <div class="form-group">
+													<select class="select2-courier" name="Courier" id="Courier">
+													  <option value="">Pilih Kurir :</option>
+													  <option value="jne">JNE</option>
+													  <option value="pos">POS</option>
+													  <option value="rpx">RPX Holding</option>
+													  <option value="esl">Eka Sari Lorena</option>
+													  <option value="pcp">Priority Cargo and Package</option>
+													  <option value="pandu">Pandu Logistics</option>
+													  <option value="wahana">Wahana Prestasi Logistik</option>
+													  <option value="sicepat">SiCepat Express</option>
+													  <option value="jnt">J&T Express</option>
+													  <option value="pahala">Pahala Kencana Express</option>
+													  <option value="cahaya">Tiki</option>
+													  <option value="sap">SAP Express</option>
+													  <option value="jet">JET Express</option>
+													  <option value="dse">21 Express</option>
+													  <option value="slis">Solusi Ekspres</option>
+													  <option value="first">First Logistics</option>
+													  <option value="ncs">Nusantara Card Semesta</option>
+													  <option value="star">Star Cargo</option>
+													  <option value="ninja">Ninja Xpress</option>
+													  <option value="lion">Lion Parcel</option>
+													  <option value="idl">IDL Cargo</option>
+													  <option value="rex">Royal Express Indonesia</option>
+													  <option value="custom">Custom</option>
+													</select>
+												  </div>
+												</div>
 											</th>
-											<th>
-
+											<th colspan="2">
+												<div class="uk-width-1-1@s">
+												  <div class="form-group">
+													<select class="select2-service" name="Service" id="Service">
+													  <option value="">Pilih Servis Pengiriman...</option>
+													</select>
+												  </div>
+												</div>
 											</th>
-											<th> Ongkir </th>
-											<th> 250000 </th>
+											<th> Ongkos Kirim </th>
+											<th><p class="data-additional-price uk-margin-remove-top uk-margin-remove-bottom">0</p></th>
 										</tr>
 										<tr>
+											<th></th>
 											<th></th>
 											<th></th>
 											<th> Total </th>
-											<th> 500000 </th>
+											<th><p class="data-total-price uk-margin-remove-top uk-margin-remove-bottom">0</p></th>
 										</tr>
-									</tfoot> -->
+									</tfoot>
 								</table>
-                <div class="uk-width-1-2@m">
-                  <div class="form-group">
-                    <select class="select2-province" name="Province" id="Province">
-                      <option value=""></option>
-                    </select>
-                  </div>
-                </div>
-                <div class="uk-width-1-2@m">
-                  <div class="form-group">
-                    <select class="select2-city" name="City" id="City">
-                      <option value="">Pilih Kota...</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="uk-width-1-1@s">
-                  <div class="form-group">
-                    <select class="select2-courier" name="Courier" id="Courier">
-                      <option value="">Pilih Kurir...</option>
-                      <option value="">Pilih Kurir :</option>
-                      <option value="jne">JNE</option>
-                      <option value="pos">POS</option>
-                      <option value="rpx">RPX Holding</option>
-                      <option value="esl">Eka Sari Lorena</option>
-                      <option value="pcp">Priority Cargo and Package</option>
-                      <option value="pandu">Pandu Logistics</option>
-                      <option value="wahana">Wahana Prestasi Logistik</option>
-                      <option value="sicepat">SiCepat Express</option>
-                      <option value="jnt">J&T Express</option>
-                      <option value="pahala">Pahala Kencana Express</option>
-                      <option value="cahaya">Tiki</option>
-                      <option value="sap">SAP Express</option>
-                      <option value="jet">JET Express</option>
-                      <option value="dse">21 Express</option>
-                      <option value="slis">Solusi Ekspres</option>
-                      <option value="first">First Logistics</option>
-                      <option value="ncs">Nusantara Card Semesta</option>
-                      <option value="star">Star Cargo</option>
-                      <option value="ninja">Ninja Xpress</option>
-                      <option value="lion">Lion Parcel</option>
-                      <option value="idl">IDL Cargo</option>
-                      <option value="rex">Royal Express Indonesia</option>
-                      <option value="custom">Custom</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="uk-width-1-1@s">
-                  <div class="form-group">
-                    <select class="select2-service" name="Service" id="Service">
-                      <option value="">Pilih Servis Pengiriman...</option>
-                    </select>
-                  </div>
-                </div>
 								<div class="uk-width-1-2@m">
-									<p class="data-customer">Hendra Rusmaya</p>
-									<p class="data-phone-number">0824000000</p>
-									<p class="data-address">Jalan Rangkas Bitung No. 4</p>
-									<p class="data-description">Description</p>
-									<p class="data-total-price">500000</p>
-									<p class="data-additional-price">100000</p>
-									<p class="data-provinve">Provinsi Jawa Barat</p>
-									<p class="data-city">Kota Bandung</p>
-									<p class="data-courier">JNE</p>
-									<p class="data-service">YES</p>
-									<p class="data-weight">3</p>
+									<h4>Informasi Pengiriman</h4>
+									<p class="data-customer uk-margin-remove-top uk-margin-remove-bottom">Hendra Rusmaya</p>
+									<p class="data-phone-number uk-margin-remove-top uk-margin-remove-bottom">0824000000</p>
+									<p class="data-address uk-margin-remove-top uk-margin-remove-bottom">Jalan Rangkas Bitung No. 4</p>
+									<p class="data-provinve uk-margin-remove-top uk-margin-remove-bottom">Provinsi Jawa Barat</p>
+									<p class="data-city uk-margin-remove-top uk-margin-remove-bottom">Kota Bandung</p>
+									<p class="data-courier uk-margin-remove-top uk-margin-remove-bottom">JNE</p>
+									<p class="data-service uk-margin-remove-top uk-margin-remove-bottom">YES</p>
+									<p class="data-description uk-margin-remove-top uk-margin-remove-bottom">Description</p>
+									<p class="data-weight uk-margin-remove-top uk-margin-remove-bottom uk-invisible">3</p>
 								</div>
-								<div class="uk-width-expand">
+								<div class="uk-width-expand uk-flex uk-flex-right uk-flex-bottom">
 									<div class="form-group">
 										<button id="submit-order-review-button" class="uk-button uk-button-primary" type="button">Submit Order</button>
 									</div>

@@ -284,7 +284,8 @@ $(document).ready(function() {
 						for (i = 0 ; i < res.message.length ; i++){
 							var message = '<p>'+res.message[i]+'</p>';
 							$(".uk-alert-danger").append(message);
-						}
+						};
+						$(".uk-alert-danger").removeClass("uk-hidden");
 					}
 					else {
 						$.ajax({
