@@ -225,45 +225,81 @@ $(document).ready(function() {
 				{ data: 'sub' }
 			  ]
 		});
+
+    $("#formOrder").validate({
+      errorElement: "em",
+      rules: {
+          Customer: {
+              required: true,
+          },
+          Phone: {
+              required: true,
+          },
+          Address: {
+              required: true,
+          }
+
+      },
+      messages: {
+          Customer: {
+              required: "Nama Pelanggan Tidak Boleh Kosong.",
+          },
+          Phone: {
+              required: "No Handphone Tidak Boleh Kosong."
+          },
+          Address: {
+              required: "Alamat Tidak Boleh Kosong."
+          }
+      }
+  });
+
 	$("#order-review-button").click(function(){
-    //populate date Shipping
-      $( ".data-customer" ).html( $("#Customer").val() )
-      $( ".data-phone-number" ).html( $("#Phone").val() )
-      $( ".data-address" ).html( $("#Address").val() )
-      $( ".data-description" ).html( $("#Description").val() )
-    //
+
+    if ( $("#formOrder").valid() )
+    {
+        $(this).attr("uk-toggle","target: #order-review")
+      //populate date Shipping
+        $( ".data-customer" ).html( $("#Customer").val() )
+        $( ".data-phone-number" ).html( $("#Phone").val() )
+        $( ".data-address" ).html( $("#Address").val() )
+        $( ".data-description" ).html( $("#Description").val() )
+      //
 
 
-		var _TotalQty	= 0;
-		var _NewUnitPrice = 0;
-		$( "input[name='Qty']" ).each(function( index ) {
-			_TotalQty += parseInt($(this).val());
-		});
+  		var _TotalQty	= 0;
+  		var _NewUnitPrice = 0;
+  		$( "input[name='Qty']" ).each(function( index ) {
+  			_TotalQty += parseInt($(this).val());
+  		});
 
-		if (_TotalQty <= 11)
-		{
-			_NewUnitPrice = 27000;
-		}
-		else if (_TotalQty <= 1199) {
-			_NewUnitPrice = 25500;
-		}
-		else{
-			_NewUnitPrice = 25000;
-		}
+  		if (_TotalQty <= 11)
+  		{
+  			_NewUnitPrice = 27000;
+  		}
+  		else if (_TotalQty <= 1199) {
+  			_NewUnitPrice = 25500;
+  		}
+  		else{
+  			_NewUnitPrice = 25000;
+  		}
 
 
-		var arr = $(".order-form-item").map(function() {
-			  return {
-				color		: 	$(this).find("select[name='Color']").val(),
-				size		: 	$(this).find("select[name='Size']").val(),
-				qty			: 	$(this).find("input[name='Qty']").val(),
-				unitprice	: 	_NewUnitPrice,
-				sub			: 	$(this).find("input[name='Qty']").val() * _NewUnitPrice
-			  };
-		  });
-		t.clear().draw( false );
-		t.rows.add(arr).draw( false );
-		$(".data-weight").html(Math.ceil(_TotalQty / 6));
+  		var arr = $(".order-form-item").map(function() {
+  			  return {
+  				color		: 	$(this).find("select[name='Color']").val(),
+  				size		: 	$(this).find("select[name='Size']").val(),
+  				qty			: 	$(this).find("input[name='Qty']").val(),
+  				unitprice	: 	_NewUnitPrice,
+  				sub			: 	$(this).find("input[name='Qty']").val() * _NewUnitPrice
+  			  };
+  		  });
+  		t.clear().draw( false );
+  		t.rows.add(arr).draw( false );
+  		$(".data-weight").html(Math.ceil(_TotalQty / 6));
+
+    }
+
+
 	});
 	$("#submit-order-review-button").click(function(e){
 			var DataItem = [];
