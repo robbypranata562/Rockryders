@@ -446,7 +446,7 @@
 									<p class="data-description">Description</p>
 									<p class="data-total-price">500000</p>
 									<p class="data-additional-price">100000</p>
-									<p class="data-provinve">Provinsi Jawa Barat</p>
+									<p class="data-province">Provinsi Jawa Barat</p>
 									<p class="data-city">Kota Bandung</p>
 									<p class="data-courier">JNE</p>
 									<p class="data-service">YES</p>

@@ -75,6 +75,8 @@ $( document ).ready(function() {
       }
    });
 	$("#Province").on("change",function(){
+    var selections = $("#Province").select2('data')[0];
+    $( ".data-province" ).html( selections.text );
 		$.ajax({
 		  type: "POST",
 		  dataType: "html",
@@ -84,9 +86,15 @@ $( document ).ready(function() {
 			},
 		  url: "GetCity.php",
 		  success: function(msgct){
-		  $("#City").html(msgct);
+
+		    $("#City").html(msgct);
 		  }
 		});
+
+    $("#City").on("change",function(){
+      var selections = $("#City").select2('data')[0];
+      $( ".data-city" ).html( selections.text );
+    })
 	});
 
   // event change courier
@@ -96,6 +104,8 @@ $( document ).ready(function() {
       }
       else
       {
+          var selections = $("#Courier").select2('data')[0];
+          $( ".data-courier" ).html( selections.text );
           if (this.value != "custom")
           {
               $.ajax({
@@ -134,7 +144,10 @@ $( document ).ready(function() {
   });
   //
 
-  $('#Service').on("change",function(){
+  $('#Service').on("change",function() {
+      var selections = $("#Courier").select2('data');
+      console.log(selections)
+      // $( ".data-courier" ).html( selections.text );
       $( ".data-additional-price" ).html( $('option:selected', this).attr('data_attr_cost') );
   });
 
@@ -292,18 +305,18 @@ $(document).ready(function() {
 							dataType: "html",
 							data :
 							  {
-								  Customer 			: $(".data-customer").html(),
-								  Phone 			: $(".data-phone-number").html(),
-								  Address 			: $(".data-address").html(),
-								  Description 		: $(".data-description").html(),
-								  TotalPrice 		: $(".data-total-price").html(),
-								  AdditionalPrice 	: $(".data-additional-price").html(),
-								  Province 			: $(".data-province").html(),
-								  City 				: $(".data-city").html(),
-								  Courier 			: $(".data-courier").html(),
-								  Service 			: $(".data-service").html(),
-								  Weight 			: $(".data-weight").html(),
-								  arrayItem 		: JSON.stringify(DataItem)
+                  Customer 			     : $(".data-customer").html(),
+                  Phone 			       : $(".data-phone-number").html(),
+                  Address 			     : $(".data-address").html(),
+                  Description 	     : $(".data-description").html(),
+                  TotalPrice 		     : $(".data-total-price").html(),
+                  AdditionalPrice 	 : $(".data-additional-price").html(),
+                  Province 			     : $(".data-province").html(),
+                  City 				       : $(".data-city").html(),
+                  Courier 			     : $(".data-courier").html(),
+                  Service 			     : $(".data-service").html(),
+                  Weight 			       : $(".data-weight").html(),
+                  arrayItem 		     : JSON.stringify(DataItem)
 							  },
 							url: "admin/ActSaveTransactionFrontEnd.php",
 							success: function(msgct){
