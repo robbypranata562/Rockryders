@@ -282,7 +282,7 @@
 	</section>
 	<section class="uk-section uk-padding-remove-top">
 		<div class="uk-container">
-			<form>
+			<form id="formOrder" name="formOrder">
 				<div class="uk-width-1-1@s">
 					<h2>Order Form</h2>
 				</div>
@@ -317,7 +317,7 @@
 				<div class="shipping-form" uk-grid>
 					<div class="uk-width-1-1@s">
 						<div class="form-group">
-							<input type="text" class="uk-input" name="Customer" id="Customer" value="" placeholder="Nama lengkap">
+							<input type="text" class="uk-input" name="Customer" id="Customer" value="" placeholder="Nama lengkap" required>
 						</div>
 					</div>
 					<div class="uk-width-1-1@s">
@@ -352,7 +352,7 @@
 					<div class="uk-width-1-1@s">
 						<div class="form-group">
 							<div class="form-group">
-								<button id="order-review-button" class="uk-button uk-button-primary" type="button" uk-toggle="target: #order-review">Order</button>
+								<button id="order-review-button" class="uk-button uk-button-primary" type="button">Order</button>
 							</div>
 						</div>
 					</div>
@@ -462,6 +462,7 @@
 <script type="text/javascript" src="assets/frontend/js/datatable/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="assets/frontend/js/slick/slick.min.js"></script>
 <script type="text/javascript" src="assets/frontend/js/select2/select2.min.js"></script>
+<script type="text/javascript" src="assets/frontend/js/jquery-validation/jquery.validate.min.js"></script>
 <script type="text/javascript" src="assets/frontend/js/frontend.js"></script>
 </body>
 </html>

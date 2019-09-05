@@ -75,6 +75,8 @@ $( document ).ready(function() {
       }
    });
 	$("#Province").on("change",function(){
+    var selections = $("#Province").select2('data')[0];
+    $( ".data-province" ).html( selections.text );
 		$.ajax({
 		  type: "POST",
 		  dataType: "html",
@@ -84,9 +86,15 @@ $( document ).ready(function() {
 			},
 		  url: "GetCity.php",
 		  success: function(msgct){
-		  $("#City").html(msgct);
+
+		    $("#City").html(msgct);
 		  }
 		});
+
+    $("#City").on("change",function(){
+      var selections = $("#City").select2('data')[0];
+      $( ".data-city" ).html( selections.text );
+    })
 	});
 
   // event change courier
@@ -96,6 +104,8 @@ $( document ).ready(function() {
       }
       else
       {
+          var selections = $("#Courier").select2('data')[0];
+          $( ".data-courier" ).html( selections.text );
           if (this.value != "custom")
           {
               $.ajax({
@@ -134,7 +144,10 @@ $( document ).ready(function() {
   });
   //
 
-  $('#Service').on("change",function(){
+  $('#Service').on("change",function() {
+      var selections = $("#Courier").select2('data');
+      console.log(selections)
+      // $( ".data-courier" ).html( selections.text );
       $( ".data-additional-price" ).html( $('option:selected', this).attr('data_attr_cost') );
   });
 
@@ -212,45 +225,81 @@ $(document).ready(function() {
 				{ data: 'sub' }
 			  ]
 		});
+
+    $("#formOrder").validate({
+      errorElement: "em",
+      rules: {
+          Customer: {
+              required: true,
+          },
+          Phone: {
+              required: true,
+          },
+          Address: {
+              required: true,
+          }
+
+      },
+      messages: {
+          Customer: {
+              required: "Nama Pelanggan Tidak Boleh Kosong.",
+          },
+          Phone: {
+              required: "No Handphone Tidak Boleh Kosong."
+          },
+          Address: {
+              required: "Alamat Tidak Boleh Kosong."
+          }
+      }
+  });
+
 	$("#order-review-button").click(function(){
-    //populate date Shipping
-      $( ".data-customer" ).html( $("#Customer").val() )
-      $( ".data-phone-number" ).html( $("#Phone").val() )
-      $( ".data-address" ).html( $("#Address").val() )
-      $( ".data-description" ).html( $("#Description").val() )
-    //
+
+    if ( $("#formOrder").valid() )
+    {
+        $(this).attr("uk-toggle","target: #order-review")
+      //populate date Shipping
+        $( ".data-customer" ).html( $("#Customer").val() )
+        $( ".data-phone-number" ).html( $("#Phone").val() )
+        $( ".data-address" ).html( $("#Address").val() )
+        $( ".data-description" ).html( $("#Description").val() )
+      //
 
 
-		var _TotalQty	= 0;
-		var _NewUnitPrice = 0;
-		$( "input[name='Qty']" ).each(function( index ) {
-			_TotalQty += parseInt($(this).val());
-		});
+  		var _TotalQty	= 0;
+  		var _NewUnitPrice = 0;
+  		$( "input[name='Qty']" ).each(function( index ) {
+  			_TotalQty += parseInt($(this).val());
+  		});
 
-		if (_TotalQty <= 11)
-		{
-			_NewUnitPrice = 27000;
-		}
-		else if (_TotalQty <= 1199) {
-			_NewUnitPrice = 25500;
-		}
-		else{
-			_NewUnitPrice = 25000;
-		}
+  		if (_TotalQty <= 11)
+  		{
+  			_NewUnitPrice = 27000;
+  		}
+  		else if (_TotalQty <= 1199) {
+  			_NewUnitPrice = 25500;
+  		}
+  		else{
+  			_NewUnitPrice = 25000;
+  		}
 
 
-		var arr = $(".order-form-item").map(function() {
-			  return {
-				color		: 	$(this).find("select[name='Color']").val(),
-				size		: 	$(this).find("select[name='Size']").val(),
-				qty			: 	$(this).find("input[name='Qty']").val(),
-				unitprice	: 	_NewUnitPrice,
-				sub			: 	$(this).find("input[name='Qty']").val() * _NewUnitPrice
-			  };
-		  });
-		t.clear().draw( false );
-		t.rows.add(arr).draw( false );
-		$(".data-weight").html(Math.ceil(_TotalQty / 6));
+  		var arr = $(".order-form-item").map(function() {
+  			  return {
+  				color		: 	$(this).find("select[name='Color']").val(),
+  				size		: 	$(this).find("select[name='Size']").val(),
+  				qty			: 	$(this).find("input[name='Qty']").val(),
+  				unitprice	: 	_NewUnitPrice,
+  				sub			: 	$(this).find("input[name='Qty']").val() * _NewUnitPrice
+  			  };
+  		  });
+  		t.clear().draw( false );
+  		t.rows.add(arr).draw( false );
+  		$(".data-weight").html(Math.ceil(_TotalQty / 6));
+
+    }
+
+
 	});
 	$("#submit-order-review-button").click(function(e){
 			var DataItem = [];
@@ -293,18 +342,18 @@ $(document).ready(function() {
 							dataType: "html",
 							data :
 							  {
-								  Customer 			: $(".data-customer").html(),
-								  Phone 			: $(".data-phone-number").html(),
-								  Address 			: $(".data-address").html(),
-								  Description 		: $(".data-description").html(),
-								  TotalPrice 		: $(".data-total-price").html(),
-								  AdditionalPrice 	: $(".data-additional-price").html(),
-								  Province 			: $(".data-province").html(),
-								  City 				: $(".data-city").html(),
-								  Courier 			: $(".data-courier").html(),
-								  Service 			: $(".data-service").html(),
-								  Weight 			: $(".data-weight").html(),
-								  arrayItem 		: JSON.stringify(DataItem)
+                  Customer 			     : $(".data-customer").html(),
+                  Phone 			       : $(".data-phone-number").html(),
+                  Address 			     : $(".data-address").html(),
+                  Description 	     : $(".data-description").html(),
+                  TotalPrice 		     : $(".data-total-price").html(),
+                  AdditionalPrice 	 : $(".data-additional-price").html(),
+                  Province 			     : $(".data-province").html(),
+                  City 				       : $(".data-city").html(),
+                  Courier 			     : $(".data-courier").html(),
+                  Service 			     : $(".data-service").html(),
+                  Weight 			       : $(".data-weight").html(),
+                  arrayItem 		     : JSON.stringify(DataItem)
 							  },
 							url: "admin/ActSaveTransactionFrontEnd.php",
 							success: function(msgct){
