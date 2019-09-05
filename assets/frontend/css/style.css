@@ -29,7 +29,7 @@ select[disabled]~.uk-input {
 }
 
 
-#TableDeliveryDetail_wrapper {
+.dataTables_wrapper {
 	width: 100%;
 }
 
@@ -84,6 +84,12 @@ select.select2-color, select.select2-size {
 
 .uk-offcanvas-bar .uk-close:hover {
 	color: #444;
+}
+
+@media screen and (min-width: 1200px) {
+.uk-grid>.uk-width-expand.uk-grid-margin.uk-first-column {
+    margin-top: 0;
+}
 }
 
 .uk-offcanvas-bar .uk-table-striped tbody tr:nth-of-type(odd), .uk-offcanvas-bar .uk-table-striped>tr:nth-of-type(odd) {

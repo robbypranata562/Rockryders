@@ -147,8 +147,8 @@ $( document ).ready(function() {
   $('#Service').on("change",function() {
       var selections = $("#Courier").select2('data');
       console.log(selections)
-      // $( ".data-courier" ).html( selections.text );
-      $( ".data-additional-price" ).html( $('option:selected', this).attr('data_attr_cost') );
+      $( ".data-service" ).html( $('option:selected', this).attr('data_attr_cost') );
+      $( ".data-additional-price" ).html( $('option:selected', this).attr('value') );
   });
 
 });
