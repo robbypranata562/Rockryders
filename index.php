@@ -437,7 +437,7 @@
 									<p class="data-customer uk-margin-remove-top uk-margin-remove-bottom">Hendra Rusmaya</p>
 									<p class="data-phone-number uk-margin-remove-top uk-margin-remove-bottom">0824000000</p>
 									<p class="data-address uk-margin-remove-top uk-margin-remove-bottom">Jalan Rangkas Bitung No. 4</p>
-									<p class="data-provinve uk-margin-remove-top uk-margin-remove-bottom">Provinsi Jawa Barat</p>
+									<p class="data-province uk-margin-remove-top uk-margin-remove-bottom">Provinsi Jawa Barat</p>
 									<p class="data-city uk-margin-remove-top uk-margin-remove-bottom">Kota Bandung</p>
 									<p class="data-courier uk-margin-remove-top uk-margin-remove-bottom">JNE</p>
 									<p class="data-service uk-margin-remove-top uk-margin-remove-bottom">YES</p>
