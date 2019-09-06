@@ -23,7 +23,7 @@
 			<div class="uk-width-1-1@s uk-grid">
 				<div class="uk-width-1-1@s">
 					<h2 class="uk-text-center">TERIMA KASIH TELAH MELAKUKAN PEMESANAN</h2>
-					<h4>Order ID: 12345</h4>
+					<h4>Order ID: <p class="data-order-number">12345</p></h4>
 					<p>Silakan melakukan pembayaran ke nomor rekening di bawah ini:</p>
 					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">13000-000-000</h4>
 					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">Bank Mandiri</h4>
@@ -34,8 +34,7 @@
 				<table id="TableDeliveryDetail" class="uk-table uk-table-striped uk-table-responsive">
 					<thead>
 						<tr>
-							<th> Warna </th>
-							<th> Ukuran </th>
+							<th> Item </th>
 							<th> Qty </th>
 							<th> Unit Price </th>
 							<th> SubTotal </th>
@@ -43,15 +42,12 @@
 					</thead>
 					<tfoot>
 						<tr>
-							<th>
-							</th>
 							<th colspan="2">
 							</th>
 							<th> Ongkos Kirim </th>
 							<th><p class="data-additional-price uk-margin-remove-top uk-margin-remove-bottom">0</p></th>
 						</tr>
 						<tr>
-							<th></th>
 							<th></th>
 							<th></th>
 							<th> Total </th>
@@ -81,6 +77,59 @@
 <script type="text/javascript" src="assets/frontend/js/slick/slick.min.js"></script>
 <script type="text/javascript" src="assets/frontend/js/select2/select2.min.js"></script>
 <script type="text/javascript" src="assets/frontend/js/jquery-validation/jquery.validate.min.js"></script>
-<script type="text/javascript" src="assets/frontend/js/frontend.js"></script>
 </body>
+<script>
+  $(document).ready(function() {
+    $('#TableDeliveryDetail').dataTable( {
+      "dom": 'lrtip',
+      "Processing": true,
+      "paging":   false,
+      "serverSide": true,
+      "scrollX": true,
+      "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+          return nRow;
+      },
+      "ajax": {
+          "url": "admin/GetListTransactionDetail.php",
+          "type": "POST",
+          "data": function (d)
+          {
+              d.id = <?php echo $_GET['OrderId']; ?>
+          }
+      },
+      "fnInitComplete": function (oSettings, json) {
+      },
+      "fnDrawCallback": function (settings) {
+      },
+    });
+
+    //
+    $.ajax({
+		  type: "POST",
+		  dataType: "html",
+		  data :
+			{
+				OrderId : <?php echo $_GET['OrderId']; ?>
+			},
+		  url: "admin/GetDataTransactionFrontEnd.php",
+		  success: function(result){
+        result = JSON.parse(result)
+        $(".data-customer").html(result["Customer"]);
+        $(".data-phone-number").html(result["Phone"]);
+        $(".data-address").html(result["Address"]);
+        $(".data-description").html(result["Description"]);
+        $(".data-total-price").html(result["TotalPrice"]);
+        $(".data-additional-price").html(result["AdditionalPrice"]);
+        $(".data-province").html(result["Province"]);
+        $(".data-city").html(result["City"]);
+        $(".data-courier").html(result["Courier"]);
+        $(".data-service").html(result["Service"]);
+        $(".data-weight").html(result["Weight"]);
+        $(".data-order-number").html(result["Code"]);
+		  }
+		});
+    //
+
+  })
+</script>
 </html>

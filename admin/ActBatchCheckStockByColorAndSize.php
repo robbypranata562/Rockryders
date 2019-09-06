@@ -27,11 +27,40 @@
             }
             if ( $qty < $key[2] )
             {
-                array_push($Messages, "Item Ini Stock Kurang");
-                $valid = false;
+              $SQL = "
+              SELECT
+              	concat(
+              		a.`Name`,
+              		' ',
+              		b.`Name`,
+              		' ',
+              		c.`Name`
+              	) AS Item,
+                a.SmallQty
+              FROM
+              	item AS a
+              LEFT JOIN color AS b ON a.Color = b.`Code`
+              INNER JOIN size AS c ON a.Size = c.`Code`
+              WHERE
+              	1 = 1
+                and a.Color = '".$key[0]."'
+                and a.Size  = '".$key[1]."'
+                and a.DeletedBy is Null
+                and a.DeletedDate is null
+              ";
+              $result=mysqli_query($koneksi,$SQL);
+              if(mysqli_num_rows($result) > 0 )
+              {
+                  while($row=mysqli_fetch_array($result))
+                  {
+                    array_push($Messages, "Stok ".$row['Item']." Hanya Tersisa ".$row['SmallQty']);
+                    $valid = false;
+                  }
+              }
+
             }
         }
-        else 
+        else
         {
 
             array_push($Messages, "Item Ini Tidak Ada");

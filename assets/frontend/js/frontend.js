@@ -144,12 +144,7 @@ $( document ).ready(function() {
   });
   //
 
-  $('#Service').on("change",function() {
-      var selections = $("#Courier").select2('data');
-      console.log(selections)
-      $( ".data-service" ).html( $('option:selected', this).attr('data_attr_cost') );
-      $( ".data-additional-price" ).html( $('option:selected', this).attr('value') );
-  });
+
 
 });
 $('.select2-province, .select2-city, .select2-courier, .select2-service').select2({
@@ -158,6 +153,8 @@ $('.select2-province, .select2-city, .select2-courier, .select2-service').select
 
 $(document).ready(function() {
 // add-remove order form
+
+  var _TotalPrice = 0;
 	var newField = '<div uk-grid class="order-form-row"><div class="uk-width-3-4@m"><div class="form-group order-form-item"> <select class="select2-color" name="Color" id="Color"><option value="">Pilih Warna..</option> </select> <select class="select2-size" name="Size" id="Size"><option value="">Pilih Ukuran...</option> </select> <input type="text" class="uk-input" id="Qty" name="Qty" value="" placeholder="Quantity"></div></div><div class="uk-width-expand"><div class="form-group"> <button class="uk-button uk-button-danger remove" type="button"><span uk-icon="close"></span> Remove</button></div></div></div>';
 	$(".add-more").click(function(){
 		$('.select2-color').attr('disabled','');
@@ -257,6 +254,7 @@ $(document).ready(function() {
 
     if ( $("#formOrder").valid() )
     {
+        _TotalPrice = 0;
         $(this).attr("uk-toggle","target: #order-review")
       //populate date Shipping
         $( ".data-customer" ).html( $("#Customer").val() )
@@ -264,33 +262,38 @@ $(document).ready(function() {
         $( ".data-address" ).html( $("#Address").val() )
         $( ".data-description" ).html( $("#Description").val() )
       //
-
-
   		var _TotalQty	= 0;
   		var _NewUnitPrice = 0;
   		$( "input[name='Qty']" ).each(function( index ) {
   			_TotalQty += parseInt($(this).val());
   		});
+      $( "input[name='Qty']" ).each(function( index ) {
+        if (_TotalQty <= 11)
+        {
+          _NewUnitPrice = 27000;
+          _TotalPrice = parseInt(_TotalPrice) +  ( parseInt( $(this).val() ) * parseInt( _NewUnitPrice ) );
+        }
+        else if (_TotalQty <= 1199)
+        {
+          _NewUnitPrice = 25500;
+          _TotalPrice = parseInt(_TotalPrice) +  ( parseInt( $(this).val() ) * parseInt( _NewUnitPrice ) );
+        }
+        else
+        {
+          _NewUnitPrice = 25000;
+          _TotalPrice = parseInt(_TotalPrice) +  ( parseInt( $(this).val() ) * parseInt( _NewUnitPrice ) );
+        }
+      });
 
-  		if (_TotalQty <= 11)
-  		{
-  			_NewUnitPrice = 27000;
-  		}
-  		else if (_TotalQty <= 1199) {
-  			_NewUnitPrice = 25500;
-  		}
-  		else{
-  			_NewUnitPrice = 25000;
-  		}
 
 
   		var arr = $(".order-form-item").map(function() {
   			  return {
-  				color		: 	$(this).find("select[name='Color']").val(),
-  				size		: 	$(this).find("select[name='Size']").val(),
-  				qty			: 	$(this).find("input[name='Qty']").val(),
-  				unitprice	: 	_NewUnitPrice,
-  				sub			: 	$(this).find("input[name='Qty']").val() * _NewUnitPrice
+  				color		        : 	$(this).find("select[name='Color']").val(),
+  				size		        : 	$(this).find("select[name='Size']").val(),
+  				qty			        : 	$(this).find("input[name='Qty']").val(),
+  				unitprice	      : 	_NewUnitPrice,
+  				sub			        : 	$(this).find("input[name='Qty']").val() * _NewUnitPrice
   			  };
   		  });
   		t.clear().draw( false );
@@ -298,9 +301,16 @@ $(document).ready(function() {
   		$(".data-weight").html(Math.ceil(_TotalQty / 6));
 
     }
-
-
 	});
+
+  $('#Service').on("change",function() {
+      var selections = $("#Courier").select2('data');
+      console.log(selections)
+      $( ".data-service" ).html( $( 'option:selected', this ).attr( 'value' ) );
+      $( ".data-additional-price" ).html( $('option:selected', this).attr( 'data_attr_cost' ) );
+      $( ".data-total-price" ).html( parseInt(_TotalPrice) + parseInt( $( ".data-additional-price" ).html() ) );
+  });
+
 	$("#submit-order-review-button").click(function(e){
 			var DataItem = [];
 			var info = t.page.info();
@@ -313,7 +323,9 @@ $(document).ready(function() {
 				([
 					$("td:eq(0)",row).html(),
 					$("td:eq(1)",row).html(),
-					$("td:eq(2)",row).html()
+					$("td:eq(2)",row).html(),
+          $("td:eq(3)",row).html(),
+          $("td:eq(4)",row).html()
 				]);
 			}
 			$.ajax({
@@ -356,8 +368,13 @@ $(document).ready(function() {
                   arrayItem 		     : JSON.stringify(DataItem)
 							  },
 							url: "admin/ActSaveTransactionFrontEnd.php",
-							success: function(msgct){
-
+							success: function(data){
+                data = JSON.parse(data)
+                if (data.message == "Success")
+                {
+                    var origin   = window.location.origin;
+                    window.location.href = origin + "/ThankYou.php?OrderId="+data.OrderId
+                }
 							}
 						  });
 					}
