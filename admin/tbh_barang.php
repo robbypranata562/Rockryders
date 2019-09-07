@@ -44,7 +44,7 @@
           $MinStock         = $_POST['MinStock'];
           $Aging            = $_POST['Aging'];
           $CreatedBy        = $_SESSION['id_karyawan'];
-          
+
 
           $sql="INSERT INTO `item` (
             `Name`,
@@ -117,7 +117,7 @@
                 <select class="form-control" style="width: 100%;" name="Color" id="Color" data-error="Warna Tidak Boleh Kosong" required>
                 <option value="">Pilih Warna :</option>
                   <?php
-                    $sql="SELECT Code , Name FROM Color";
+                    $sql="SELECT Code , Name FROM color";
                     $exe=mysqli_query($koneksi,$sql);
                     while($data=mysqli_fetch_array($exe))
                     {
@@ -135,7 +135,7 @@
                 <select class="form-control" style="width: 100%;" name="Size" id="Size" data-error="Ukuran Tidak Boleh Kosong" required>
                 <option value="">Pilih Ukuran :</option>
                   <?php
-                    $sql="SELECT Code , Name FROM Size";
+                    $sql="SELECT Code , Name FROM size";
                     $exe=mysqli_query($koneksi,$sql);
                     while($data=mysqli_fetch_array($exe))
                     {
