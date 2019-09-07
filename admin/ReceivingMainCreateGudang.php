@@ -58,7 +58,7 @@
                                         <select class="form-control" style="width: 100%;" name="Color" id="Color">
                                             <option value="">Pilih Warna :</option>
                                             <?php
-                                                $sql="SELECT Code , Name FROM size";
+                                                $sql="SELECT Code , Name FROM color";
                                                 $exe=mysqli_query($koneksi,$sql);
                                                 while($data=mysqli_fetch_array($exe))
                                                 {
