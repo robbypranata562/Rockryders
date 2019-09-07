@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "koneksi.php";
 $Limit  =  $_POST['length'];
 $Offset =  $_POST['start'];
@@ -12,7 +12,7 @@ $cek_count="SELECT
 COUNT(*) as Count
 FROM
 `transaction` AS a
-where 
+where
 1=1
 and a.DeletedDate is null
 and a.DeletedBy is null
@@ -38,7 +38,7 @@ $cek=
 SELECT
     a.Id,
     a.Code,
-    Date(a.Date) as `Date`,   
+    Date(a.Date) as `Date`,
     a.Customer,
     a.Phone,
     format(a.TotalPrice,2) as TotalPrice,
@@ -48,12 +48,12 @@ SELECT
     a.isConfirm as Status
 FROM
     `transaction` AS a
-WHERE   
+WHERE
     1=1
     and a.DeletedBy is NULL
     and a.DeletedDate is null
     and a.isConfirm = ".$Status."
-Order By 
+Order By
     a.Date
 LIMIT ".$Limit." OFFSET ".$Offset."
 ";
@@ -62,7 +62,7 @@ if(mysqli_num_rows($k) > 0 )
 {
     while($row=mysqli_fetch_array($k))
     {
-        
+
         $data = array
             (
 

@@ -358,7 +358,7 @@ $(document).ready(function() {
                   Phone 			       : $(".data-phone-number").html(),
                   Address 			     : $(".data-address").html(),
                   Description 	     : $(".data-description").html(),
-                  TotalPrice 		     : $(".data-total-price").html(),
+                  TotalPrice 		     : parseInt( $(".data-total-price").html() ) - $(".data-additional-price").html() != "" ? parseInt( $(".data-additional-price").html() ) : 0,
                   AdditionalPrice 	 : $(".data-additional-price").html(),
                   Province 			     : $(".data-province").html(),
                   City 				       : $(".data-city").html(),

@@ -58,7 +58,7 @@
                                         <select class="form-control" style="width: 100%;" name="Color" id="Color">
                                             <option value="">Pilih Warna :</option>
                                             <?php
-                                                $sql="SELECT Code , Name FROM Color";
+                                                $sql="SELECT Code , Name FROM size";
                                                 $exe=mysqli_query($koneksi,$sql);
                                                 while($data=mysqli_fetch_array($exe))
                                                 {
@@ -78,7 +78,7 @@
                                         <select class="form-control" style="width: 100%;" name="Size" id="Size">
                                             <option value="">Pilih Ukuran :</option>
                                             <?php
-                                                $sql="SELECT Code , Name FROM Size";
+                                                $sql="SELECT Code , Name FROM size";
                                                 $exe=mysqli_query($koneksi,$sql);
                                                 while($data=mysqli_fetch_array($exe))
                                                 {
