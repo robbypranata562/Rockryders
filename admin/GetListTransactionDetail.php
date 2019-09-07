@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "koneksi.php";
 $Limit  =  $_POST['length'];
 $Offset =  $_POST['start'];
@@ -11,8 +11,8 @@ $iTotal = 0;
 $cek_count="SELECT
 COUNT(*) as Count
 FROM
-`transactionDetail` AS a
-where 
+`transactiondetail` AS a
+where
 TransactionId = ".$Id."
 and a.DeletedDate is null
 and a.DeletedBy is null
@@ -40,7 +40,7 @@ SELECT
     format(a.UnitPrice, 2) AS UnitPrice,
     format(a.TotalPrice, 2) AS TotalPrice
 FROM
-    transactionDetail AS a
+    transactiondetail AS a
     LEFT JOIN item AS b ON a.ItemId = b.id
     LEFT JOIN color as c on b.Color = c.`Code`
     LEFT JOIN size as d on b.Size = d.`Code`
@@ -54,7 +54,7 @@ if(mysqli_num_rows($k) > 0 )
 {
     while($row=mysqli_fetch_array($k))
     {
-        
+
         $data = array
             (
 
