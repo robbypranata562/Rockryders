@@ -10,13 +10,13 @@
 <section class="content">
   <div class="box">
     <div class="box-header with-border">
-      <?php 
+      <?php
         if ($jabatan=='Super Administrator' or $jabatan=='Stok Admin')
         {
         ?>
-          <a href="tbh_barang.php"><h3 class="box-title"><span class="glyphicon glyphicon-plus"></span>Stock Barang</h3></a>
-      <?php 
-        } 
+          <a href="tbh_barang_gudang.php"><h3 class="box-title"><span class="glyphicon glyphicon-plus"></span>Stock Barang</h3></a>
+      <?php
+        }
         ?>
         <div class="box-tools pull-right">
         </div>
