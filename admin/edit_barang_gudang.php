@@ -18,22 +18,22 @@
           </div>
         </div>
         <div class="box-body">
-		<?php 
+		<?php
 //include 'koneksi.php';
 if (isset($_POST['ubah'])){
 $sql="update itemgudang
-set 
+set
   Name                  ='".$_POST['Name']."',
   BasePrice             ='".$_POST['BasePrice']."',
   MinStock              ='".$_POST['MinStock']."',
   Aging                 ='".$_POST['Aging']."'
-where 
+where
   Id=".$_POST['ItemId']."";
   $exe=mysqli_query($koneksi,$sql);
   if($exe)
   {
     echo ("<script>location.href='tampil_barang_gudang.php';</script>");
-  } 
+  }
   else
   {
     echo"<div class='alert alert-danger'>
@@ -47,7 +47,7 @@ where
 
 		<?php
 			$id_brg=$_GET['id'];
-			$sql_1="SELECT * FROM itemGudang where id ='$id_brg'";
+			$sql_1="SELECT * FROM itemgudang where id ='$id_brg'";
 			$exe=mysqli_query($koneksi,$sql_1);
 			while ($data=mysqli_fetch_array($exe)){
 		?>
@@ -83,5 +83,3 @@ where
     </section>
   </div>
 <?php include "footer.php";?>
- 
- 
