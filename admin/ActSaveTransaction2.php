@@ -128,13 +128,13 @@
         foreach ($Items as $key)
         {
             $SQLSelectItemExists = "
-            Select 
+            Select
                 Id as `Exists`,
                 SmallQty
-            From 
-                item 
-            Where 
-                1=1    
+            From
+                item
+            Where
+                1=1
                 and Color   =   '".$key[0]."'
                 and Size    =   '".$key[1]."'";
             $resultItemExists = mysqli_query($koneksi,$SQLSelectItemExists);
@@ -146,9 +146,9 @@
             }
 
             if (!is_null($isExists)){
-                $SQLInserttransactionDetail = "Insert 
-                Into 
-                    transactionDetail
+                $SQLInserttransactiondetail = "Insert
+                Into
+                    transactiondetail
                 (
                     transactionId,
                     ItemId,
@@ -176,10 +176,10 @@
                     ".$Session.",
                     NOW()
                 )";
-                if($koneksi->query($SQLInserttransactionDetail) === TRUE)
+                if($koneksi->query($SQLInserttransactiondetail) === TRUE)
                 {
                     //kurangin stock
-                    $SQLUpdateQtyItem = "Update item 
+                    $SQLUpdateQtyItem = "Update item
                     Set
                         SmallQty = SmallQty - ".$key[2]."
                     where
@@ -188,12 +188,12 @@
                     {
                         $isStockCardExists = NULL;
                         $SQLCheckStockAwalExists = "
-                        Select 
+                        Select
                             Id as `Exists`
-                        From 
-                            stockcard 
-                        Where 
-                            1=1    
+                        From
+                            stockcard
+                        Where
+                            1=1
                             and Description = '#Stock Awal Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
                             ";
                         $resultStockCardExists = mysqli_query($koneksi,$SQLCheckStockAwalExists);
@@ -202,7 +202,7 @@
                             $isStockCardExists = $data['Exists'];
                         }
                         if ($isStockCardExists === NULL) {
-                            $SQLInsertStockCard = 
+                            $SQLInsertStockCard =
                             "Insert Into stockcard
                             (
                                 Date,
@@ -213,8 +213,8 @@
                                 `OUT`,
                                 NewValue,
                                 Description
-                            ) 
-                            Values 
+                            )
+                            Values
                             (
                                 '".$Date."',
                                 '0000000000',
@@ -228,7 +228,7 @@
                             if($koneksi->query($SQLInsertStockCard) === TRUE)
                             {
                                 $NewStock = $LastStock - $key[2];
-                                $SQLInsertStockCardtransaction = 
+                                $SQLInsertStockCardtransaction =
                                 "Insert Into stockcard
                                 (
                                     Date,
@@ -239,8 +239,8 @@
                                     `OUT`,
                                     NewValue,
                                     Description
-                                ) 
-                                Values 
+                                )
+                                Values
                                 (
                                     '".$Date."',
                                     '".$Code."',
@@ -253,9 +253,9 @@
                                 )";
                                 if($koneksi->query($SQLInsertStockCardtransaction) === TRUE)
                                 {
-                                  
+
                                 }
-                                else 
+                                else
                                 {
                                     echo json_encode("Error Insert Stock Card Penjualan");
                                 }
@@ -264,7 +264,7 @@
                             }
                         } else {
                             $NewStock = $LastStock - $key[2];
-                            $SQLInsertStockCardtransaction = 
+                            $SQLInsertStockCardtransaction =
                             "Insert Into stockcard
                             (
                                 Date,
@@ -275,8 +275,8 @@
                                 `OUT`,
                                 NewValue,
                                 Description
-                            ) 
-                            Values 
+                            )
+                            Values
                             (
                                 '".$Date."',
                                 '".$Code."',
@@ -289,9 +289,9 @@
                             )";
                             if($koneksi->query($SQLInsertStockCardtransaction) === TRUE)
                             {
-                              
+
                             }
-                            else 
+                            else
                             {
                                 echo json_encode("Error Insert Stock Card Penjualan");
                             }

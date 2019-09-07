@@ -146,9 +146,9 @@
             }
 
             if (!is_null($isExists)){
-                $SQLInserttransactionDetail = "Insert
+                $SQLInserttransactiondetail = "Insert
                 Into
-                    transactionDetail
+                    transactiondetail
                 (
                     transactionId,
                     ItemId,
@@ -176,7 +176,7 @@
                     0,
                     NOW()
                 )";
-                if($koneksi->query($SQLInserttransactionDetail) === TRUE)
+                if($koneksi->query($SQLInserttransactiondetail) === TRUE)
                 {
                     //kurangin stock
                     $SQLUpdateQtyItem = "Update item

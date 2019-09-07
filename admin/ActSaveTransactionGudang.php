@@ -5,7 +5,7 @@
     $select_code_for_po = "Select
     Increment + 1 as Increment
     From
-    CodeTransactionGudang
+    codetransactiongudang
     where
     1=1
     And Prefix = 'DO'
@@ -22,7 +22,7 @@
         }
 
         $sql_update_incerement = "
-        Update CodeTransactionGudang
+        Update codetransactiongudang
         Set
             Increment = ".$number."
         Where
@@ -38,7 +38,7 @@
 
     if(is_null($number))
     {
-        $insert_code_for_po = "Insert Into CodeTransactionGudang
+        $insert_code_for_po = "Insert Into codetransactiongudang
         (
             Prefix,
             Year,
@@ -84,7 +84,7 @@
     $Service                = $_POST['Service'];
     $Weight                 = $_POST['Weight'];
     //start insert to database
-    $SQLInsertReceivingMain = "insert into TransactionGudang
+    $SQLInsertReceivingMain = "insert into transactiongudang
     (
         Code ,
         Date ,
@@ -128,13 +128,13 @@
         foreach ($Items as $key)
         {
             $SQLSelectItemExists = "
-            Select 
+            Select
                 Id as `Exists`,
                 SmallQty
-            From 
-                ItemGudang
-            Where 
-                1=1    
+            From
+                itemgudang
+            Where
+                1=1
                 and Color   =   '".$key[0]."'
                 and Size    =   '".$key[1]."'";
             $resultItemExists = mysqli_query($koneksi,$SQLSelectItemExists);
@@ -146,9 +146,9 @@
             }
 
             if (!is_null($isExists)){
-                $SQLInsertTransactionDetail = "Insert 
-                Into 
-                    TransactionDetailGudang
+                $SQLInsertTransactionDetail = "Insert
+                Into
+                    transactiondetailgudang
                 (
                     TransactionId,
                     ItemId,
@@ -179,7 +179,7 @@
                 if($koneksi->query($SQLInsertTransactionDetail) === TRUE)
                 {
                     //kurangin stock
-                    $SQLUpdateQtyItem = "Update ItemGudang
+                    $SQLUpdateQtyItem = "Update itemgudang
                     Set
                         SmallQty = SmallQty - ".$key[2]."
                     where
@@ -188,12 +188,12 @@
                     {
                         $isStockCardExists = NULL;
                         $SQLCheckStockAwalExists = "
-                        Select 
+                        Select
                             Id as `Exists`
-                        From 
-                            StockCardGudang
-                        Where 
-                            1=1    
+                        From
+                            stockcardgudang
+                        Where
+                            1=1
                             and Description = '#Stock Awal Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
                             ";
                         $resultStockCardExists = mysqli_query($koneksi,$SQLCheckStockAwalExists);
@@ -202,8 +202,8 @@
                             $isStockCardExists = $data['Exists'];
                         }
                         if ($isStockCardExists === NULL) {
-                            $SQLInsertStockCard = 
-                            "Insert Into StockCardGudang
+                            $SQLInsertStockCard =
+                            "Insert Into stockcardgudang
                             (
                                 Date,
                                 TransactionCode,
@@ -213,8 +213,8 @@
                                 `OUT`,
                                 NewValue,
                                 Description
-                            ) 
-                            Values 
+                            )
+                            Values
                             (
                                 '".$Date."',
                                 '0000000000',
@@ -228,8 +228,8 @@
                             if($koneksi->query($SQLInsertStockCard) === TRUE)
                             {
                                 $NewStock = $LastStock - $key[2];
-                                $SQLInsertStockCardTransaction = 
-                                "Insert Into StockCardGudang
+                                $SQLInsertStockCardTransaction =
+                                "Insert Into stockcardgudang
                                 (
                                     Date,
                                     TransactionCode,
@@ -239,8 +239,8 @@
                                     `OUT`,
                                     NewValue,
                                     Description
-                                ) 
-                                Values 
+                                )
+                                Values
                                 (
                                     '".$Date."',
                                     '".$Code."',
@@ -253,9 +253,9 @@
                                 )";
                                 if($koneksi->query($SQLInsertStockCardTransaction) === TRUE)
                                 {
-                                  
+
                                 }
-                                else 
+                                else
                                 {
                                     echo json_encode("Error Insert Stock Card Penjualan");
                                 }
@@ -264,8 +264,8 @@
                             }
                         } else {
                             $NewStock = $LastStock - $key[2];
-                            $SQLInsertStockCardTransaction = 
-                            "Insert Into StockCardGudang
+                            $SQLInsertStockCardTransaction =
+                            "Insert Into stockcardgudang
                             (
                                 Date,
                                 TransactionCode,
@@ -275,8 +275,8 @@
                                 `OUT`,
                                 NewValue,
                                 Description
-                            ) 
-                            Values 
+                            )
+                            Values
                             (
                                 '".$Date."',
                                 '".$Code."',
@@ -289,9 +289,9 @@
                             )";
                             if($koneksi->query($SQLInsertStockCardTransaction) === TRUE)
                             {
-                              
+
                             }
-                            else 
+                            else
                             {
                                 echo json_encode("Error Insert Stock Card Penjualan");
                             }

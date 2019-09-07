@@ -44,18 +44,18 @@
                         foreach ($Items as $key)
                         {
                             $operation = "";
-                            if ( (int) $key[3] > (int) $key[4] ) 
+                            if ( (int) $key[3] > (int) $key[4] )
                             {
                                 $operation = "-";
                             }
 
-                            else 
+                            else
                             {
                                 $operation = "+";
                             }
 
-                            $sql_Adjustment = "";
-                            $sql_Adjustment="insert into Adjustment
+                            $sql_adjustment = "";
+                            $sql_adjustment="insert into adjustment
                             (
                                 ItemId ,
                                 Date ,
@@ -73,8 +73,8 @@
                                 '".$operation."'    ,
                                 '".$Session."'      ,
                                 NOW())";
-                                //print_r($sql_Adjustment);
-                            if ($koneksi->query($sql_Adjustment) === TRUE)
+                                //print_r($sql_adjustment);
+                            if ($koneksi->query($sql_adjustment) === TRUE)
                             {
                                 $konversi   =   $key[2];
                                 $LastValue  =   $key[3];
@@ -118,7 +118,7 @@
                             {
                                 echo    "<div class='alert alert-danger'>
                                             <a class='close' data-dismiss='alert' href='#'>&times;</a>
-                                            <strong>Success!</strong> Data Adjustment Detail Gagal Disimpan
+                                            <strong>Success!</strong> Data adjustment Detail Gagal Disimpan
                                         </div>";
                             }
                         }
@@ -126,10 +126,10 @@
 
             }
             ?>
-            <form id="formAdjustment" name="formAdjustment" class="form-body" data-toggle="validator" action="" method="post" enctype="multipart/form-data">
+            <form id="formadjustment" name="formadjustment" class="form-body" data-toggle="validator" action="" method="post" enctype="multipart/form-data">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Adjustment</h3>
+                    <h3 class="box-title">adjustment</h3>
                     <div class="box-tools pull-right">
                     </div>
                 </div>
@@ -175,7 +175,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                     <div class="form-group">
                         <button type="button" class="btn btn-primary" id="btnTambahBarang" name="btnTambahBarang"> Tambah Barang </button>
                     </div>
@@ -184,12 +184,12 @@
             </div>
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Adjustment</h3>
+                    <h3 class="box-title">adjustment</h3>
                     <div class="box-tools pull-right">
                     </div>
                 </div>
                 <div class="box-body">
-                <table id="TableAdjustment" class="table table-bordered table-striped">
+                <table id="Tableadjustment" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                         <th> Nama Barang </th>
@@ -213,8 +213,8 @@
 <?php include "footer.php";?>
 <script type="text/javascript">
 		$( document ).ready(function() {
-            var table =     
-            $('#TableAdjustment').DataTable
+            var table =
+            $('#Tableadjustment').DataTable
             (
                 {
                     "paging": false,
@@ -239,7 +239,7 @@
                     CheckStock( _Color , _Size);
                 }
 
-                
+
             });
 
             function CheckStock(Color , Size){
@@ -274,7 +274,7 @@
                 })
             }
 
-      
+
 
             $("#btnTest").click(function(e){
                 var DataItem = [];
@@ -282,7 +282,7 @@
                 var length = info.recordsTotal - 1;
                 for(var i = 0 ; i <= length ; i++)
                 {
-                    var row = $("#TableAdjustment tbody tr:eq("+i+")");
+                    var row = $("#Tableadjustment tbody tr:eq("+i+")");
                     DataItem.push([
                         $("td:eq(1)",row).html(),
                         $("td:eq(2)",row).html(),
@@ -308,7 +308,7 @@
                         console.log(data)
                        if (data == "OK"){
                         $("#myModal").modal('hide')
-                        $("#formAdjustment").submit();
+                        $("#formadjustment").submit();
                        }
                        else{
                         alert(data)
