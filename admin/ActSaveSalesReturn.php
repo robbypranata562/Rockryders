@@ -5,7 +5,7 @@
     $select_code_for_po = "Select
     Increment + 1 as Increment
     From
-    CodeTransaction
+    codetransaction
     where
     1=1
     And Prefix = 'SR'
@@ -22,7 +22,7 @@
         }
 
         $sql_update_incerement = "
-        Update CodeTransaction
+        Update codetransaction
         Set
             Increment = ".$number."
         Where
@@ -38,7 +38,7 @@
 
     if(is_null($number))
     {
-        $insert_code_for_po = "Insert Into CodeTransaction
+        $insert_code_for_po = "Insert Into codetransaction
         (
             Prefix,
             Year,
@@ -72,9 +72,9 @@
     $Address                = $_POST['Address'];
     $Description            = $_POST['Description'];
     $Session                = $_SESSION['id_admin'];
-    $Items                  = json_decode($_POST['arrayItem']);
+    $items                  = json_decode($_POST['arrayItem']);
 
-    $SQLInsertSalesReturn = "insert into `Return`
+    $SQLInsertSalesreturn = "insert into `return`
     (
         Code ,
         Date ,
@@ -96,33 +96,33 @@
         ".$Session.",
         NOW()
     )";
-    if($koneksi->query($SQLInsertSalesReturn) === TRUE)
+    if($koneksi->query($SQLInsertSalesreturn) === TRUE)
     {
-        $SalesReturnId = $koneksi->insert_id;
+        $SalesreturnId = $koneksi->insert_id;
         foreach ($Items as $key)
         {
             $SQLSelectItemExists = "
-            Select 
+            Select
                 Id as `Exists`
-            From 
-                Item 
-            Where 
-                1=1    
+            From
+                item
+            Where
+                1=1
                 and Color   =   '".$key[0]."'
                 and Size    =   '".$key[1]."'";
-            $resultItemExists = mysqli_query($koneksi,$SQLSelectItemExists);
-            while ($row = $resultItemExists->fetch_assoc())
+            $resultitemExists = mysqli_query($koneksi,$SQLSelectitemExists);
+            while ($row = $resultitemExists->fetch_assoc())
             {
                 $isExists = $row['Exists'];
             }
 
             if (!is_null($isExists)){
-                $SQLInsertReturnDetail = "Insert 
-                Into 
-                    ReturnDetail
+                $SQLInsertreturnDetail = "Insert
+                Into
+                    returndetail
                 (
-                    ReturnId,
-                    ItemId,
+                    returnId,
+                    itemId,
                     Qty,
                     UOM,
                     CreatedBy,
@@ -130,21 +130,21 @@
                 )
                 Values
                 (
-                    ".$SalesReturnId.",
+                    ".$SalesreturnId.",
                     ".$isExists.",
                     ".$key[2].",
                     'Pcs',
                     ".$Session.",
                     NOW()
                 )";
-                if($koneksi->query($SQLInsertReturnDetail) === TRUE)
+                if($koneksi->query($SQLInsertreturndetail) === TRUE)
                 {
-                    $SQLInsertStockReturn = "Insert 
-                    Into 
-                        StockReturn
+                    $SQLInsertstockreturn = "Insert
+                    Into
+                        stockreturn
                     (
                         TransactionCode,
-                        ItemId,
+                        itemId,
                         Qty,
                         UOM,
                         CreatedBy,
@@ -159,21 +159,21 @@
                         ".$Session.",
                         NOW()
                     )";
-                    if($koneksi->query($SQLInsertStockReturn) === TRUE)
+                    if($koneksi->query($SQLInsertstockreturn) === TRUE)
                     {
 
                     }
-                    else 
+                    else
                     {
-                        echo $SQLInsertStockReturn;
+                        echo $SQLInsertstockreturn;
                     }
                 } else {
-                    echo $SQLInsertReturnDetail;
+                    echo $SQLInsertreturndetail;
                 }
             }
         }
     } else {
-        echo $SQLInsertSalesReturn;
+        echo $SQLInsertSalesreturn;
     }
-    echo ("<script>location.href='SalesReturnMainList.php';</script>");
+    echo ("<script>location.href='SalesreturnMainList.php';</script>");
 ?>
