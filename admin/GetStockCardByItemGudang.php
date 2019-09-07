@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "koneksi.php";
 $Limit  =  $_POST['length'];
 $Offset =  $_POST['start'];
@@ -59,7 +59,7 @@ SELECT
 	a.NewValue
 FROM
 	stockcardgudang AS a
-LEFT JOIN itemGudang AS b ON a.ItemId = a.ItemId
+LEFT JOIN itemGudang AS b ON a.ItemId = b.Id
 LEFT JOIN color AS c ON b.Color = c.`Code`
 LEFT JOIN size AS d ON b.Size = d.`Code`
 WHERE
@@ -75,7 +75,7 @@ if(mysqli_num_rows($k) > 0 )
 {
     while($row=mysqli_fetch_array($k))
     {
-        
+
         $data = array
             (
 
@@ -85,7 +85,7 @@ if(mysqli_num_rows($k) > 0 )
                 $row['In'],
                 $row['Out'],
                 $row['NewValue'],
-                
+
             );
             $output['aaData'][] = $data;
     }
