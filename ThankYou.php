@@ -86,6 +86,8 @@
       "dom": 'lrtip',
       "Processing": true,
       "paging":   false,
+	  "searching": false,
+	  "ordering": false,
       "serverSide": true,
       "scrollX": true,
 	  "autoWidth": false,
