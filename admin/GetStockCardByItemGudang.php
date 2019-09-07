@@ -16,7 +16,7 @@ $cek_count="SELECT
 	count(*) as Count
 FROM
 stockcardgudang AS a
-LEFT JOIN itemGudang AS b ON a.ItemId = a.ItemId
+LEFT JOIN itemGudang AS b ON a.ItemId = b.Id
 LEFT JOIN color AS c ON b.Color = c.`Code`
 LEFT JOIN size AS d ON b.Size = d.`Code`
 WHERE
