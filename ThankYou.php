@@ -25,10 +25,14 @@
 					<h2 class="uk-text-center">TERIMA KASIH TELAH MELAKUKAN PEMESANAN</h2>
 					<h4>Order ID: <p class="data-order-number">12345</p></h4>
 					<p>Silakan melakukan pembayaran ke nomor rekening di bawah ini:</p>
-					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">13000-000-000</h4>
-					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">Bank Mandiri</h4>
-					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">atas nama Robby Pranata</h4>
-					<p>Kirimkan bukti pembayaran melalui nomor whatsapp kami (08000000). Pesanan Anda akan kami batalkan jika kami tidak menerima pembayaran dalam 24 jam setelah Anda melakukan pemesanan.</p>
+					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">013701107328504</h4>
+					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">Bank BRI</h4>
+          <h4 class="uk-margin-remove-bottom uk-margin-remove-top">0521844409</h4>
+					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">Bank BNI</h4>
+          <h4 class="uk-margin-remove-bottom uk-margin-remove-top">1393030970</h4>
+					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">Bank BCA</h4>
+          <h4 class="uk-margin-remove-bottom uk-margin-remove-top">atas nama ERMAYA ANGRRAENY</h4>
+					<p>Kirimkan bukti pembayaran melalui nomor whatsapp kami (085722634052). Pesanan Anda akan kami batalkan jika kami tidak menerima pembayaran dalam 24 jam setelah Anda melakukan pemesanan.</p>
 					<h4>Order Summary</h4>
 				</div>
 				<div class="uk-width-1-1@s">
@@ -108,7 +112,7 @@
       },
     });
 	//
-    
+
     $.ajax({
 		  type: "POST",
 		  dataType: "html",
