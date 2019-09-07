@@ -31,6 +31,7 @@
 					<p>Kirimkan bukti pembayaran melalui nomor whatsapp kami (08000000). Pesanan Anda akan kami batalkan jika kami tidak menerima pembayaran dalam 24 jam setelah Anda melakukan pemesanan.</p>
 					<h4>Order Summary</h4>
 				</div>
+				<div class="uk-width-1-1@s">
 				<table id="TableDeliveryDetail" class="uk-table uk-table-striped uk-table-responsive">
 					<thead>
 						<tr>
@@ -55,6 +56,7 @@
 						</tr>
 					</tfoot>
 				</table>
+				</div>
 				<div class="uk-width-1-2@m">
 					<h4>Informasi Pengiriman</h4>
 					<p class="data-customer uk-margin-remove-top uk-margin-remove-bottom">Hendra Rusmaya</p>
@@ -86,6 +88,7 @@
       "paging":   false,
       "serverSide": true,
       "scrollX": true,
+	  "autoWidth": false,
       "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
           return nRow;
       },

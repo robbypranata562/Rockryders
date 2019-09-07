@@ -210,7 +210,7 @@ $(document).ready(function() {
 			"searching": false,
 			"ordering": false,
 			"info": false,
-			"autoWidth": true,
+			"autoWidth": false,
 			"drawCallback": function( settings ) {
 				// CalculateTotalAmount();
 			},
