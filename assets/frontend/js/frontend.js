@@ -255,7 +255,7 @@ $(document).ready(function() {
     if ( $("#formOrder").valid() )
     {
         _TotalPrice = 0;
-        $(this).attr("uk-toggle","target: #order-review")
+        // $(this).attr("uk-toggle","target: #order-review")
       //populate date Shipping
         $( ".data-customer" ).html( $("#Customer").val() )
         $( ".data-phone-number" ).html( $("#Phone").val() )
@@ -299,7 +299,7 @@ $(document).ready(function() {
   		t.clear().draw( false );
   		t.rows.add(arr).draw( false );
   		$(".data-weight").html(Math.ceil(_TotalQty / 6));
-
+      UIkit.offcanvas('#order-review').show();
     }
 	});
 
