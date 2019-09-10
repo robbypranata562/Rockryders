@@ -111,7 +111,7 @@
         '".$Phone."',
         '".$Address."',
         '".$Description."',
-        '".$TotalPrice."',
+        $TotalPrice - $AdditionalPrice,
         '".$AdditionalPrice."',
         0,
         0,
