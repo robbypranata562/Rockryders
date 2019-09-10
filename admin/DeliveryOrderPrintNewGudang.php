@@ -8,7 +8,7 @@ include "koneksi.php";
      $sql_trans="
      SELECT
         a.Code,
-        Date(a.Date) as `Date`,   
+        Date(a.Date) as `Date`,
         a.Customer,
         a.Phone,
         a.Address,

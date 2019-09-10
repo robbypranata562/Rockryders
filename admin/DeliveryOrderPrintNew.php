@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "header.php";
 include "koneksi.php";
 ?>
@@ -8,7 +8,7 @@ include "koneksi.php";
      $sql_trans="
      SELECT
         a.Code,
-        Date(a.Date) as `Date`,   
+        Date(a.Date) as `Date`,
         a.Customer,
         a.Phone,
         a.Address,
@@ -111,7 +111,7 @@ include "koneksi.php";
                                 format(a.UnitPrice, 2) AS UnitPrice,
                                 format(a.TotalPrice, 2) AS TotalPrice
                             FROM
-                                transactionDetail AS a
+                                transactiondetail AS a
                                 LEFT JOIN item AS b ON a.ItemId = b.id
                                 LEFT JOIN color as c on b.Color = c.`Code`
                                 LEFT JOIN size as d on b.Size = d.`Code`
