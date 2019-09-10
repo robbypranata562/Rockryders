@@ -338,7 +338,6 @@ $(document).ready(function() {
 				url: "admin/ActBatchCheckStockByColorAndSize.php",
 				success: function(data){
 					var res =  JSON.parse(data);
-					console.log(res.message.length);
 					if (res.data == false)
 					{
 						$(".uk-alert-danger").empty();
@@ -373,7 +372,7 @@ $(document).ready(function() {
                 if (data.message == "Success")
                 {
                     var origin   = window.location.origin;
-                    window.location.href = origin + "/ThankYou.php?OrderId="+data.OrderId
+                    window.location.href = origin + "/thankyou.php?OrderId="+data.OrderId
                 }
 							}
 						  });
