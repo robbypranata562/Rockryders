@@ -20,20 +20,20 @@
           </div>
         </div>
         <div class="box-body">
-        <?php $jabatan=$_SESSION['level']?> 
-      <?php 
+        <?php $jabatan=$_SESSION['level']?>
+      <?php
         if ($jabatan=='Super Administrator' or $jabatan=='admin')
         { ?>
           <div class="col-lg-6 col-xs-12">
             <div class="small-box bg-aqua">
               <div class="inner">
                 <?php
-                  $sql_select="SELECT 
-                    COUNT(*) 
-                  FROM 
-                    transactiongudang 
-                  where 
-                    DeletedDate is null 
+                  $sql_select="SELECT
+                    COUNT(*)
+                  FROM
+                    transactiongudang
+                  where
+                    DeletedDate is null
                     and DeletedBy is null
                     and isConfirm = 1";
                   $exe_select=mysqli_query($koneksi,$sql_select);
@@ -47,17 +47,17 @@
               </div>
               <a href="history_penjualan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-          </div> 
+          </div>
           <div class="col-lg-6 col-xs-12">
             <div class="small-box bg-yellow">
               <div class="inner">
                 <?php
-                  $sql_select="SELECT 
-                    COUNT(*) 
-                  FROM 
-                    transaction 
-                  where 
-                    DeletedDate is null 
+                  $sql_select="SELECT
+                    COUNT(*)
+                  FROM
+                    transaction
+                  where
+                    DeletedDate is null
                     and DeletedBy is null
                     and isConfirm = 1";
                   $exe_select=mysqli_query($koneksi,$sql_select);
@@ -71,7 +71,7 @@
               </div>
               <a href="history_penjualan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-          </div> 
+          </div>
           <div class="col-lg-6 col-xs-12">
             <div class="small-box bg-aqua">
               <div class="inner">
@@ -92,7 +92,7 @@
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="toko_tampil.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="tampil_barang_gudang.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-lg-6 col-xs-12">
@@ -115,7 +115,7 @@
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="toko_tampil.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="tampil_barang.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-lg-6 col-xs-12">
@@ -216,5 +216,3 @@
   </section>
 </div>
 <?php include "footer.php";?>
- 
- 
