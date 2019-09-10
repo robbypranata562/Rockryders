@@ -62,8 +62,18 @@
         }
         else
         {
-
-            array_push($Messages, "Item Ini Tidak Ada");
+            $Warna = "";
+            $Ukuran = "";
+            $SQLColor = "select name from color where code = '".$key[0]."'";
+            $result=mysqli_query($koneksi,$SQLColor);
+            if(mysqli_num_rows($result) > 0 )
+            {
+                while($row = mysqli_fetch_array($result))
+                {
+                  $Warna = $row['name'];
+                }
+            }
+            array_push($Messages, "Stock Kaos Polos ".$Warna." ".$key[1]." Sedang Kosong");
             $valid = false;
         }
     }
