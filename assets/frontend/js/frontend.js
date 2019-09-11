@@ -323,8 +323,6 @@ $(document).ready(function() {
   });
 
 	$("#submit-order-review-button").click(function(e){
-      console.log( parseInt( $(".data-total-price").html() ) - $(".data-additional-price").html() != "" ? parseInt( $(".data-additional-price").html() ) : 0 );
-      return;
 			var DataItem = [];
 			var info = t.page.info();
 			var length = info.recordsTotal - 1;
