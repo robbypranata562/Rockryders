@@ -360,7 +360,7 @@ $(document).ready(function() {
 					}
 					else {
             var _i = parseInt( $(".data-total-price").html() );
-            var _t = parseInt( $(".data-additional-price").html() ) : 0;
+            var _t = $(".data-additional-price").html() != "" ? parseInt( $(".data-additional-price").html() ) : 0;
 						$.ajax({
 							type: "POST",
 							dataType: "html",
