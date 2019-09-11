@@ -234,6 +234,12 @@ $(document).ready(function() {
           },
           Address: {
               required: true,
+          },
+          Province: {
+              required: true,
+          },
+          City: {
+              required: true,
           }
 
       },
@@ -246,6 +252,12 @@ $(document).ready(function() {
           },
           Address: {
               required: "Alamat Tidak Boleh Kosong."
+          },
+          Province: {
+              required: "Provinsi Tidak Boleh Kosong."
+          },
+          City: {
+              required: "Kota Tidak Boleh Kosong."
           }
       }
   });
