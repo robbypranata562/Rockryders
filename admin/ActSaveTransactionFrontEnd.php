@@ -84,7 +84,6 @@
     $Items                  = json_decode($_POST['arrayItem']);
     $Date                   = date("Y-m-d");
     //start insert to database
-    $Price = (int)$TotalPrice - (int)$AdditionalPrice;
     $SQLInsertReceivingMain = "insert into transaction
     (
         Code ,
@@ -112,8 +111,8 @@
         '".$Phone."',
         '".$Address."',
         '".$Description."',
-        $Price,
-        $AdditionalPrice,
+        '".$TotalPrice."',
+        '".$AdditionalPrice."',
         0,
         0,
         NOW(),
