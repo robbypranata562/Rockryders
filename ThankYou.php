@@ -127,7 +127,7 @@
         $(".data-phone-number").html(result["Phone"]);
         $(".data-address").html(result["Address"]);
         $(".data-description").html(result["Description"]);
-        $(".data-total-price").html(result["TotalPrice"]);
+        $(".data-total-price").html(result["Total"]);
         $(".data-additional-price").html(result["AdditionalPrice"]);
         $(".data-province").html(result["Province"]);
         $(".data-city").html(result["City"]);
