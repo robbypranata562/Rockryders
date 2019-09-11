@@ -14,7 +14,7 @@
   <title class="no-print">Rockryders</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../admin/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../admin/plugins/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../admin/plugins/select2/select2.min.css">
   <link rel="stylesheet" href="../admin/plugins/datatables/dataTables.bootstrap.css">
   <link rel="stylesheet" href="../admin/dist/css/AdminLTE.min.css">
@@ -33,7 +33,7 @@
       <span class="logo-lg"><b>Rockryders</b></span>
     </a>
     <nav class="navbar navbar-static-top">
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
       <div class="navbar-custom-menu">
