@@ -86,7 +86,6 @@ $( document ).ready(function() {
 			},
 		  url: "GetCity.php",
 		  success: function(msgct){
-
 		    $("#City").html(msgct);
 		  }
 		});
@@ -360,6 +359,8 @@ $(document).ready(function() {
 						$(".uk-alert-danger").removeClass("uk-hidden");
 					}
 					else {
+            var _i = parseInt( $(".data-total-price").html() );
+            var _t = $(".data-additional-price").html() != "" ? parseInt( $(".data-additional-price").html() ) : 0;
 						$.ajax({
 							type: "POST",
 							dataType: "html",
@@ -369,7 +370,7 @@ $(document).ready(function() {
                   Phone 			       : $(".data-phone-number").html(),
                   Address 			     : $(".data-address").html(),
                   Description 	     : $(".data-description").html(),
-                  TotalPrice 		     : parseInt( $(".data-total-price").html() ) - $(".data-additional-price").html() != "" ? parseInt( $(".data-additional-price").html() ) : 0,
+                  TotalPrice 		     : _i - _t,
                   AdditionalPrice 	 : $(".data-additional-price").html(),
                   Province 			     : $(".data-province").html(),
                   City 				       : $(".data-city").html(),
