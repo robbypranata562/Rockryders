@@ -1,7 +1,7 @@
 <?php
 include "admin/koneksi.php";
   
- $sql = "SELECT Code , Name FROM color";
+ $sql = "SELECT Code , Name FROM color ORDER BY Name";
  $result = $koneksi->query($sql);
  
  if ($result->num_rows > 0) {

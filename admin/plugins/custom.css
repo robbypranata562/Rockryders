@@ -5,3 +5,12 @@
 .mt-25{
     margin-top: 25px;
 }
+
+@media screen and (min-width: 1000px) {
+	.main-header .logo, .main-sidebar, .left-side {
+		width: 270px;
+	}
+	.main-header .navbar, .content-wrapper, .right-side, .main-footer {
+		margin-left: 270px;
+	}
+}
