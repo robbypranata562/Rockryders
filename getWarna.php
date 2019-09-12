@@ -1,7 +1,7 @@
 <?php
 include "admin/koneksi.php";
-  
- $sql = "SELECT Code , Name FROM color ORDER BY Name";
+ $_term = isset($_GET['search']) ? $_GET['search'] : null ;
+ $sql = "SELECT Code , Name FROM color where Name like '%".$_term."%' ORDER BY Name"; 
  $result = $koneksi->query($sql);
  
  if ($result->num_rows > 0) {

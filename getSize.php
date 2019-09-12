@@ -1,7 +1,7 @@
 <?php
 include "admin/koneksi.php";
-  
- $sql = "SELECT Code , Name FROM size";
+ $_term = isset($_GET['search']) ? $_GET['search'] : null ; 
+ $sql = "SELECT Code , Name FROM size where Name like '%".$_term."%'";
  $result = $koneksi->query($sql);
  
  if ($result->num_rows > 0) {
