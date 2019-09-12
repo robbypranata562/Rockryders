@@ -74,10 +74,8 @@ include "koneksi.php";
         <div class="col-sm-4 invoice-col">
         <address>
                 No Faktur   : <?php echo $Code ?> <br>
-                No Hp       : <?php echo $Phone ?><br>
                 Nama        : <?php echo $Customer ?><br>
                 Tanggal     : <?php echo $Date ?><br>
-                Alamat      : <?php echo $Address ?><br>
             </address>
         </div>
         <!-- <div class="col-sm-4 invoice-col">

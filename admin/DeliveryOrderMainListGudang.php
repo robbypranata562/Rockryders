@@ -52,7 +52,7 @@
     $(document).ready(function(){
       $('#tDeliveryorderGudang').DataTable( {
         "Processing": true,
-        "paging":   false,
+        "paging":   true,
         "serverSide": true,
         "scrollX": true,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
@@ -60,7 +60,7 @@
             var ButtonPrint           =   '<a class="btn btn-info"      href="DeliveryOrderPrintNewGudang.php?Id='+aData[0]+'">Print</a>'
             var ButtonActionsConfirm  =   '<input type="button" class="btn btn-success" value="Confirm"/>'
             var ButtonActionsDelete   =   '<input type="button" class="btn btn-danger" value="Delete"/>'
-            
+
             var Status = "";
             if (aData[9] == "0"){
               Status = "<span class='badge badge-danger'>Belum Lunas</span>"
@@ -127,7 +127,7 @@
             }
           })
         });
-        
+
       }
 
       function BindClickConfirm(nRow){
@@ -161,7 +161,7 @@
             }
           })
         });
-        
+
       }
   });
 </script>

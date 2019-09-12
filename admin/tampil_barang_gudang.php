@@ -46,7 +46,7 @@
   $(document).ready(function(){
     $('#titemGudang').dataTable( {
       "Processing": true,
-      "paging":   false,
+      "paging":   true,
       "serverSide": true,
       "scrollX": true,
       "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {

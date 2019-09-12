@@ -10,13 +10,13 @@
 <section class="content">
   <div class="box">
     <div class="box-header with-border">
-      <?php 
+      <?php
         if ($jabatan=='Super Administrator' or $jabatan=='Stok Admin')
         {
         ?>
           <a href="tbh_barang.php"><h3 class="box-title"><span class="glyphicon glyphicon-plus"></span>Stock Barang</h3></a>
-      <?php 
-        } 
+      <?php
+        }
         ?>
         <div class="box-tools pull-right">
         </div>
@@ -46,7 +46,7 @@
   $(document).ready(function(){
     $('#titem').dataTable( {
       "Processing": true,
-      "paging":   false,
+      "paging":   true,
       "serverSide": true,
       "scrollX": true,
       "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {

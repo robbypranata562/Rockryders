@@ -1,11 +1,13 @@
-<?php 
+<?php
 include "koneksi.php";
+$Limit  =  $_POST['length'];
+$Offset =  $_POST['start'];
 $iTotal = 0;
 $cek_count="SELECT
 COUNT(*) as Count
 FROM
 item AS a
-where 
+where
 1=1
 and a.DeletedDate is null
 and a.DeletedBy is null
@@ -68,18 +70,18 @@ FROM
 	item AS a
     LEFT JOIN size AS b ON a.Size = b.`Code`
     LEFT JOIN color AS c ON a.Color = c.`Code`
-where 
+where
     1=1
     and a.DeletedDate is null
     and a.DeletedBy is null
-LIMIT 10 OFFSET 0
+LIMIT ".$Limit." OFFSET ".$Offset."
 ";
 $k=mysqli_query($koneksi,$cek);
 if(mysqli_num_rows($k) > 0 )
 {
     while($row=mysqli_fetch_array($k))
     {
-        
+
         $data = array
             (
 
