@@ -119,7 +119,7 @@
                                     <select class="form-control" style="width: 100%;" name="Color" id="Color">
                                         <option value="">Pilih Warna :</option>
                                         <?php
-                                            $sql="SELECT Code , Name FROM color";
+                                            $sql="SELECT Code , Name FROM color order by Name";
                                             $exe=mysqli_query($koneksi,$sql);
                                             while($data=mysqli_fetch_array($exe))
                                             {
@@ -193,7 +193,7 @@
                     <div class="form-group">
                         <button type="button" class="btn btn-primary" id="btnTambahBarang" name="btnTambahBarang"> Tambah Barang </button>
                     </div>
-                </div>    
+                </div>
             </div>
             <div class="box">
                 <div class="box-header with-border">
@@ -219,7 +219,7 @@
                                     <th> Delete </th>
                                 </tr>
                             </thead>
-                        </table>         
+                        </table>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Total Belanja</label>
@@ -323,7 +323,7 @@
                     var result =  JSON.parse(data);
                     var provinces = result.rajaongkir.results;
                     $.each(provinces, function (i, item) {
-                        $('#Province').append($('<option>', { 
+                        $('#Province').append($('<option>', {
                             value: provinces[i]['province_id'],
                             text : provinces[i]['province']
                         }));
@@ -335,7 +335,7 @@
                 $.ajax({
                     url: 'GetCity.php',
                     dataType : 'json',
-                    data : 
+                    data :
                     {
                         province_id : this.value
                     },
@@ -345,7 +345,7 @@
                     .append('<option selected="selected" value="">Pilih Kota</option>');
                         var cities = dataCity.rajaongkir.results
                         $.each(cities, function (i, item) {
-                            $('#City').append($('<option>', { 
+                            $('#City').append($('<option>', {
                                 value: cities[i]['city_id'],
                                 text : cities[i]['type'] + " " + cities[i]['city_name']
                             }));
@@ -365,7 +365,7 @@
                         $.ajax({
                         url: 'CheckOngkir.php',
                         dataType : 'json',
-                        data : 
+                        data :
                         {
                             Destination : $("#City").val(),
                             Weight      : parseInt($("#Weight").val()) * 1000,
@@ -377,7 +377,7 @@
                         $('#Service').empty()
                         .append("<option selected='selected' value=''>Pilih Service</option>");
                             $.each(services, function (i, item) {
-                                $('#Service').append($("<option>", { 
+                                $('#Service').append($("<option>", {
                                     value: services[i]['service'],
                                     data_attr_cost : services[i]['cost'][0].value,
                                     text : services[i]['description'] + " (" + services[i]['cost'][0].value + ") " + services[i]['cost'][0].etd + "Hari"
@@ -387,9 +387,9 @@
                             alert("Error API");
                         });
                     }
-                    else 
+                    else
                     {
-                        $('#Service').append($("<option>", { 
+                        $('#Service').append($("<option>", {
                                     value: "custom",
                                     text : "custom"
                         }));
@@ -400,7 +400,7 @@
             $('#Service').on("change",function(){
                 $("#AdditionalPrice").val($('option:selected', this).attr('data_attr_cost'));
             });
-            var t = 
+            var t =
             $('#TableDeliveryDetail').DataTable({
                 "paging": false,
                 "lengthChange": false,
@@ -436,7 +436,7 @@
                 var _Size       =   $("#Size").val();
                 var _Qty        =   $("#Qty").val();
                 var _Stock      =   $("#Stock").val();
-                // var _UnitPrice  =   $("#UnitPrice").val(); 
+                // var _UnitPrice  =   $("#UnitPrice").val();
                 var _SubPrice   =   _Qty * 27000
 
                 if (_Size == "" || _Color == "" || _Qty == "") {
@@ -455,7 +455,7 @@
                     }
                 }).success(function(data){
                     var _realStock = data[0]['Stock'];
-                    if (parseInt(_realStock) < parseInt(_Qty)) 
+                    if (parseInt(_realStock) < parseInt(_Qty))
                     {
                         alert("Stock Tidak Memenuhi Permintaan")
                         $("#Qty").val(_realStock);
@@ -509,10 +509,10 @@
                         //var LastTotalPrice = $("#TotalPrice").val() == "" ? "0" : $("#TotalPrice").val();
                         $("#TotalPrice").val( _TotalPrice );
                         $("#GrandTotal").val( _TotalPrice );
-                        
+
                         $("#Weight").val(_weight)
                     }
-                    
+
                 }).error(function(data){
                     alert("Item Tidak Terdaftar")
                 });
@@ -616,7 +616,7 @@
                     } else {
                         alert("Item Tidak Terdaftar")
                     }
-                    
+
                 }).error(function(data){
                     alert("Item Tidak Terdaftar")
                 });

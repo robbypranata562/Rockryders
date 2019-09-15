@@ -40,7 +40,7 @@ if(isset($_POST['login'])){
     $id=$data['id_admin'];
     if($user==$name && $pass==$word)
     {
-      if( $jabatan=='Super Administrator' ) 
+      if( $jabatan=='Super Administrator' )
       {
         //session_start();
         $adm_id                   = $_SESSION['id_admin']=$id;
@@ -52,8 +52,8 @@ if(isset($_POST['login'])){
         $sql_his="INSERT INTO his_login VALUES(NULL,'$id_adm','$uname','$jab',NOW())";
         $exe_his=mysqli_query($koneksi,$sql_his);
         echo '<script>window.location.assign("home.php")</script>';
-      } 
-        else if ( $jabatan=='Super Admin' ) 
+      }
+      else if ( $jabatan=='Super Admin' )
       {
         //session_start();
         $adm_id                 = $_SESSION['id_admin']=$id;

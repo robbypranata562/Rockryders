@@ -12,7 +12,7 @@ $Session        = $_SESSION['id_admin'];
 //Ambil No DO,
 
 $SQLGetDataTransactionDetailId = "
-Select 
+Select
     a.ItemId,
     a.Qty,
     b.SmallQty as LastValue,
@@ -20,10 +20,10 @@ Select
     b.Size,
     a.Id
 From 
-    transactionDetail a
+    transactiondetail a
     left join item b on a.ItemId = b.id
 Where
-    1=1    
+    1=1
     and a.TransactionId   =   ".$TransactionId."
     and a.DeletedDate is null
     and a.DeletedBy is null";
@@ -32,12 +32,12 @@ while ($row = $resultItemExists->fetch_assoc()) {
 
     $isStockCardExists = NULL;
     $SQLCheckStockAwalExists = "
-    Select 
+    Select
         Id as `Exists`
-    From 
-        stockcard 
-    Where 
-        1=1    
+    From
+        stockcard
+    Where
+        1=1
         and Description = '#Stock Awal Kaos Polos ".$row['Color']." ".$row['Size']." Tanggal ".$Date."'
         ";
     $resultStockCardExists = mysqli_query($koneksi,$SQLCheckStockAwalExists);
@@ -46,7 +46,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
     }
 
     if ($isStockCardExists === NULL) {
-        $SQLInsertStockCard = 
+        $SQLInsertStockCard =
         "Insert Into stockcard
         (
             Date,
@@ -57,8 +57,8 @@ while ($row = $resultItemExists->fetch_assoc()) {
             `OUT`,
             NewValue,
             Description
-        ) 
-        Values 
+        )
+        Values
         (
             '".$Date."',
             '0000000000',
@@ -75,7 +75,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
         }
     }
     $NewValue = $row['LastValue'] + $row['Qty'];
-    $SQLInsertStockCardTransaction = 
+    $SQLInsertStockCardTransaction =
     "Insert Into stockcard
     (
         Date,
@@ -86,8 +86,8 @@ while ($row = $resultItemExists->fetch_assoc()) {
         `OUT`,
         NewValue,
         Description
-    ) 
-    Values 
+    )
+    Values
     (
         now(),
         '".$TransactionCode."',
@@ -103,7 +103,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
     }
     else {
         //delete Item Dari Transaction Detail
-            $SQLUpdateTransactionDetail = "Update transactiondetail set 
+            $SQLUpdateTransactionDetail = "Update transactiondetail set
             DeletedDate = now(),
             DeletedBy = ".$Session."
             Where
@@ -116,7 +116,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
                 SmallQty = ".$NewValue."
                 Where
                 Id = ".$row['ItemId']."";
-                if($koneksi->query($SQLUpdateStockItem) === FALSE) 
+                if($koneksi->query($SQLUpdateStockItem) === FALSE)
                 {
                     echo json_decode("Error Update Qty Untuk Item ".$row['ItemId']."");
                 }
@@ -124,7 +124,7 @@ while ($row = $resultItemExists->fetch_assoc()) {
         //
     }
 };
-$SQLUpdateTransactionDetail = "Update transaction set 
+$SQLUpdateTransactionDetail = "Update transaction set
 DeletedDate = now(),
 DeletedBy = ".$Session."
 Where
