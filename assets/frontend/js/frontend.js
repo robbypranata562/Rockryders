@@ -154,7 +154,7 @@ $(document).ready(function() {
 // add-remove order form
 
   var _TotalPrice = 0;
-	var newField = '<div uk-grid class="order-form-row"><div class="uk-width-3-4@m"><div class="form-group order-form-item"> <select class="select2-color" name="Color" id="Color"><option value="">Pilih Warna..</option> </select> <select class="select2-size" name="Size" id="Size"><option value="">Pilih Ukuran...</option> </select> <input type="text" class="uk-input" id="Qty" name="Qty" value="" placeholder="Quantity"></div></div><div class="uk-width-expand"><div class="form-group"> <button class="uk-button uk-button-danger remove" type="button"><span uk-icon="close"></span> Remove</button></div></div></div>';
+	var newField = '<div uk-grid class="order-form-row"><div class="uk-width-3-4@m"><div class="form-group order-form-item"> <select class="select2-color" name="Color" id="Color"><option value="">Pilih Warna..</option> </select> <select class="select2-size" name="Size" id="Size"><option value="">Pilih Ukuran...</option> </select> <input type="text" class="uk-input" id="Qty" name="Qty" value="" placeholder="Quantity"></div></div><div class="uk-width-expand"><div class="form-group"> <button class="uk-button uk-button-danger remove" type="button"><span uk-icon="close"></span> Hapus</button></div></div></div>';
 	$(".add-more").click(function(){
 		$('.select2-color').attr('disabled','');
 		$('.select2-size').attr('disabled','');

@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Rockryders T-Shirt</title>
+  <title>Kaos Polos Nissa</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -20,7 +20,7 @@
 <body>
 	<section class="uk-section uk-padding-remove-bottom">
 		<div class="uk-container">
-			<h1>Kaos Polos - Rp. 27.500,-</h1>
+			<h1>Kaos Polos Nissa - Rp. 27.000,-</h1>
 			<h4 class="uk-margin-remove-top">Bahan 100% Combed 30s</h4>
 			<div class="uk-width-1-1" uk-grid>
 				<div class="uk-width-1-2@m">
@@ -66,167 +66,167 @@
 						<div class="img-slider-nav">
 							<div class="img-slider-nav-item" data-thumb="1">
 								<div class="uk-card uk-card-small uk-card-body uk-padding-small">
-									<p class="uk-text-center warna-1">1</p>
+									<p class="uk-text-center warna-1"><span>ABMY</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="2">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-2">2</p>
+									<p class="uk-text-center warna-2"><span>ABM</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="3">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-3">3</p>
+									<p class="uk-text-center warna-3"><span>ABS</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="4">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-4">4</p>
+									<p class="uk-text-center warna-4"><span>ABB</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="5">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-5">5</p>
+									<p class="uk-text-center warna-5"><span>ABT</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="6">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-6">6</p>
+									<p class="uk-text-center warna-6"><span>BRB</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="7">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-7">7</p>
+									<p class="uk-text-center warna-7"><span>BTA</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="8">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-8">8</p>
+									<p class="uk-text-center warna-8"><span>CTI</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="9">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-9">9</p>
+									<p class="uk-text-center warna-9"><span>CTK</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="10">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-10">10</p>
+									<p class="uk-text-center warna-10"><span>CTM</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="11">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-11">11</p>
+									<p class="uk-text-center warna-11"><span>HJA</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="12">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-12">12</p>
+									<p class="uk-text-center warna-12"><span>HJB</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="13">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-13">13</p>
+									<p class="uk-text-center warna-13"><span>HJF</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="14">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-14">14</p>
+									<p class="uk-text-center warna-14"><span>HJM</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="15">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-15">15</p>
+									<p class="uk-text-center warna-15"><span>HJS</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="16">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-16">16</p>
+									<p class="uk-text-center warna-16"><span>HTS</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="17">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-17">17</p>
+									<p class="uk-text-center warna-17"><span>HTM</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="18">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-18">18</p>
+									<p class="uk-text-center warna-18"><span>IVR</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="19">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-19">19</p>
+									<p class="uk-text-center warna-19"><span>KNB</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="20">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-20">20</p>
+									<p class="uk-text-center warna-20"><span>KNK</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="21">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-21">21</p>
+									<p class="uk-text-center warna-21"><span>KNI</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="22">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-22">22</p>
+									<p class="uk-text-center warna-22"><span>MGT</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="23">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-23">23</p>
+									<p class="uk-text-center warna-23"><span>MRN</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="24">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-24">24</p>
+									<p class="uk-text-center warna-24"><span>MRC</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="25">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-25">25</p>
+									<p class="uk-text-center warna-25"><span>NVY</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="26">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-26">26</p>
+									<p class="uk-text-center warna-26"><span>ORB</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="27">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-27">27</p>
+									<p class="uk-text-center warna-27"><span>ORG</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="28">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-28">28</p>
+									<p class="uk-text-center warna-28"><span>PNM</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="29">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-29">29</p>
+									<p class="uk-text-center warna-29"><span>PTH</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="30">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-30">30</p>
+									<p class="uk-text-center warna-30"><span>TRM</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="31">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-31">31</p>
+									<p class="uk-text-center warna-31"><span>TRT</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="32">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-32">32</p>
+									<p class="uk-text-center warna-32"><span>UGT</span></p>
 								</div>
 							</div>
 							<div class="img-slider-nav-item" data-thumb="33">
 								<div class="uk-card uk-card-small uk-card-body">
-									<p class="uk-text-center warna-33">33</p>
+									<p class="uk-text-center warna-33"><span>UGM</span></p>
 								</div>
 							</div>
 						</div>
@@ -283,8 +283,9 @@
 	<section class="uk-section uk-padding-remove-top">
 		<div class="uk-container">
 			<form id="formOrder" name="formOrder">
-				<div class="uk-width-1-1@s">
-					<h2>Order Form</h2>
+				<div class="uk-width-1-1@s uk-margin-medium-bottom">
+					<h2 class="uk-margin-remove-bottom">Formulir Pemesanan</h2>
+					<small>Dapatkan harga spesial dengan melakukan pemesanan minimal 12 pcs!</small>
 				</div>
 				<div class="order-form">
 					<div class="order-form-row uk-grid">
@@ -301,18 +302,18 @@
 						</div>
 						<div class="uk-width-expand uk-grid-margin uk-first-column">
 							<div class="form-group">
-								<button class="uk-button uk-button-danger remove" type="button"><span uk-icon="close"></span> Remove</button>
+								<button class="uk-button uk-button-danger remove" type="button"><span uk-icon="close"></span> Hapus</button>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="uk-width-1-1@s">
 					<div class="form-group">
-						<button class="uk-button uk-button-primary add-more" type="button"><span uk-icon="plus"></span> Add</button>
+						<button class="uk-button uk-button-primary add-more" type="button"><span uk-icon="plus"></span> Tambah item</button>
 					</div>
 				</div>
-				<div class="uk-width-1-1@s">
-					<h2>Shipping Form</h2>
+				<div class="uk-width-1-1@s uk-margin-medium-bottom">
+					<h2 class="uk-margin-remove-bottom">Formulir Pengiriman</h2>
 				</div>
 				<div class="shipping-form" uk-grid>
 					<div class="uk-width-1-1@s">
