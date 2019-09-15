@@ -120,7 +120,7 @@ $( document ).ready(function() {
                         success : function(dataService){
                         var services = dataService.rajaongkir.results[0].costs
                         $('#Service').empty()
-                        .append("<option selected='selected' value=''>Pilih Service</option>");
+                        .append("<option selected='selected' value=''>Pilih Servis Pengiriman...</option>");
                             $.each(services, function (i, item) {
                                 $('#Service').append($("<option>", {
                                     value: services[i]['service'],
@@ -260,6 +260,10 @@ $(document).ready(function() {
           }
       }
   });
+  
+  $('#Province, #City').on('change', function() {  // when the value changes
+    $(this).valid(); // trigger validation on this element
+});
 
 	$("#order-review-button").click(function(){
 
@@ -284,7 +288,7 @@ $(document).ready(function() {
           _NewUnitPrice = 27000;
           _TotalPrice = parseInt(_TotalPrice) +  ( parseInt( $(this).val() ) * parseInt( _NewUnitPrice ) );
         }
-        else if (_TotalQty <= 1199)
+        else if (_TotalQty <= 600)
         {
           _NewUnitPrice = 25500;
           _TotalPrice = parseInt(_TotalPrice) +  ( parseInt( $(this).val() ) * parseInt( _NewUnitPrice ) );
@@ -300,7 +304,7 @@ $(document).ready(function() {
 
   		var arr = $(".order-form-item").map(function() {
   			  return {
-  				color		        : 	$(this).find("select[name='Color']").val(),
+  				color		        : 	$(this).find("select[name='Color'] :selected").text(),
   				size		        : 	$(this).find("select[name='Size']").val(),
   				qty			        : 	$(this).find("input[name='Qty']").val(),
   				unitprice	      : 	_NewUnitPrice,

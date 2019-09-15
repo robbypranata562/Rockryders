@@ -18,6 +18,25 @@
   <link rel="stylesheet" href="assets/frontend/css/style.css">
 </head>
 <body>
+	<div class="uk-navbar-container uk-box-shadow-medium">
+		<div class="uk-container uk-container-expand">
+			<nav class="uk-navbar uk-margin" uk-navbar>
+				<div class="uk-navbar-left">
+					<a class="uk-navbar-item uk-logo" href="#"><img src="assets/frontend/images/logo-kaos-polos-nissa.png"></a>
+				</div>
+				<div class="uk-navbar-right">
+					<ul class="uk-navbar-nav uk-text-light uk-text-bold">
+						<li>
+							<a href="https://www.instagram.com/kaos_polos_nissa/" target="_blank">
+								<span class="uk-icon uk-margin-small-right" uk-icon="icon: instagram"></span>
+								Follow Instagram kami
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
 	<section class="uk-section uk-padding-remove-bottom">
 		<div class="uk-container">
 			<h1>Kaos Polos Nissa - Rp. 27.000,-</h1>
@@ -232,8 +251,7 @@
 						</div>
 					</div>
 					<div class="uk-width-1-1@s">
-						<p>Available size:
-						</p>
+						<h4>Available size:</h4>
 						<table class="uk-table uk-table-small uk-table-divider table-size">
 							<thead>
 								<tr>
@@ -334,7 +352,7 @@
 					<div class="uk-width-1-2@m">
 					  <div class="form-group">
 						<select class="select2-province" name="Province" id="Province">
-						  <option value=""></option>
+						  <option value="">Pilih Provinsi...</option>
 						</select>
 					  </div>
 					</div>
@@ -384,7 +402,7 @@
 												<div class="uk-width-1-1@s">
 												  <div class="form-group">
 													<select class="select2-courier" name="Courier" id="Courier">
-													  <option value="">Pilih Kurir :</option>
+													  <option value="">Pilih Kurir...</option>
 													  <option value="jne">JNE</option>
 													  <option value="pos">POS</option>
 													  <option value="rpx">RPX Holding</option>
@@ -425,9 +443,7 @@
 											<th><p class="data-additional-price uk-margin-remove-top uk-margin-remove-bottom">0</p></th>
 										</tr>
 										<tr>
-											<th></th>
-											<th></th>
-											<th></th>
+											<th colspan="3"><small>Silakan pilih <b>CUSTOM</b> untuk pilihan kurir dan servis jika tidak menemukan kurir dan servis yang sesuai untuk mengirim pesanan Anda. Kemudian hubungi WhatsApp Customer Service kami di <b>0857-9814-4100</b>.</small></th>
 											<th> Total </th>
 											<th><p class="data-total-price uk-margin-remove-top uk-margin-remove-bottom">0</p></th>
 										</tr>
@@ -457,6 +473,15 @@
 			</form>
 		</div>
 	</section>
+	<div class="uk-navbar-container uk-box-shadow-medium">
+		<div class="uk-container uk-container-expand">
+			<nav class="uk-navbar uk-margin" uk-navbar>
+				<div class="uk-navbar-center">
+					<p class="uk-navbar-item uk-margin-remove-bottom">Copyright © 2019 Kaos Polos Nissa - All rights reserved.</p>
+				</div>
+			</nav>
+		</div>
+	</div>
 <script type="text/javascript" src="assets/frontend/js/jquery/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="assets/frontend/js/uikit/uikit.min.js"></script>
 <script type="text/javascript" src="assets/frontend/js/uikit/uikit-icons.min.js"></script>

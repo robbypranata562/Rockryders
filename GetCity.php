@@ -21,7 +21,7 @@ $err = curl_error($curl);
 curl_close($curl);
 
 $data = json_decode($response, true);
-echo "<option>Pilih Kota...</option>";
+echo "<option value=''>Pilih Kota...</option>";
 for($i=0; $i < count($data['rajaongkir']['results']); $i++) { 
   echo "<option value='".$data['rajaongkir']['results'][$i]['city_id']."'>".$data['rajaongkir']['results'][$i]['city_name']."</option>";
 } 

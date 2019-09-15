@@ -1,3 +1,11 @@
+.uk-navbar-container:not(.uk-navbar-transparent) {
+    background: #ef6e73;
+}
+
+.uk-navbar-item, .uk-navbar-nav>li>a {
+	color: #fff;
+}
+
 .form-group .select2-container, .form-group .select2-container *, .select2-container--default .select2-selection--single .select2-selection__arrow {
     height: 40px;
 }
@@ -102,6 +110,20 @@ select.select2-color, select.select2-size {
 
 .img-slider-nav-item p {
     color: #fff;
+}
+
+.uk-table th small {
+	font-weight: 400;
+	text-transform: none;
+}
+
+.uk-offcanvas #TableDeliveryDetail {
+    border-top: solid 2px #ddd;
+    border-bottom: solid 2px #ddd;
+}
+
+.uk-offcanvas-bar .uk-table thead th {
+    width: 20%;
 }
 
 .warna-1 {

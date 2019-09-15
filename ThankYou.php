@@ -18,48 +18,60 @@
   <link rel="stylesheet" href="assets/frontend/css/style.css">
 </head>
 <body>
-	<section class="uk-section uk-padding-remove-bottom">
+	<section class="uk-section uk-padding-remove-bottom uk-padding-remove-top">
 		<div class="uk-container">
-			<div class="uk-width-1-1@s uk-grid">
+			<div uk-grid>
 				<div class="uk-width-1-1@s">
 					<h2 class="uk-text-center">TERIMA KASIH TELAH MELAKUKAN PEMESANAN</h2>
-					<h4>Order ID: <p class="data-order-number">12345</p></h4>
+					<h4>Order ID: <span class="data-order-number">12345</span></h4>
 					<p>Silakan melakukan pembayaran ke nomor rekening di bawah ini:</p>
+				</div>
+				<div class="uk-width-1-2@m">
 					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">013701107328504</h4>
 					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">Bank BRI</h4>
-          <h4 class="uk-margin-remove-bottom uk-margin-remove-top">0521844409</h4>
+					<h4 class="uk-margin-small-bottom uk-margin-remove-top">a.n. ERMAYA ANGRRAENY</h4>
+					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">0521844409</h4>
 					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">Bank BNI</h4>
-          <h4 class="uk-margin-remove-bottom uk-margin-remove-top">1393030970</h4>
+					<h4 class="uk-margin-small-bottom uk-margin-remove-top">a.n. ERMAYA ANGRRAENY</h4>
+					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">1393030970</h4>
 					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">Bank BCA</h4>
-          <h4 class="uk-margin-remove-bottom uk-margin-remove-top">atas nama ERMAYA ANGRRAENY</h4>
-					<p>Kirimkan bukti pembayaran melalui nomor whatsapp kami (085722634052). Pesanan Anda akan kami batalkan jika kami tidak menerima pembayaran dalam 24 jam setelah Anda melakukan pemesanan.</p>
+					<h4 class="uk-margin-remove-bottom uk-margin-remove-top">a.n. ERMAYA ANGRRAENY</h4>
+				</div>
+				<div class="uk-width-expand">
+					<div class="uk-card uk-card-primary uk-card-body uk-text-center uk-box-shadow-medium">
+						<h4>WhatsApp Customer Service Kaos Polos Nissa:</h4>
+						<h2><b>0857-9814-4100</b></h2>
+					</div>
+				</div>
+				<div class="uk-width-1-1@s">
+					<p>Kirimkan bukti pembayaran melalui nomor whatsapp kami (<b>0857-9814-4100</b>). Pesanan Anda akan kami batalkan jika kami tidak menerima pembayaran dalam 24 jam setelah Anda melakukan pemesanan.</p>
 					<h4>Order Summary</h4>
 				</div>
 				<div class="uk-width-1-1@s">
-				<table id="TableDeliveryDetail" class="uk-table uk-table-striped uk-table-responsive">
-					<thead>
-						<tr>
-							<th> Item </th>
-							<th> Qty </th>
-							<th> Unit Price </th>
-							<th> SubTotal </th>
-						</tr>
-					</thead>
-					<tfoot>
-						<tr>
-							<th colspan="2">
-							</th>
-							<th> Ongkos Kirim </th>
-							<th><p class="data-additional-price uk-margin-remove-top uk-margin-remove-bottom">0</p></th>
-						</tr>
-						<tr>
-							<th></th>
-							<th></th>
-							<th> Total </th>
-							<th><p class="data-total-price uk-margin-remove-top uk-margin-remove-bottom">0</p></th>
-						</tr>
-					</tfoot>
-				</table>
+					<table id="TableDeliveryDetail" class="uk-table uk-table-striped uk-table-responsive">
+						<thead>
+							<tr>
+								<th> Item </th>
+								<th> Qty </th>
+								<th> Unit Price </th>
+								<th> SubTotal </th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<th colspan="2">
+								</th>
+								<th> Ongkos Kirim </th>
+								<th><p class="data-additional-price uk-margin-remove-top uk-margin-remove-bottom">0</p></th>
+							</tr>
+							<tr>
+								<th></th>
+								<th></th>
+								<th> Total </th>
+								<th><p class="data-total-price uk-margin-remove-top uk-margin-remove-bottom">0</p></th>
+							</tr>
+						</tfoot>
+					</table>
 				</div>
 				<div class="uk-width-1-2@m">
 					<h4>Informasi Pengiriman</h4>
@@ -94,6 +106,7 @@
 	  "ordering": false,
       "serverSide": true,
       "scrollX": true,
+	  "bInfo" : false,
 	  "autoWidth": false,
       "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
           return nRow;
