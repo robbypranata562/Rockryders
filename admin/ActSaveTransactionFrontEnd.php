@@ -129,20 +129,22 @@
         {
             $SQLSelectItemExists = "
             Select
-                Id as `Exists`,
-                SmallQty
+                a.Id as `Exists`,
+                a.SmallQty,
+                b.Code
             From
-                item
+                item a
+                LEFT JOIN color AS b ON a.Color = b.`Code`
             Where
                 1=1
-                and Color   =   '".$key[0]."'
-                and Size    =   '".$key[1]."'";
+                and b.Name    =   '".$key[0]."'
+                and a.Size    =   '".$key[1]."'";
             $resultItemExists = mysqli_query($koneksi,$SQLSelectItemExists);
             while ($row = $resultItemExists->fetch_assoc())
             {
-                $isExists = $row['Exists'];
-                $LastStock = $row['SmallQty'];
-
+                $isExists   = $row['Exists'];
+                $LastStock  = $row['SmallQty'];
+                $CodeColor  = $row['Code'];
             }
 
             if (!is_null($isExists)){
@@ -194,7 +196,7 @@
                             stockcard
                         Where
                             1=1
-                            and Description = '#Stock Awal Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
+                            and Description = '#Stock Awal Kaos Polos ".$CodeColor." ".$key[1]." Tanggal ".$Date."'
                             ";
                         $resultStockCardExists = mysqli_query($koneksi,$SQLCheckStockAwalExists);
                         while ($data = $resultStockCardExists->fetch_assoc())
@@ -223,7 +225,7 @@
                                 0,
                                 0,
                                 ".$LastStock.",
-                                '#Stock Awal Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
+                                '#Stock Awal Kaos Polos ".$CodeColor." ".$key[1]." Tanggal ".$Date."'
                             )";
                             if($koneksi->query($SQLInsertStockCard) === TRUE)
                             {
@@ -249,7 +251,7 @@
                                     0,
                                     ".$key[2].",
                                     ".$NewStock.",
-                                    'Penjualan Barang Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
+                                    'Penjualan Barang Kaos Polos ".$CodeColor." ".$key[1]." Tanggal ".$Date."'
                                 )";
                                 if($koneksi->query($SQLInsertStockCardtransaction) === TRUE)
                                 {
@@ -285,7 +287,7 @@
                                 0,
                                 ".$key[2].",
                                 ".$NewStock.",
-                                'Penjualan Barang Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
+                                'Penjualan Barang Kaos Polos ".$CodeColor." ".$key[1]." Tanggal ".$Date."'
                             )";
                             if($koneksi->query($SQLInsertStockCardtransaction) === TRUE)
                             {

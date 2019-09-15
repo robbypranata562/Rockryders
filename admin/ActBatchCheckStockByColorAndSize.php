@@ -10,9 +10,10 @@
             IFNULL(a.SmallQty,0) SmallQty
         From
             item a
+            LEFT JOIN color AS b ON a.Color = b.`Code`
         Where
             1=1
-            and a.Color = '".$key[0]."'
+            and b.Name = '".$key[0]."'
             and a.Size  = '".$key[1]."'
             and a.DeletedBy is Null
             and a.DeletedDate is null
