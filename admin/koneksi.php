@@ -1,13 +1,13 @@
 <?php
-$db_host = "localhost:3306";
-$db_user = "dbrock";
-$db_pass = "5r*j1yP4";
-$db_name = "rockrydersDB";
+//$db_host = "localhost:3306";
+//$db_user = "dbrock";
+//$db_pass = "5r*j1yP4";
+//$db_name = "rockrydersDB";
 
-// $db_host = "localhost";
-// $db_user = "root";
-// $db_pass = "";
-// $db_name = "rockrydersDB";
+$db_host = "localhost";
+$db_user = "root";
+$db_pass = "";
+$db_name = "rockrydersDB";
 
 // $db_host = "localhost:3306";
 // $db_user = "kaospolo_dbrock";

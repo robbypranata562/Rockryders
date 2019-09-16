@@ -154,47 +154,54 @@ $(document).ready(function() {
 // add-remove order form
 
   var _TotalPrice = 0;
-	var newField = '<div uk-grid class="order-form-row"><div class="uk-width-3-4@m"><div class="form-group order-form-item"> <select class="select2-color" name="Color" id="Color"><option value="">Pilih Warna..</option> </select> <select class="select2-size" name="Size" id="Size"><option value="">Pilih Ukuran...</option> </select> <input type="text" class="uk-input" id="Qty" name="Qty" value="" placeholder="Quantity"></div></div><div class="uk-width-expand"><div class="form-group"> <button class="uk-button uk-button-danger remove" type="button"><span uk-icon="close"></span> Hapus</button></div></div></div>';
+  
+	var numberIncr = 1;
+	function tambahItem() {
+            $('.order-form').append($('<div uk-grid class="order-form-row"><div class="uk-width-3-4@m"><div class="form-group order-form-item"> <select class="select2-color" name="Color'+numberIncr+'" id="Color" required><option value="">Pilih Warna..</option> </select> <select class="select2-size" name="Size'+numberIncr+'" id="Size" required><option value="">Pilih Ukuran...</option> </select> <input type="text" class="uk-input" id="Qty" name="Qty'+numberIncr+'" value="" placeholder="Quantity" required></div></div><div class="uk-width-expand"><div class="form-group"> <button class="uk-button uk-button-danger remove" type="button"><span uk-icon="close"></span> Hapus</button></div></div></div>'));
+            numberIncr++;
+        }
 	$(".add-more").click(function(){
-		$('.select2-color').attr('disabled','');
-		$('.select2-size').attr('disabled','');
-		$(".order-form").append(newField);
-		$('.select2-color').select2({
-			width: '100%',
-			ajax: {
-					  dataType: 'json',
-					  url: 'getWarna.php',
-					  delay: 500,
-					  data: function(params) {
-						return {
-						  search: params.term
-						}
-					  },
-					  processResults: function (data, page) {
-					  return {
-						results: data
-					  };
-					},
-				  }
-		});
-		$('.select2-size').select2({
-			width: '100%',
-			ajax: {
-					  dataType: 'json',
-					  url: 'getSize.php',
-					  delay: 500,
-					  data: function(params) {
-						return {
-						  search: params.term
-						}
-					  },
-					  processResults: function (data, page) {
-					  return {
-						results: data
-					  };
-					},
-				  }
-		});
+		if ($('#Color, #Size, #Qty').valid()) {
+			$('.select2-color').attr('disabled','');
+			$('.select2-size').attr('disabled','');
+			tambahItem();
+			$('.select2-color').select2({
+				width: '100%',
+				ajax: {
+						  dataType: 'json',
+						  url: 'getWarna.php',
+						  delay: 500,
+						  data: function(params) {
+							return {
+							  search: params.term
+							}
+						  },
+						  processResults: function (data, page) {
+						  return {
+							results: data
+						  };
+						},
+					  }
+			});
+			$('.select2-size').select2({
+				width: '100%',
+				ajax: {
+						  dataType: 'json',
+						  url: 'getSize.php',
+						  delay: 500,
+						  data: function(params) {
+							return {
+							  search: params.term
+							}
+						  },
+						  processResults: function (data, page) {
+						  return {
+							results: data
+						  };
+						},
+					  }
+			});
+		}
 	});
 	$(".order-form").on('click', '.remove', function(e){
         e.preventDefault();
@@ -221,11 +228,20 @@ $(document).ready(function() {
 				{ data: 'sub' }
 			  ]
 		});
-
+	
+	$.extend($.validator.messages, { required: "Wajib diisi" });
+	$.validator.addMethod('minStrict', function (value, el, param) {
+		return value > param;
+	});
+	
     $("#formOrder").validate({
       errorElement: "em",
       rules: {
-          Customer: {
+		  Qty: { 
+			  minStrict: 0,
+			  number: true
+		  },
+		  Customer: {
               required: true,
           },
           Phone: {
@@ -243,7 +259,10 @@ $(document).ready(function() {
 
       },
       messages: {
-          Customer: {
+		  Qty: { 
+			  minStrict: "Quantity harus lebih dari 0"
+		  },
+		  Customer: {
               required: "Nama Pelanggan Tidak Boleh Kosong.",
           },
           Phone: {
@@ -261,9 +280,9 @@ $(document).ready(function() {
       }
   });
   
-  $('#Province, #City').on('change', function() {  // when the value changes
-    $(this).valid(); // trigger validation on this element
-});
+	$('#Province, #City').on('change', function() {  // when the value changes
+		$(this).valid(); // trigger validation on this element
+	});
 
 	$("#order-review-button").click(function(){
 
@@ -279,10 +298,10 @@ $(document).ready(function() {
       //
   		var _TotalQty	= 0;
   		var _NewUnitPrice = 0;
-  		$( "input[name='Qty']" ).each(function( index ) {
+  		$( "input#Qty" ).each(function( index ) {
   			_TotalQty += parseInt($(this).val());
   		});
-      $( "input[name='Qty']" ).each(function( index ) {
+      $( "input#Qty" ).each(function( index ) {
         if (_TotalQty <= 11)
         {
           _NewUnitPrice = 27000;
@@ -304,11 +323,11 @@ $(document).ready(function() {
 
   		var arr = $(".order-form-item").map(function() {
   			  return {
-  				color		        : 	$(this).find("select[name='Color'] :selected").text(),
-  				size		        : 	$(this).find("select[name='Size']").val(),
-  				qty			        : 	$(this).find("input[name='Qty']").val(),
+  				color		        : 	$(this).find("select#Color :selected").text(),
+  				size		        : 	$(this).find("select#Size").val(),
+  				qty			        : 	$(this).find("input#Qty").val(),
   				unitprice	      : 	_NewUnitPrice,
-  				sub			        : 	$(this).find("input[name='Qty']").val() * _NewUnitPrice
+  				sub			        : 	$(this).find("input#Qty").val() * _NewUnitPrice
   			  };
   		  });
   		t.clear().draw( false );

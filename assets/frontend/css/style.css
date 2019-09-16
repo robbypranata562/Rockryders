@@ -2,8 +2,75 @@
     background: #ef6e73;
 }
 
+.soft-blue {
+	background: #e2e3f5;
+}
+
 .uk-navbar-item, .uk-navbar-nav>li>a {
 	color: #fff;
+}
+
+.order-form-item {
+	position: relative;
+}
+
+@media screen and (min-width: 1025px) {
+	#Color-error, #Size-error, #Qty-error {
+		position: absolute;
+		bottom: -25px;
+		white-space: nowrap;
+	}
+
+	#Qty-error {
+		left: 61.5%;
+	}
+}
+
+.province-container, .city-container {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+	.province-container>#Province, .city-container>#City {
+		order: 0;
+	}
+	.province-container>.select2, .city-container>.select2 {
+		order: 1;
+	}
+	.province-container>#Province-error, .city-container>#City-error {
+		order: 2;
+	}
+
+@media screen and (max-width: 768px) {
+	.order-form-item, .province-container, .city-container {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+	.order-form-item>#Color, .province-container>#Province {
+		order: 0;
+	}
+	.order-form-item>.select2:nth-child(3), .province-container>.select2, .city-container>.select2 {
+		order: 1;
+	}
+	.order-form-item>#Color-error, .province-container>#Province-error, .city-container>#City-error {
+		order: 2;
+	}
+	.order-form-item>#Size {
+		order: 3;
+	}
+	.order-form-item>.select2:nth-child(6) {
+		order: 4;
+	}
+	.order-form-item>#Size-error {
+		order: 5;
+	}
+	.order-form-item>#Qty {
+		order: 6;
+	}
+	.order-form-item>#Qty-error {
+		order: 7;
+	}
 }
 
 .form-group .select2-container, .form-group .select2-container *, .select2-container--default .select2-selection--single .select2-selection__arrow {
@@ -56,7 +123,7 @@ select.select2-color, select.select2-size {
 }
 
 @media screen and (min-width: 769px) {
-	select.select2-color, select.select2-size, select.select2-color~.select2-container, select.select2-size~.select2-container, input[name="Qty"] {
+	select.select2-color, select.select2-size, select.select2-color~.select2-container, select.select2-size~.select2-container, input#Qty {
 		width: 30%!important;
 	}
 }

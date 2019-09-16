@@ -298,7 +298,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="uk-section uk-padding-remove-top">
+	<section class="uk-section uk-padding-remove-top soft-blue">
 		<div class="uk-container">
 			<form id="formOrder" name="formOrder">
 				<div class="uk-width-1-1@s uk-margin-medium-bottom">
@@ -309,13 +309,13 @@
 					<div class="order-form-row uk-grid">
 						<div class="uk-width-3-4@m">
 							<div class="form-group order-form-item">
-								<select class="select2-color" name="Color" id="Color">
-                  <option value="">Pilih Warna..</option>
-                </select>
-								<select class="select2-size" name="Size" id="Size">
+								<select class="select2-color" name="Color" id="Color" required>
+								  <option value="">Pilih Warna..</option>
+								</select>
+								<select class="select2-size" name="Size" id="Size" required>
 									<option value="">Pilih Ukuran...</option>
 								</select>
-								<input type="text" class="uk-input" id="Qty" name="Qty" value="" placeholder="Quantity">
+								<input type="text" class="uk-input" id="Qty" name="Qty" value="" placeholder="Quantity" required>
 							</div>
 						</div>
 						<div class="uk-width-expand uk-grid-margin uk-first-column">
@@ -350,14 +350,14 @@
 						</div>
 					</div>
 					<div class="uk-width-1-2@m">
-					  <div class="form-group">
+					  <div class="form-group province-container">
 						<select class="select2-province" name="Province" id="Province">
 						  <option value="">Pilih Provinsi...</option>
 						</select>
 					  </div>
 					</div>
 					<div class="uk-width-1-2@m">
-					  <div class="form-group">
+					  <div class="form-group city-container">
 						<select class="select2-city" name="City" id="City">
 						  <option value="">Pilih Kota...</option>
 						</select>
