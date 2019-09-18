@@ -65,87 +65,7 @@ $('.select2-size').select2({
             },
           }
 });
-$( document ).ready(function() {
-	$.ajax({
-      type: "POST",
-      dataType: "html",
-      url: "GetProvince.php",
-      success: function(msg){
-      $("#Province").html(msg);
-      }
-   });
-	$("#Province").on("change",function(){
-    var selections = $("#Province").select2('data')[0];
-    $( ".data-province" ).html( selections.text );
-		$.ajax({
-		  type: "POST",
-		  dataType: "html",
-		  data :
-			{
-				province_id : this.value
-			},
-		  url: "GetCity.php",
-		  success: function(msgct){
-		    $("#City").html(msgct);
-		  }
-		});
 
-    $("#City").on("change",function(){
-      var selections = $("#City").select2('data')[0];
-      $( ".data-city" ).html( selections.text );
-    })
-	});
-
-  // event change courier
-  $("#Courier").on("change",function(){
-      if ($("#City").val() == "" || $("#Weight").val() == "" || this.value == ""){
-          alert("Kota Tujuan , Berat , Dan Kurir Tidak Boleh Kosong");
-      }
-      else
-      {
-          var selections = $("#Courier").select2('data')[0];
-          $( ".data-courier" ).html( selections.text );
-          if (this.value != "custom")
-          {
-              $.ajax({
-                        url: 'admin/CheckOngkir.php',
-                        dataType : 'json',
-                        data :
-                        {
-                            Destination : $("#City").val(),
-                            Weight      : parseInt($(".data-weight").html()) * 1000,
-                            Courier     : this.value
-                        },
-                        type: 'POST',
-                        success : function(dataService){
-                        var services = dataService.rajaongkir.results[0].costs
-                        $('#Service').empty()
-                        .append("<option selected='selected' value=''>Pilih Servis Pengiriman...</option>");
-                            $.each(services, function (i, item) {
-                                $('#Service').append($("<option>", {
-                                    value: services[i]['service'],
-                                    data_attr_cost : services[i]['cost'][0].value,
-                                    text : services[i]['description'] + " (" + services[i]['cost'][0].value + ") " + services[i]['cost'][0].etd + "Hari"
-                                }));
-                            });
-                        }
-              })
-          }
-          else
-          {
-              $('#Service').append($("<option>", {
-                          value: "custom",
-                          text : "custom"
-              }));
-              $("#AdditionalPrice").removeAttr("readonly")
-          }
-      }
-  });
-  //
-
-
-
-});
 $('.select2-province, .select2-city, .select2-courier, .select2-service').select2({
 	width: '100%'
 });
@@ -336,7 +256,85 @@ $(document).ready(function() {
       UIkit.offcanvas('#order-review').show();
     }
 	});
+	
+	$.ajax({
+      type: "POST",
+      dataType: "html",
+      url: "GetProvince.php",
+      success: function(msg){
+      $("#Province").html(msg);
+      }
+   });
+	$("#Province").on("change",function(){
+    var selections = $("#Province").select2('data')[0];
+    $( ".data-province" ).html( selections.text );
+		$.ajax({
+		  type: "POST",
+		  dataType: "html",
+		  data :
+			{
+				province_id : this.value
+			},
+		  url: "GetCity.php",
+		  success: function(msgct){
+		    $("#City").html(msgct);
+		  }
+		});
 
+    $("#City").on("change",function(){
+      var selections = $("#City").select2('data')[0];
+      $( ".data-city" ).html( selections.text );
+    })
+	});
+
+  // event change courier
+  $("#Courier").on("change",function(){
+      if ($("#City").val() == "" || $("#Weight").val() == "" || this.value == ""){
+          alert("Kota Tujuan , Berat , Dan Kurir Tidak Boleh Kosong");
+      }
+      else
+      {
+          var selections = $("#Courier").select2('data')[0];
+		  $( ".data-additional-price" ).html( "0" );
+		  $( ".data-total-price" ).html( parseInt(_TotalPrice) );
+          $( ".data-courier" ).html( selections.text );
+          if (this.value != "custom")
+          {
+              $.ajax({
+                        url: 'admin/CheckOngkir.php',
+                        dataType : 'json',
+                        data :
+                        {
+                            Destination : $("#City").val(),
+                            Weight      : parseInt($(".data-weight").html()) * 1000,
+                            Courier     : this.value
+                        },
+                        type: 'POST',
+                        success : function(dataService){
+                        var services = dataService.rajaongkir.results[0].costs
+                        $('#Service').empty()
+                        .append("<option selected='selected' value=''>Pilih Servis Pengiriman...</option>");
+                            $.each(services, function (i, item) {
+                                $('#Service').append($("<option>", {
+                                    value: services[i]['service'],
+                                    data_attr_cost : services[i]['cost'][0].value,
+                                    text : services[i]['description'] + " (" + services[i]['cost'][0].value + ") " + services[i]['cost'][0].etd + "Hari"
+                                }));
+                            });
+                        }
+              })
+          }
+          else
+          {
+              $('#Service').append($("<option>", {
+                          value: "custom",
+                          text : "custom"
+              }));
+              $("#AdditionalPrice").removeAttr("readonly")
+          }
+      }
+  });
+	
   $('#Service').on("change",function() {
       var selections = $("#Courier").select2('data');
       console.log(selections)
@@ -346,6 +344,7 @@ $(document).ready(function() {
   });
 
 	$("#submit-order-review-button").click(function(e){
+		if ($('#Courier, #Service').valid()) {
 			var DataItem = [];
 			var info = t.page.info();
 			var length = info.recordsTotal - 1;
@@ -415,5 +414,6 @@ $(document).ready(function() {
 					}
 				}
 			});
+	}
 	})
 });

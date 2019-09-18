@@ -13,6 +13,9 @@
 .order-form-item {
 	position: relative;
 }
+.uk-offcanvas-bar em.error {
+	color: #f0506e;
+}
 
 @media screen and (min-width: 1025px) {
 	#Color-error, #Size-error, #Qty-error {
@@ -26,18 +29,18 @@
 	}
 }
 
-.province-container, .city-container {
+.province-container, .city-container, .courier-container, .service-container {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
 	}
-	.province-container>#Province, .city-container>#City {
+	.province-container>#Province, .city-container>#City, .courier-container>#Courier, .service-container>#Service {
 		order: 0;
 	}
-	.province-container>.select2, .city-container>.select2 {
+	.province-container>.select2, .city-container>.select2, .courier-container>.select2, .service-container>.select2 {
 		order: 1;
 	}
-	.province-container>#Province-error, .city-container>#City-error {
+	.province-container>#Province-error, .city-container>#City-error, .courier-container>#Courier-error, .service-container>#Service-error {
 		order: 2;
 	}
 

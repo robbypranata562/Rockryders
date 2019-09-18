@@ -400,8 +400,8 @@
 										<tr>
 											<th>
 												<div class="uk-width-1-1@s">
-												  <div class="form-group">
-													<select class="select2-courier" name="Courier" id="Courier">
+												  <div class="form-group courier-container">
+													<select class="select2-courier" name="Courier" id="Courier" required>
 													  <option value="">Pilih Kurir...</option>
 													  <option value="jne">JNE</option>
 													  <option value="pos">POS</option>
@@ -432,8 +432,8 @@
 											</th>
 											<th colspan="2">
 												<div class="uk-width-1-1@s">
-												  <div class="form-group">
-													<select class="select2-service" name="Service" id="Service">
+												  <div class="form-group service-container">
+													<select class="select2-service" name="Service" id="Service" required>
 													  <option value="">Pilih Servis Pengiriman...</option>
 													</select>
 												  </div>
