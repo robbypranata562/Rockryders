@@ -50,13 +50,9 @@
       "serverSide": true,
       "scrollX": true,
       "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-          var ButtonStockCard = '<a class="btn btn-success" href="StockCardItem.php?id='+aData[0]+'">Stock Card</a>'
-          var ButtonEdit      = '<a class="btn btn-warning" href="edit_barang.php?id='+aData[0]+'">Edit</a>'
           if (aData[4] <= aData[5]){
             $(nRow).addClass('red-row-class');
           }
-          $('td:eq(0)', nRow).html(ButtonStockCard);
-          $('td:eq(7)', nRow).html(ButtonEdit);
           return nRow;
       },
       "ajax": {
@@ -67,10 +63,72 @@
 
           }
       },
-      "fnInitComplete": function (oSettings, json) {
-      },
-      "fnDrawCallback": function (settings) {
-      },
+      // "fnInitComplete": function (oSettings, json) {
+      // },
+      // "fnDrawCallback": function (settings) {
+      // },
+      "columns":
+                  [
+                    {
+                        data    : 'Id',
+                        orderable : false,
+                        render  : function(data, type, row)
+                        {
+                          return '<a class="btn btn-success" href="StockCardItem.php?id='+row[0]+'">Stock Card</a>'
+                        }
+                    },
+                    {
+                        data    : 'Name',
+                        render  : function(data, type, row)
+                        {
+                          return row[1]
+                        }
+                    },
+                    {
+                        data    : 'BasePrice',
+                        render  : function(data, type, row)
+                        {
+                          return row[2]
+                        }
+                    },
+                    {
+                        data    : 'HargaJual',
+                        orderable : false,
+                        render  : function(data, type, row)
+                        {
+                          return row[3]
+                        }
+                    },
+                    {
+                        data    : 'SmallQty',
+                        render  : function(data, type, row)
+                        {
+                          return row[4]
+                        }
+                    },
+                    {
+                        data    : 'MinStock',
+                        render  : function(data, type, row)
+                        {
+                          return row[5]
+                        }
+                    },
+                    {
+                        data    : 'UmurBarangMaksimal',
+                        render  : function(data, type, row)
+                        {
+                          return row[6]
+                        }
+                    },
+                    {
+                        data    : 'Id',
+                        orderable : false,                        
+                        render  : function(data, type, row)
+                        {
+                          return '<a class="btn btn-warning" href="edit_barang.php?id='+row[7]+'">Edit</a>'
+                        }
+                    }
+                  ]
     });
 
     $('#titem').on('click', 'tbody tr', function () {
