@@ -56,24 +56,7 @@
         "serverSide": true,
         "scrollX": true,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            var ButtonDetails         =   '<a class="btn btn-warning"   href="DeliveryOrderDetailList.php?Id='+aData[0]+'">Detail</a>'
-            var ButtonPrint           =   '<a class="btn btn-info"      href="DeliveryOrderPrintNew.php?Id='+aData[0]+'">Print</a>'
-            var ButtonActionsConfirm  =   '<input type="button" class="btn btn-success" value="Confirm"/>'
-            var ButtonActionsDelete   =   '<input type="button" class="btn btn-danger" value="Delete"/>'
-            
-            var Status = "";
-            if (aData[9] == "0"){
-              Status = "<span class='badge badge-danger'>Belum Lunas</span>"
-            }
-            else{
-              Status = "<span class='badge badge-primary'>Lunas</span>"
-            }
             $(nRow).attr("data-attr-id",aData[0]);
-            $('td:eq(0)',   nRow).html(ButtonDetails);
-            $('td:eq(9)',   nRow).html(Status);
-            $('td:eq(10)',  nRow).html(ButtonPrint);
-            $('td:eq(11)',  nRow).html(ButtonActionsDelete);
-            $('td:eq(12)',  nRow).html(ButtonActionsConfirm);
             BindClickDelete(nRow);
             BindClickConfirm(nRow);
             return nRow;
@@ -86,10 +69,122 @@
                 d.status = $("#Status").val()
             }
         },
-        "fnInitComplete": function (oSettings, json) {
-        },
-        "fnDrawCallback": function (settings) {
-        },
+        // "fnInitComplete": function (oSettings, json) {
+        // },
+        // "fnDrawCallback": function (settings) {
+        // },
+        "columns":
+                    [
+                      {
+                          data    : 'Id',
+                          orderable : false,
+                          render  : function(data, type, row)
+                          {
+                            return '<a class="btn btn-warning" href="DeliveryOrderDetailList.php?Id='+row[0]+'">Detail</a>'
+                          }
+                      },
+                      {
+                          data    : 'Code',
+                          orderable : true,
+                          render  : function(data, type, row)
+                          {
+                            return row[1]
+                          }
+                      },
+                      {
+                          data    : 'Date',
+                          orderable : true,
+                          render  : function(data, type, row)
+                          {
+                            return row[2]
+                          }
+                      },
+                      {
+                          data    : 'Customer',
+                          orderable : true,
+                          render  : function(data, type, row)
+                          {
+                            return row[3]
+                          }
+                      },
+                      {
+                          data    : 'Phone',
+                          orderable : false,
+                          render  : function(data, type, row)
+                          {
+                            return row[4]
+                          }
+                      },
+                      {
+                          data    : 'TotalPrice',
+                          orderable : true,
+                          render  : function(data, type, row)
+                          {
+                            return row[5]
+                          }
+                      },
+                      {
+                          data    : 'AdditionalPrice',
+                          orderable : true,
+                          render  : function(data, type, row)
+                          {
+                            return row[6]
+                          }
+                      },
+                      {
+                          data    : 'Total',
+                          orderable : true,
+                          render  : function(data, type, row)
+                          {
+                            return row[7]
+                          }
+                      },
+                      {
+                          data    : 'Description',
+                          orderable : false,
+                          render  : function(data, type, row)
+                          {
+                            return row[8]
+                          }
+                      },
+                      {
+                          data    : 'Status',
+                          orderable : false,
+                          render  : function(data, type, row)
+                          {
+                            if (row[9] == "0"){
+                              return "<span class='badge badge-danger'>Belum Lunas</span>"
+                            }
+                            else{
+                              return "<span class='badge badge-primary'>Lunas</span>"
+                            }
+                          }
+                      },
+                      {
+                          data    : 'Id',
+                          orderable : false,
+                          render  : function(data, type, row)
+                          {
+                            return '<a class="btn btn-info"      href="DeliveryOrderPrintNew.php?Id='+row[0]+'">Print</a>'
+                          }
+                      },
+                      {
+                          data    : 'Id',
+                          orderable : false,
+                          render  : function(data, type, row)
+                          {
+                            return '<input type="button" class="btn btn-danger" value="Delete"/>'
+                          }
+                      },
+                      {
+                          data    : 'Id',
+                          orderable : false,
+                          render  : function(data, type, row)
+                          {
+                            return '<input type="button" class="btn btn-success" value="Confirm"/>'
+                          }
+                      },
+                    ]
       });
       $("#Status").on("change",function(e){
         $('#tDeliveryorder').DataTable().draw();
@@ -127,7 +222,7 @@
             }
           })
         });
-        
+
       }
 
       function BindClickConfirm(nRow){
@@ -161,7 +256,7 @@
             }
           })
         });
-        
+
       }
   });
 </script>
