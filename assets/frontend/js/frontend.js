@@ -81,7 +81,50 @@ $(document).ready(function() {
             numberIncr++;
         }
 	$(".add-more").click(function(){
-		if ($('#Color, #Size, #Qty').valid()) {
+		console.log($(".order-form-row").length);
+		if ($(".order-form-row").length !=0) {
+			if ($('#Color, #Size, #Qty').valid()) {
+				$('.select2-color').attr('disabled','');
+				$('.select2-size').attr('disabled','');
+				tambahItem();
+				$('.select2-color').select2({
+					width: '100%',
+					ajax: {
+							  dataType: 'json',
+							  url: 'getWarna.php',
+							  delay: 500,
+							  data: function(params) {
+								return {
+								  search: params.term
+								}
+							  },
+							  processResults: function (data, page) {
+							  return {
+								results: data
+							  };
+							},
+						  }
+				});
+				$('.select2-size').select2({
+					width: '100%',
+					ajax: {
+							  dataType: 'json',
+							  url: 'getSize.php',
+							  delay: 500,
+							  data: function(params) {
+								return {
+								  search: params.term
+								}
+							  },
+							  processResults: function (data, page) {
+							  return {
+								results: data
+							  };
+							},
+						  }
+				});
+			}
+		} else {
 			$('.select2-color').attr('disabled','');
 			$('.select2-size').attr('disabled','');
 			tambahItem();

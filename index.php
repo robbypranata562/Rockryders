@@ -391,9 +391,14 @@
 										</tr>
 									</thead>
 									<tfoot>
+									<tr>
+											<th colspan="3"></th>
+											<th> Berat </th>
+											<th><span class="data-weight uk-margin-remove-top uk-margin-remove-bottom">0</span> kg</th>
+										</tr>
 										<tr>
 											<th>
-												<div class="uk-width-1-1@s">
+												<div class="uk-width-1-1@s uk-margin-remove-top">
 												  <div class="form-group courier-container">
 													<select class="select2-courier" name="Courier" id="Courier" required>
 													  <option value="">Pilih Kurir...</option>
@@ -425,7 +430,7 @@
 												</div>
 											</th>
 											<th colspan="2">
-												<div class="uk-width-1-1@s">
+												<div class="uk-width-1-1@s uk-margin-remove-top">
 												  <div class="form-group service-container">
 													<select class="select2-service" name="Service" id="Service" required>
 													  <option value="">Pilih Servis Pengiriman...</option>
@@ -453,7 +458,6 @@
 									<p class="data-courier uk-margin-remove-top uk-margin-remove-bottom">JNE</p>
 									<p class="data-service uk-margin-remove-top uk-margin-remove-bottom">YES</p>
 									<p class="data-description uk-margin-remove-top uk-margin-remove-bottom">Description</p>
-									<p class="data-weight uk-margin-remove-top uk-margin-remove-bottom uk-invisible">3</p>
 								</div>
 								<div class="alert-message uk-width-1-1@s uk-margin-small-bottom">
 									<div class="uk-alert-danger uk-hidden" uk-alert>
