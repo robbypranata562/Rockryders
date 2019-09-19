@@ -66,8 +66,13 @@ $('.select2-size').select2({
           }
 });
 
-$('.select2-province, .select2-city, .select2-courier, .select2-service').select2({
+$('.select2-province, .select2-city').select2({
 	width: '100%'
+});
+
+$('.select2-courier, .select2-service').select2({
+	width: '100%',
+	minimumResultsForSearch: Infinity
 });
 
 $(document).ready(function() {
