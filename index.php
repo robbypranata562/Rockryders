@@ -492,7 +492,7 @@
 <script type="text/javascript" src="assets/frontend/js/datatable/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="assets/frontend/js/slick/slick.min.js"></script>
 <script type="text/javascript" src="assets/frontend/js/select2/select2.min.js"></script>
-<script type="text/javascript" src="assets/frontend/js/select2/select2-dropdownPosition.min.js"></script>
+<script type="text/javascript" src="assets/frontend/js/select2/select2-dropdownPosition.js"></script>
 <script type="text/javascript" src="assets/frontend/js/jquery-validation/jquery.validate.min.js"></script>
 <script type="text/javascript" src="assets/frontend/js/frontend.js"></script>
 </body>

@@ -31,6 +31,7 @@ $green
 //select2
 $('.select2-color').select2({
 	width: '100%',
+	dropdownPosition: 'below',
 	ajax: {
               dataType: 'json',
               url: 'getWarna.php',
@@ -49,6 +50,7 @@ $('.select2-color').select2({
 });
 $('.select2-size').select2({
 	width: '100%',
+	dropdownPosition: 'below',
 	ajax: {
               dataType: 'json',
               url: 'getSize.php',
@@ -67,12 +69,14 @@ $('.select2-size').select2({
 });
 
 $('.select2-province, .select2-city').select2({
-	width: '100%'
+	width: '100%',
+	dropdownPosition: 'below'
 });
 
 $('.select2-courier, .select2-service').select2({
 	width: '100%',
-	minimumResultsForSearch: Infinity
+	minimumResultsForSearch: Infinity,
+	dropdownPosition: 'below'
 });
 
 $(document).ready(function() {
