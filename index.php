@@ -380,12 +380,6 @@
 							<button class="uk-offcanvas-close" type="button" uk-close></button>
 							<div class="uk-width-1-1@s uk-grid">
 								<h2>Order Review</h2>
-								<div class="alert-message uk-width-1-1@s">
-									<div class="uk-alert-danger uk-hidden" uk-alert>
-										<a class="uk-alert-close"></a>
-										<p>Maaf, stok kaos warna merah hanya tersisa 5. Mohon untuk mengubah jumlah pesanan Anda...</p>
-									</div>
-								</div>
 								<table id="TableDeliveryDetail" class="uk-table uk-table-striped uk-table-responsive">
 									<thead>
 										<tr>
@@ -460,6 +454,12 @@
 									<p class="data-service uk-margin-remove-top uk-margin-remove-bottom">YES</p>
 									<p class="data-description uk-margin-remove-top uk-margin-remove-bottom">Description</p>
 									<p class="data-weight uk-margin-remove-top uk-margin-remove-bottom uk-invisible">3</p>
+								</div>
+								<div class="alert-message uk-width-1-1@s uk-margin-small-bottom">
+									<div class="uk-alert-danger uk-hidden" uk-alert>
+										<a class="uk-alert-close"></a>
+										<p>Maaf, stok kaos warna merah hanya tersisa 5. Mohon untuk mengubah jumlah pesanan Anda...</p>
+									</div>
 								</div>
 								<div class="uk-width-expand uk-flex uk-flex-right uk-flex-bottom">
 									<div class="form-group">

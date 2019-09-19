@@ -45,7 +45,7 @@
 <script>
   $(document).ready(function(){
     $('#titem').dataTable( {
-      "Processing": true,
+      "processing": true,
       "paging":   true,
       "serverSide": true,
       "scrollX": true,
