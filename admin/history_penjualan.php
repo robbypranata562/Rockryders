@@ -74,10 +74,10 @@
 
 		$('#THistory').dataTable( {
 			"bProcessing": true,
+              "paging":   true,
       "serverSide": true,
       "scrollX": true,
       "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-        console.log(aData)
         return nRow;
       },
       "ajax": {
@@ -89,11 +89,9 @@
                 }
             },
     });
-    
+
     $("#btnSearchHistory").on("click",function(){
       $("#THistory").DataTable().draw();
     });
 });
 </script>
- 
- 

@@ -1,8 +1,9 @@
-<?php 
+<?php
 include "koneksi.php";
 $startDate = $_POST['StartDate'];
 $endDate = $_POST['EndDate'];
-
+$Limit  =  $_POST['length'];
+$Offset =  $_POST['start'];
 
 $iTotal = 0;
 
@@ -10,20 +11,18 @@ $cek_count="SELECT
 count(*) as CountRecords
 FROM
 `transaction` AS a
-LEFT JOIN transactiondetail AS b ON a.Id = b.TransactionId
 WHERE
-1 = 1 
-AND a.DeletedBy IS NULL 
+1 = 1
+AND a.DeletedBy IS NULL
 AND a.DeletedDate IS null
 AND Date(a.Date) BETWEEN date('".$startDate."') AND date('".$endDate."')
 And a.IsConfirm = 1
-group by a.Id
 
 ";
 $k=mysqli_query($koneksi,$cek_count);
 if(mysqli_num_rows($k) > 0 )
 {
-    while ($row = $k->fetch_assoc()) 
+    while ($row = $k->fetch_assoc())
     {
         $iTotal = $row['CountRecords'];
     }
@@ -52,19 +51,21 @@ FROM
 `transaction` AS a
 LEFT JOIN transactiondetail AS b ON a.Id = b.TransactionId
 WHERE
-1 = 1 
-AND a.DeletedBy IS NULL 
+1 = 1
+AND a.DeletedBy IS NULL
 AND a.DeletedDate IS null
 AND Date(a.Date) BETWEEN date('".$startDate."') AND date('".$endDate."')
 And a.IsConfirm = 1
 group by a.Id
+order by a.Date Desc
+LIMIT ".$Limit." OFFSET ".$Offset."
 ";
 $k=mysqli_query($koneksi,$cek);
 if(mysqli_num_rows($k) > 0 )
 {
-    while ($row = $k->fetch_assoc()) 
+    while ($row = $k->fetch_assoc())
     {
-        
+
         $data = array
             (
                 $row['Code'],
