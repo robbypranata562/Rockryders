@@ -35,14 +35,13 @@
 <?php include "footer.php";?>
 <script>
       $('#TReceiving').dataTable( {
-        "dom": 'lrtip',
         "Processing": true,
         "paging":   true,
         "serverSide": true,
         "scrollX": true,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            var ButtonDetail = '<a class="btn btn-success" href="ReceivingDetailList.php?Id='+aData[0]+'">Detail</a>'
-            $('td:eq(0)', nRow).html(ButtonDetail);
+            // var ButtonDetail = '<a class="btn btn-success" href="ReceivingDetailList.php?Id='+aData[0]+'">Detail</a>'
+            // $('td:eq(0)', nRow).html(ButtonDetail);
             return nRow;
         },
         "ajax": {
@@ -57,7 +56,40 @@
         },
         "fnDrawCallback": function (settings) {
         },
+        "columns":
+                    [
+                      {
+                          data    : 'Id',
+                          orderable : false,
+                          render  : function(data, type, row)
+                          {
+                            return '<a class="btn btn-success" href="ReceivingDetailList.php?Id='+row[0]+'">Detail</a>'
+                          }
+                      },
+                      {
+                          data    : 'Code',
+                          orderable : true,
+                          render  : function(data, type, row)
+                          {
+                            return row[1]
+                          }
+                      },
+                      {
+                          data    : 'Date',
+                          orderable : true,
+                          render  : function(data, type, row)
+                          {
+                            return row[2]
+                          }
+                      },
+                      {
+                          data    : 'Description',
+                          orderable : true,
+                          render  : function(data, type, row)
+                          {
+                            return row[3]
+                          }
+                      }
+                  ]
       });
 </script>
- 
- 
