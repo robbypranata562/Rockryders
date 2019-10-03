@@ -34,7 +34,8 @@
                     <th>Total</th>
                     <th>Ongkir</th>
                     <th>Total + Ongkir</th>
-                    <th>Description</th>
+                    <th>Deskripsi</th>
+                    <th>Alamat</th>
                     <th>Status</th>
                     <th>Print</th>
                     <th>Delete</th>
@@ -148,11 +149,19 @@
                           }
                       },
                       {
+                          data    : 'Address',
+                          orderable : false,
+                          render  : function(data, type, row)
+                          {
+                            return row[9]
+                          }
+                      },
+                      {
                           data    : 'Status',
                           orderable : false,
                           render  : function(data, type, row)
                           {
-                            if (row[9] == "0"){
+                            if (row[10] == "0"){
                               return "<span class='badge badge-danger'>Belum Lunas</span>"
                             }
                             else{
@@ -191,8 +200,8 @@
       })
 
       function BindClickDelete(nRow){
-        $('td:eq(11) input[type="button"]', nRow).unbind('click');
-        $('td:eq(11) input[type="button"]', nRow).bind('click',function(e){
+        $('td:eq(12) input[type="button"]', nRow).unbind('click');
+        $('td:eq(12) input[type="button"]', nRow).bind('click',function(e){
           var _transactionId    = $(nRow).attr('data-attr-id');
           var _transactionCode  = $("td:eq(1)",nRow).html()
           $.confirm({
@@ -226,8 +235,8 @@
       }
 
       function BindClickConfirm(nRow){
-        $('td:eq(12) input[type="button"]', nRow).unbind('click');
-        $('td:eq(12) input[type="button"]', nRow).bind('click',function(e){
+        $('td:eq(13) input[type="button"]', nRow).unbind('click');
+        $('td:eq(13) input[type="button"]', nRow).bind('click',function(e){
           let _transactionId = $(nRow).attr('data-attr-id')
 
           $.confirm({

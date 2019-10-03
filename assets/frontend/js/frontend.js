@@ -83,7 +83,7 @@ $(document).ready(function() {
 // add-remove order form
 
   var _TotalPrice = 0;
-  
+
 	var numberIncr = 1;
 	function tambahItem() {
             $('.order-form').append($('<div uk-grid class="order-form-row"><div class="uk-width-3-4@m"><div class="form-group order-form-item"> <select class="select2-color" name="Color'+numberIncr+'" id="Color" required><option value="">Pilih Warna..</option> </select> <select class="select2-size" name="Size'+numberIncr+'" id="Size" required><option value="">Pilih Ukuran...</option> </select> <input type="text" class="uk-input" id="Qty" name="Qty'+numberIncr+'" value="" placeholder="Quantity" required></div></div><div class="uk-width-expand"><div class="form-group"> <button class="uk-button uk-button-danger remove" type="button"><span uk-icon="close"></span> Hapus</button></div></div></div>'));
@@ -200,16 +200,16 @@ $(document).ready(function() {
 				{ data: 'sub' }
 			  ]
 		});
-	
+
 	$.extend($.validator.messages, { required: "Wajib diisi" });
 	$.validator.addMethod('minStrict', function (value, el, param) {
 		return value > param;
 	});
-	
+
     $("#formOrder").validate({
       errorElement: "em",
       rules: {
-		  Qty: { 
+		  Qty: {
 			  minStrict: 0,
 			  number: true
 		  },
@@ -231,7 +231,7 @@ $(document).ready(function() {
 
       },
       messages: {
-		  Qty: { 
+		  Qty: {
 			  minStrict: "Quantity harus lebih dari 0"
 		  },
 		  Customer: {
@@ -251,7 +251,7 @@ $(document).ready(function() {
           }
       }
   });
-  
+
 	$('#Province, #City').on('change', function() {  // when the value changes
 		$(this).valid(); // trigger validation on this element
 	});
@@ -305,10 +305,13 @@ $(document).ready(function() {
   		t.clear().draw( false );
   		t.rows.add(arr).draw( false );
   		$(".data-weight").html(Math.ceil(_TotalQty / 6));
+      $('#Courier').val(null).trigger('change');
+      $('#Service').val(null).trigger('change');
+      $('.data-additional-price').html("0");
       UIkit.offcanvas('#order-review').show();
     }
 	});
-	
+
 	$.ajax({
       type: "POST",
       dataType: "html",
@@ -341,17 +344,18 @@ $(document).ready(function() {
 
   // event change courier
   $("#Courier").on("change",function(){
-      if ($("#City").val() == "" || $("#Weight").val() == "" || this.value == ""){
+      if ($("#City").val() == "" || $("#Weight").val() == ""){
           alert("Kota Tujuan , Berat , Dan Kurir Tidak Boleh Kosong");
       }
       else
       {
-          var selections = $("#Courier").select2('data')[0];
-		  $( ".data-additional-price" ).html( "0" );
-		  $( ".data-total-price" ).html( parseInt(_TotalPrice) );
-          $( ".data-courier" ).html( selections.text );
-          if (this.value != "custom")
-          {
+        if (this.value != "custom" && this.value != "")
+        {
+              var selections = $("#Courier").select2('data')[0];
+              console.log(this.value);
+        		  $( ".data-additional-price" ).html( "0" );
+        		  $( ".data-total-price" ).html( parseInt(_TotalPrice) );
+              $( ".data-courier" ).html( selections.text );
               $.ajax({
                         url: 'admin/CheckOngkir.php',
                         dataType : 'json',
@@ -386,7 +390,7 @@ $(document).ready(function() {
           }
       }
   });
-	
+
   $('#Service').on("change",function() {
       var selections = $("#Courier").select2('data');
       console.log(selections)

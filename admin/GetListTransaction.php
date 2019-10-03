@@ -53,7 +53,8 @@ SELECT
     format(a.AdditionalPrice,2) as AdditionalPrice,
     format((a.TotalPrice + a.AdditionalPrice),2) as Total,
     a.Description,
-    a.isConfirm as Status
+    a.isConfirm as Status,
+    a.Address
 FROM
     `transaction` AS a
 WHERE
@@ -87,6 +88,7 @@ if(mysqli_num_rows($k) > 0 )
                 $row['AdditionalPrice'],
                 $row['Total'],
                 $row['Description'],
+                $row['Address'],
                 $row['Status'],
                 $row['Id'],
                 $row['Id'],
