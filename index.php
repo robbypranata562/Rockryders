@@ -365,7 +365,7 @@
 					</div>
 					<div class="uk-width-1-1@s">
 						<div class="form-group">
-						  <input type="text" class="uk-input" name="Description" id="Description" value="" placeholder="Deskripsi">
+						  <input type="text" class="uk-input uk-hidden" name="Description" id="Description" value="" placeholder="Deskripsi">
 						</div>
 					</div>
 					<div class="uk-width-1-1@s">

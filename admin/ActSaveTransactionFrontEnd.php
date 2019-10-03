@@ -86,11 +86,11 @@
     //start insert to database
     $SQLInsertReceivingMain = "insert into transaction
     (
-        Code ,
-        Date ,
-        Customer ,
-        Phone ,
-        Address ,
+        Code,
+        Date,
+        Customer,
+        Phone,
+        Address,
         Description,
         TotalPrice,
         AdditionalPrice,
