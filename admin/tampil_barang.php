@@ -122,7 +122,7 @@
                     },
                     {
                         data    : 'Id',
-                        orderable : false,                        
+                        orderable : false,
                         render  : function(data, type, row)
                         {
                           return '<a class="btn btn-warning" href="edit_barang.php?id='+row[7]+'">Edit</a>'

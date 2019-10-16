@@ -430,14 +430,34 @@
             })
 
             $("#btnTambahBarang").click(function(e){
-
+                var _Price      =   0;
                 var _Date       =   $("#Date").val()
                 var _Color      =   $("#Color").val();
                 var _Size       =   $("#Size").val();
                 var _Qty        =   $("#Qty").val();
                 var _Stock      =   $("#Stock").val();
+                var _ColorName  =   $("#Color option:selected").html();
+                console.log(_ColorName);
+                if (_ColorName.indexOf("Panjang") != -1) //case panjang
+                {
+                    if (_Size != "XXL")
+                    {
+                      var _SubPrice   =   _Qty * 33000
+                      _Price = 33000
+                    }
+                    else
+                    {
+                      var _SubPrice   =   _Qty * 35000
+                      _Price = 35000
+
+                    }
+                }
+                else
+                {
+                  var _SubPrice   =   _Qty * 27000
+                  _Price = 27000
+                }
                 // var _UnitPrice  =   $("#UnitPrice").val();
-                var _SubPrice   =   _Qty * 27000
 
                 if (_Size == "" || _Color == "" || _Qty == "") {
                     alert("Warna Dan Atau Ukuran Tidak Boleh Kosong")
@@ -463,43 +483,71 @@
                     }
                     else
                     {
-                        t.row.add
+                        var temp = t.row.add
                         ([
                             "Kaos Polos",
                             _Color,
                             _Size,
                             _Qty,
-                            27000,
+                            _Price,
                             _SubPrice,
                             "<input type='button' class='btn btn-danger' value='Delete'/>"
-                        ]).draw( false );
+                        ]).draw().node();
+                        if (_ColorName.indexOf("Panjang") != -1) //case panjang
+                        {
+                          $(temp).attr("tipe-kaos", "Panjang");
+                        }
+                        else
+                        {
+                          $(temp).attr("tipe-kaos", "Pendek");
+                        }
                         var info = t.page.info();
                         var length = info.recordsTotal - 1;
                         var counterNeedApproval = 0;
                         TotalQty = parseInt(TotalQty) + parseInt(_Qty);
                         var _NewUnitPrice = 0
                         var _TotalPrice = 0;
-                        if (TotalQty <= 11)
+                        if (_ColorName.indexOf("Panjang") == -1) //case pendek
                         {
-                            _NewUnitPrice = 27000;
+                          if (TotalQty <= 11)
+                          {
+                              _NewUnitPrice = 27000;
+                          }
+                          else if (TotalQty <= 1199) {
+                              _NewUnitPrice = 25500;
+                          }
+                          else{
+                              _NewUnitPrice = 25000;
+                          }
                         }
-                        else if (TotalQty <= 1199) {
-                            _NewUnitPrice = 25500;
+                        else
+                        {
+                          if (_Size != "XXL")
+                          {
+                            _NewUnitPrice = 33000
+                          }
+                          else
+                          {
+                            _NewUnitPrice = 35000
+                          }
                         }
-                        else{
-                            _NewUnitPrice = 25000;
-                        }
+
 
                         for(var i = 0 ; i <= length ; i++)
                         {
-                            var row = $("#TableDeliveryDetail tbody tr:eq("+i+")");
+                          var row = $("#TableDeliveryDetail tbody tr:eq("+i+")");
+                          if ($(row).attr("tipe-kaos") != "Panjang")
+                          {
                             $("td:eq(4)",row).html(_NewUnitPrice);
                             $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
                             _TotalPrice = parseInt(_TotalPrice) + parseInt($("td:eq(5)",row).html())
+                          }
+                          else
+                          {
+                            _TotalPrice = parseInt(_TotalPrice) + parseInt($("td:eq(5)",row).html())
+                          }
                         }
                         let _weight = Math.ceil(TotalQty / 6);
-
-
                         $("#Color").val("");
                         $("#Size").val("");
                         $("#Qty").val("");
@@ -509,7 +557,6 @@
                         //var LastTotalPrice = $("#TotalPrice").val() == "" ? "0" : $("#TotalPrice").val();
                         $("#TotalPrice").val( _TotalPrice );
                         $("#GrandTotal").val( _TotalPrice );
-
                         $("#Weight").val(_weight)
                     }
 

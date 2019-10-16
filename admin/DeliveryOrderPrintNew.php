@@ -102,11 +102,12 @@ include "koneksi.php";
                     <tr>
                         <?php
                             $no=1;
+                            $sumQty = 0;
                             $sql_trans="
                             SELECT
                                 Concat(b.`Name`,' ' ,c.`Name` , ' ' , d.`Name`) as Name,
-                                a.Qty,
                                 format(a.UnitPrice, 2) AS UnitPrice,
+                                a.Qty,
                                 format(a.TotalPrice, 2) AS TotalPrice
                             FROM
                                 transactiondetail AS a
@@ -114,19 +115,22 @@ include "koneksi.php";
                                 LEFT JOIN color as c on b.Color = c.`Code`
                                 LEFT JOIN size as d on b.Size = d.`Code`
                             WHERE
-                                a.TransactionId =  ".$id."";
+                                a.TransactionId =  ".$id." Order By Concat(b.`Name`,' ' ,c.`Name` , ' ' , d.`Name`) , d.Name";
                             $exe_trans=mysqli_query($koneksi,$sql_trans);
                             while($data=mysqli_fetch_array($exe_trans))
-                            { ?>
+                            {
+                              $sumQty += $data['Qty'];
+                              ?>
                                 <td><?php echo $no++;?></td>
                                 <td><?php echo $data['Name'];?></td>
-                                <td><?php echo $data['Qty'];?></td>
                                 <td><?php echo $data['UnitPrice'];?></td>
+                                <td><?php echo $data['Qty'];?></td>
                                 <td><?php echo $data['TotalPrice'];?></td>
                     </tr>
                     <?php  } ?>
                     <tr>
-                                <td colspan=4> Total Belanja </td>
+                                <td colspan=3> Total Belanja </td>
+                                <td> <?php echo $sumQty ?> </td>
                                 <td> <?php echo $TotalPrice ?> </td>
                     </tr>
                     <tr>

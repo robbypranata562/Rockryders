@@ -41,7 +41,7 @@
             <button type="button" class="btn btn-primary" id="btnSearchHistory" name="btnSearchHistory"> Search </button>
           </div>
           </div>
-          <table id="THistory" class="table table-bordered table-striped" cellspacing="0" width="100%">
+          <table id="THistory" class="table table-bordered table-striped grid" cellspacing="0" width="100%">
             <thead>
               <tr>
                 <th>No Faktur</th>
@@ -51,6 +51,7 @@
                 <th>Harga Modal</th>
                 <th>Harga Jual</th>
                 <th>Bersih</th>
+                <th>Deskripsi</th>
               </tr>
             </thead>
           </table>
@@ -64,28 +65,37 @@
     var currDate = new Date();
     $('#StartDate').datepicker({
      autoclose: true,
-     defaultDate: currDate
-   });
+     //defaultDate: currDate
+   })
 
    $('#EndDate').datepicker({
     defaultDate: currDate,
      autoclose: true
-   });
+   })
 
-		$('#THistory').dataTable( {
+
+var table = $('.grid').not('.initialized').addClass('initialized').show().DataTable({
 			"bProcessing": true,
-              "paging":   true,
+       "dom": 'Bflipt',
+      "paging":   false,
       "serverSide": true,
-      "scrollX": true,
+      "buttons": [
+     'copy', 'excel', 'pdf'
+ ],
+      "rowGroup": {
+        // Group by office
+        dataSrc: 7
+    },
       "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
         return nRow;
       },
+
       "ajax": {
                 "url": "search_total_transaction_by_date.php",
                 "type": "POST",
                 "data": function (d) {
-                    d.StartDate = $("#StartDate").val(),
-                    d.EndDate = $("#EndDate").val()
+                    d.StartDate = "2019-09-13",
+                    d.EndDate = "2019-09-13"
                 }
             },
     });

@@ -1,6 +1,6 @@
  <footer class="main-footer">
     <div class="pull-right hidden-xs">
-     
+
     </div>
     <strong>Copyright &copy; 2019 </strong> All rights
     reserved.
@@ -210,24 +210,21 @@
 <!-- DataTables -->
 <script src="../admin/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="../admin/plugins/datatables/RowGroup-1.1.1/js/dataTables.rowGroup.min.js"></script>
+<script src="../admin/plugins/datatables/RowGroup-1.1.1/js/rowGroup.dataTables.js"></script>
+<script src="../admin/plugins/datatables/Buttons-1.6.0/js/buttons.print.min.js"></script>
+<script src="../admin/plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="../admin/plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="../admin/plugins/datatables/Buttons-1.6.0/js/dataTables.buttons.min.js"></script>
+
+
+
 <script src="../admin/bootstrap/js/bootstrap.min.js"></script>
-<!-- SlimScroll -->
 <script src="../admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
 <script src="../admin/plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
 <script src="../admin/dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-
 <script src="../admin/dist/js/demo.js"></script>
-<!-- <script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script> -->
-<!-- date-range-picker -->
-<!-- <script src="plugins/daterangepicker/daterangepicker.js"></script> -->
-<!-- bootstrap datepicker -->
 <script src="../admin/plugins/datepicker/bootstrap-datepicker.js"></script>
-
-<!-- <script src="plugins/daterangepicker/moment.min.js"></script> -->
 <script src="../admin/plugins/select2/select2.full.min.js"></script>
 <script src="../admin/plugins/iCheck/icheck.min.js"></script>
 <script src="../admin/plugins/jquery-confirm/jquery-confirm.min.js"></script>
@@ -248,7 +245,7 @@
 
      //Date picker
     $('#datepicker').datepicker({
-     
+
       autoclose: true
     });
 
@@ -261,7 +258,7 @@
 
   //   });
 
-	
+
   });
 
 
@@ -271,7 +268,7 @@
 //   $(".treeview").click(function(){
 //     $('.li').removeClass('active');
 //     $(this).addClass('active');
- 
+
 //   });
 // });
    // $('.treeview .active').removeClass('active');

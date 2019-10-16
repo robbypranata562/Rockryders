@@ -20,7 +20,7 @@ if($_SESSION){
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Rockryders</b></a>
+    <a href="../../index2.html"><b>Kaos Polos Nissa</b></a>
   </div>
   <div class="login-box-body">
   <?php

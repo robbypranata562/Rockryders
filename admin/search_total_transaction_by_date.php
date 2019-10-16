@@ -46,7 +46,8 @@ a.Customer,
 (sum(b.Qty)) as Qty,
 format((sum(b.Qty)) * 20000,2) as BasePrice,
 format(a.TotalPrice,2) as Income,
-format(a.TotalPrice - (sum(b.Qty)) * 20000,2) as Profit
+format(a.TotalPrice - (sum(b.Qty)) * 20000,2) as Profit,
+a.Description
 FROM
 `transaction` AS a
 LEFT JOIN transactiondetail AS b ON a.Id = b.TransactionId
@@ -58,7 +59,6 @@ AND Date(a.Date) BETWEEN date('".$startDate."') AND date('".$endDate."')
 And a.IsConfirm = 1
 group by a.Id
 order by a.Date Desc
-LIMIT ".$Limit." OFFSET ".$Offset."
 ";
 $k=mysqli_query($koneksi,$cek);
 if(mysqli_num_rows($k) > 0 )
@@ -74,7 +74,9 @@ if(mysqli_num_rows($k) > 0 )
                 $row['Qty'],
                 $row['BasePrice'],
                 $row['Income'],
-                $row['Profit']
+                $row['Profit'],
+                $row['Description'],
+
             );
             $output['aaData'][] = $data;
     }

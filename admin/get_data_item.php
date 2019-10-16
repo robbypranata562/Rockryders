@@ -93,7 +93,7 @@ where
         b.Name like '%".$searchValue."%' or
         c.Name like '%".$searchValue."%'
       )
-order by ".$columnName." ".$columnSortOrder."
+order by a.SmallQty
 LIMIT ".$Limit." OFFSET ".$Offset."
 ";
 // die($cek);
