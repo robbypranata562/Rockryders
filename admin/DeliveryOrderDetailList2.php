@@ -24,6 +24,7 @@
                     <th>Qty</th>
                     <th>Unit Price</th>
                     <th>Total Price</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,12 +36,13 @@
 <?php include "footer.php";?>
 <script>
       $('#TDeliveryOrderDetail').dataTable( {
-        "dom": 'lrtip',
         "Processing": true,
         "paging":   false,
         "serverSide": true,
-        "scrollX": true,
+        "autoWidth": false,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+            var btnedit = '<a href=DeliveryOrderEditItem.php?Id='+aData[4]+' class="btn btn-block btn-sm blue">Edit</a>'
+            $('td:eq(4)',  nRow).html(btnedit);
             return nRow;
         },
         "ajax": {
@@ -57,5 +59,3 @@
         },
       });
 </script>
- 
- 

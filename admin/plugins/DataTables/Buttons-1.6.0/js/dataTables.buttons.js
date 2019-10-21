@@ -1846,122 +1846,150 @@ var _message = function ( dt, option, position )
 var _exportTextarea = $('<textarea/>')[0];
 var _exportData = function ( dt, inOpts )
 {
-	var config = $.extend( true, {}, {
-		rows:           null,
-		columns:        '',
-		modifier:       {
-			search: 'applied',
-			order:  'applied'
-		},
-		orthogonal:     'display',
-		stripHtml:      true,
-		stripNewlines:  true,
-		decodeEntities: true,
-		trim:           true,
-		format:         {
-			header: function ( d ) {
-				return strip( d );
-			},
-			footer: function ( d ) {
-				return strip( d );
-			},
-			body: function ( d ) {
-				return strip( d );
-			}
-		},
-		customizeData: null
-	}, inOpts );
-
-	var strip = function ( str ) {
-		if ( typeof str !== 'string' ) {
-			return str;
+ 
+    var config = $.extend( true, {}, {
+        rows:           null,
+        columns:        '',
+        grouped_array_index: [],
+        modifier:       {
+            search: 'applied',
+            order:  'applied'
+        },
+        orthogonal:     'display',
+        stripHtml:      true,
+        stripNewlines:  true,
+        decodeEntities: true,
+        trim:           true,
+        format:         {
+            header: function ( d ) {
+                return strip( d );
+            },
+            footer: function ( d ) {
+                return strip( d );
+            },
+            body: function ( d ) {
+                return strip( d );
+            }
+        }
+ 
+    }, inOpts );
+ 
+    var strip = function ( str ) {
+        if ( typeof str !== 'string' ) {
+            return str;
+        }
+ 
+        // Always remove script tags
+        str = str.replace( /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '' );
+ 
+        if ( config.stripHtml ) {
+            str = str.replace( /<[^>]*>/g, '' );
+        }
+ 
+        if ( config.trim ) {
+            str = str.replace( /^\s+|\s+$/g, '' );
+        }
+ 
+        if ( config.stripNewlines ) {
+            str = str.replace( /\n/g, ' ' );
+        }
+ 
+        if ( config.decodeEntities ) {
+            _exportTextarea.innerHTML = str;
+            str = _exportTextarea.value;
+        }
+ 
+        return str;
+    };
+ 
+ 
+    var header = dt.columns( config.columns ).indexes().map( function (idx) {
+        var el = dt.column( idx ).header();
+        return config.format.header( el.innerHTML, idx, el );
+    } ).toArray();
+ 
+    var footer = dt.table().footer() ?
+        dt.columns( config.columns ).indexes().map( function (idx) {
+            var el = dt.column( idx ).footer();
+            return config.format.footer( el ? el.innerHTML : '', idx, el );
+        } ).toArray() :
+        null;
+ 
+    var rowIndexes = dt.rows( config.rows, config.modifier ).indexes().toArray();
+    var selectedCells = dt.cells( rowIndexes, config.columns );
+    var cells = selectedCells
+        .render( config.orthogonal )
+        .toArray();
+    var cellNodes = selectedCells
+        .nodes()
+        .toArray();
+ 
+		var grouped_array_index     = config.grouped_array_index;
+             
+		if (grouped_array_index == undefined) { //don't run grouping logic if rows aren't grouped
+			return data
 		}
-
-		// Always remove script tags
-		str = str.replace( /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '' );
-
-		// Always remove comments
-		str = str.replace( /<!\-\-.*?\-\->/g, '' );
-
-		if ( config.stripHtml ) {
-			str = str.replace( /<[^>]*>/g, '' );
-		}
-
-		if ( config.trim ) {
-			str = str.replace( /^\s+|\s+$/g, '' );
-		}
-
-		if ( config.stripNewlines ) {
-			str = str.replace( /\n/g, ' ' );
-		}
-
-		if ( config.decodeEntities ) {
-			_exportTextarea.innerHTML = str;
-			str = _exportTextarea.value;
-		}
-
-		return str;
-	};
-
-
-	var header = dt.columns( config.columns ).indexes().map( function (idx) {
-		var el = dt.column( idx ).header();
-		return config.format.header( el.innerHTML, idx, el );
-	} ).toArray();
-
-	var footer = dt.table().footer() ?
-		dt.columns( config.columns ).indexes().map( function (idx) {
-			var el = dt.column( idx ).footer();
-			return config.format.footer( el ? el.innerHTML : '', idx, el );
-		} ).toArray() :
-		null;
-	
-	// If Select is available on this table, and any rows are selected, limit the export
-	// to the selected rows. If no rows are selected, all rows will be exported. Specify
-	// a `selected` modifier to control directly.
-	var modifier = $.extend( {}, config.modifier );
-	if ( dt.select && typeof dt.select.info === 'function' && modifier.selected === undefined ) {
-		if ( dt.rows( config.rows, $.extend( { selected: true }, modifier ) ).any() ) {
-			$.extend( modifier, { selected: true } )
-		}
-	}
-
-	var rowIndexes = dt.rows( config.rows, modifier ).indexes().toArray();
-	var selectedCells = dt.cells( rowIndexes, config.columns );
-	var cells = selectedCells
-		.render( config.orthogonal )
-		.toArray();
-	var cellNodes = selectedCells
-		.nodes()
-		.toArray();
-
-	var columns = header.length;
-	var rows = columns > 0 ? cells.length / columns : 0;
-	var body = [];
-	var cellCounter = 0;
-
-	for ( var i=0, ien=rows ; i<ien ; i++ ) {
-		var row = [ columns ];
-
-		for ( var j=0 ; j<columns ; j++ ) {
-			row[j] = config.format.body( cells[ cellCounter ], i, j, cellNodes[ cellCounter ] );
+		var no_of_columns           = header.length;
+	var no_of_rows              = no_of_columns > 0 ? cells.length / no_of_columns : 0;
+	 
+	var body_data               = new Array( no_of_rows );                               
+	var body_with_nodes         = new Array( no_of_rows );                         
+	var cellCounter             = 0;
+	 
+	for (var i = 0, ien = no_of_rows; i < ien; i++)
+	{
+		var rows            = new Array( no_of_columns );
+		var rows_with_nodes = new Array( no_of_columns );
+	 
+		for ( var j=0 ; j<no_of_columns ; j++ )
+		{
+			rows[j]             = config.format.body( cells[ cellCounter ], i, j, cellNodes[ cellCounter ] );
+			rows_with_nodes[j]  = config.format.body( cellNodes[ cellCounter ], i, j, cells[ cellCounter ] ).outerHTML;
 			cellCounter++;
 		}
-
-		body[i] = row;
+		body_data[i]                = rows;
+		body_with_nodes[i]          = $.parseHTML('<tr class="even">'+rows_with_nodes.join("")+'</tr>');
 	}
-
-	var data = {
+	 
+	/******************************************** GROUP DATA *****************************************************/
+	var row_array                       = dt.rows().nodes();
+	var row_data_array                  = dt.rows().data();
+	var iColspan                        = no_of_columns;
+	var sLastGroup                      = "";
+	 
+	var no_of_splices                   = 0;  //to keep track of no of element insertion into the array as index changes after splicing one element
+	 
+	for (var i = 0, row_length = body_with_nodes.length; i < row_length; i++)
+	{
+		var sGroup                      = row_data_array[i][grouped_array_index];
+		if ( sGroup !== sLastGroup )
+		{
+			var table_data              = [];
+			var table_data_with_node    = '';
+	 
+			for(var $column_index = 0;$column_index < iColspan;$column_index++)
+			{
+				if($column_index === 0)
+				{
+									// strips anything inside < > tags. hoping this won't be an issue in the future.
+					table_data[$column_index]   = sGroup.replace( /<[^>]*>/gi, '' ); + " ";
+				}
+				else
+				{
+					table_data[$column_index]   = '';
+				}
+			}
+			body_data.splice(i + no_of_splices, 0, table_data);
+			no_of_splices++;
+			sLastGroup = sGroup;
+		}
+	}
+	 
+	return {
 		header: header,
 		footer: footer,
-		body:   body
+		body:   body_data
 	};
-
-	if ( config.customizeData ) {
-		config.customizeData( data );
-	}
-
-	return data;
 };
 
 

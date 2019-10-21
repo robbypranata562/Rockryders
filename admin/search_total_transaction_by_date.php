@@ -41,7 +41,7 @@ $output = array(
 
 $cek="SELECT
 a.`Code`,
-Date(a.Date) as Date,
+Date_Format(a.Date,'%d-%m-%Y') as Date,
 a.Customer,
 (sum(b.Qty)) as Qty,
 format((sum(b.Qty)) * 20000,2) as BasePrice,

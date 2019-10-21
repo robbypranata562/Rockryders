@@ -62,29 +62,48 @@ include "koneksi.php";
         }
 </style>
   <section class="invoice">
-    <div class="row invoice-info">
-        <div class="col-sm-4 invoice-col">
+    <div class="row invoice-info margin-bottom-100">
+        <div class="col-md-5 invoice-col">
             <img src="dist/img/logo-kaos-polos-nissajpeg.jpeg" class="img-circle" alt="User Image" width="100" height="100"><br>
             <address>
-                Komplek Permata <br>
-                Jl. Zamrud Blok A5 No. 38<br>
-                Tlp: 0895348853979<br>
+                <label class="label-large">Komplek Permata </label><br>
+                <label class="label-large">Jl. Zamrud Blok A5 No. 38</label><br>
+                <label class="label-large">Tlp: 0895348853979</label><br>
             </address>
         </div>
-        <div class="col-sm-4 invoice-col">
-        <address>
-                No Faktur   : <?php echo $Code ?> <br>
-                Nama        : <?php echo $Customer ?><br>
-                Tanggal     : <?php echo $Date ?><br>
-            </address>
+        <div class="col-md-7 invoice-col">
+            <div class="form-group">
+              <label class="col-md-6 label-large">Kepada</label>
+              <label class="col-md-6 label-large"><?php echo $Customer ?></label>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 label-large">Alamat</label>
+              <label class="col-md-6 label-large"><?php echo $Address ?></label>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 label-large">NO. HP</label>
+              <label class="col-md-6 label-large"><?php echo $Phone ?></label>
+            </div>
+            <div class="form-group">
+              <label class="col-md-12 label-large"></label>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 label-large">Dari</label>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 label-large">NO. HP</label>
+              <label class="col-md-6 label-large">Admin 1 0857-9814-4100</label>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 col-md-push-6 label-large">Admin 2 0821-2000-8340</label>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 col-md-push-6 label-large">Admin 3 0856-5966-5212</label>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 col-md-push-6 label-large">Admin 4 0857-9509-3577</label>
+            </div>
         </div>
-        <!-- <div class="col-sm-4 invoice-col">
-        <address>
-                Provinsi    : <?php echo $Province ?> <br>
-                City        : <?php echo $City ?><br>
-
-            </address>
-        </div> -->
     </div>
     <div class="row">
         <div class="col-xs-12 table-responsive">
@@ -93,8 +112,8 @@ include "koneksi.php";
                     <tr>
                         <th>No</th>
                         <th>Barang</th>
-                        <th>Qty</th>
                         <th>Harga Satuan</th>
+                        <th>Qty</th>
                         <th>Total</th>
                     </tr>
                 </thead>

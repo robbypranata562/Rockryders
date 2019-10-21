@@ -39,7 +39,9 @@ SELECT
     a.Qty,
     format(a.UnitPrice, 2) AS UnitPrice,
     format(a.TotalPrice, 2) AS TotalPrice,
-    a.Id
+    a.Id,
+    c.code as Color,
+    d.code as Size
 FROM
     transactiondetail AS a
     LEFT JOIN item AS b ON a.ItemId = b.id
@@ -60,6 +62,8 @@ if(mysqli_num_rows($k) > 0 )
             (
 
                 $row['Name'],
+                $row['Color'],
+                $row['Size'],
                 $row['Qty'],
                 $row['UnitPrice'],
                 $row['TotalPrice'],

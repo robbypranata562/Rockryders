@@ -94,8 +94,8 @@ var table = $('.grid').not('.initialized').addClass('initialized').show().DataTa
                 "url": "search_total_transaction_by_date.php",
                 "type": "POST",
                 "data": function (d) {
-                    d.StartDate = "2019-09-13",
-                    d.EndDate = "2019-09-13"
+                    d.StartDate = $("#StartDate").val(),
+                    d.EndDate   = $("#EndDate").val()
                 }
             },
     });

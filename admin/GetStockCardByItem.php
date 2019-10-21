@@ -45,7 +45,7 @@ $output = array(
 $cek=
 "
 SELECT
-	date(a.Date) AS Date,
+    DATE_FORMAT(a.Date,'%d-%m-%Y')AS Date,
 	Concat(
 		b.`Name`,
 		' ',
@@ -65,10 +65,7 @@ LEFT JOIN size AS d ON b.Size = d.`Code`
 WHERE
 	b.id  = ".$Id."
 AND Date(a.Date) BETWEEN Date('".$StartDate."') AND Date('".$EndDate."')
-ORDER BY
-	b.id,
-	a.Date,
-	a.Description
+ORDER BY a.Date Desc 
 ";
 $k=mysqli_query($koneksi,$cek);
 if(mysqli_num_rows($k) > 0 )

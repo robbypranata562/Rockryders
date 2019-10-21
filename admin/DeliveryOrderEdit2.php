@@ -35,70 +35,7 @@
       </h1>
     </section>
     <section class="content">
-        <form name="formDeliveryOrder" id="formDeliveryOrder" class="form-body" data-toggle="validator" action="ActSaveTransaction2.php" method="post" enctype="multipart/form-data">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Transaksi</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                        <i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="exampleInputDate">Tanggal</label>
-                        <div class="input-group date">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" autocomplete="off" class="form-control pull-right" id="Date" name="Date" data-error="Tanggal Tidak Boleh Kosong" required>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class = "form-label"> Pelanggan </label>
-                        <div class>
-                            <input type="text" class="form-control" name="Customer" id="Customer" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                    <label class = "form-label"> No Handphone </label>
-                        <div class>
-                            <input type="text" class="form-control" name="Phone" id="Phone" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class = "form-label"> Alamat </label>
-                        <div class>
-                        <textarea class="form-control" rows="3" name="Address" id="Address" required></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Provinsi</label>
-                        <div class>
-                            <select class="form-control" style="width: 100%;" name="Province" id="Province">
-                                <option value="">Pilih Provinsi :</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Kota</label>
-                        <div class>
-                            <select class="form-control" style="width: 100%;" name="City" id="City">
-                                <option value="">Pilih Kota :</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class = "form-label"> Deskripsi </label>
-                        <div class>
-                            <textarea class="form-control" rows="3" name="Description" id="Description"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <form name="formDeliveryOrder" id="formDeliveryOrder" class="form-body" data-toggle="validator" action="ActEditTransaction2.php" method="post" enctype="multipart/form-data">
             <div class="box">
                 <div class="box-header with-border">
                     <h3 class="box-title">Detail Transaksi</h3>
@@ -171,25 +108,6 @@
                             <input type="number" class="form-control" name="Qty" id="Qty" min="1"/>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label class="form-label">Harga</label>
-                        <div class="input-group">
-                        <input type="text" id="UnitPrice" name="UnitPrice" class="form-control" readonly>
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" type="button" id="btnChangePrice"><span class="glyphicon glyphicon-refresh" aria-hidden="true">
-                                </span> Ubah Harga </button>
-                            </span>
-                        </div>
-                    </div> -->
-                    <!-- <div class="form-group">
-                        <label for="">Satuan Barang</label>
-                        <div class>
-                            <select class="form-control select2"   style="width: 100%;" name="UOM" id="UOM">
-
-                            </select>
-                        </div>
-                    </div> -->
-
                     <div class="form-group">
                         <button type="button" class="btn btn-primary" id="btnTambahBarang" name="btnTambahBarang"> Tambah Barang </button>
                     </div>
@@ -221,10 +139,41 @@
                             </thead>
                         </table>
                     </div>
+                    <?php
+                    $Id = $_GET['Id'];
+                    $sql="
+                    SELECT
+                    	c.TotalPrice,
+                    	c.AdditionalPrice,
+                    	c.Weight,
+                    	c.Courier,
+                    	c.Service,
+                      c.Province,
+                      c.City
+                    FROM
+                    	TRANSACTION c
+                    WHERE
+                    	c.id ='$Id'";
+                    $exe=mysqli_query($koneksi,$sql);
+                    while ($data=mysqli_fetch_array($exe))
+                    {
+                      $TotalPrice         = $data['TotalPrice'];
+                      $AdditionalPrice    = $data['AdditionalPrice'];
+                      $Weight             = $data['Weight'];
+                      $Courier            = $data['Courier'];
+                      $Service            = $data['Service'];
+                      $Province           = $data['Province'];
+                      $City               = $data['City'];
+                     ?>
+                     <input type="text"   class="form-control" name="Id"                  id="Id"               value="<?php echo $Id ?>" readonly/>
+                     <input type="hidden"   class="form-control" name="Province"            id="Province"         value="<?php echo $Province ?>" readonly/>
+                     <input type="hidden"   class="form-control" name="City"                id="City"             value="<?php echo $City ?>" readonly/>
+                     <input type="hidden"   class="form-control" name="CourierSelected"     id="CourierSelected"  value="<?php echo $Courier ?>" readonly/>
+                     <input type="hidden"   class="form-control" name="ServiceSelected"     id="ServiceSelected"  value="<?php echo $Service ?>" readonly/>
                     <div class="form-group">
                         <label class="form-label">Total Belanja</label>
                         <div class="">
-                            <input type="text" class="form-control" name="TotalPrice" id="TotalPrice" readonly/>
+                            <input type="text" class="form-control" name="TotalPrice" id="TotalPrice" value="<?php echo $TotalPrice ?>" readonly/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -240,43 +189,43 @@
                     <div class="form-group">
                         <label class="form-label">Grand Total</label>
                         <div class="">
-                            <input type="text" class="form-control" name="GrandTotal" id="GrandTotal" readonly/>
+                            <input type="text" class="form-control" name="GrandTotal" id="GrandTotal" value="<?php echo $TotalPrice ?>" readonly/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Berat Pengiriman</label>
                         <div class="">
-                            <input type="text" class="form-control" name="Weight" id="Weight" readonly/>
+                            <input type="text" class="form-control" name="Weight" id="Weight" value="<?php echo $Weight ?>" readonly/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Kurir</label>
                         <div class>
                             <select class="form-control" style="width: 100%;" name="Courier" id="Courier" required>
-                                <option value="">Pilih Kurir :</option>
-                                <option value="jne">JNE</option>
-                                <option value="pos">POS</option>
-                                <option value="rpx">RPX Holding</option>
-                                <option value="esl">Eka Sari Lorena</option>
-                                <option value="pcp">Priority Cargo and Package</option>
-                                <option value="pandu">Pandu Logistics</option>
-                                <option value="wahana">Wahana Prestasi Logistik</option>
-                                <option value="sicepat">SiCepat Express</option>
-                                <option value="jnt">J&T Express</option>
-                                <option value="pahala">Pahala Kencana Express</option>
-                                <option value="cahaya">Tiki</option>
-                                <option value="sap">SAP Express</option>
-                                <option value="jet">JET Express</option>
-                                <option value="dse">21 Express</option>
-                                <option value="slis">Solusi Ekspres</option>
-                                <option value="first">First Logistics</option>
-                                <option value="ncs">Nusantara Card Semesta</option>
-                                <option value="star">Star Cargo</option>
-                                <option value="ninja">Ninja Xpress</option>
-                                <option value="lion">Lion Parcel</option>
-                                <option value="idl">IDL Cargo</option>
-                                <option value="rex">Royal Express Indonesia</option>
-                                <option value="custom">Custom</option>
+                              <option value="">Pilih Kurir :</option>
+                              <option value="jne">JNE</option>
+                              <option value="pos">POS</option>
+                              <option value="rpx">RPX Holding</option>
+                              <option value="esl">Eka Sari Lorena</option>
+                              <option value="pcp">Priority Cargo and Package</option>
+                              <option value="pandu">Pandu Logistics</option>
+                              <option value="wahana">Wahana Prestasi Logistik</option>
+                              <option value="sicepat">SiCepat Express</option>
+                              <option value="jnt">J&T Express</option>
+                              <option value="pahala">Pahala Kencana Express</option>
+                              <option value="cahaya">Tiki</option>
+                              <option value="sap">SAP Express</option>
+                              <option value="jet">JET Express</option>
+                              <option value="dse">21 Express</option>
+                              <option value="slis">Solusi Ekspres</option>
+                              <option value="first">First Logistics</option>
+                              <option value="ncs">Nusantara Card Semesta</option>
+                              <option value="star">Star Cargo</option>
+                              <option value="ninja">Ninja Xpress</option>
+                              <option value="lion">Lion Parcel</option>
+                              <option value="idl">IDL Cargo</option>
+                              <option value="rex">Royal Express Indonesia</option>
+                              <option value="custom">Custom</option>
                             </select>
                         </div>
                     </div>
@@ -291,7 +240,7 @@
                     <div class="form-group">
                         <label class="form-label">Biaya Tambahan</label>
                         <div class="">
-                            <input type="text" class="form-control" name="AdditionalPrice" id="AdditionalPrice" readonly/>
+                            <input type="text" class="form-control" name="AdditionalPrice" id="AdditionalPrice" value="<?php echo $AdditionalPrice ?>" readonly/>
                         </div>
                     </div>
                     <div class="box-footer">
@@ -299,13 +248,57 @@
                     </div>
                 </div>
             </div>
+          <?php } ?>
         </form>
     </section>
 </div>
 <?php include "footer.php";?>
 <script type="text/javascript">
     $( document ).ready(function() {
-      $("select").select2()
+            $("select").select2()
+            $('#Courier').val($("#CourierSelected").val().toLowerCase()).trigger('change');
+            if ($("#City").val() == "" || $("#Weight").val() == "" ||  $('#Courier').val() == ""){
+                alert("Kota Tujuan , Berat , Dan Kurir Tidak Boleh Kosong");
+            }
+            else
+            {
+                if (this.value != "custom"){
+                    $.ajax({
+                    url: 'CheckOngkir.php',
+                    dataType : 'json',
+                    data :
+                    {
+                        Destination : $("#City").val(),
+                        Weight      : parseInt($("#Weight").val()) * 1000,
+                        Courier     :   $('#Courier').val()
+                    },
+                    type: 'POST'
+                    }).success(function(dataService){
+                    var services = dataService.rajaongkir.results[0].costs
+                    $('#Service').empty()
+                    .append("<option selected='selected' value=''>Pilih Service</option>");
+                        $.each(services, function (i, item) {
+                            $('#Service').append($("<option>", {
+                                value: services[i]['service'],
+                                data_attr_cost : services[i]['cost'][0].value,
+                                text : services[i]['description'] + " (" + services[i]['cost'][0].value + ") " + services[i]['cost'][0].etd + "Hari"
+                            }));
+                        });
+                          $('#Service').val($("#ServiceSelected").val())
+                    }).error(function(data){
+                        console.log(data);
+                        alert("Error API");
+                    });
+                }
+                else{
+                    $('#Service').append($("<option>", {
+                                value: "custom",
+                                text : "custom"
+                    }));
+                    $("#AdditionalPrice").removeAttr("readonly")
+                }
+            }
+
             var DataItem = [];
             var TotalQty = 0;
             var currDate = new Date();
@@ -315,10 +308,8 @@
                 startDate: currDate,
                 showButtonPanel: true,
                 todayBtn: "linked",
-                dateFormat: 'yyyy-mm-dd'
             });
-            $.ajax
-            ({
+            $.ajax({
                     url: 'GetProvince.php',
                     type: 'POST'
             }).success(function(data){
@@ -415,7 +406,20 @@
                 },
                 "drawCallback": function( settings ) {
                     // CalculateTotalAmount();
-                }
+                },
+                "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                    $("td:eq(6)",nRow).html("<input type='button' class='btn btn-danger' value='Delete' data-attr-id = "+aData[6]+"/>")
+                    BindClickDelete(nRow)
+                    return nRow;
+                },
+                "ajax": {
+                    "url": "EditTransactionDetail.php",
+                    "type": "POST",
+                    "data": function (d)
+                    {
+                        d.id = <?php echo $_GET['Id']; ?>
+                    }
+                },
             });
 
             $("#btnCheckStock").click(function(){
@@ -442,7 +446,7 @@
                 console.log(_ColorName);
                 if (_ColorName.indexOf("Panjang") != -1) //case panjang
                 {
-                    if (_Size != "XXL" && _Size != "XXXL")
+                    if (_Size != "XXL")
                     {
                       var _SubPrice   =   _Qty * 33000
                       _Price = 33000
@@ -550,8 +554,8 @@
                           }
                         }
                         let _weight = Math.ceil(TotalQty / 6);
-                        //$("#Color").val("");
-                        $("#Size").val("").trigger("change");
+                        $("#Color").val("");
+                        $("#Size").val("");
                         $("#Qty").val("");
                         $("#Stock").val("");
                         $("#UnitPrice").val("");
@@ -560,6 +564,9 @@
                         $("#TotalPrice").val( _TotalPrice );
                         $("#GrandTotal").val( _TotalPrice );
                         $("#Weight").val(_weight)
+                        $("#Courier").val("")
+                        $("#Service").empty()
+                        $("#AdditionalPrice").val("0")
                     }
 
                 }).error(function(data){
@@ -624,7 +631,7 @@
                     let _Qty        = $('td:eq(3)', nRow).html()
                     let _SubTotal   = $('td:eq(5)', nRow).html()
                     let _Date       = $("#Date").val()
-                    TotalQty = parseInt(TotalQty) - parseInt(_Qty);
+                    TotalQty = parseInt(_Qty) - parseInt(TotalQty);
                     t.row($(this).parents('tr')).remove().draw( false );
                     var _TotalPrice = 0;
                     if (TotalQty <= 11)
@@ -639,7 +646,6 @@
                     }
                     for(var i = 0 ; i <= length ; i++)
                     {
-                      console.log($("td:eq(5)",row).html());
                         var row = $("#TableDeliveryDetail tbody tr:eq("+i+")");
                         $("td:eq(4)",row).html(_NewUnitPrice);
                         $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
@@ -652,7 +658,6 @@
                     $("#Courier").val("").trigger('change')
                     $("#Service").empty()
                     $("#AdditionalPrice").val("0")
-
                 })
             }
 
