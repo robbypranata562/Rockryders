@@ -2,7 +2,7 @@
 session_start();
 include "koneksi.php";
 $BaseAmount  = $_POST['BaseAmount'];
-$SQLUpdateBaseAmount = "Update Item Set BasePrice = ".$BaseAmount." where Color LIKE '%PJ%'";
+$SQLUpdateBaseAmount = "Update item Set BasePrice = ".$BaseAmount." where Color LIKE '%PJ%'";
 if($koneksi->query($SQLUpdateBaseAmount) === FALSE)
 {
   echo json_encode(
