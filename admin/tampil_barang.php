@@ -15,7 +15,8 @@
         {
         ?>
           <a href="tbh_barang.php"><h3 class="box-title"><span class="glyphicon glyphicon-plus"></span>Stock Barang</h3></a>
-          <a href="#" id="btnChangeBaseAmount" name="btnChangeBaseAmount"><h3 class="box-title"><span class="glyphicon glyphicon-change"></span>Update Modal Tangan Pendek</h3></a>
+          <a href="#" id="btnChangeBaseAmount" name="btnChangeBaseAmount"><h3 class="box-title"><span class="glyphicon glyphicon-refresh"></span>Update Modal Tangan Pendek</h3></a>
+          <a href="#" id="btnChangeBaseAmount2" name="btnChangeBaseAmount2"><h3 class="box-title"><span class="glyphicon glyphicon-refresh"></span>Update Modal Tangan Panjang</h3></a>
       <?php
         }
         ?>
@@ -192,6 +193,61 @@
       }
       });
     })
-
+    $("#btnChangeBaseAmount2").click(function(e){
+      $.confirm({
+      title: 'Ubah Harga Modal Tangan Panjang!',
+      content: '' +
+      '<form action="" class="formName">' +
+      '<div class="form-group">' +
+      '<label>Masukan Modal Tangan Pendek</label>' +
+      '<input type="numeric" placeholder="Harga Modal" class="name form-control" required />' +
+      '</div>' +
+      '</form>',
+      buttons: {
+          formSubmit: {
+              text: 'Submit',
+              btnClass: 'btn-blue',
+              action: function () {
+                  var name = this.$content.find('.name').val();
+                  if(!name){
+                      $.alert('provide a valid name');
+                      return false;
+                  }
+                  $.ajax({
+                    url     : 'ActEditBaseAmountShortSleeve.php',
+                    type    : 'POST',
+                    dataType: "json",
+                    data    :
+                    {
+                      BaseAmount   : name,
+                    }
+                    }).success(function(data){
+                      var response = data.result;
+                      if (response == "Success"){
+                        Swal.fire(
+                          'Success',
+                          'Ubah Harga Modal Tangan Pendek',
+                          'success'
+                        )
+                        table.draw();
+                      }
+                    })
+              }
+          },
+          cancel: function () {
+              //close
+          },
+      },
+      onContentReady: function () {
+          // bind to events
+          var jc = this;
+          this.$content.find('form').on('submit', function (e) {
+              // if the user submits the form by pressing enter in the field.
+              e.preventDefault();
+              jc.$$formSubmit.trigger('click'); // reference the button and click it
+          });
+      }
+      });
+    })
   })
 </script>
