@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="../admin/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../admin/plugins/select2/select2.min.css">
-  <link rel="stylesheet" href="../admin/plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="../admin/plugins/DataTables/dataTables.bootstrap.css">
 	<link rel="stylesheet" href="../admin/plugins/DataTables/RowGroup-1.1.1/css/rowGroup.bootstrap.min.css">
 	<link rel="stylesheet" href="../admin/plugins/DataTables/RowGroup-1.1.1/css/rowGroup.dataTables.min.css">
 	<link rel="stylesheet" href="../admin/plugins/DataTables/Buttons-1.6.0/css/buttons.bootstrap.min.css">

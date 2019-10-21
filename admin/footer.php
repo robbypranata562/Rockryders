@@ -208,15 +208,15 @@
 <script type='text/javascript' src="../admin/plugins/jQueryUI/jquery-ui.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <!-- DataTables -->
-<script src="../admin/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../admin/plugins/datatables/Buttons-1.6.0/js/dataTables.buttons.min.js"></script>
-<script src="../admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<script src="../admin/plugins/datatables/RowGroup-1.1.1/js/dataTables.rowGroup.min.js"></script>
-<script src="../admin/plugins/datatables/RowGroup-1.1.1/js/rowGroup.dataTables.js"></script>
-<script src="../admin/plugins/datatables/Buttons-1.6.0/js/buttons.print.min.js"></script>
-<script src="../admin/plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
-<script src="../admin/plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
-<script src="../admin/plugins/datatables/Buttons-1.6.0/js/buttons.html5.min.js"></script>
+<script src="../admin/plugins/DataTables/jquery.dataTables.min.js"></script>
+<script src="../admin/plugins/DataTables/Buttons-1.6.0/js/dataTables.buttons.min.js"></script>
+<script src="../admin/plugins/DataTables/dataTables.bootstrap.min.js"></script>
+<script src="../admin/plugins/DataTables/RowGroup-1.1.1/js/dataTables.rowGroup.min.js"></script>
+<script src="../admin/plugins/DataTables/RowGroup-1.1.1/js/rowGroup.dataTables.js"></script>
+<script src="../admin/plugins/DataTables/Buttons-1.6.0/js/buttons.print.min.js"></script>
+<script src="../admin/plugins/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="../admin/plugins/DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="../admin/plugins/DataTables/Buttons-1.6.0/js/buttons.html5.min.js"></script>
 
 
 
