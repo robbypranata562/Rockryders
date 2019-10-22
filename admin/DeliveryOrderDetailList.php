@@ -37,7 +37,7 @@
       $('#TDeliveryOrderDetail').dataTable( {
         "dom": 'lrtip',
         "Processing": true,
-        "paging":   false,
+        "paging":   true,
         "serverSide": true,
         "scrollX": true,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {

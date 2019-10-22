@@ -82,7 +82,7 @@
                           orderable : false,
                           render  : function(data, type, row)
                           {
-                            return '<a class="btn btn-warning" href="DeliveryOrderDetailList2.php?Id='+row[0]+'">Detail</a><a class="btn btn-warning" href="DeliveryOrderEdit2.php?Id='+row[0]+'">Edit</a>'
+                            return '<a class="btn btn-warning" href="DeliveryOrderDetailList.php?Id='+row[0]+'">Detail</a><a class="btn btn-warning" href="DeliveryOrderEdit2.php?Id='+row[0]+'">Edit</a>'
                           }
                       },
                       {
