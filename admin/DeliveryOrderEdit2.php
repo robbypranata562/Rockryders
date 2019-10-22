@@ -255,8 +255,9 @@
 <?php include "footer.php";?>
 <script type="text/javascript">
     $( document ).ready(function() {
+            var CourierSelected = $("#CourierSelected").val().toLowerCase();
             $("select").select2()
-            $('#Courier').val($("#CourierSelected").val().toLowerCase()).trigger('change');
+            $('#Courier').val(CourierSelected).trigger('change');
             if ($("#City").val() == "" || $("#Weight").val() == "" ||  $('#Courier').val() == ""){
                 alert("Kota Tujuan , Berat , Dan Kurir Tidak Boleh Kosong");
             }
