@@ -37,7 +37,7 @@
 <script>
       $('#TDeliveryOrderDetail').dataTable( {
         "Processing": true,
-        "paging":   false,
+        "paging":   true,
         "serverSide": true,
         "autoWidth": false,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {

@@ -51,6 +51,7 @@
       "paging":   true,
       "serverSide": true,
       "scrollX": true,
+      "autoWidth": false,
       "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
           if (aData[4] <= aData[5]){
             $(nRow).addClass('red-row-class');
