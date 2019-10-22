@@ -40,6 +40,7 @@
         "paging":   true,
         "serverSide": true,
         "scrollX": true,
+        "autoWidth": false,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
             return nRow;
         },
