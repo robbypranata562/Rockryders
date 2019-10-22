@@ -38,6 +38,7 @@
         "Processing": true,
         "paging":   false,
         "serverSide": true,
+        "autoWidth": false,
         "scrollX": true,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
             return nRow;

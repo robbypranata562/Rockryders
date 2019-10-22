@@ -38,6 +38,7 @@
         "Processing": true,
         "paging":   true,
         "serverSide": true,
+        "autoWidth": false,
         "scrollX": true,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
             // var ButtonDetail = '<a class="btn btn-success" href="ReceivingDetailList.php?Id='+aData[0]+'">Detail</a>'

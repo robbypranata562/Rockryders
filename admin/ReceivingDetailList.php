@@ -36,7 +36,8 @@
       $('#TReceivingDetail').dataTable( {
         "dom": 'lrtip',
         "Processing": true,
-        "paging":   false,
+        "paging":   true,
+        "autoWidth": false,
         "serverSide": true,
         "scrollX": true,
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
