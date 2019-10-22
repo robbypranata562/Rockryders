@@ -151,7 +151,7 @@
                       c.Province,
                       c.City
                     FROM
-                    	TRANSACTION c
+                    	transaction c
                     WHERE
                     	c.id ='$Id'";
                     $exe=mysqli_query($koneksi,$sql);
@@ -256,6 +256,7 @@
 <script type="text/javascript">
     $( document ).ready(function() {
             var CourierSelected = $("#CourierSelected").val().toLowerCase();
+            console.log(CourierSelected)
             $("select").select2()
             $('#Courier').val(CourierSelected).trigger('change');
             if ($("#City").val() == "" || $("#Weight").val() == "" ||  $('#Courier').val() == ""){
