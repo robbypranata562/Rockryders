@@ -92,16 +92,14 @@ include "koneksi.php";
             </div>
             <div class="form-group">
               <label class="col-md-6 label-large">NO. HP</label>
-              <label class="col-md-6 label-large">Admin 1 0857-9814-4100</label>
-            </div>
-            <div class="form-group">
-              <label class="col-md-6 col-md-push-6 label-large">Admin 2 0821-2000-8340</label>
-            </div>
-            <div class="form-group">
-              <label class="col-md-6 col-md-push-6 label-large">Admin 3 0856-5966-5212</label>
-            </div>
-            <div class="form-group">
-              <label class="col-md-6 col-md-push-6 label-large">Admin 4 0857-9509-3577</label>
+              <div class="col-md-6 label-large">
+                <ul>
+                  <li>Admin 1 0857-9814-4100</li>
+                  <li>Admin 2 0821-2000-8340</li>
+                  <li>Admin 3 0856-5966-5212</li>
+                  <li>Admin 4 0857-9509-3577</li>
+                </ul>
+              </div>
             </div>
         </div>
     </div>
