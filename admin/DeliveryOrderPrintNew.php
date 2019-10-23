@@ -89,6 +89,7 @@ include "koneksi.php";
             </div>
             <div class="form-group">
               <label class="col-md-6 label-large">Dari</label>
+              <label class="col-md-6 label-large"></label>
             </div>
             <div class="form-group">
               <label class="col-md-6 label-large">NO. HP</label>
