@@ -93,7 +93,7 @@ include "koneksi.php";
             <div class="form-group">
               <label class="col-md-6 label-large">NO. HP</label>
               <div class="col-md-6 label-large">
-                <ul>
+                <ul class="ul-padding-left">
                   <li>Admin 1 0857-9814-4100</li>
                   <li>Admin 2 0821-2000-8340</li>
                   <li>Admin 3 0856-5966-5212</li>
