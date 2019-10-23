@@ -40,8 +40,8 @@ include "koneksi.php";
 <style type="text/css">
     @page
     {
-        size: auto;
-        margin: 2mm;
+        /* size: auto;
+        margin: 2mm; */
     }
     html
     {
