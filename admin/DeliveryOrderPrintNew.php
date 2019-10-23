@@ -63,7 +63,7 @@ include "koneksi.php";
 </style>
   <section class="invoice">
     <div class="row invoice-info margin-bottom-100">
-        <div class="col-md-5 col-xs-5 invoice-col">
+        <div class="col-md-5 col-print-5 invoice-col">
             <img src="dist/img/logo-kaos-polos-nissajpeg.jpeg" class="img-circle" alt="User Image" width="100" height="100"><br>
             <address>
                 <label class="label-large">Komplek Permata </label><br>
@@ -71,28 +71,28 @@ include "koneksi.php";
                 <label class="label-large">Tlp: 0895348853979</label><br>
             </address>
         </div>
-        <div class="col-md-7 col-xs-7 invoice-col">
+        <div class="col-md-7 col-print-7 invoice-col">
             <div class="form-group">
-              <label class="col-md-6 col-xs-4 label-large">Kepada</label>
-              <label class="col-md-6 col-xs-8 label-large"><?php echo $Customer ?></label>
+              <label class="col-md-6 col-print-4 label-large">Kepada</label>
+              <label class="col-md-6 col-print-8 label-large"><?php echo $Customer ?></label>
             </div>
             <div class="form-group">
-              <label class="col-md-6 col-xs-4 label-large">Alamat</label>
-              <label class="col-md-6 col-xs-8 label-large"><?php echo $Address ?></label>
+              <label class="col-md-6 col-print-4 label-large">Alamat</label>
+              <label class="col-md-6 col-print-8 label-large"><?php echo $Address ?></label>
             </div>
             <div class="form-group">
-              <label class="col-md-6 col-xs-4 label-large">NO. HP</label>
-              <label class="col-md-6 col-xs-8 label-large"><?php echo $Phone ?></label>
+              <label class="col-md-6 col-print-4 label-large">NO. HP</label>
+              <label class="col-md-6 col-print-8 label-large"><?php echo $Phone ?></label>
             </div>
             <div class="form-group">
-              <label class="col-md-12 col-xs-12 label-large"></label>
+              <label class="col-md-12 col-print-12 label-large"></label>
             </div>
             <div class="form-group">
-              <label class="col-md-12 col-xs-12 label-large">Dari</label>
+              <label class="col-md-12 col-print-12 label-large">Dari</label>
             </div>
             <div class="form-group">
-              <label class="col-md-6 col-xs-4 label-large">NO. HP</label>
-              <div class="col-md-6 col-xs-8 label-large">
+              <label class="col-md-6 col-print-4 label-large">NO. HP</label>
+              <div class="col-md-6 col-print-8 label-large">
                 <ul class="ul-padding-left">
                   <li>Admin 1 0857-9814-4100</li>
                   <li>Admin 2 0821-2000-8340</li>
@@ -109,7 +109,7 @@ include "koneksi.php";
     <br/>
     <br/>
     <div class="row">
-        <div class="col-xs-12 table-responsive">
+        <div class="col-print-12 table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -168,7 +168,7 @@ include "koneksi.php";
         </div>
     </div>
     <div class="row no-print">
-        <div class="col-xs-12">
+        <div class="col-print-12">
             <a href="javascript:print()"  class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-print"></i> Print</a>
         </div>
     </div>
