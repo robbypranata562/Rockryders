@@ -109,7 +109,7 @@ include "koneksi.php";
     <br/>
     <br/>
     <div class="row">
-        <div class="col-print-12 table-responsive">
+        <div class="col-md-12 table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
