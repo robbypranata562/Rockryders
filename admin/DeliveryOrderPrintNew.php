@@ -73,16 +73,16 @@ include "koneksi.php";
         </div>
         <div class="col-md-7 col-xs-7 invoice-col">
             <div class="form-group">
-              <label class="col-md-6 col-xs-6 label-large">Kepada</label>
-              <label class="col-md-6 col-xs-6 label-large"><?php echo $Customer ?></label>
+              <label class="col-md-6 col-xs-4 label-large">Kepada</label>
+              <label class="col-md-6 col-xs-8 label-large"><?php echo $Customer ?></label>
             </div>
             <div class="form-group">
-              <label class="col-md-6 col-xs-6 label-large">Alamat</label>
-              <label class="col-md-6 col-xs-6 label-large"><?php echo $Address ?></label>
+              <label class="col-md-6 col-xs-4 label-large">Alamat</label>
+              <label class="col-md-6 col-xs-8 label-large"><?php echo $Address ?></label>
             </div>
             <div class="form-group">
-              <label class="col-md-6 col-xs-6 label-large">NO. HP</label>
-              <label class="col-md-6 col-xs-6 label-large"><?php echo $Phone ?></label>
+              <label class="col-md-6 col-xs-4 label-large">NO. HP</label>
+              <label class="col-md-6 col-xs-8 label-large"><?php echo $Phone ?></label>
             </div>
             <div class="form-group">
               <label class="col-md-12 col-xs-12 label-large"></label>
@@ -91,8 +91,8 @@ include "koneksi.php";
               <label class="col-md-12 col-xs-12 label-large">Dari</label>
             </div>
             <div class="form-group">
-              <label class="col-md-6 col-xs-6 label-large">NO. HP</label>
-              <div class="col-md-6 col-xs-6 label-large">
+              <label class="col-md-6 col-xs-4 label-large">NO. HP</label>
+              <div class="col-md-6 col-xs-8 label-large">
                 <ul class="ul-padding-left">
                   <li>Admin 1 0857-9814-4100</li>
                   <li>Admin 2 0821-2000-8340</li>
