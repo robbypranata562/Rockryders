@@ -309,11 +309,10 @@
             var TotalQty = 0;
             var currDate = new Date();
             $("#Discount").ForceNumericOnly();
-            $('#Date').datepicker({
-                autoclose: true,
-                startDate: currDate,
-                showButtonPanel: true,
-                todayBtn: "linked",
+            $("#Date").datetimepicker({
+              format: "yyyy-mm-dd hh:ii:ss",
+              autoclose: true,
+              todayBtn: true,
             });
             $.ajax
             ({

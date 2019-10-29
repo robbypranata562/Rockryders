@@ -96,18 +96,20 @@
         {
                 //select dulu apakah ada kaos polos dengan warna dan ukuran
                 $SQLSelectItemExists = "
-                Select 
-                    Id as `Exists`
-                From 
-                    item 
-                Where 
-                    1=1    
+                Select
+                    Id as `Exists`,
+                    SmallQty as Qty
+                From
+                    item
+                Where
+                    1=1
                     and Color   =   '".$key[0]."'
                     and Size    =   '".$key[1]."'";
                 $resultItemExists = mysqli_query($koneksi,$SQLSelectItemExists);
                 while ($row = $resultItemExists->fetch_assoc())
                 {
                     $isExists = $row['Exists'];
+                    $LastQtyExists = $row['Qty'];
                 }
                 if ($isExists === NULL)
                 {
@@ -117,7 +119,7 @@
                     //insert ke Stock Card
                     $LargeQty = round($key[2] / 1200, 0);
                     $MediumQty = round($key[2] / 12, 0);
-                    $InsertToTableItem = 
+                    $InsertToTableItem =
                     "Insert Into item
                     (
                         Name,
@@ -168,7 +170,7 @@
                     if($koneksi->query($InsertToTableItem) === TRUE)
                     {
                         $ItemId = $koneksi->insert_id;
-                        $SQLInsertReceivingDetail = 
+                        $SQLInsertReceivingDetail =
                         "Insert Into receivingdetail
                         (
                             ReceivingId,
@@ -194,7 +196,7 @@
                         {
                             //jika sudah di terima sebagai penerimaan
                             //lakukan insert ke Stock Card
-                            $SQLInsertStockCard = 
+                            $SQLInsertStockCard =
                             "Insert Into stockcard
                             (
                                 Date,
@@ -205,8 +207,8 @@
                                 `OUT`,
                                 NewValue,
                                 Description
-                            ) 
-                            Values 
+                            )
+                            Values
                             (
                                 '".$Date."',
                                 '".$Code."',
@@ -224,10 +226,10 @@
                             }
                         }
                     }
-                } else { 
+                } else {
                     //jika item Sudah Terdaftar
                     //Langsung Insert Ke Table receiving Detail
-                    $SQLInsertReceivingDetail = 
+                    $SQLInsertReceivingDetail =
                         "Insert Into receivingdetail
                         (
                             ReceivingId,
@@ -252,12 +254,12 @@
                     {
                         //cek apakah sudah ada pencatatan Stock Awal Untuk item
                         $SQLCheckStockAwalExists = "
-                        Select 
+                        Select
                             Id as `Exists`
-                        From 
-                            stockcard 
-                        Where 
-                            1=1    
+                        From
+                            stockcard
+                        Where
+                            1=1
                             and Description = '#Stock Awal Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
                             ";
                         $resultStockCardExists = mysqli_query($koneksi,$SQLCheckStockAwalExists);
@@ -269,7 +271,7 @@
                         if ($isStockCardExists === NULL)
                         {
                             //jika belum ada stock awal di stock card
-                            $SQLInsertStockCard = 
+                            $SQLInsertStockCard =
                             "Insert Into stockcard
                             (
                                 Date,
@@ -280,16 +282,16 @@
                                 `OUT`,
                                 NewValue,
                                 Description
-                            ) 
-                            Values 
+                            )
+                            Values
                             (
                                 '".$Date."',
                                 '".$Code."',
                                 ".$isExists.",
+                                ".$LastQtyExists.",
                                 0,
-                                ".$key[2].",
                                 0,
-                                ".$key[2].",
+                                ".$LastQtyExists.",
                                 '#Stock Awal Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
                             )";
                             if($koneksi->query($SQLInsertStockCard) === TRUE)
@@ -302,25 +304,25 @@
                         //Lanjut Dengan Update Stock Barang
                         $LargeQty = round($key[2] / 1200, 0);
                         $MediumQty = round($key[2] / 12, 0);
-                        $SQLUpdateStockItem = "Update 
+                        $SQLUpdateStockItem = "Update
                         item Set
                             LargeQty    = LargeQty  +  ".$LargeQty.",
                             MediumQty   = MediumQty +  ".$MediumQty.",
                             SmallQty    = SmallQty  +  ".$key[2]."
                         Where
-                            Id = ".$isExists."                        
+                            Id = ".$isExists."
                         ";
                         if($koneksi->query($SQLUpdateStockItem) === TRUE)
                         {
 
                             //ambil stock terakhir dari itemnya
                             $SQLLastStock = "
-                            Select 
+                            Select
                                 SmallQty
-                            From 
-                                item 
-                            Where 
-                                1=1    
+                            From
+                                item
+                            Where
+                                1=1
                                 and Color    = '".$key[0]."'
                                 and Size     = '".$key[1]."'
                                 ";
@@ -331,7 +333,7 @@
                             }
 
                             $NewStock = $LastStock + $key[2];
-                            $SQLInsertStockCardReceiving = 
+                            $SQLInsertStockCardReceiving =
                             "Insert Into stockcard
                             (
                                 Date,
@@ -342,8 +344,8 @@
                                 `OUT`,
                                 NewValue,
                                 Description
-                            ) 
-                            Values 
+                            )
+                            Values
                             (
                                 '".$Date."',
                                 '".$Code."',
@@ -356,7 +358,7 @@
                             )";
                             if($koneksi->query($SQLInsertStockCardReceiving) === TRUE)
                             {
-                                
+
                             }
                         }
                 }
@@ -364,5 +366,5 @@
         }
         echo ("<script>location.href='ReceivingMainList.php';</script>");
     }
-    
+
 ?>

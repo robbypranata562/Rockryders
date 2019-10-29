@@ -5,7 +5,7 @@
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        SELAMAT DATANG 
+        SELAMAT DATANG
       </h1>
     </section>
     <section class="content">
@@ -150,9 +150,10 @@
 		$( document ).ready(function() {
             var DataItem = [];
             var currDate = new Date();
-            $('#Date').datepicker({
-                autoclose: true,
-                startDate: currDate,
+            $("#Date").datetimepicker({
+              format: "yyyy-mm-dd hh:ii:ss",
+              autoclose: true,
+              todayBtn: true,
             });
             var table = $('#TableReceivingDetail').DataTable
             ({

@@ -211,6 +211,7 @@
 <script src="../admin/plugins/DataTables/jquery.dataTables.min.js"></script>
 <script src="../admin/plugins/DataTables/Buttons-1.6.0/js/dataTables.buttons.min.js"></script>
 <script src="../admin/plugins/DataTables/dataTables.bootstrap.min.js"></script>
+<script src="../admin/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script src="../admin/plugins/DataTables/RowGroup-1.1.1/js/dataTables.rowGroup.min.js"></script>
 <script src="../admin/plugins/DataTables/RowGroup-1.1.1/js/rowGroup.dataTables.js"></script>
 <script src="../admin/plugins/DataTables/Buttons-1.6.0/js/buttons.print.min.js"></script>
