@@ -65,7 +65,7 @@ LEFT JOIN size AS d ON b.Size = d.`Code`
 WHERE
 	b.id  = ".$Id."
 AND Date(a.Date) BETWEEN Date('".$StartDate."') AND Date('".$EndDate."')
-ORDER BY a.Date Desc
+ORDER BY a.Date asc
 ";
 $k=mysqli_query($koneksi,$cek);
 if(mysqli_num_rows($k) > 0 )

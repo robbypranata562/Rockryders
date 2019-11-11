@@ -61,6 +61,11 @@ include "koneksi.php";
         border: 1px solid black;
         }
 </style>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
   <section class="invoice">
     <div class="row invoice-info margin-bottom-100">
         <div class="col-md-5 col-print-5 invoice-col">

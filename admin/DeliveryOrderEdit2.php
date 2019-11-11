@@ -445,25 +445,25 @@
                 var _Qty        =   $("#Qty").val();
                 var _Stock      =   $("#Stock").val();
                 var _ColorName  =   $("#Color option:selected").html();
-                console.log(_ColorName);
+                
                 if (_ColorName.indexOf("Panjang") != -1) //case panjang
                 {
-                    if (_Size != "XXL")
+                    if (_Size != "XXL" && _Size != "XXXL")
                     {
                       var _SubPrice   =   _Qty * 33000
-                      _Price = 33000
+                      _LSPrice = 33000
                     }
                     else
                     {
                       var _SubPrice   =   _Qty * 35000
-                      _Price = 35000
+                      _LSPrice = 35000
 
                     }
                 }
                 else
                 {
                   var _SubPrice   =   _Qty * 27000
-                  _Price = 27000
+                  _SSPrice = 27000
                 }
                 // var _UnitPrice  =   $("#UnitPrice").val();
 
@@ -491,23 +491,35 @@
                     }
                     else
                     {
-                        var temp = t.row.add
-                        ([
-                            "Kaos Polos",
-                            _Color,
-                            _Size,
-                            _Qty,
-                            _Price,
-                            _SubPrice,
-                            "<input type='button' class='btn btn-danger' value='Delete'/>"
-                        ]).draw().node();
-                        if (_ColorName.indexOf("Panjang") != -1) //case panjang
+                       if (_ColorName.indexOf("Panjang") != -1) //case panjang
                         {
-                          $(temp).attr("tipe-kaos", "Panjang");
+                          //$(temp).attr("tipe-kaos", "Panjang");
+                          var row = t.row.add
+                            ([
+                                "Kaos Polos",
+                                _Color,
+                                _Size,
+                                _Qty,
+                                _LSPrice,
+                                _SubPrice,
+                                "<input type='button' class='btn btn-danger' value='Delete'/>"
+                            ]).draw();
+                            row.nodes().to$().attr('tipe-kaos', 'Panjang');
                         }
                         else
                         {
-                          $(temp).attr("tipe-kaos", "Pendek");
+                          //$(temp).attr("tipe-kaos", "Pendek");
+                          var row = t.row.add
+                            ([
+                                "Kaos Polos",
+                                _Color,
+                                _Size,
+                                _Qty,
+                                _SSPrice,
+                                _SubPrice,
+                                "<input type='button' class='btn btn-danger' value='Delete'/>"
+                            ]).draw();
+                            row.nodes().to$().attr('tipe-kaos', 'Pendek');
                         }
                         var info = t.page.info();
                         var length = info.recordsTotal - 1;
@@ -515,49 +527,43 @@
                         TotalQty = parseInt(TotalQty) + parseInt(_Qty);
                         var _NewUnitPrice = 0
                         var _TotalPrice = 0;
-                        if (_ColorName.indexOf("Panjang") == -1) //case pendek
-                        {
-                          if (TotalQty <= 11)
-                          {
-                              _NewUnitPrice = 27000;
-                          }
-                          else if (TotalQty <= 1199) {
-                              _NewUnitPrice = 25500;
-                          }
-                          else{
-                              _NewUnitPrice = 25000;
-                          }
-                        }
-                        else
-                        {
-                          if (_Size != "XXL")
-                          {
-                            _NewUnitPrice = 33000
-                          }
-                          else
-                          {
-                            _NewUnitPrice = 35000
-                          }
-                        }
-
-
                         for(var i = 0 ; i <= length ; i++)
                         {
-                          var row = $("#TableDeliveryDetail tbody tr:eq("+i+")");
-                          if ($(row).attr("tipe-kaos") != "Panjang")
-                          {
-                            $("td:eq(4)",row).html(_NewUnitPrice);
-                            $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
-                            _TotalPrice = parseInt(_TotalPrice) + parseInt($("td:eq(5)",row).html())
-                          }
-                          else
-                          {
-                            _TotalPrice = parseInt(_TotalPrice) + parseInt($("td:eq(5)",row).html())
-                          }
+                            var row = $("#TableDeliveryDetail tbody tr:eq("+i+")");
+                            if ($(row).attr("tipe-kaos") != "Panjang")
+                            {
+                                if (TotalQty <= 11)
+                                {
+                                    _NewUnitPrice = 27000;
+                                }
+                                else if (TotalQty <= 1199) {
+                                    _NewUnitPrice = 25500;
+                                }
+                                else{
+                                    _NewUnitPrice = 25000;
+                                }
+                                $("td:eq(4)",row).html(_NewUnitPrice);
+                                $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
+                                _TotalPrice = parseInt(_TotalPrice) + parseInt($("td:eq(5)",row).html())
+                            }
+                            else
+                            {
+                                if (_Size != "XXL" && _Size != "XXXL")
+                                {
+                                    _NewUnitPrice = 33000
+                                }
+                                else
+                                {
+                                    _NewUnitPrice = 35000
+                                }
+                                $("td:eq(4)",row).html(_NewUnitPrice);
+                                $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
+                                _TotalPrice = parseInt(_TotalPrice) + parseInt($("td:eq(5)",row).html())
+                            }
                         }
                         let _weight = Math.ceil(TotalQty / 6);
-                        $("#Color").val("");
-                        $("#Size").val("");
+                        //$("#Color").val("");
+                        $("#Size").val("").trigger("change");
                         $("#Qty").val("");
                         $("#Stock").val("");
                         $("#UnitPrice").val("");
@@ -566,16 +572,13 @@
                         $("#TotalPrice").val( _TotalPrice );
                         $("#GrandTotal").val( _TotalPrice );
                         $("#Weight").val(_weight)
-                        $("#Courier").val("")
-                        $("#Service").empty()
-                        $("#AdditionalPrice").val("0")
                     }
 
                 }).error(function(data){
                     alert("Item Tidak Terdaftar")
                 });
             })
-
+            
             $("#btnChangePrice").click(function(e){
                 $("#myModal").modal('show')
             });
@@ -633,33 +636,59 @@
                     let _Qty        = $('td:eq(3)', nRow).html()
                     let _SubTotal   = $('td:eq(5)', nRow).html()
                     let _Date       = $("#Date").val()
-                    TotalQty = parseInt(_Qty) - parseInt(TotalQty);
+                    TotalQty = parseInt(TotalQty) - parseInt(_Qty);
                     t.row($(this).parents('tr')).remove().draw( false );
                     var _TotalPrice = 0;
-                    if (TotalQty <= 11)
-                    {
-                        _NewUnitPrice = 27000;
-                    }
-                    else if (TotalQty <= 1199) {
-                        _NewUnitPrice = 25500;
-                    }
-                    else{
-                        _NewUnitPrice = 25000;
-                    }
+                    var info = t.page.info();
+                    var length = info.recordsTotal - 1;
+                    console.log(length)
                     for(var i = 0 ; i <= length ; i++)
                     {
                         var row = $("#TableDeliveryDetail tbody tr:eq("+i+")");
-                        $("td:eq(4)",row).html(_NewUnitPrice);
-                        $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
-                        _TotalPrice = parseInt(_TotalPrice) + parseInt($("td:eq(5)",row).html())
+                        if ($(row).attr("tipe-kaos") != "Panjang")
+                        {
+                            if (TotalQty <= 11)
+                            {
+                                _NewUnitPrice = 27000;
+                            }
+                            else if (TotalQty <= 1199) {
+                                _NewUnitPrice = 25500;
+                            }
+                            else{
+                                _NewUnitPrice = 25000;
+                            }
+                            $("td:eq(4)",row).html(_NewUnitPrice);
+                            $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
+                            var totalPrice = isNaN(parseInt($("td:eq(5)",row).html())) ? 0 : parseInt($("td:eq(5)",row).html());
+                            _TotalPrice = parseInt(_TotalPrice) + totalPrice;
+                        }
+                        else
+                        {
+                            if (_Size != "XXL" && _Size != "XXXL")
+                            {
+                                _NewUnitPrice = 33000
+                            }
+                            else
+                            {
+                                _NewUnitPrice = 35000
+                            }
+                            $("td:eq(4)",row).html(_NewUnitPrice);
+                            $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
+                            var totalPrice = isNaN(parseInt($("td:eq(5)",row).html())) ? 0 : parseInt($("td:eq(5)",row).html());
+                            _TotalPrice = parseInt(_TotalPrice) + totalPrice;
+                        }
                     }
                     let _weight = Math.ceil(TotalQty / 6);
+                    //$("#Color").val("");
+                    $("#Size").val("").trigger("change");
+                    $("#Qty").val("");
+                    $("#Stock").val("");
+                    $("#UnitPrice").val("");
+                    $("#UnitPrice").attr("readonly","readonly");
+                    //var LastTotalPrice = $("#TotalPrice").val() == "" ? "0" : $("#TotalPrice").val();
                     $("#TotalPrice").val( _TotalPrice );
                     $("#GrandTotal").val( _TotalPrice );
                     $("#Weight").val(_weight)
-                    $("#Courier").val("").trigger('change')
-                    $("#Service").empty()
-                    $("#AdditionalPrice").val("0")
                 })
             }
 
