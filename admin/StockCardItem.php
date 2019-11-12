@@ -24,6 +24,7 @@
             <th>Masuk</th>
             <th>Keluar</th>
             <th>Nilai Akhir</th>
+            <th>Description</th>
           </tr>
           </thead>
           <tbody>

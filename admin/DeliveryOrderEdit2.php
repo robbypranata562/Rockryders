@@ -407,9 +407,19 @@
                     BindClickDelete(nRow)
                 },
                 "drawCallback": function( settings ) {
+                    console.log("Remove")
                     // CalculateTotalAmount();
                 },
                 "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                   
+                    if (aData[0].indexOf("Panjang") == -1)
+                    {
+                        $(nRow).attr("tipe-kaos" , "Pendek");
+                    }
+                    else
+                    {
+                        $(nRow).attr("tipe-kaos","Panjang");
+                    }
                     $("td:eq(6)",nRow).html("<input type='button' class='btn btn-danger' value='Delete' data-attr-id = "+aData[6]+"/>")
                     BindClickDelete(nRow)
                     return nRow;
@@ -422,6 +432,12 @@
                         d.id = <?php echo $_GET['Id']; ?>
                     }
                 },
+                "initComplete": function(settings, json) {
+                    var data = json['aaData']
+                    $.each(data, function() {
+                        TotalQty += parseInt(this[3])
+                    });
+                }
             });
 
             $("#btnCheckStock").click(function(){

@@ -56,7 +56,8 @@ SELECT
 	a.InitialValue,
 	a.`In`,
 	a.`Out`,
-	a.NewValue
+    a.NewValue,
+    a.Description
 FROM
 	stockcard AS a
 LEFT JOIN item AS b ON a.ItemId = b.Id
@@ -65,7 +66,7 @@ LEFT JOIN size AS d ON b.Size = d.`Code`
 WHERE
 	b.id  = ".$Id."
 AND Date(a.Date) BETWEEN Date('".$StartDate."') AND Date('".$EndDate."')
-ORDER BY a.Date asc
+ORDER BY a.Description
 ";
 $k=mysqli_query($koneksi,$cek);
 if(mysqli_num_rows($k) > 0 )
@@ -82,7 +83,7 @@ if(mysqli_num_rows($k) > 0 )
                 $row['In'],
                 $row['Out'],
                 $row['NewValue'],
-
+                $row['Description']
             );
             $output['aaData'][] = $data;
     }
