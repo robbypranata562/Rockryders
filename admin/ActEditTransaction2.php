@@ -271,7 +271,7 @@
                                   {
                                     //  mysqli_commit($koneksi);
                                       echo json_encode("Yeay");
-                                      //echo ("<script>location.href='DeliveryOrderMainList2.php';</script>");
+                                      echo ("<script>location.href='DeliveryOrderMainList2.php';</script>");
                                   }
                                   else
                                   {
