@@ -441,17 +441,46 @@
                 
                 if (_ColorName.indexOf("Panjang") != -1) //case panjang
                 {
-                    if (_Size != "XXL" && _Size != "XXXL")
+                    // if (_Size != "XXL" && _Size != "XXXL")
+                    // {
+                    //   var _SubPrice   =   _Qty * 33000
+                    //   _LSPrice = 33000
+                    // }
+                    // else
+                    // {
+                    //   var _SubPrice   =   _Qty * 35000
+                    //   _LSPrice = 35000
+
+                    // }
+                    switch(_Size)
                     {
-                      var _SubPrice   =   _Qty * 33000
-                      _LSPrice = 33000
-                    }
-                    else
-                    {
-                      var _SubPrice   =   _Qty * 35000
-                      _LSPrice = 35000
+                        case "S":
+                            var _SubPrice   =   _Qty * 33000
+                            _LSPrice = 33000
+                        break;
+                        case "M":
+                            var _SubPrice   =   _Qty * 33000
+                            _LSPrice = 33000
+                        break;
+                        case "L":
+                            var _SubPrice   =   _Qty * 33000
+                            _LSPrice = 33000
+                        break;
+                        case "XL":
+                            var _SubPrice   =   _Qty * 33000
+                            _LSPrice = 33000
+                        break;
+                        case "XXL":
+                            var _SubPrice   =   _Qty * 35000
+                            _LSPrice = 35000
+                        break;
+                        case "XXXL":
+                            var _SubPrice   =   _Qty * 39000
+                            _LSPrice = 39000
+                        break;
 
                     }
+
                 }
                 else
                 {
@@ -541,13 +570,27 @@
                             }
                             else
                             {
-                                if (_Size != "XXL" && _Size != "XXXL")
+                                switch(_Size)
                                 {
-                                    _NewUnitPrice = 33000
-                                }
-                                else
-                                {
-                                    _NewUnitPrice = 35000
+                                    case "S":
+                                        _NewUnitPrice = 33000
+                                    break;
+                                    case "M":
+                                        _NewUnitPrice = 33000
+                                    break;
+                                    case "L":
+                                        _NewUnitPrice = 33000
+                                    break;
+                                    case "XL":
+                                        _NewUnitPrice = 33000
+                                    break;
+                                    case "XXL":
+                                        _NewUnitPrice = 35000
+                                    break;
+                                    case "XXXL":
+                                        _NewUnitPrice = 39000
+                                    break;
+
                                 }
                                 $("td:eq(4)",row).html(_NewUnitPrice);
                                 $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
@@ -657,14 +700,28 @@
                         }
                         else
                         {
-                            if (_Size != "XXL" && _Size != "XXXL")
-                            {
-                                _NewUnitPrice = 33000
-                            }
-                            else
-                            {
-                                _NewUnitPrice = 35000
-                            }
+                            switch(_Size)
+                                {
+                                    case "S":
+                                        _NewUnitPrice = 33000
+                                    break;
+                                    case "M":
+                                        _NewUnitPrice = 33000
+                                    break;
+                                    case "L":
+                                        _NewUnitPrice = 33000
+                                    break;
+                                    case "XL":
+                                        _NewUnitPrice = 33000
+                                    break;
+                                    case "XXL":
+                                        _NewUnitPrice = 35000
+                                    break;
+                                    case "XXXL":
+                                        _NewUnitPrice = 39000
+                                    break;
+
+                                }
                             $("td:eq(4)",row).html(_NewUnitPrice);
                             $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
                             var totalPrice = isNaN(parseInt($("td:eq(5)",row).html())) ? 0 : parseInt($("td:eq(5)",row).html());
