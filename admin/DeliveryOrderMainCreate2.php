@@ -570,7 +570,7 @@
                             }
                             else
                             {
-                                switch(_Size)
+                                switch($("td:eq(2)",row).html())
                                 {
                                     case "S":
                                         _NewUnitPrice = 33000
@@ -700,7 +700,7 @@
                         }
                         else
                         {
-                            switch(_Size)
+                            switch($("td:eq(2)",row).html())
                                 {
                                     case "S":
                                         _NewUnitPrice = 33000

@@ -464,6 +464,8 @@
                 
                 if (_ColorName.indexOf("Panjang") != -1) //case panjang
                 {
+                    var _LSPrice = 0;
+                    var _SSPrice = 0;
                     switch(_Size)
                     {
                         case "S":
@@ -535,7 +537,7 @@
                                 _Qty,
                                 _LSPrice,
                                 _SubPrice,
-                                "<input type='button' class='btn btn-danger' value='Delete'/>"
+                                "<input type='button' class='btn btn-danger' value='Delete'>"
                             ]).draw();
                             row.nodes().to$().attr('tipe-kaos', 'Panjang');
                         }
@@ -550,7 +552,7 @@
                                 _Qty,
                                 _SSPrice,
                                 _SubPrice,
-                                "<input type='button' class='btn btn-danger' value='Delete'/>"
+                                "<input type='button' class='btn btn-danger' value='Delete'>"
                             ]).draw();
                             row.nodes().to$().attr('tipe-kaos', 'Pendek');
                         }
@@ -581,7 +583,7 @@
                             }
                             else
                             {
-                                switch(_Size)
+                                switch($("td:eq(2)",row).html())
                                 {
                                     case "S":
                                         _NewUnitPrice = 33000
@@ -688,7 +690,6 @@
                     var _TotalPrice = 0;
                     var info = t.page.info();
                     var length = info.recordsTotal - 1;
-                    console.log(length)
                     for(var i = 0 ; i <= length ; i++)
                     {
                         var row = $("#TableDeliveryDetail tbody tr:eq("+i+")");
@@ -711,7 +712,7 @@
                         }
                         else
                         {
-                            switch(_Size)
+                            switch($("td:eq(2)",row).html())
                                 {
                                     case "S":
                                         _NewUnitPrice = 33000
