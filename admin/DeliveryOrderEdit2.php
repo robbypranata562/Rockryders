@@ -411,7 +411,7 @@
                     // CalculateTotalAmount();
                 },
                 "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-                   
+                    console.log(aData[0])
                     if (aData[0].indexOf("Panjang") == -1)
                     {
                         $(nRow).attr("tipe-kaos" , "Pendek");
@@ -420,7 +420,7 @@
                     {
                         $(nRow).attr("tipe-kaos","Panjang");
                     }
-                    $("td:eq(6)",nRow).html("<input type='button' class='btn btn-danger' value='Delete' data-attr-id = "+aData[6]+"/>")
+                    $("td:eq(6)",nRow).html("<input type='button' class='btn btn-danger' value='Delete'>")
                     BindClickDelete(nRow)
                     return nRow;
                 },
@@ -531,7 +531,7 @@
                           //$(temp).attr("tipe-kaos", "Panjang");
                           var row = t.row.add
                             ([
-                                "Kaos Polos",
+                                "Kaos Polos " + _ColorName + " " + _Size,
                                 _Color,
                                 _Size,
                                 _Qty,
@@ -546,7 +546,7 @@
                           //$(temp).attr("tipe-kaos", "Pendek");
                           var row = t.row.add
                             ([
-                                "Kaos Polos",
+                                "Kaos Polos " + _ColorName + " " + _Size,
                                 _Color,
                                 _Size,
                                 _Qty,
@@ -571,10 +571,12 @@
                                 {
                                     _NewUnitPrice = 27000;
                                 }
-                                else if (TotalQty <= 1199) {
+                                else if (TotalQty <= 1199) 
+                                {
                                     _NewUnitPrice = 25500;
                                 }
-                                else{
+                                else
+                                {
                                     _NewUnitPrice = 25000;
                                 }
                                 $("td:eq(4)",row).html(_NewUnitPrice);
