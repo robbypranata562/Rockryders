@@ -37,8 +37,8 @@ $cek=
 SELECT
     Concat(b.`Name`,' ' ,c.`Name` , ' ' , d.`Name`) as Name,
     a.Qty,
-    format(a.UnitPrice, 2) AS UnitPrice,
-    format(a.TotalPrice, 2) AS TotalPrice,
+    a.UnitPrice AS UnitPrice,
+    a.TotalPrice AS TotalPrice,
     a.Id,
     c.code as Color,
     d.code as Size

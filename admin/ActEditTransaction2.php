@@ -156,6 +156,7 @@
                           ".$Session.",
                           NOW()
                       )";
+                      // die($SQLInserttransactiondetail);
                       if($koneksi->query($SQLInserttransactiondetail) === TRUE)
                       {
                           //kurangin stock
@@ -269,12 +270,11 @@
                                       ".$NewStock.",
                                       'Penjualan Barang Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
                                   )";
-                                  die(SQLInsertStockCardtransaction);
+                                  //die(SQLInsertStockCardtransaction);
                                   if($koneksi->query($SQLInsertStockCardtransaction) === TRUE)
                                   {
-                                    //  mysqli_commit($koneksi);
-                                    //die("gotcha");
-                                    echo ("<script>location.href='ReceivingMainList.php';</script>");
+                                    //die("hy im here");
+                                    echo ("<script>location.href='DeliveryOrderMainList2.php';</script>");
                                   }
                                   else
                                   {

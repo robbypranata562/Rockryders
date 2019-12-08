@@ -149,7 +149,8 @@
                     	c.Courier,
                     	c.Service,
                       c.Province,
-                      c.City
+                      c.City,
+                      c.Discount
                     FROM
                     	transaction c
                     WHERE
@@ -164,6 +165,7 @@
                       $Service            = $data['Service'];
                       $Province           = $data['Province'];
                       $City               = $data['City'];
+                      $Discount           = $data['Discount'];
                      ?>
                      <input type="text"   class="form-control" name="Id"                  id="Id"               value="<?php echo $Id ?>" readonly/>
                      <input type="hidden"   class="form-control" name="Province"            id="Province"         value="<?php echo $Province ?>" readonly/>
@@ -179,7 +181,7 @@
                     <div class="form-group">
                         <label class="form-label">Discount</label>
                         <div class="input-group">
-                        <input type="text" id="Discount" name="Discount" class="form-control" value="0" readonly>
+                        <input type="text" id="Discount" name="Discount" class="form-control" value="<?php echo $Discount ?>" readonly>
                             <span class="input-group-btn">
                                 <button class="btn btn-primary" type="button" id="btnChangePrice"><span class="glyphicon glyphicon-refresh" aria-hidden="true">
                                 </span> Tambah Discount </button>
@@ -189,7 +191,7 @@
                     <div class="form-group">
                         <label class="form-label">Grand Total</label>
                         <div class="">
-                            <input type="text" class="form-control" name="GrandTotal" id="GrandTotal" value="<?php echo $TotalPrice ?>" readonly/>
+                            <input type="text" class="form-control" name="GrandTotal" id="GrandTotal" value="<?php echo $TotalPrice - $Discount ?>" readonly/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -245,6 +247,7 @@
                     </div>
                     <div class="box-footer">
                         <input type="button" class="btn btn-primary" name="btnSimpan" value="Simpan" id="btnSimpan">
+                        <a href="DeliveryOrderMainList2.php" class="btn btn-danger">Batal</a>
                     </div>
                 </div>
             </div>
@@ -461,7 +464,7 @@
                 var _Qty        =   $("#Qty").val();
                 var _Stock      =   $("#Stock").val();
                 var _ColorName  =   $("#Color option:selected").html();
-                
+
                 if (_ColorName.indexOf("Panjang") != -1) //case panjang
                 {
                     var _LSPrice = 0;
@@ -571,7 +574,7 @@
                                 {
                                     _NewUnitPrice = 27000;
                                 }
-                                else if (TotalQty <= 1199) 
+                                else if (TotalQty <= 1199)
                                 {
                                     _NewUnitPrice = 25500;
                                 }
@@ -581,7 +584,7 @@
                                 }
                                 $("td:eq(4)",row).html(_NewUnitPrice);
                                 $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
-                                _TotalPrice = parseInt(_TotalPrice) + parseInt($("td:eq(5)",row).html())
+                              _TotalPrice = parseInt(_TotalPrice) + parseInt($("td:eq(5)",row).html());// - parseInt($("#Discount").val())
                             }
                             else
                             {
@@ -609,7 +612,7 @@
                                 }
                                 $("td:eq(4)",row).html(_NewUnitPrice);
                                 $("td:eq(5)",row).html(parseInt(_NewUnitPrice) * parseInt($("td:eq(3)",row).html()));
-                                _TotalPrice = parseInt(_TotalPrice) + parseInt($("td:eq(5)",row).html())
+                                _TotalPrice = parseInt(_TotalPrice) + parseInt($("td:eq(5)",row).html());// - parseInt($("#Discount").val())
                             }
                         }
                         let _weight = Math.ceil(TotalQty / 6);
@@ -620,8 +623,8 @@
                         $("#UnitPrice").val("");
                         $("#UnitPrice").attr("readonly","readonly");
                         //var LastTotalPrice = $("#TotalPrice").val() == "" ? "0" : $("#TotalPrice").val();
-                        $("#TotalPrice").val( _TotalPrice );
-                        $("#GrandTotal").val( _TotalPrice );
+                        $("#TotalPrice").val( _TotalPrice  );
+                        $("#GrandTotal").val( _TotalPrice - parseInt($("#Discount").val()) );
                         $("#Weight").val(_weight)
                     }
 
@@ -629,7 +632,7 @@
                     alert("Item Tidak Terdaftar")
                 });
             })
-            
+
             $("#btnChangePrice").click(function(e){
                 $("#myModal").modal('show')
             });
