@@ -8,7 +8,7 @@
     <section class="content">
       <div class="box">
         <div class="box-header with-border">
-          <a href="karyawan_tbh.php"><h3 class="box-title"><span class="glyphicon glyphicon-plus"></span>Karyawan</h3></a>
+          <a href="karyawan_reg_admin.php"><h3 class="box-title"><span class="glyphicon glyphicon-plus"></span>Admin</h3></a>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fa fa-minus"></i></button>
@@ -37,6 +37,7 @@
                 <td><?php echo $data['uname'];?></td>
                 <td><?php echo $data['level'];?></td>
                 <td>
+                  <a class="btn btn-success" href="UbahAdmin.php?Id=<?php echo $data['id_admin'] ?>" class="glyphicon glyphicon-refresh">Ubah</a>
                   <a class="btn btn-success" href="ChangePassword.php?Id=<?php echo $data['id_admin'] ?>" class="glyphicon glyphicon-refresh">Ubah Password</a>
                   <a class="btn btn-danger"  onclick="if (confirm('Apakah anda yakin ingin menghapus data ini ?')){ location.href='karyawan_hapusakun.php?id_akun=<?php echo $data['id_admin']; ?>' }"  class="glyphicon glyphicon-trash">Hapus</a>
                 </td>
@@ -48,5 +49,3 @@
     </section>
   </div>
 <?php include "footer.php";?>
- 
- 

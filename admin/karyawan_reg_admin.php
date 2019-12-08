@@ -1,7 +1,7 @@
 <?php include "header.php";
 
 ?>
- 
+
 
   <!-- =============================================== -->
 
@@ -13,7 +13,7 @@
         SELAMAT DATANG
         <small>admin</small>
       </h1>
-      
+
     </section>
 
     <!-- Main content -->
@@ -32,12 +32,12 @@
           </div>
         </div>
         <div class="box-body">
-		
-		<?php 
-		
+
+		<?php
+
 //include 'koneksi.php';
 if(isset($_POST['simpan'])){
-  $id=$_POST['users'];	
+  $id=$_POST['users'];
   $uname=$_POST['user'];
   $password=md5($_POST['password']);
   $lev=$_POST['level'];
@@ -58,7 +58,7 @@ if(isset($_POST['simpan'])){
 //header("location:tbh_barang.php");
 }
  ?>
- 
+
          <form role="form" action="" method="post" enctype="multipart/form-data">
           <div class="box-body">
             <div class="form-group">
@@ -66,7 +66,7 @@ if(isset($_POST['simpan'])){
               <select class="form-control select2"  onchange="showUser(this.value)" style="width: 100%;" name="users">
 				        <option value="">Pilih Karyawan :</option>
                   <?php
-                    $sql="SELECT * FROM karyawan";
+                    $sql="SELECT * FROM karyawan a where  not EXISTS (select 1 from admin b where a.id = b.id_karyawan)";
                     $exe=mysqli_query($koneksi,$sql);
                     while($data=mysqli_fetch_array($exe)){
                   ?>
@@ -79,7 +79,7 @@ if(isset($_POST['simpan'])){
             <br>
             <div id="txtHint"><b>...</b></div>
         </div>
-               
+
               </div>
               <!-- /.box-body -->
 
@@ -87,8 +87,8 @@ if(isset($_POST['simpan'])){
                 <input type="submit" name="simpan" class="btn btn-primary" value="Simpan">
               </div>
             </form>
-			
-      
+
+
       </div>
       <!-- /.box -->
 
@@ -96,13 +96,13 @@ if(isset($_POST['simpan'])){
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  
+
   <script>
 function showUser(str) {
     if (str == "") {
         document.getElementById("txtHint").innerHTML = "";
         return;
-    } else { 
+    } else {
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
@@ -120,7 +120,5 @@ function showUser(str) {
     }
 }
 </script>
-  
+
 <?php include "footer.php";?>
- 
- 

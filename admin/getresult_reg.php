@@ -9,7 +9,7 @@ include 'koneksi.php';
 
 <html>
 <head>
- 
+
 <style>
 table {
     width: 100%;
@@ -43,24 +43,25 @@ while($row = mysqli_fetch_array($result)) {
                   <label for="exampleInputEmail1">Password</label>
                   <input type="text" name="password" class="form-control" id="exampleInputEmail1">
                 </div>
-				
+
 				<div class="form-group">
-		
+
                 <label>Level</label>
                 <select class="form-control select2"   style="width: 100%;" name="level">
 				<option value="">Pilih Level:</option>
-                  
+
 					<?php $jabatan=$_SESSION['level']?>
 					<?php if ($jabatan=='Super Super Admin'){
 		?>
                   <option name="level" value="Super Admin"   >Super Admin</option>
 					<?php } ?>
+					<option name="level" value="Stok Admin"   >Super Administrator</option>
 				  <option name="level" value="Stok Admin"   >Stok Admin</option>
 				  <option name="level" value="Admin"   >Admin</option>
-                 
+
                 </select>
               </div>
-				
+
 
 <?php
  }
