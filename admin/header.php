@@ -187,6 +187,7 @@
             <li><a href="tampil_barang.php"><i class="fa fa-circle-o"></i> Stok Barang</a></li>
             <li><a href="tbh_barang.php"><i class="fa fa-circle-o"></i> Tambah Barang</a></li>
             <li><a href="AdjustmentItem.php"><i class="fa fa-circle-o"></i>Adjustment</a></li>
+            <li><a href="Color.php"><i class="fa fa-circle-o"></i>Warna</a></li>
           </ul>
         </li>
         <li class="treeview">

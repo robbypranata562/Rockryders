@@ -83,6 +83,7 @@
     $Courier                = $_POST['Courier'];
     $Service                = $_POST['Service'];
     $Weight                 = $_POST['Weight'];
+    $Discount                 = $_POST['Discount'];
     //start insert to database
     $SQLInsertReceivingMain = "insert into transaction
     (
@@ -101,7 +102,8 @@
         City,
         Courier,
         Service,
-        Weight
+        Weight,
+        Discount
     )
     values
     (
@@ -120,7 +122,8 @@
         '".$City."',
         '".$Courier."',
         '".$Service."',
-        '".$Weight."'
+        '".$Weight."',
+        '".$Discount."'
     )";
     if($koneksi->query($SQLInsertReceivingMain) === TRUE)
     {

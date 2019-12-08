@@ -53,12 +53,14 @@
       "scrollX": true,
       "autoWidth": false,
       "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-          if (aData[4] <= aData[5]){
+          if (aData[4] <= aData[5])
+          {
             $(nRow).addClass('red-row-class');
           }
           return nRow;
       },
-      "ajax": {
+      "ajax": 
+      {
           "url": "get_data_item.php",
           "type": "POST",
           "data": function (d)
@@ -128,7 +130,8 @@
                         orderable : false,
                         render  : function(data, type, row)
                         {
-                          return '<a class="btn btn-warning" href="edit_barang.php?id='+row[7]+'">Edit</a>'
+                          return '<a class="btn btn-warning" href="edit_barang.php?id='+row[7]+'">Ubah</a>'
+                          + '<a class="btn btn-danger" href="hapus_barang.php?id='+row[7]+'">Hapus</a>'
                         }
                     }
                   ]

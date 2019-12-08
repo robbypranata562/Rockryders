@@ -32,6 +32,7 @@
                     <th>Pelanggan</th>
                     <th>No Handphone</th>
                     <th>Total</th>
+                    <th>Diskon</th>                    
                     <th>Ongkir</th>
                     <th>Total + Ongkir</th>
                     <th>Deskripsi</th>
@@ -132,15 +133,15 @@
                           }
                       },
                       {
-                          data    : 'AdditionalPrice',
+                          data    : 'Discount',
                           orderable : true,
                           render  : function(data, type, row)
                           {
                             return row[6]
                           }
-                      },
+                      },                      
                       {
-                          data    : 'Total',
+                          data    : 'AdditionalPrice',
                           orderable : true,
                           render  : function(data, type, row)
                           {
@@ -148,15 +149,15 @@
                           }
                       },
                       {
-                          data    : 'Description',
-                          orderable : false,
+                          data    : 'Total',
+                          orderable : true,
                           render  : function(data, type, row)
                           {
                             return row[8]
                           }
                       },
                       {
-                          data    : 'Address',
+                          data    : 'Description',
                           orderable : false,
                           render  : function(data, type, row)
                           {
@@ -164,11 +165,19 @@
                           }
                       },
                       {
+                          data    : 'Address',
+                          orderable : false,
+                          render  : function(data, type, row)
+                          {
+                            return row[10]
+                          }
+                      },
+                      {
                           data    : 'Status',
                           orderable : false,
                           render  : function(data, type, row)
                           {
-                            if (row[10] == "0"){
+                            if (row[11] == "0"){
                               return "<span class='badge badge-danger'>Belum Lunas</span>"
                             }
                             else{
@@ -207,8 +216,8 @@
       })
 
       function BindClickDelete(nRow){
-        $('td:eq(12) input[type="button"]', nRow).unbind('click');
-        $('td:eq(12) input[type="button"]', nRow).bind('click',function(e){
+        $('td:eq(13) input[type="button"]', nRow).unbind('click');
+        $('td:eq(13) input[type="button"]', nRow).bind('click',function(e){
           var _transactionId    = $(nRow).attr('data-attr-id');
           var _transactionCode  = $("td:eq(1)",nRow).html()
           $.confirm({
@@ -242,8 +251,8 @@
       }
 
       function BindClickConfirm(nRow){
-        $('td:eq(13) input[type="button"]', nRow).unbind('click');
-        $('td:eq(13) input[type="button"]', nRow).bind('click',function(e){
+        $('td:eq(14) input[type="button"]', nRow).unbind('click');
+        $('td:eq(14) input[type="button"]', nRow).bind('click',function(e){
           let _transactionId = $(nRow).attr('data-attr-id')
 
           $.confirm({

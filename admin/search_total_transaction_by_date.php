@@ -44,13 +44,14 @@ a.`Code`,
 Date_Format(a.Date,'%d-%m-%Y') as Date,
 a.Customer,
 (sum(b.Qty)) as Qty,
-format((sum(b.Qty)) * 20000,2) as BasePrice,
-format(a.TotalPrice,2) as Income,
-format(a.TotalPrice - (sum(b.Qty)) * 20000,2) as Profit,
+format((sum(b.Qty)) * c.BasePrice,2) as BasePrice,
+format((a.TotalPrice - a.Discount),2) as Income,
+format((a.TotalPrice - a.Discount) - (sum(b.Qty)) * c.baseprice,2) as Profit,
 a.Description
 FROM
 `transaction` AS a
 LEFT JOIN transactiondetail AS b ON a.Id = b.TransactionId
+LEFT JOIN item as c on b.ItemId = c.id
 WHERE
 1 = 1
 AND a.DeletedBy IS NULL

@@ -9,6 +9,7 @@
     $Courier                = $_POST['Courier'];
     $Service                = $_POST['Service'];
     $Weight                 = $_POST['Weight'];
+    $Discount                 = $_POST['Discount'];
     //mysqli_autocommit($koneksi,false);
     //Get Data Transaction
     $Code = "";
@@ -32,6 +33,7 @@
     //start update to database
     $SQLInsertReceivingMain = "update transaction set
       TotalPrice      = '$TotalPrice',
+      Discount        = '$Discount',
       AdditionalPrice = '$AdditionalPrice',
       Courier         = '$Courier',
       Service         = '$Service',
@@ -98,7 +100,7 @@
               else
               {
                   //mysqli_rollback($koneksi);
-                  echo json_encode("Error Reverse Stock");
+                  die("Error Reverse Stock");
               }
             }
             //delete item in transaction detail
@@ -235,12 +237,12 @@
                                       }
                                       else
                                       {
-                                          //mysqli_rollback($koneksi);
-                                          echo json_encode("Error Insert Stock Card Penjualan");
+                                        die("241");
+                                        die("Error Insert Stock Card Penjualan");
                                       }
                                   } else {
-                                      //mysqli_rollback($koneksi);
-                                      echo json_encode("Error Insert Stock Card Awal");
+                                    die("244");
+                                    die("Error Insert Stock Card Awal");
                                   }
                               } else {
                                   $NewStock = $LastStock - $key[2];
@@ -267,38 +269,40 @@
                                       ".$NewStock.",
                                       'Penjualan Barang Kaos Polos ".$key[0]." ".$key[1]." Tanggal ".$Date."'
                                   )";
+                                  die(SQLInsertStockCardtransaction);
                                   if($koneksi->query($SQLInsertStockCardtransaction) === TRUE)
                                   {
                                     //  mysqli_commit($koneksi);
-                                      echo ("<script>location.href='DeliveryOrderMainList2.php';</script>");
+                                    //die("gotcha");
+                                    echo ("<script>location.href='ReceivingMainList.php';</script>");
                                   }
                                   else
                                   {
-                                      //mysqli_rollback($koneksi);
-                                      echo json_encode("Error Insert Stock Card Penjualan");
+                                    die("280");
+                                      die("Error Insert Stock Card Penjualan");
                                   }
                               }
                           } else {
-                              echo json_encode("Error Update Qty");
+                              die("Error Update Qty");
                           }
                       }
                       else
                       {
-                          //mysqli_rollback($koneksi);
+                         die("290");
                       }
                   } else
                   {
-                        echo json_encode("Error Insert Transaction Detail");
+                        die("Error Insert Transaction Detail");
                   }
               }
             } else {
-              //mysqli_rollback($koneksi);
-              echo json_encode("Error Delete Transaction");
+                die("298");
+              die("Error Delete Transaction");
             }
           //
 
     } else {
-      //mysqli_rollback($koneksi);
+        die("Error Update Receiving");
     }
     //
 ?>

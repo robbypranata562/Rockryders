@@ -16,7 +16,8 @@ include "koneksi.php";
         format(a.AdditionalPrice,2) as AdditionalPrice,
         format((a.TotalPrice + a.AdditionalPrice),2) as Total,
         a.Province,
-        a.City
+        a.City,
+        format(a.Discount,2) as Discount
     FROM
      `transaction` AS a
     WHERE
@@ -34,6 +35,7 @@ include "koneksi.php";
         $Total                  = $data['Total'];
         $Province               = $data['Province'];
         $City                   = $data['City'];
+        $Discount               = $data['Discount'];
     }
 ?>
 <div class="content-wrapper" id="printableArea">
@@ -158,8 +160,12 @@ include "koneksi.php";
                     <tr>
                                 <td colspan=3> Total Belanja </td>
                                 <td> <?php echo $sumQty ?> </td>
-                                <td> <?php echo $TotalPrice ?> </td>
+                                <td> <b><?php echo $TotalPrice ?></b> </td>
                     </tr>
+                    <tr>
+                                <td colspan=4> Diskon </td>
+                                <td> <b> <?php echo $Discount ?> </b> </td>
+                    </tr>                    
                     <tr>
                                 <td colspan=4> Ongkos Kirim </td>
                                 <td> <b> <?php echo $AdditionalPrice ?> </b>  </td>

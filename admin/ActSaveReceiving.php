@@ -114,7 +114,7 @@
                 if ($isExists === NULL)
                 {
                     //case item belum ada di database
-                    //belum pernah masuk stock opname
+                    //belum pernah masuk stock card
                     //insert ke item
                     //insert ke Stock Card
                     $LargeQty = round($key[2] / 1200, 0);

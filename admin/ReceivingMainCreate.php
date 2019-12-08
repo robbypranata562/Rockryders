@@ -150,6 +150,7 @@
 		$( document ).ready(function() {
             var DataItem = [];
             var currDate = new Date();
+            $("select").select2()
             $("#Date").datetimepicker({
               format: "yyyy-mm-dd hh:ii:ss",
               autoclose: true,
@@ -179,8 +180,7 @@
                         "<input type='button' class='btn btn-danger' value='Delete'/>"
                     ]).draw( false );
                 }
-                $("#Color").val("");
-                $("#Size").val("");
+                $("#Size").val("").trigger("change");
                 $("#ReceivingQty").val("0");
             })
 
