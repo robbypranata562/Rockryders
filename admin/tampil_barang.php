@@ -75,7 +75,6 @@
           }
       },
       "initComplete": function(settings, json) {
-        alert( 'DataTables has finished its initialisation.' );
         $('.total-item').val(json.Total);
       },
       "columns":
