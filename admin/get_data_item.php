@@ -117,6 +117,19 @@ if(mysqli_num_rows($k) > 0 )
             );
             $output['aaData'][] = $data;
     }
+    $cek="SELECT sum(a.SmallQty) as Total FROM item AS a";
+    $k=mysqli_query($koneksi,$cek);
+    if(mysqli_num_rows($k) > 0 )
+    {
+      while($row=mysqli_fetch_array($k))
+      {
+  
+        $output['Total']= $row['Total'];
+      }
+    }
+    else {
+      $output['Total']= '0';
+    }
 }
 else
 {

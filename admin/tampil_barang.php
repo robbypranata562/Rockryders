@@ -38,6 +38,12 @@
           </tr>
           </thead>
           <tbody>
+          <tfoot>
+          <tr>
+            <th colspan="7">Total</th>
+            <th><input type="text" class="form-control total-item" value="0" readonly/></th>
+          </tr>
+          </tfoot>
         </table>
       </div>
     </div>
@@ -59,7 +65,7 @@
           }
           return nRow;
       },
-      "ajax": 
+      "ajax":
       {
           "url": "get_data_item.php",
           "type": "POST",
@@ -68,10 +74,10 @@
 
           }
       },
-      // "fnInitComplete": function (oSettings, json) {
-      // },
-      // "fnDrawCallback": function (settings) {
-      // },
+      "initComplete": function(settings, json) {
+        alert( 'DataTables has finished its initialisation.' );
+        $('.total-item').val(json.Total);
+      },
       "columns":
                   [
                     {
@@ -134,7 +140,7 @@
                           + '<a class="btn btn-danger" href="hapus_barang.php?id='+row[7]+'">Hapus</a>'
                         }
                     }
-                  ]
+                  ],           
     });
 
     $('#titem').on('click', 'tbody tr', function () {
